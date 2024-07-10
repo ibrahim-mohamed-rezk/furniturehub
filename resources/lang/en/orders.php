@@ -1,0 +1,28 @@
+<?php
+return[
+    'menuIcon' => 'fas fa-folder-plus fa-fw',
+    'index'=> 'Orders',
+    'id'=> 'Order no',
+    'user'=> 'User Name',
+    'show'=> 'Show Order',
+    'status' => 'Status',
+    'total' => 'Total',
+    'total_products' => 'Total Products ',
+    'total_delivery' => 'Total Delivery',
+    'tax_value'=>'Tax Value',
+    'cobon'=>'Cobon',
+    'cobon_discount'=>'Cobon Discount',
+    'payment_id'=>'Payment Id',
+    'payment'=>'Payment',
+    'offer_discount'=>'Offer Discount',
+    'products'=>'Products',
+    'first_name'=>'First Name',
+    'last_name'=>'Last Name',
+    'phone'=>'Phone',
+    'address_1'=>'Address 1',
+    'address_2'=>'Address 2',
+    'post_code'=>'Postal Code',
+    'information'=>'Additional Information',
+    'governorate'=>'Governorate',
+
+];

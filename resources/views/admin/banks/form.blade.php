@@ -1,0 +1,63 @@
+@extends('admin.layouts.container')
+
+@section('content')
+    <section class="content-main">
+        <div class="row">
+            <div class="col-12">
+                <div class="content-header">
+                    <h2 class="content-title">{{ $title }}</h2>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <form method="post" enctype="multipart/form-data" action="{{ $action }}">
+                    @if ($bank ?? '' && $bank->id)
+                        {{ method_field('patch') }}
+                    @endif
+                    @CSRF
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label>{{ __('banks.bank') }} </label>
+                                    <select name="bank_id" class="form-select">
+                                        @foreach ($banks as $key => $row)
+                                            <option value="{{ $row->id }}"
+                                                @if ($bank ?? '' && $bank->id) @if ($row->id == $bank->bank_id) selected @endif
+                                                @endif>{{ $row->name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="validationServer">{{ __('banks.period') }}</label>
+                                    <input type="text" name="period"
+                                        class="form-control {{ $errors->has('period') ? 'is-invalid' : '' }}"
+                                        id="validationServer" placeholder="{{ __('banks.period') }}"
+                                        value='{{ old('period', $bank->period ?? '') }}'>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label for="validationServer">{{ __('banks.percent') }}</label>
+                                    <input type="text" name="percent"
+                                        class="form-control {{ $errors->has('percent') ? 'is-invalid' : '' }}"
+                                        id="validationServer" placeholder="{{ __('banks.percent') }}"
+                                        value='{{ old('percent', $bank->percent ?? '') }}'>
+                                </div>
+
+
+                            </div>
+
+                            <button class="btn btn-md rounded font-sm hover-up">{{ __('dashboard.submit') }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>>
+
+
+    @section('inner_js')
+    @endsection
+@endsection
