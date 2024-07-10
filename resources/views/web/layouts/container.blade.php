@@ -87,7 +87,7 @@
                                     </div>
                                     <div class="itemInfo">
                                         <div class="info">
-                                            <span class="title">طقم ترابيزات جانبية متداخلة</span>
+                                            <span class="title">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto amet sequi, earum doloribus asperiores ex dolorem nam maiores dolore, officiis adipisci hic voluptas minima omnis sunt? Sunt, doloribus? Deleniti, in!</span>
                                             <span class="cat">منتجات ستانلس </span>
                                             <span class="price">EGP 15,000</span>
                                         </div>

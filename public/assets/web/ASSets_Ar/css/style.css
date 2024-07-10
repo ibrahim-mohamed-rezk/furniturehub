@@ -13143,7 +13143,7 @@ a:hover span {
 
 .dropdown-cart .items .item .itemInfo img {
   width: 112px;
-  height: 75px;
+  /* height: 75px; */
   border-radius: 5px;
 }
 
@@ -13156,11 +13156,16 @@ a:hover span {
 
 .dropdown-cart .items .item .itemInfo .info .title {
   color: #000;
-  font-size: 12px !important;
-  text-align: right;
-  text-transform: capitalize;
-  font-weight: 500;
-  font-family: Cairo;
+    font-size: 12px !important;
+    text-align: right;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-family: Cairo;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dropdown-cart .items .item .itemInfo .info .cat {
@@ -13923,6 +13928,11 @@ a:hover span {
           input {
             width: 100%;
             height: 100%;
+          }
+
+          input[type="checkbox"]:checked {
+            background-color: #0043ff; /* Change to your desired background color */
+            border: none; /* Optional: remove border if you want a cleaner look */
           }
         }
         .check-lable {

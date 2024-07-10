@@ -12824,11 +12824,16 @@ a:hover span {
 
 .dropdown-cart .items .item .itemInfo .info .title {
   color: #000;
-  font-size: 12px !important;
-  text-align: left;
-  text-transform: capitalize;
-  font-weight: 500;
-  font-family: Cairo;
+    font-size: 12px !important;
+    text-align: left;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-family: Cairo;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dropdown-cart .items .item .itemInfo .info .cat {
