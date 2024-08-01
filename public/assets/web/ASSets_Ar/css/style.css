@@ -1398,7 +1398,7 @@ a.text-brand-3:hover {
   width: 30px;
   background: #ffffff url(../imgs/template/icons/wishlist.svg) no-repeat center;
   padding: 0px;
-  opacity: 0;
+  opacity: 1;
   transform: translateX(10px);
   transition: all 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
   will-change: opacity, transform;
@@ -1415,7 +1415,7 @@ a.text-brand-3:hover {
   width: 30px;
   background: #ffffff url(../imgs/template/icons/compare.svg) no-repeat center;
   padding: 0px;
-  opacity: 0;
+  opacity: 1;
   transform: translateX(10px);
   transition: all 0.2s cubic-bezier(0.28, 0.12, 0.22, 1);
   will-change: opacity, transform;
@@ -13287,7 +13287,6 @@ a:hover span {
   background: white;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.03);
   border-radius: 12px;
-  overflow: hidden;
   border: 1px #f1f1f2 solid;
   display: inline-flex;
   flex-direction: column;
@@ -13295,6 +13294,58 @@ a:hover span {
   align-items: center;
   height: fit-content;
   padding: 20px;
+  position: relative;
+
+
+    /* minimize menue button  */
+    .minimize-btn{
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px #f1f1f2 solid;
+      cursor: pointer;
+      font-size: 20px;
+      color: #fd9636;
+    }
+}
+
+/* minimize account contaier */
+.minimize-container{
+  width: 100px !important;
+  padding: 5px !important;
+}
+
+.minimize-item{
+  justify-content: center !important;
+}
+
+.minimize-hide{
+  display: none !important;
+}
+
+.account-menue-icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+}
+.account-menue-icon svg{
+  transform: scalex(-1);
+}
+
+@media(max-width: 820px){
+  .minimize-btn, .account-menue-icon{
+    display: none !important;
+  }
 }
 
 /* Wrapper Styles */
@@ -13453,11 +13504,19 @@ a:hover span {
   }
 }
 
+.account-profile-content-container{
+  width: calc(100% - 300px);
+}
+
+.minimize-account-profile-content-container{
+  width: calc(100% - 100px) !important;
+}
+
 /* //////////////////////////////////////////////////// */
 /* account dashboard section */
 /* Container Styles */
 .dashboard-container {
-  width: calc(100% - 300px);
+
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -13536,7 +13595,6 @@ a:hover span {
 /* account details page */
 /* Container Styles */
 .profile-container {
-  width: calc(100% - 300px);
 
   .inputs-container {
     display: flex;
@@ -13659,7 +13717,6 @@ a:hover span {
 /* ///////////////////////////////////////// */
 /* account address page*/
 .address-contaier {
-  width: calc(100% - 300px);
 
   .addresses-container {
     width: 100%;
@@ -14150,7 +14207,6 @@ a:hover span {
 /* account download page */
 .account-dwonload-container {
   display: grid;
-  width: calc(100% - 300px);
   grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
   gap: 20px;
 
@@ -14266,7 +14322,6 @@ a:hover span {
 /* ////////////////////////////////////////////////// */
 /* account orders page */
 .account-orders-container {
-  width: calc(100% - 300px);
 
   .orders-table {
     width: 100%;

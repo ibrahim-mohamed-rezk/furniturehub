@@ -1,7 +1,7 @@
 @extends('web.pages.account')
 
 @section('profileContent')
-<div class="account-orders-container">
+<div class="account-profile-content-container account-orders-container">
   <table class="table orders-table">
     <thead class="thead-dark">
       <tr>
@@ -49,7 +49,8 @@
     aria-hidden="true">
     <div class="modal-dialog" style="width: 90vw; max-width: 100vw !important; top: 0;" role="document">
       <div class="modal-content ">
-        <h5 class="modal-title" style="text-align: start; width: 90%; margin: 0 auto;" id="exampleModalLabel">Summery Order </h5>
+        <h5 class="modal-title" style="text-align: start; width: 90%; margin: 0 auto;" id="exampleModalLabel">Summery
+          Order </h5>
         <div style="width: 100%">
 
           <div class="shipping-details">
@@ -216,6 +217,24 @@
 @endsection
 
 @section('container_js')
+<script>
+  const minimizeAccountMenue = () => {
+      $('.account-container').toggleClass('minimize-container');
+      $('.account-profile-content-container').toggleClass('minimize-account-profile-content-container');
+
+      $('.account-item').each(function() {
+          $(this).toggleClass('minimize-item');
+      });
+
+      $('.item-title').each(function() {
+          $(this).toggleClass('minimize-hide');
+      });
+
+      $('.minimize-btn').toggleClass('minimize-hide');
+      $('.header-title').toggleClass('minimize-hide');
+      $('.account-menue-icon').toggleClass('minimize-hide');
+  }
+</script>
 <script>
   $(document).ready(function() {
     function setImages(containerId, images) {

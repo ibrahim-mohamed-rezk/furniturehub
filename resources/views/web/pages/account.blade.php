@@ -7,6 +7,12 @@
         <div class="account-wrapper">
             <div class="account-header">
                 <div class="header-title">MY ACCOUNT</div>
+                <div class="account-menue-icon minimize-hide" onclick="minimizeAccountMenue()">
+                    <svg width="31" height="19" viewBox="0 0 31 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 17H29M2 9.5H29M2 2H21.5" stroke="black" stroke-width="3" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
             </div>
             <div class="account-body">
                 <a href="{{route('web.dashboard')}}">
@@ -135,11 +141,15 @@
                 </div>
             </div>
         </div>
+        {{-- minimize button --}}
+        <div class="minimize-btn" onclick="minimizeAccountMenue()">
+            <i class="fas fa-chevron-right"></i>
+        </div>
     </div>
     <!-- logout Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document" >
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <h5 class="modal-title" id="exampleModalLabel">Are you sure to sign out?</h5>
                 <div class="modal-footer">
@@ -155,6 +165,24 @@
 
 @section('container_js')
 
+<script>
+    const minimizeAccountMenue = () => {
+        $('.account-container').toggleClass('minimize-container');
+        $('.account-profile-content-container').toggleClass('minimize-account-profile-content-container');
+
+        $('.account-item').each(function() {
+            $(this).toggleClass('minimize-item');
+        });
+
+        $('.item-title').each(function() {
+            $(this).toggleClass('minimize-hide');
+        });
+
+        $('.minimize-btn').toggleClass('minimize-hide');
+        $('.header-title').toggleClass('minimize-hide');
+        $('.account-menue-icon').toggleClass('minimize-hide');
+    }
+</script>
 
 @if (Session::has('error'))
 <script>

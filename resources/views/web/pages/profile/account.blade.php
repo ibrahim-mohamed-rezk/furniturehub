@@ -1,7 +1,7 @@
 @extends('web.pages.account')
 
 @section('profileContent')
-    <div class="profile-container">
+    <div class="account-profile-content-container profile-container">
         <div class="inputs-container">
             <div class="input-content">
                 <div class="input-field">

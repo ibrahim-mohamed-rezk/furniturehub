@@ -1,7 +1,7 @@
 @extends('web.pages.account')
 
 @section('profileContent')
-<div class="account-dwonload-container">
+<div class="account-profile-content-container account-dwonload-container">
     @for ($i = 0; $i < 10; $i++) <div class="product-container">
         <div class="product-overlay">
             <button class="view">VIEW</button>

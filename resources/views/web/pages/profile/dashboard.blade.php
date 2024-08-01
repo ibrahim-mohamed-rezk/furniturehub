@@ -1,7 +1,7 @@
 @extends('web.pages.account')
 
 @section('profileContent')
-<div class="dashboard-container">
+<div class="account-profile-content-container dashboard-container">
     <a href="{{route('web.profile')}}">
         <div class="card account-details">
             <div class="icon account-icon">
