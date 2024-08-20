@@ -846,7 +846,19 @@
             var installPopup = document.getElementById('installPopup');
             installPopup.style.display = 'none';
         }
-    </script>
+
+        // switch to darck and light mode
+            function switchMode() {
+                document.body.classList.toggle('dark');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark'));
+
+
+            }
+            // Load the saved mode from localStorage
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark');
+            }
+            </script>
 
 
 
