@@ -165,7 +165,7 @@
                 <h4>payment</h4>
                 <span>Choose Payment Method Below</span>
                 <div class="payment-methods">
-                    <div onclick="openPayMethods()" class="pay-now method">
+                    <div onclick="openPayMethods()" id="payNow" class="pay-now method">
                         <div class="icons ">
                             <img src="{{asset('storage/assets/cash.png')}}" />
                             <img src="{{asset('storage/assets/mastercard.png')}}" />
@@ -173,7 +173,7 @@
                         </div>
                         <div class="method-title">pay now</div>
                     </div>
-                    <div onclick="openInstallment()" class="installment method">
+                    <div onclick="openInstallment()" id="installment" class="installment method">
                         <div class="icons">
                             <img src="{{asset('storage/assets/installment.png')}}" />
                             
@@ -415,11 +415,15 @@
     <script>
         function openPayMethods(){
             document.getElementById("pay-methods").style.display = "flex"
+            document.getElementById("payNow").classList.add('opened')
+            document.getElementById("installment").classList.remove('opened')
             document.getElementById("installment-methods").style.display = "none"
         }
 
         function openInstallment(){
             document.getElementById("installment-methods").style.display = "flex"
+            document.getElementById("installment").classList.add('opened')
+            document.getElementById("payNow").classList.remove('opened')
             document.getElementById("pay-methods").style.display = "none"
         }
     </script>

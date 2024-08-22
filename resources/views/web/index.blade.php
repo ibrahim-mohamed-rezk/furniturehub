@@ -107,7 +107,7 @@
                         <div class="content-products">
                             <div class="box-swiper">
                                 <div class="swiper-container swiper-group-3-newarrival">
-                                    <div class="swiper-wrapper">
+                                    <div class="swiper-wrapper"> 
                                         @foreach ($news_products as $row)
                                             @include('web.component.product.sliderHomeComponent', [
                                                 'product' => $row,
@@ -138,7 +138,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="content-products">
+                        <div class="content-products"> 
                             <div class="box-swiper">
                                 <div class="swiper-container swiper-group-3-bestselling">
                                     <div class="swiper-wrapper">

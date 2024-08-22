@@ -1,29 +1,34 @@
-<div class="get-app-container" id="ad-container">
+
+{{-- install app above header --}}
+<div class="get-app-container" id="installPopup">
     <div class="logo">
-        <img src="https://via.placeholder.com/50" alt="logo" />
+        <img src="https://furniturehubapp.com/public/storage/icon_pop_up1.svg" alt="logo">
     </div>
     <div class="content">
-        <h2>Homzmart | Furniture Shopping Made Easy</h2>
-        <p>Download the app now and get exclusive offers</p>
+        <h2>فرنتشر هب | لتجربة شراء اسهل</h2>
+        <p>حمل التطبيق الآن واحصل على العروض الحصرية</p>
         <div class="rating">
             <div class="stars">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i class="fa fa-star" style="font-size: 12px"></i>
+                <i class="fa fa-star" style="font-size: 12px"></i>
+                <i class="fa fa-star" style="font-size: 12px"></i>
+                <i class="fa fa-star" style="font-size: 12px"></i>
+                <i class="fas fa-star-half-alt" style="font-size: 12px"></i>
             </div>
-            <div class="rating-num">(2,900)</div>
+            <div class="rating-num">(2,500)</div>
         </div>
     </div>
-    <button class="button">Get App</button>
-    <div class="close" onclick="handleClose()">×</div>
+    <button class="button" id="downloadAppLink"
+        onclick="handleDownload('https://apps.apple.com/us/app/furniture-hub/id1464607582', 'https://play.google.com/store/apps/details?id=org.furniture.hub.app')">حمل
+        تطبيقك</button>
+    <div class="close" onclick=" handleClose()">×</div>
 </div>
 
 
-@if (getCurrentLocale() == 'en')
+{{-- install app popup --}}
+{{-- @if (getCurrentLocale() == 'en')
 <div id="installPopup" class="install-popup">
-    <p><img src="{{ asset('public/storage/pop_up3/banner--E.png') }}" alt=""></p>
+    <p><img src="{{ asset('storage/pop_up3/banner--E.png') }}" alt=""></p>
     <a href="#" id="downloadAppLink" onclick="handleDownload('{{ settings('apple') }}', '{{ settings('google') }}')">
         <button class="download-button">{{ __('web.download_your_app') }}</button>
     </a>
@@ -31,21 +36,17 @@
 </div>
 @else
 <div id="installPopup" class="install-popup">
-    <p><img src="{{ asset('public/storage/pop_up3/banner--A.png') }}" alt=""></p>
+    <p><img src="{{ asset('storage/pop_up3/banner--A.png') }}" alt=""></p>
     <a href="#" id="downloadAppLink" onclick="handleDownload('{{ settings('apple') }}', '{{ settings('google') }}')">
         <button class="download-button">{{ __('web.download_your_app') }}</button>
     </a>
     <span class="close-icon" onclick="hideInstallPopup()">✖</span>
 </div>
-@endif
+@endif --}}
 
 
 
-
-
-
-
-
+{{-- topbar --}}
 <div class="topbar">
     <div class="container-topbar">
         <div class="menu-topbar-left d-none d-xl-block">
@@ -86,6 +87,9 @@
         </div>
     </div>
 </div>
+
+
+{{-- header --}}
 <header id="header" class="header header-container sticky-bar">
     <div class="container">
         <div class="main-header">
@@ -441,7 +445,7 @@
 </div>
 
 <script>
-    const adContainer = document.getElementById('ad-container');
+    const adContainer = document.getElementById('installPopup');
     const header = document.getElementById('header')
     const adStyle = window.getComputedStyle(adContainer);
 
@@ -449,6 +453,29 @@
       document.querySelector(".get-app-container").style.display = "none";
       header.classList.remove('header-under-ad');
     };
+
+    function isMobile() {
+        return {
+            Android: function() {
+                return navigator.userAgent.match(/Android/i);
+            },
+            iOS: function() {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            }
+        };
+    }
+
+    function handleDownload(appleLink, googleLink) {
+        var installPopup = document.getElementById('installPopup');
+        installPopup.style.display = 'none';
+        
+        var downloadLink = document.getElementById('downloadAppLink');
+        if (isMobile().iOS()) {
+            window.location.href = appleLink;
+        } else if (isMobile().Android()) {
+            window.location.href = googleLink;
+        }
+    }
 
     window.addEventListener('scroll', function() {
         if (window.scrollY < 100) {

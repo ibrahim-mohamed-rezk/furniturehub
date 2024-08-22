@@ -1,4 +1,4 @@
-<div class="swiper-slide">
+<div class="swiper-slide"> 
     <div class="card-product-small">
         <div class="card-image">
             <a href="{{$product->url}}">

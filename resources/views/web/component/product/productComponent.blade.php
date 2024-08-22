@@ -3,7 +3,7 @@
         <div class="tools">
             <a class="btn btn-wishlist btn-tooltip mb-10 @if ($product->favorited()) favorited @endif"
                 onclick="toggleFavorite(this)" data-id="{{ $product->id }}"
-                style="@if ($product->favorited()) background:url({{ url('') }}/public/assets/web/ASSETS_En/imgs/template/icons/wishlist-hover.svg) @else background:url({{ url('') }}/public/assets/web/ASSETS_En/imgs/template/icons/wishlist.svg) @endif no-repeat center"
+                style="@if ($product->favorited()) background:url({{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/wishlist-hover.svg) @else background:url({{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/wishlist.svg) @endif no-repeat center"
                 style="cursor:pointer;" aria-label="Add To Wishlist"></a>
             <a class="btn btn-compare btn-tooltip mb-10" onclick="addCompare(this)" data-id="{{ $product->id }}"
                 style="cursor:pointer;" aria-label="Compare"></a>

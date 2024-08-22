@@ -31,19 +31,19 @@
                             <div class="card-product-small">
                                 <div class="card-image">
                                     <a href="#"> <img
-                                                src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/page/homepage9/sp8.png"
+                                                src="{{ url('') }}/assets/web/ASSETS_En/imgs/page/homepage9/sp8.png"
                                                 alt="Ecom" loading="lazy"></a></div>
                                 <div class="card-info">
                                     <div class="rating"><img 
-                                                src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/template/icons/star.svg"
+                                                src="{{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/star.svg"
                                                 alt="Ecom"><img
-                                                src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/template/icons/star.svg"
+                                                src="{{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/star.svg"
                                                 alt="Ecom"><img
-                                                src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/template/icons/star.svg"
+                                                src="{{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/star.svg"
                                                 alt="Ecom"><img
-                                                src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/template/icons/star.svg"
+                                                src="{{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/star.svg"
                                                 alt="Ecom"><img
-                                                src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/template/icons/star.svg"
+                                                src="{{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/star.svg"
                                                 alt="Ecom">
                                         <span class="font-xs color-gray-500">(65)</span>
                                     </div>
@@ -57,19 +57,19 @@
                         <div class="swiper-slide">
                             <div class="card-product-small">
                                 <div class="card-image"> <a href="#"> <img
-                                                src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/page/homepage9/sp9.png"
+                                                src="{{ url('') }}/assets/web/ASSETS_En/imgs/page/homepage9/sp9.png"
                                                 alt="Ecom"></a></div>
                                 <div class="card-info">
                                     <div class="rating"><img
-                                                src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/template/icons/star.svg"
+                                                src="{{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/star.svg"
                                                 alt="Ecom"><img
-                                                src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/template/icons/star.svg"
+                                                src="{{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/star.svg"
                                                 alt="Ecom"><img
-                                                src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/template/icons/star.svg"
+                                                src="{{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/star.svg"
                                                 alt="Ecom"><img
-                                                src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/template/icons/star.svg"
+                                                src="{{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/star.svg"
                                                 alt="Ecom"><img
-                                                src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/template/icons/star.svg"
+                                                src="{{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/star.svg"
                                                 alt="Ecom">
                                         <span class="font-xs color-gray-500">(65)</span>
                                     </div>

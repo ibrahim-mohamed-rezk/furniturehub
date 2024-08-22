@@ -162,7 +162,7 @@
             border-radius: 10px;
             max-width: 300px;
             width: 80%;
-            background: url('{{ asset('public/storage/pop_up3/Untitled-1.jpg') }}') no-repeat center center fixed;
+            background: url({{ asset('storage/pop_up3/Untitled-1.jpg') }}) no-repeat center center fixed;
             background-size: cover;
         }
 
@@ -253,7 +253,7 @@
                 height: 100%;
                 top: 0;
                 right: 0;
-                background-image: url({{ asset('public/storage/tests.png') }});
+                background-image: url({{ asset('storage/tests.png') }});
             }
 
             /* Displayed content on hover */
@@ -439,7 +439,7 @@
                 top: 0;
                 right: 0;
                 transform: rotateY(180deg) rotateX(360deg);
-                background-image: url({{ asset('public/storage/tests.png') }});
+                background-image: url({{ asset('storage/tests.png') }});
             }
 
             /* Displayed content on hover */
@@ -577,7 +577,7 @@
 
     <div class="floating-button">
         <a href="https://wa.me/201060552252" target="_blank"><img
-                src="{{ asset('public/storage/icons/whatsApp.webp') }}" loading="lazy" alt="Contact" width="100px"
+                src="{{ asset('storage/icons/whatsApp.webp') }}" loading="lazy" alt="Contact" width="100px"
                 style="width: 100px;">
         </a>
     </div>
