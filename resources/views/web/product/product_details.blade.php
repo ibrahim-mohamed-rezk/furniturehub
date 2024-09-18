@@ -4,20 +4,20 @@
         {
             "@context": "https://schema.org/",
             "@type": "Product",
-            "name": "{{ $product->name }}",
+            "name": "{!! $product->name !!}",
             "brand": {"@type": "Brand","name": "furniturehub"},
-            "sku": "{{ $product->sku_code }}",
-            "description": "{{ $product->description }}",
-            "image":"{{ $product->image_url }}",
-            "url":"{{ $product->url }}",
+            "sku": "{!! $product->sku_code !!}",
+            "description": "{!! $product->description !!}",
+            "image":"{!! $product->image_url !!}",
+            "url":"{!! $product->url !!}",
             "offers": 
                 [{
                 "@type": "Offer",
-                "price": "{{$product->price['price']}}",
-                "priceCurrency": "{{ __("web.$currency->symbol") }}",
+                "price": "{!!$product->cost!!}",
+                "priceCurrency": "{!! __("web.L.E") !!}",
                 "itemCondition": "https://schema.org/NewCondition",
-                "url": "{{ $product->url }}",
-                "sku": "{{ $product->sku_code }}",
+                "url": "{!! $product->url !!}",
+                "sku": "{!! $product->sku_code !!}",
                 "availability" : "https://schema.org/InStock",
                 }],
             "review": {
@@ -34,14 +34,14 @@
             },
             "aggregateRating": {
                 "@type": "AggregateRating",
-                "ratingValue": {{ $product->rates['rate'] }},
+                "ratingValue": {!! $product->rates['rate'] !!},
                 "reviewCount": 89
             }
         }
     </script>
     <script type='text/javascript'
-    src='https://platform-api.sharethis.com/js/sharethis.js#property=6514290cc8722100193bdfde&product=inline-share-buttons'
-    async='async'></script>
+        src='https://platform-api.sharethis.com/js/sharethis.js#property=6514290cc8722100193bdfde&product=inline-share-buttons'
+        async='async'></script>
 @endsection
 
 @section('content')
@@ -68,12 +68,11 @@
                     <div class="gallery-image">
                         <div class="galleries">
                             <div class="detail-gallery">
-                                @if ($product->price['discount'])
+                                @if ($product->cost_discount)
                                     <label class="label">{{ __('web.save') }}
-                                        {{ 100 - $product->price['percentage'] }}%</label>
+                                        {{ 100 - $product->percentage }}%</label>
                                 @endif
-                                @if (in_array($product->id, $offer_ids) )
-
+                                @if (in_array($product->id, $offer_ids))
                                     <label class="label">{{ __('web.use_cobon_to_save') }}</label>
                                 @endif
                                 {{-- @if (in_array($product->id, $offer_category_ids))
@@ -86,12 +85,14 @@
                                     <figure class="border-radius-10"
                                         style="display: inline-block; width: auto; height: auto; margin: 0;">
                                         <img src="{{ $product->image_url }}" alt="{{ $product->name }}"
+                                            class="downloadable-image" data-filename="{{ $product->image_url }}"
                                             style="width: 100%; height: 100%; object-fit: cover;">
                                     </figure>
                                     @foreach ($product->photos as $photo)
                                         <figure class="border-radius-10"
                                             style="display: inline-block; width: auto; height: auto; margin: 0;">
                                             <img src="{{ $photo->image_url }}" alt="{{ $product->name }}"
+                                                class="downloadable-image" data-filename="{{ $product->image_url }}"
                                                 style="width: 100%; height: 100%; object-fit: cover;">
                                         </figure>
                                     @endforeach
@@ -102,6 +103,7 @@
                                     <div class="item-thumb"
                                         style="display: inline-block; width: auto; height: auto; margin: 0;">
                                         <img src="{{ $product->image_url }}" alt="{{ $product->name }}"
+                                            class="downloadable-image" data-filename="{{ $product->image_url }}"
                                             style="width: 100%; height: 100%; object-fit: cover;">
                                     </div>
                                 </div>
@@ -110,6 +112,7 @@
                                         <div class="item-thumb"
                                             style="display: inline-block; width: auto; height: auto; margin: 0;">
                                             <img src="{{ $photo->image_url }}" alt="{{ $product->name }}"
+                                                class="downloadable-image" data-filename="{{ $product->image_url }}"
                                                 style="width: 100%; height: 100%; object-fit: cover;">
                                         </div>
                                     </div>
@@ -131,34 +134,37 @@
                         </div>
                     @endif
 
-                    @if ($product->price['discount'] == true)
-                        @if ($product->price['price'] < 10000)
-                            <sympl-widget productprice="{{ $product->price['price'] }}" storecode="STR-343"></sympl-widget>
+                    @if ($product->cost_discount)
+                        @if ($product->cost < 10000)
+                            <sympl-widget productprice="{{ $product->cost }}" storecode="STR-343"></sympl-widget>
                         @endif
                     @else
-                        @if ($product->price['price'] < 10000)
-                            <sympl-widget productprice="{{ $product->price['price'] }}" storecode="STR-343"></sympl-widget>
+                        @if ($product->cost < 10000)
+                            <sympl-widget productprice="{{ $product->cost }}" storecode="STR-343"></sympl-widget>
                         @endif
                     @endif
                     <div class="border-bottom pt-20 mb-10"></div>
                     <div class="box-product-price">
-                        <h3 class="color-brand-3 price-main d-inline-block mr-10">{{ $product->price['price'] }}
-                            {{ __("web.$currency->symbol") }}</h3>
-                        @if ($product->price['discount'] == true)
-                            <span
-                                class="color-gray-500 price-line font-xl line-througt">{{ $product->price['price_before'] }}
-                                {{ __("web.$currency->symbol") }}</span>
+
+                        @if ($product->cost_discount)
+                            <h3 class="color-brand-3 price-main d-inline-block mr-10">{{ $product->cost_discount }}
+                                {{ __('web.L.E') }}</h3>
+                            <span class="color-gray-500 price-line font-xl line-througt">{{ $product->cost }}
+                                {{ __('web.L.E') }}</span>
+                                @else
+                                <h3 class="color-brand-3 price-main d-inline-block mr-10">{{ $product->cost }}
+                                    {{ __('web.L.E') }}</h3>
                         @endif
-                        <span class="color-brand-3 font-xl">{{ '/'.__('products.'.$product->type) }} </span>
+                        <span class="color-brand-3 font-xl">{{ '/' . __('products.' . $product->type) }} </span>
 
                     </div>
                     <div class="progress mb-5" style="height: 5px;">
-                        <div class="progress-bar" role="progressbar" style="width: {{ $product->price['percentage'] }}%"
+                        <div class="progress-bar" role="progressbar" style="width: {{ $product->percentage }}%"
                             aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                    @if ($product->price['discount'] == true)
-                        <span>{{ __('web.saving') }} : {{ $product->price['price_before'] - $product->price['price'] }}
-                            {{ __("web.$currency->symbol") }}</span>
+                    @if ($product->cost_discount)
+                        <span>{{ __('web.saving') }} : {{ $product->cost_discount - $product->cost }}
+                            {{ __('web.L.E') }}</span>
                     @endif
 
 
@@ -173,17 +179,23 @@
                         <div class="box-quantity">
                             {{-- <p class="font-sm mb-2">{{ __('web.quantity') }}</p> --}}
                             <div class="input-quantity">
-                                <input class="font-xl color-brand-3 count" type="text" value="1" min="1">
                                 <span class="quantity-control minus-cart"></span>
+                                <input class="font-xl color-brand-3 count" type="text" value="1" min="1">
                                 <span class="quantity-control plus-cart"></span>
                             </div>
+                            {{--  <div class="input-quantity">
+                                <span class="minus-cart"><i class="fas fa-minus"></i></span>
+                                <input class="font-xl color-brand-3 box-input count"type="text" value="1" min="1">
+                                <span class="plus-cart"><i class="fas fa-plus"></i></span>
+                            </div>  --}}
                             <div class="button-buy mt-2">
                                 <a class="btn btn-cart" data-id="{{ $product->id }}" onclick="addCart(this)"
                                     style="cursor: pointer">{{ __('web.add_to_cart') }}</a>
                                 <a class="btn btn-buy" data-id="{{ $product->id }}" onclick="buynow(this)"
                                     style="cursor: pointer">{{ __('web.buy_now') }}</a>
                                 <a class="btn btn-buy" href="https://wa.me/201060552252?text={{ url()->current() }}"
-                                    style="cursor: pointer;background: #52d160;" target="_blank">{{ __('web.contact_us') }}</a>
+                                    style="cursor: pointer;background: #52d160;"
+                                    target="_blank">{{ __('web.contact_us') }}</a>
                             </div>
                         </div>
                     </div>
@@ -191,23 +203,43 @@
                     <div class="border-bottom pt-30 mb-20"></div><a class="mr-30 " onclick="toggleFavoriteProduct(this)"
                         data-id="{{ $product->id }}" style="cursor:pointer;"><span
                             class="btn btn-wishlist mr-5 opacity-100 transform-none"></span><span
-                            class="font-md color-gray-900">{{ __('web.add_to_Wishlist') }}</span></a><a
-                        onclick="addCompare(this)" data-id="{{ $product->id }}" style="cursor:pointer;"><span
+                            class="font-md color-gray-900">{{ __('web.add_to_Wishlist') }}</span></a>
+                    <a onclick="addCompare(this)" data-id="{{ $product->id }}" style="cursor:pointer;"><span
                             class="btn btn-compare mr-5 opacity-100 transform-none"></span><span
                             class="font-md color-gray-900">{{ __('web.add_to_Compare') }}</span></a>
-                    <div class="info-product mt-20 font-md color-gray-900">SKU:
-                        {{ $product->sku_code }}<br>{{ __('web.category') }}:
-                        {{ $product->category->details->title }}<br>Tags:
-                        @foreach ($product->tags as $key => $tag)
-                            {{ $tag->details->name }} @if (count($product->tags) - 1 != $key)
-                                ,
-                            @endif
-                        @endforeach
-                    </div>
                 </div>
             </div>
         </div>
         <div class="border-bottom pt-10 mb-10"></div>
+        @if ($extensions->isNotEmpty())
+            <section class="section-box shop-template">
+                <div class="container">
+                    <div class="pt-30 mb-10">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                @foreach ($extensions as $row)
+                                    <tr>
+                                        <td>{!! __('web.' . $row->title) !!}</td>
+                                        <td>{!! $row->value !!} {{ __('web.L.E') }}<span
+                                                class="mx-5 line-througt">{!! $row->value_discount !!} {{ __('web.L.E') }}
+                                            </span></td>
+                                        <td><a class="btn btn-cart" data-id="{{ $row->id }}" style="width: 150px"
+                                                onclick="addCart(this)"
+                                                style="cursor: pointer">{{ __('web.add_to_cart') }}</a></td>
+                                    </tr>
+                                @endforeach
+
+
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <div class="border-bottom pt-10 mb-10"></div>
+        @endif
+
         <div class="sharethis-inline-share-buttons"></div>
 
         </div>
@@ -217,19 +249,16 @@
             <div class="pt-30 mb-10">
                 <ul class="nav nav-tabs nav-tabs-product" role="tablist">
                     <li><a class="active" href="#tab-specification" data-bs-toggle="tab" role="tab"
-                             aria-controls="tab-specification"
-                            aria-selected="true">{{ __('web.specification') }}</a>
+                            aria-controls="tab-specification" aria-selected="true">{{ __('web.specification') }}</a>
                     </li>
-                    <li><a href="#tab-description" style="padding-left: 10px;" data-bs-toggle="tab" role="tab" style="margin-left:-14px;"
-                            aria-controls="tab-description" aria-selected="true">{{ __('web.description') }}</a>
+                    <li><a href="#tab-description" style="padding-left: 10px;" data-bs-toggle="tab" role="tab"
+                            style="margin-left:-14px;" aria-controls="tab-description"
+                            aria-selected="true">{{ __('web.description') }}</a>
                     </li>
 
                     <li><a href="#tab-reviews" data-bs-toggle="tab" role="tab" aria-controls="tab-reviews"
                             aria-selected="true">{{ __('web.reviews') }} </a>
                     </li>
-
-
-
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade " id="tab-description" role="tabpanel" aria-labelledby="tab-description">
@@ -264,6 +293,24 @@
                                 <tr>
                                     <td>{{ __('products.made_in') }}</td>
                                     <td>{!! $product->made_in !!}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ __('products.sku_code') }}</td>
+                                    <td>{!! $product->sku_code !!}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ __('web.category') }}</td>
+                                    <td>{!! $product->category->details->title !!}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{ __('products.tags') }}</td>
+                                    <td>
+                                        @foreach ($product->tags as $key => $tag)
+                                            {{ $tag->details->name }} @if (count($product->tags) - 1 != $key)
+                                                ,
+                                            @endif
+                                        @endforeach
+                                    </td>
                                 </tr>
 
                                 @foreach ($product->sections as $section)
@@ -342,10 +389,7 @@
             </div>
         </div>
     </section>
-    <!--<div class="container mt-20">-->
-    <!--    <div class="text-center"><a href="#"><img src="{{ url('') }}/assets/web/ASSETS/imgs/page/product/banner-ads.png"-->
-    <!--                alt="Ecom"></a></div>-->
-    <!--</div>-->
+
 
 
 

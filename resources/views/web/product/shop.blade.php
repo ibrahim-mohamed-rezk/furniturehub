@@ -33,7 +33,7 @@
                                 <div class="swiper-slide">
                                     <div class="card-grid-style-1">
                                         <div class="image-box">
-                                            <a href="{{ $banners[0]->link }}">
+                                            <a href="{{ route($banners[0]->url['first'], $banners[0]->url['second'] ?? '') }}">
                                                 <img src="{{ asset($banners[0]->image) }}" alt="furniturehub" loading="lazy">
                                             </a>
 
@@ -44,7 +44,7 @@
                                 <div class="swiper-slide">
                                     <div class="card-grid-style-1">
                                         <div class="image-box">
-                                            <a href="{{ $banners[1]->link }}">
+                                            <a href="{{ route($banners[1]->url['first'], $banners[1]->url['second'] ?? '') }}">
                                                 <img src="{{ asset($banners[1]->image) }}"
                                                     alt="furniturehub" loading="lazy">
                                             </a>
@@ -56,7 +56,7 @@
                                 <div class="swiper-slide">
                                     <div class="card-grid-style-1">
                                         <div class="image-box">
-                                            <a href="{{ $banners[2]->link }}">
+                                            <a href="{{ route($banners[2]->url['first'], $banners[2]->url['second'] ?? '') }}">
                                                 <img src="{{ asset($banners[2]->image) }}"
                                                     alt="furniturehub" loading="lazy">
                                             </a>
@@ -68,7 +68,7 @@
                                 <div class="swiper-slide">
                                     <div class="card-grid-style-1">
                                         <div class="image-box">
-                                            <a href="{{ $banners[3]->link }}">
+                                            <a href="{{ route($banners[3]->url['first'], $banners[3]->url['second'] ?? '') }}">
                                                 <img src="{{ asset($banners[3]->image) }}"
                                                     alt="furniturehub" loading="lazy">
                                             </a>

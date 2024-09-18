@@ -102,11 +102,19 @@
                                     <a class="btn btn-sm font-sm rounded btn-brand mr-2"
                                         href="{{ $row->url }}" target="_blank"><i
                                             class="material-icons md-edit"></i> {{ __('dashboard.show') }}</a>
+                                    <a class="btn btn-sm font-sm rounded btn-brand mr-5" href="javascript:void(0);" onclick="shareProduct('{{ $row->url }}')">
+                                        <i class="material-icons md-show"></i> {{ __('dashboard.share') }}
+                                    </a>
                                 @endif
                                 <button class="btn btn-sm font-sm btn-light rounded" onclick="deleteRow(this)"
                                     href="{{ route($routes . '.destroy', $row->id) }}#"><i
                                         class="material-icons md-delete_forever"></i>
                                     {{ __('dashboard.' . $delete_button) }}</button>
+                                <button class="btn btn-sm font-sm btn-light rounded" onclick="confirmDelete(this)"
+                                    href="{{ route($routes . '.force_delete', $row->id) }}#"><i
+                                        class="material-icons md-delete_forever"></i>
+                                    {{ __('dashboard.force_delete') }}</button>
+
                             </div>
                         </div>
                         <!-- row .//-->
@@ -120,4 +128,27 @@
             {!! $products->appends($_GET)->links() !!}
         </div>
     </section>
+@endsection
+@section('inner_js')
+    <script>
+        function shareProduct(url) {
+            const productUrl = `${url}`;
+    
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Check out this produt',
+                    text: 'Take a look at this furniture produt!',
+                    url: productUrl
+                }).then(() => {
+                    console.log('Successful share');
+                }).catch((error) => {
+                    console.error('Error sharing', error);
+                });
+            } else {
+                // Fallback if navigator.share is not supported
+                alert('Share not supported on this browser. Copy this link: ' + productUrl);
+            }
+        }
+    </script>
+
 @endsection

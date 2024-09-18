@@ -1,4 +1,4 @@
-<?php
+,<?php
 return[
     'menuIcon' => 'fas fa-folder-plus fa-fw',
     'index'=> 'سلة المشتريات',
@@ -8,7 +8,16 @@ return[
     'email' => 'البريد الالكتروني',
     'created_date' => ' وقت الانشاء',
     'Action' => 'الاجراءات',
-    'export'=>'تصدير'
+    'export'=>'تصدير',
+    'label'=>'المتحدث',
+    'confirm'=>'تاكيد',
+    'label_text'=>'ملاحظتك',
+    'leave_your_label'=>'اترك ملاحظتك',
+    'submit'=>'تاكيد',
+    'no_label_here'=>'لا يوجد ملاحظة هنا'
+
+
+
 
 
 ];

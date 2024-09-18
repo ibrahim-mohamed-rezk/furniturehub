@@ -3,10 +3,13 @@
 @section('content')
     <section class="content-main">
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <div class="content-header">
                     <h2 class="content-title">{{ $title }}</h2>
                 </div>
+            </div>
+            <div class="col-6">
+                <a href="{{ route('notifications.mobile_notification') }}" class="btn btn-primary">{{__('notifications.mobile_notifications')}}</a>
             </div>
             <div class="col-lg-12">
                 <form method="post" enctype="multipart/form-data" action="{{ $action }}">
@@ -18,12 +21,14 @@
                                     <label for="validationServer">{{__('notifications.email')}}</label>
                                     <select name="user_id" class="form-select">
                                         <option value="">{{__('notifications.all')}}</option>
+                                        
                                         @foreach ($users as $row)
                                             <option value="{{ $row->id }}"> {{ $row->name }} </option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-6 mb-4"></div>
+         
+                                
                                 
                                 @foreach (languages() as $key => $language)
                                     <div class="col-md-6 mb-4">

@@ -31,7 +31,7 @@
                 <div class="col-lg-1"></div>
                 <div class="col-lg-10">
                     <div class="row">
-                        <div class="col-lg-12 mb-50 display-list"><a class="tag-dot font-xs">{{ $article->type->name }}</a>
+                        <div class="col-lg-12 mb-50 display-list"><div class="tag-dot font-xs">{{ $article->type->name }}</div>
                             <h3 class="mt-15 mb-25">{{ $article->title }}</h3>
                             <div class="box-author mb-5">
                                 <div class="img-author mr-30"><img src="{{ asset($article->user_image) }}"

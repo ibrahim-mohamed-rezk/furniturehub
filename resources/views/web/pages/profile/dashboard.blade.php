@@ -17,7 +17,7 @@
                     </defs>
                 </svg>
             </div>
-            <div class="title">ACCOUNT DETAILS</div>
+            <div class="title">{{ __('web.account_details') }}</div>
         </div>
     </a>
     <a href="{{route('web.orders')}}">
@@ -34,10 +34,10 @@
                     </defs>
                 </svg>
             </div>
-            <div class="title">ORDERS</div>
+            <div class="title">{{ __('web.orders') }}</div>
         </div>
     </a>
-    <a href="{{route('web.download')}}">
+    {{-- <a href="{{route('web.download')}}">
         <div class="card downloads">
             <div class="icon downloads-icon">
                 <svg width="18" height="19" viewBox="0 0 18 19"  xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +53,7 @@
             </div>
             <div class="title">DOWNLOADS</div>
         </div>
-    </a>
+    </a> --}}
     <a href="{{route('web.addresses')}}">
         <div class="card addresses">
             <div class="icon addresses-icon"> 
@@ -68,7 +68,7 @@
                     </defs>
                 </svg>
             </div>
-            <div class="title">ADDRESSES</div>
+            <div class="title">{{ __('web.addresses') }}</div>
         </div>
     </a>
 </div>

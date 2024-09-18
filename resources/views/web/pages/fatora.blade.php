@@ -70,14 +70,14 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <strong>{{ __('web.phone') }}</strong><br />
-                                                    <span>+{{ $user_info->address()->phone }}</span>
+                                                    <span>+{{ $user_info->address()->phone ?? '' }}</span>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <strong>{{ __('web.postCode_ZIP') }}</strong><br />
-                                                    <span>{{ $user_info->address()->post_code }}</span>
+                                                    <span>{{ $user_info->address()->post_code ?? '' }}</span>
                                                 </div>
                                             </div>
 
@@ -91,7 +91,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <strong>{{ __('web.address') }}</strong><br />
-                                                    <span>{{ $user_info->address()->address_1 }}</span>
+                                                    <span>{{ $user_info->address()->address_1 ?? '' }}</span>
                                                 </div>
                                             </div>
 

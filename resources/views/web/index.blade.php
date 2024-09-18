@@ -1,519 +1,172 @@
 @extends('web.layouts.container')
 
-@section('add_content')
-    <a href="https://api.whatsapp.com/send?phone=201060552252" class="btn btn-whatsapp" target="_blank">
-        <i class="lab la-whatsapp"></i>
-    </a>
-    <div class="section-box box-quickmenu ">
-        <div class="container">
-            <div class="box-inner-quickmenu">
-                <ul>
-                    <li><a href="{{ route('web.shop') }}">{{ __('web.todays_deals') }}</a></li>
-                    <li><a href="{{ route('web.cobon') }}">{{ __('web.coupons') }}</a></li>
-                    <li><a href="{{ route('web.contact') }}">{{ __('web.customer_service') }}</a></li>
-                    <li><a href="{{ route('web.shop') }}?category_id=35&model_id=40">{{ __('web.bean_bags') }}</a></li>
-                    <li><a href="{{ route('web.installment') }}">{{ __('web.instalment') }}</a></li>
-                    <!--<li><a href="#">{{ __('web.operations') }}</a></li>-->
-                    <!--<li><a href="#">{{ __('web.B2B') }}</a></li>-->
-                    <!-- <li><a href="{{ route('web.soon') }}">{{ __('web.VR') }}</a></li>
-                                                                            <li><a href="{{ route('web.soon') }}">{{ __('web.AR') }}</a></li> -->
-                    <li><a href="{{ route('web.offers') }}" style="color: #FD9636;">{{__('web.offers')}}</a></li>
-                    <li><a href="{{ route('web.affiliate_register') }}">{{ __('web.affiliate_register') }}</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+
+
+@section('styles')
+<link rel="stylesheet" href="{{url('') }}/assets/web/ASSets_Ar/css/custom/home.css">
 @endsection
 
 @section('content')
+<header class="container">
+    <div class="header-wrapper">
+        <div class="header-slider-1">
+            <div class="swiper-wrapper">
+                @php
+                $items = [
+                url('/storage/assets/home/slider-1.png'),
+                url('/storage/assets/home/slider-1.png'),
+                url('/storage/assets/home/slider-1.png'),
+                url('/storage/assets/home/slider-1.png'),
+                url('/storage/assets/home/slider-1.png'),
+                ];
+                @endphp
 
-    <section class="section-box mt-35">
-        <div class="banner-hero banner-home9">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3" id="home-banner">
-                        <a href="{{ $banners[0]->link }}">
-                            <div class="banner-left" style='background-image: url("{{ $banners[0]->image }}")' loading="lazy">
-                                {{-- <div class="box-adsolute-banner">
-                                <h5 class="color-gray-900">Office Collection</h5><a
-                                    class="btn btn-link-brand-2 text-capitalize">Shop Now</a>
-                            </div> --}}
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-6 mb-30">
-                        <div class="box-swiper">
-                            <div class="swiper-container swiper-banner-1">
-                                <div class="swiper-wrapper">
-                                    @foreach ($sliders as $row)
-                                        <div class="swiper-slide">
-                                            <a href="{{ $row->link }}">
-
-                                                <div class="banner-middle"
-                                                    style='background-image: url("{{ $row->image }}");' loading="lazy">
-
-                                                </div>
-                                            </a>
-                                        </div>
-                                    @endforeach
-
-                                </div>
-                                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
-                                    <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span>
-                                    <span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3" id="home-banner">
-                        <a href="{{ $banners[1]->link }}">
-
-                            <div class="banner-right-home6" style='background-image: url("{{ $banners[1]->image }}")' loading="lazy">
-                                {{-- <div class="box-adsolute-banner">
-                                <h5 class="color-gray-900">Comfort Chair</h5><a
-                                    class="btn btn-link-brand-2 text-capitalize">Shop Now</a>
-                            </div> --}}
-                            </div>
-                        </a>
+                @foreach($items as $item)
+                <div class="swiper-slide">
+                    <div class="slide-container">
+                        <img src="{{ $item }}" alt="Slider Image">
                     </div>
                 </div>
-            </div>
-
-        </div>
-    </section>
-    <section class="section-box ">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                    <div class="box-slider-product">
-                        <div class="head-slider">
-                            <div class="row">
-                                <div class="col-lg-7">
-                                    <h5>{{ __('web.new_arrivals') }}</h5>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div class="box-button-slider-2">
-                                        <div
-                                            class="swiper-button-prev swiper-button-prev-style-top swiper-button-prev-newarrival">
-                                        </div>
-                                        <div
-                                            class="swiper-button-next swiper-button-next-style-top swiper-button-next-newarrival">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-products">
-                            <div class="box-swiper">
-                                <div class="swiper-container swiper-group-3-newarrival">
-                                    <div class="swiper-wrapper"> 
-                                        @foreach ($news_products as $row)
-                                            @include('web.component.product.sliderHomeComponent', [
-                                                'product' => $row,
-                                            ])
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                    <div class="box-slider-product">
-                        <div class="head-slider">
-                            <div class="row">
-                                <div class="col-lg-7">
-                                    <h5>{{ __('web.best_selling') }}</h5>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div class="box-button-slider-2">
-                                        <div
-                                            class="swiper-button-prev swiper-button-prev-style-top swiper-button-prev-bestselling">
-                                        </div>
-                                        <div
-                                            class="swiper-button-next swiper-button-next-style-top swiper-button-next-bestselling">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-products"> 
-                            <div class="box-swiper">
-                                <div class="swiper-container swiper-group-3-bestselling">
-                                    <div class="swiper-wrapper">
-                                        @foreach ($sale_products as $row)
-                                            @include('web.component.product.sliderHomeComponent', [
-                                                'product' => $row,
-                                            ])
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
-                    <div class="box-slider-product">
-                        <div class="head-slider">
-                            <div class="row">
-                                <div class="col-lg-7">
-                                    <h5>{{ __('web.hot_deals') }}</h5>
-                                </div>
-                                <div class="col-lg-5">
-                                    <div class="box-button-slider-2">
-                                        <div
-                                            class="swiper-button-prev swiper-button-prev-style-top swiper-button-prev-hotdeal">
-                                        </div>
-                                        <div
-                                            class="swiper-button-next swiper-button-next-style-top swiper-button-next-hotdeal">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="content-products">
-                            <div class="box-swiper">
-                                <div class="swiper-container swiper-group-3-hotdeal">
-                                    <div class="swiper-wrapper">
-                                        @foreach ($hot_products as $row)
-                                            @include('web.component.product.sliderHomeComponent', [
-                                                'product' => $row,
-                                            ])
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
-        </div>
-    </section>
-    <div class="section-box mt-10">
-        <div class="container">
-            <div class="slide-container swiper-container">
-                <div class="slide-content">
-                    <div class="card-wrapper swiper-wrapper">
-                        @foreach ($categorieshome as $row)
-                            <div class="card swiper-slide">
-                                <div class="image-content">
-                                    <span class="overlay"></span>
-                                    <div class="card-image1">
-                                        <a href="{{ route('web.shop', $row->slug) }}">
-                                            <img src="{{ asset($row->image) }}" alt="" class="card-img">
+            <div class="header-slider-1-pagination">
+                <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
+                    aria-label="Go to slide 1"></span>
+            </div>
 
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <a href="{{ route('web.shop', $row->slug) }}">
-                                        <h5 class="name">{{ $row->title }}</h5>
+            <div class="header-slider-1-next">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M1 4.99993H11L7.71 1.70994C7.61627 1.61697 7.54188 1.50637 7.49111 1.38451C7.44034 1.26265 7.4142 1.13195 7.4142 0.999937C7.4142 0.867925 7.44034 0.73722 7.49111 0.61536C7.54188 0.493501 7.61627 0.382901 7.71 0.289938C7.89736 0.103687 8.15081 -0.000854492 8.415 -0.000854492C8.67919 -0.000854492 8.93264 0.103687 9.12 0.289938L13.41 4.58993C13.7856 4.96328 13.9978 5.47035 14 5.99993C13.9951 6.52603 13.7832 7.02903 13.41 7.39993L9.12 11.6999C9.02676 11.7925 8.9162 11.8658 8.79463 11.9157C8.67306 11.9655 8.54286 11.9909 8.41146 11.9905C8.28007 11.99 8.15005 11.9637 8.02884 11.913C7.90762 11.8623 7.79758 11.7882 7.705 11.6949C7.61242 11.6017 7.53911 11.4911 7.48925 11.3696C7.4394 11.248 7.41398 11.1178 7.41444 10.9864C7.41491 10.855 7.44125 10.725 7.49196 10.6038C7.54267 10.4825 7.61676 10.3725 7.71 10.2799L11 6.99993H1C0.734783 6.99993 0.480429 6.89457 0.292892 6.70704C0.105356 6.5195 0 6.26515 0 5.99993C0 5.73471 0.105356 5.48036 0.292892 5.29283C0.480429 5.10529 0.734783 4.99993 1 4.99993Z"
+                        fill="white" />
+                </svg>
+            </div>
 
-                                    </a>
-
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    
-                </div>
-                <div class="swiper-button-next swiper-button-next-group-3"></div>
-                <div class="swiper-button-prev swiper-button-next-group-3"></div>
+            <div class="header-slider-1-preve">
+                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M13 4.99993H3L6.29 1.70994C6.38373 1.61697 6.45812 1.50637 6.50889 1.38451C6.55966 1.26265 6.5858 1.13195 6.5858 0.999937C6.5858 0.867925 6.55966 0.73722 6.50889 0.61536C6.45812 0.493501 6.38373 0.382901 6.29 0.289938C6.10264 0.103687 5.84919 -0.000854492 5.585 -0.000854492C5.32081 -0.000854492 5.06736 0.103687 4.88 0.289938L0.59 4.58993C0.214412 4.96328 0.00223279 5.47035 0 5.99993C0.00486659 6.52603 0.216844 7.02903 0.59 7.39993L4.88 11.6999C4.97324 11.7925 5.0838 11.8658 5.20537 11.9157C5.32694 11.9655 5.45714 11.9909 5.58854 11.9905C5.71993 11.99 5.84995 11.9637 5.97116 11.913C6.09238 11.8623 6.20242 11.7882 6.295 11.6949C6.38758 11.6017 6.46089 11.4911 6.51075 11.3696C6.5606 11.248 6.58602 11.1178 6.58556 10.9864C6.58509 10.855 6.55875 10.725 6.50804 10.6038C6.45733 10.4825 6.38324 10.3725 6.29 10.2799L3 6.99993H13C13.2652 6.99993 13.5196 6.89457 13.7071 6.70704C13.8946 6.5195 14 6.26515 14 5.99993C14 5.73471 13.8946 5.48036 13.7071 5.29283C13.5196 5.10529 13.2652 4.99993 13 4.99993Z"
+                        fill="white" />
+                </svg>
             </div>
         </div>
     </div>
-    @if ($cobonProduct)
-        <section class="section-box pt-30">
-            <div class="container">
-                <a href="{{ $banners[27]->link }}">
-                    <img src="{{ $banners[27]->image }}" loading="lazy" style="background-size: contain;" alt="">
-                </a>
-                <div class="head-main bd-gray-200">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <h3 class="mb-5">{{ __('web.latest_deals') }}</h3>
-                            <p class="font-base color-gray-500">{{ __('web.special_products_in_this_month') }}</p>
-                        </div>
-                        <div class="col-lg-6 text-end">
-                            <div class="box-all-hurry">
-                                <div class="d-inline-block box-text-hurryup"><span
-                                        class="font-md-bold color-gray-900">{{ __('web.hurry_up') }}</span><br><span
-                                        class="font-xs color-gray-500">{{ __('web.offers_end_in') }}</span></div>
-                                <div class="box-count box-count-square hide-period">
-                                    <div class="deals-countdown" data-countdown="{{ $cobonProduct->end_date }} 00:00:00">
-                                        
-                                    </div>
-                                </div>
-                                <a class="btn btn-view-all font-md-bold" href="{{ $banners[27]->link }}">{{ __('web.view_all') }}</a>
-                            </div>
-                        </div>
+</header>
+
+<section class="container">
+    <div class="section-wrapper">
+        <div class="catigory-slider-2">
+            <div class="swiper-wrapper">
+                @for ($i = 0; $i < 50; $i++) 
+                    <div class="swiper-slide">
+                        <a href="#" class="slide-container">
+                            <svg width="82" height="119" viewBox="0 0 82 119" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.0839 20.4864C14.8036 15.786 18.2308 11.954 22.8221 10.7162L59.5956 0.802412C66.8977 -1.16617 74.1782 4.02888 74.6915 11.5742L81.1282 106.185C81.5998 113.118 76.1039 119 69.1559 119H12.9772C5.62606 119 0.002859 112.45 1.11546 105.184L14.0839 20.4864Z"
+                                    fill="#E4EDED" />
+                            </svg>
+                            <img class="product-image" src="{{url('')}}/storage/assets/home/cat-pro-3.png" alt="cat-pro-1">
+                            <h3>Children’s Room</h3>
+                        </a>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="card-grid-style-3 hover-show hurry-up hurry-up-2">
-                            <div class="card-grid-inner">
-                                <span class="label"><span class="font-lg-bold color-white"  @if (getCurrentLocale() == 'ar') style="margin:20px" @else style="margin:10px"@endif>{{ __('web.hurry_up') }}</span></span>
-                                <div class="image-box">
-                                    <a href="{{ $only_product_offer->url }}">
-                                        <img src="{{ $only_product_offer->image_url }}" alt="Ecom" loading="lazy" style="max-width: 100%; height: auto;">
-                                    </a>
-                                </div>
-                                <div class="text-center mt-10 mb-15">
-                                    <h4>{{ __('web.special_offer') }}</h4>
-                                </div>
-                                <div class="box-count box-count-square">
-                                    <div class="deals-countdown" data-countdown="2024/03/06 00:00:00"><span
-                                            class="countdown-section"><span
-                                                class="countdown-amount font-sm-bold lh-16">00</span><span
-                                                class="countdown-period lh-14 font-xs"> day </span></span><span
-                                            class="countdown-section"><span
-                                                class="countdown-amount font-sm-bold lh-16">00</span><span
-                                                class="countdown-period font-xs lh-14"> hour </span></span><span
-                                            class="countdown-section"><span
-                                                class="countdown-amount font-sm-bold lh-16">00</span><span
-                                                class="countdown-period font-xs lh-14"> min </span></span><span
-                                            class="countdown-section"><span
-                                                class="countdown-amount font-sm-bold lh-16">00</span><span
-                                                class="countdown-period font-xs lh-14"> sec </span></span></div>
-                                </div>
-                                <div class="divide"></div>
-                                <div class="info-right"><span class="font-xs color-gray-500">{{ $only_product_offer->category->details->title }}</span><br><a
-                                        class="color-brand-3 font-sm-bold" href="shop-single-product-3.html">
-                                        <h5>{{ $only_product_offer->name }}</h5>
-                                    </a>
-                                    @if ($only_product_offer->rates['count'] != 0)
-                                        <div class="rating">
-                                            @include('web.component.rate.rateComponent', ['rate' => $only_product_offer->rates['rate']])
-                                        </div>
-                                    @endif
-                                    <div class="price-info">
-                                        <h3 class="color-brand-3 price-main d-inline-block">{{$only_product_offer->price['price']}}
-                                            {{ __("web.$currency->symbol") }}</h3><span
-                                            class="color-gray-500 price-line">{{$only_product_offer->price['price_before']}}
-                                            {{ __("web.$currency->symbol") }}</span>
-                                        <span class="color-gray-500">{{ '/'.__('products.'.$only_product_offer->type) }} </span>
-                                        
-                                    </div>
-                                    <div class="box-progress">
-                                        <div class="progress-bar">
-                                            <div class="progress-bar-inner" style="width:96% "></div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6"><span
-                                                    class="font-xs color-gray-500">{{ __('web.available') }}:</span><span
-                                                    class="font-xs-bold color-gray-900">12</span></div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-6 text-end"><span
-                                                    class="font-xs color-gray-500">{{ __('web.sold') }}:</span><span
-                                                    class="font-xs-bold color-gray-900">230</span></div>
-                                        </div>
-                                    </div>
-                                    <div class="divide"></div>
-                                    <ul class="list-features mb-30">
-                                        @foreach ($only_product_offer->items as $row)
-                                            <li>{{ $row->details->name }}</li>
-                                        @endforeach
-                                    </ul><a class="btn btn-cart" data-id="{{ $only_product_offer->id }}" onclick="addCart(this)"
-                                        style="cursor: pointer">Add To Cart</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="row">
-                            @foreach ($shipping_products as $row)
-                                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-                                    @include('web.component.product.productCobon', ['product' => $row])
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    @endif
-
-    @foreach ($categories as $key => $categories_row)
-        @if (isset($banners[$key * 4 + 2]))
-            <section class="section-box mt-50">
-                <div class="container mt-10">
-                    <div class="box-swiper">
-                        <div class="swiper-container swiper-group-4">
-                            <div class="swiper-wrapper pt-5">
-                                <div class="swiper-slide">
-                                    <div class="card-grid-style-1">
-                                        <div class="image-box">
-                                            <a href="{{ $banners[$key * 4 + 2]->link }}">
-                                                <img src="{{ asset($banners[$key * 4 + 2]->image) }}" alt="Ecom" loading="lazy">
-                                            </a>
-
-                                        </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="card-grid-style-1">
-                                        <div class="image-box">
-                                            <a href="{{ $banners[$key * 4 + 3]->link }}">
-                                                <img src="{{ asset($banners[$key * 4 + 3]->image) }}"
-                                                    alt="($key * 4) + 3" loading="lazy">
-                                            </a>
-
-                                        </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="card-grid-style-1">
-                                        <div class="image-box">
-                                            <a href="{{ $banners[$key * 4 + 4]->link }}">
-                                                <img src="{{ asset($banners[$key * 4 + 4]->image) }}"
-                                                    alt="($key * 4) + 4" loading="lazy">
-                                            </a>
-
-                                        </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="card-grid-style-1">
-                                        <div class="image-box">
-                                            <a href="{{ $banners[$key * 4 + 5]->link }}">
-                                                <img src="{{ asset($banners[$key * 4 + 5]->image) }}"
-                                                    alt="{{ $key * 4 + 5 }}" loading="lazy">
-                                            </a>
-
-                                        </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        @endif
-        @foreach ($categories_row as $row)
-            @include('web.component.category.categoryComponent', ['category' => $row])
-        @endforeach
-    @endforeach
-    <section class="section-box ">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-6 col-sm-6">
-                            <a href="{{ $banners[22]->link }}">
-                                <div class="banner-bottom-1" style='background-image: url("{{ $banners[22]->image }}");background-size: contain;' loading="lazy">
-
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-12 col-md-6 col-sm-6">
-                            <a href="{{ $banners[24]->link }}">
-                                <div class="banner-bottom-2" style='background-image: url("{{ $banners[24]->image }}");background-size: contain;' loading="lazy">
-
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <a href="{{ $banners[23]->link }}">
-                        <div class="banner-bottom-3" style='background-image: url("{{ $banners[23]->image }}")' loading="lazy">
-
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4">
-                    <div class="row">
-                        <div class="col-lg-12 col-md-6 col-sm-6">
-                            <a href="{{ $banners[25]->link }}">
-                                <div class="banner-bottom-4" style='background-image: url("{{ $banners[25]->image }}");background-size: contain;' loading="lazy">
-
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-12 col-md-6 col-sm-6">
-                            <a href="{{ $banners[26]->link }}">
-                                <div class="banner-bottom-5" style='background-image: url("{{ $banners[26]->image }}");background-size: contain;' loading="lazy">
-
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                @endfor
         </div>
-    </section>
 
-    <section class="section-box mt-50">
-        <div class="container">
-            <div class="head-main">
-                <h3 class="mb-5">{{ __('web.latest_news_events') }}</h3>
-                <p class="font-base color-gray-500">{{ __('web.from_our_blog_forum') }}</p>
-                <div class="box-button-slider"></div>
-                <div class="swiper-button-next swiper-button-next-group-4"></div>
-                <div class="swiper-button-prev swiper-button-prev-group-4"></div>
-            </div>
+        <div class="catigory-slider-2-next">
+            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M1 4.99993H11L7.71 1.70994C7.61627 1.61697 7.54188 1.50637 7.49111 1.38451C7.44034 1.26265 7.4142 1.13195 7.4142 0.999937C7.4142 0.867925 7.44034 0.73722 7.49111 0.61536C7.54188 0.493501 7.61627 0.382901 7.71 0.289938C7.89736 0.103687 8.15081 -0.000854492 8.415 -0.000854492C8.67919 -0.000854492 8.93264 0.103687 9.12 0.289938L13.41 4.58993C13.7856 4.96328 13.9978 5.47035 14 5.99993C13.9951 6.52603 13.7832 7.02903 13.41 7.39993L9.12 11.6999C9.02676 11.7925 8.9162 11.8658 8.79463 11.9157C8.67306 11.9655 8.54286 11.9909 8.41146 11.9905C8.28007 11.99 8.15005 11.9637 8.02884 11.913C7.90762 11.8623 7.79758 11.7882 7.705 11.6949C7.61242 11.6017 7.53911 11.4911 7.48925 11.3696C7.4394 11.248 7.41398 11.1178 7.41444 10.9864C7.41491 10.855 7.44125 10.725 7.49196 10.6038C7.54267 10.4825 7.61676 10.3725 7.71 10.2799L11 6.99993H1C0.734783 6.99993 0.480429 6.89457 0.292892 6.70704C0.105356 6.5195 0 6.26515 0 5.99993C0 5.73471 0.105356 5.48036 0.292892 5.29283C0.480429 5.10529 0.734783 4.99993 1 4.99993Z"
+                    fill="black" />
+            </svg>
         </div>
-    </section>
-    <div class="container mt-10">
-        <div class="box-swiper">
-            <div class="swiper-container swiper-group-4">
-                <div class="swiper-wrapper pt-5">
-                    @foreach ($articles as $row)
-                        <div class="swiper-slide">
-                            @include('web.component.blog.blogComponent', ['article' => $row])
-                        </div>
-                    @endforeach
+
+        <div class="catigory-slider-2-preve">
+            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M13 4.99993H3L6.29 1.70994C6.38373 1.61697 6.45812 1.50637 6.50889 1.38451C6.55966 1.26265 6.5858 1.13195 6.5858 0.999937C6.5858 0.867925 6.55966 0.73722 6.50889 0.61536C6.45812 0.493501 6.38373 0.382901 6.29 0.289938C6.10264 0.103687 5.84919 -0.000854492 5.585 -0.000854492C5.32081 -0.000854492 5.06736 0.103687 4.88 0.289938L0.59 4.58993C0.214412 4.96328 0.00223279 5.47035 0 5.99993C0.00486659 6.52603 0.216844 7.02903 0.59 7.39993L4.88 11.6999C4.97324 11.7925 5.0838 11.8658 5.20537 11.9157C5.32694 11.9655 5.45714 11.9909 5.58854 11.9905C5.71993 11.99 5.84995 11.9637 5.97116 11.913C6.09238 11.8623 6.20242 11.7882 6.295 11.6949C6.38758 11.6017 6.46089 11.4911 6.51075 11.3696C6.5606 11.248 6.58602 11.1178 6.58556 10.9864C6.58509 10.855 6.55875 10.725 6.50804 10.6038C6.45733 10.4825 6.38324 10.3725 6.29 10.2799L3 6.99993H13C13.2652 6.99993 13.5196 6.89457 13.7071 6.70704C13.8946 6.5195 14 6.26515 14 5.99993C14 5.73471 13.8946 5.48036 13.7071 5.29283C13.5196 5.10529 13.2652 4.99993 13 4.99993Z"
+                    fill="black" />
+            </svg>
+        </div>
+        <div class="catigory-slider-2-scrollbar swiper-scrollbar"></div>
+    </div>
+    </div>
+</section>
+
+<section class="container">
+    <div class="flash-sales-wrapper">
+        <h2>Flash Sales</h2>
+        <div class="flash-sales-slider-3">
+            <div class="swiper-wrapper">
+
+                @for ($i = 0; $i < 20; $i++)
+                <div class="swiper-slide">
+                    <div class="slide-container">
+                        hi
+                    </div>
                 </div>
+                @endfor
+
             </div>
         </div>
     </div>
+</section>
+
 @endsection
 @section('container_js')
-    <script>
-        var swiper = new Swiper(".slide-content", {
-            slidesPerView: 8,
-            spaceBetween: 20,
-            centerSlide: true,
-            fade: true,
-            gragCursor: true,
-            loopFillGroupWithBlank: false,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            breakpoints:{
-                0:{
-                    slidesPerView: 1,
-                },
-                520:{
-                    slidesPerView: 3,
+<script>
+    var swiper = new Swiper(".header-slider-1", {
+        loop: true,
+        autoplay: {
+            delay: 8000,
+        },
+        
+        pagination: {
+            el: ".header-slider-1-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".header-slider-1-next",
+            prevEl: ".header-slider-1-preve",
+        },
+    });
 
-                },
-                950:{
-                    slidesPerView: 4,
+    function calculateSlidesPerView(width, swiperContainer) {
+        const containerWidth = swiperContainer.clientWidth;
+        const slideWidth = width; 
+        const slidesPerView = Math.floor(containerWidth / slideWidth);
+        return slidesPerView;
+    }
 
-                },
-                1125:{
-                    slidesPerView: 6,
+    var swiper = new Swiper(".catigory-slider-2", {
+        spaceBetween: 10,
+        slidesPerView: calculateSlidesPerView(116, document.querySelector('.catigory-slider-2')),
+        navigation: {
+            nextEl: ".catigory-slider-2-next",
+            prevEl: ".catigory-slider-2-preve",
+        },
+        scrollbar: {
+            el: '.catigory-slider-2-scrollbar',
+            draggable: true,
+        },
+        on: {
+            resize: function () {
+                this.params.slidesPerView = calculateSlidesPerView(116, document.querySelector('.catigory-slider-2'));
+                this.update();
+            }
+        }
+    });
 
-                },
-                1400:{
-                    slidesPerView: 8,
-
-                },
-            },
-        });
-    </script>
-
+    var swiper = new Swiper(".flash-sales-slider-3", {
+        spaceBetween: 30,
+        slidesPerView: calculateSlidesPerView(286, document.querySelector('.flash-sales-slider-3')),
+        on: {
+            resize: function () {
+                this.params.slidesPerView = calculateSlidesPerView(286, document.querySelector('.flash-sales-slider-3'));
+                this.update();
+            }
+        }
+    });
+</script>
 @endsection

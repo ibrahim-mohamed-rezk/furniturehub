@@ -23,6 +23,7 @@
                                         <option value="all" @if ($cobon ?? '' && $cobon->id) @if ('all' == $cobon->type) selected @endif  @endif>all</option>
                                         <option value="category" @if ($cobon ?? '' && $cobon->id) @if ('category' == $cobon->type) selected @endif @endif>category</option>
                                         <option value="product" @if ($cobon ?? '' && $cobon->id) @if ('product' == $cobon->type) selected @endif @endif>product</option>
+                                        <option value="sales" @if ($cobon ?? '' && $cobon->id) @if ('sales' == $cobon->type) selected @endif @endif>sales</option>
                                     </select>
                                 </div>
                                     <div class="col-md-6 mb-4">

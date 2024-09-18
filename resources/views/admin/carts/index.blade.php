@@ -31,6 +31,7 @@
                     <div class="col-md-2 col-6">
                         <input class="form-control" type="date" name="end_date" value="{{ $request->end_date }}">
                     </div>
+ 
                     <div class="col-md-2 col-6">
                         <button type="submit" class="btn btn-primary form-control" style="color:white">
                             {{ __('dashboard.search') }} </button>
@@ -49,17 +50,26 @@
                             <th scope="col">{{ __('carts.phone') }}</th>
                             <th scope="col">{{ __('carts.email') }}</th>
                             <th scope="col">{{ __('carts.created_date') }}</th>
+                            <th scope="col">{{ __('carts.label') }}</th>
                             <th class="text-end" scope="col"> {{ __('carts.Action') }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($carts as $key => $row)
+
+                        @foreach ($cartsdash as $key => $row)
                         <tr>
                             <td>{{ $key +1 }}</td>
                             <td><b>{{ $row->user->name }}</b></td>
                             <td><b>{{ $row->user->phone }}</b></td>
                             <td><b>{{ $row->user->email }}</b></td>
                             <td>{{ $row->created_at->format('Y-m-d H:i:s') }}</td>
+                            @if($row->label)
+                                <td><b class="text-success">{{ $row->label }}</b></td>
+                            @else
+                                <td class="text-end">
+                                    <a class="btn btn-sm font-sm rounded btn-brand mr-5" href="{{ route('web.confirm',$row->user->id) }}"><i class="material-icons md-edit"></i> {{ __('carts.confirm') }}</a>
+                                </td>
+                            @endif
                             <td class="text-end">
                                 @if (!$row->deleted_at)
                                 <a class="btn btn-sm font-sm rounded btn-brand mr-5" href="{{ route($routes . '.show', $row->user->id) }}"><i class="material-icons md-edit"></i> {{ __('dashboard.show') }}</a>
@@ -81,7 +91,7 @@
     </div>
     <!-- card end//-->
     <div class="pagination-area mt-30 mb-50 page-break-after">
-        {!! $carts->appends($_GET)->links() !!}
+        {!! $cartsdash->links() !!}
     </div>
 </section>
 @endsection

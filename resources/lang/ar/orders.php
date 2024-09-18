@@ -24,5 +24,13 @@ return[
     'post_code'=>'Postal Code',
     'information'=>'معلومات اضافية',
     'governorate'=>'المدينة',
+    'type'=>'نوع وسيلة الدفع',
+    'way'=>'طريقة الدفع',
+    'installment'=>'تقسيط',
+    'pay'=>'تم الدفع',
+    'deposit'=>'دفع 30% من المبلغ الكلي',
+    'paid'=>'مدفوع'
+
+
 
 ];

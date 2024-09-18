@@ -14,6 +14,8 @@ return[
     'user_image'=>'User image',
     'type'=>'Article type',
     'image_two'=>'Image Two',
+    'users'=>'Writer Name',
+    'image_logo'=>'Image Logo'
 
     
 

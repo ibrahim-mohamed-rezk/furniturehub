@@ -24,5 +24,11 @@ return[
     'post_code'=>'Postal Code',
     'information'=>'Additional Information',
     'governorate'=>'Governorate',
+    'type'=>'Payment Type',
+    'way'=>'Payment Way',
+    'installment'=>'Installment',
+    'pay'=>'Pay',
+    'deposit'=>'Deposit',
 
+    'paid'=>'Paid'
 ];

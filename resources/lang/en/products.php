@@ -43,7 +43,7 @@ return[
     'type_product'=>'Type of product',
     'sku'=>'Sku',
     'title'=>'Title',
-
+    'extensions'=>'Extensions'
 
 
 ];

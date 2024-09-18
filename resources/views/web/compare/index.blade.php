@@ -44,7 +44,7 @@
                                     <td class="compare{{$row->id}}">
                                         <div class="rating">
                                             @for($i=0 ; $i < $row->product->rates['rate'];$i++)
-                                                <img src="{{ url('') }}/public/assets/web/ASSETS/imgs/template/icons/star.svg" loading="lazy" alt="Furniture Hub">
+                                                <img src="{{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/star.svg" loading="lazy" alt="Furniture Hub">
                                             @endfor
                                         </div>
                                     </td>
@@ -68,7 +68,7 @@
                                     </td>
                                     @foreach($compares as $row)
                                     <td class="compare{{$row->id}}">
-                                        <span class="font-sm-bold color-brand-3">{{$row->product->price['price']}}</span>
+                                        <span class="font-sm-bold color-brand-3">{{$row->product->cost_discount ?? $row->product->cost}}</span>
                                     </td>
                                     @endforeach
 
@@ -119,12 +119,7 @@
                 </div>
             @endforeach
         </div>
-        <h4 class="color-brand-3">{{ __('web.you_may_also_like') }}</h4>
-        <div class="list-products-5 mt-20">
-            @foreach($views_products as $row)
-                @include('web.component.product.viewComponent',['product'=>$row])
-            @endforeach
-        </div>
+        
     </div>
 </section>
 

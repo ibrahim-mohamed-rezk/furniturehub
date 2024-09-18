@@ -12,8 +12,19 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <form >
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="col">
+                                <div class="card card-product-grid">
+                                    <div class="info-wrap"><a class="title text-success">{{__('carts.label_text')}}</a>
+                                        <div class="price mb-2">{{$label_message ?? __('carts.no_label_here')}}</div>
 
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="row">
@@ -108,6 +119,32 @@
                                     <label for="validationServer">{{__('orders.payment_id')}}</label>
                                     <input type="text"  class="form-control" id="validationServer" disabled value='{{ $order->payment->payment_id }}'>
                                 </div>
+                                <div class="col-md-6 mb-4">
+                                    <label for="validationServer">{{__('orders.way')}}</label>
+                                    <input type="text"  class="form-control" id="validationServer" disabled value='{{ $order->payment->payment_type }}'>
+                                </div>
+                                @if ($order->payment->payment_type == "card")
+                                    @if($order->total_products * 0.3 == $order->total)
+                                    <div class="col-md-6 mb-4">
+                                            <label for="validationServer">{{__('orders.type')}}</label>
+                                            <input type="text"  class="form-control" id="validationServer" disabled value='{{__('orders.deposit')}}'>
+                                        </div>
+
+                                    @else
+                                        <div class="col-md-6 mb-4">
+                                            <label for="validationServer">{{__('orders.type')}}</label>
+                                            <input type="text"  class="form-control" id="validationServer" disabled value='{{__('orders.pay')}}'>
+                                        </div>
+                                        
+
+                                @endif
+                                    
+                                @else
+                                    <div class="col-md-6 mb-4">
+                                        <label for="validationServer">{{__('orders.type')}}</label>
+                                        <input type="text"  class="form-control" id="validationServer" disabled value='{{__('orders.installment')}}'>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -116,21 +153,37 @@
                             <h5>{{__('orders.products')}}</h5>
                             <div class="row gx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5">
                                 @foreach($products as $product)
-                                <div class="col">
-                                    <div class="card card-product-grid">
-                                        <a class="img-wrap"><img src="{{asset($product->product->image)}}" alt="Product"></a>
-                                        <div class="info-wrap"><a class="title text-truncate" >{{$product->product->descriptions()->name}}</a>
-                                            <div class="price mb-2">{{$product->total}}</div>
-                                            <div class="price mb-2">{{$product->product->sku_code}}</div>
-                                            <div class="price mb-2">{{$product->count}}</div>
+                                    <div class="col">
+                                        <div class="card card-product-grid">
+                                            <a class="img-wrap"><img src="{{asset($product->product->image ?? $product->extension->image)}}" alt="Product"></a>
+                                            <div class="info-wrap"><a class="title text-truncate" >{{$product->product->details->name ?? __('web.'.$product->extension->title)}}</a>
+                                                <div class="price mb-2">{{$product->total}}</div>
+                                                <div class="price mb-2">{{$product->product->sku_code ?? $product->extension->sku_code}}</div>
+                                                <div class="price mb-2">{{$product->count}}</div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
                         </div>
                     </div>
-                </form>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form action="{{route('orders.confirm_message')}}" method="POST">
+                                        @csrf()
+                                        <input type="hidden" name="id" value="{{$order_id}}">
+                                        <input type="text" class="form-control" placeholder="{{__('carts.leave_your_label')}}" name="message">
+                                        <input type="submit" class="form-control" value="{{__('carts.submit')}}">
+
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </section>

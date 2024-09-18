@@ -29,7 +29,7 @@
                                     <li class="hover-up">{{ settings('about_us_four_en') }}</li>
                                 </ul> --}}
                             </div>
-                            <div class="col-lg-6 mt-3"><img src="/public/assets/web/ASSETS/imgs/page/about/img.png" loading="lazy"
+                            <div class="col-lg-6 mt-3"><img src="{{asset("/public/assets/web/ASSETS_En/imgs/page/about/img.png")}}" loading="lazy"
                                     alt="Furniture Hub"></div>
                         </div>
                     @else
@@ -45,7 +45,7 @@
                                     <li class="hover-up">{{ settings('about_us_four_ar') }}</li>
                                 </ul> --}}
                             </div>
-                            <div class="col-lg-6 mt-3"><img src="/public/assets/web/ASSETS/imgs/page/about/img.png" loading="lazy"
+                            <div class="col-lg-6 mt-3"><img src="{{asset("/public/assets/web/ASSETS_En/imgs/page/about/img.png")}}" loading="lazy"
                                     alt="Furniture Hub"></div>
                         </div>
                     @endif
@@ -117,7 +117,7 @@
                         <p class="font-sm color-gray-700">{{ __('web.chat_with_our_friendly_team') }}</p>
                     </div>
                     <div class="col-lg-3 text-center mb-30">
-                        <div class="box-image mb-20"><img src="/public/assets/web/ASSETS/imgs/page/contact/chat.svg" loading="lazy"
+                        <div class="box-image mb-20"><img src="/public/assets/web/ASSETS_En/imgs/page/contact/chat.svg" loading="lazy"
                             alt="Furniture Hub"></div>
                         <h4 class="mb-5">{{ __('web.chat_to_sales') }}</h4>
                         <p class="font-sm color-gray-700 mb-5">{{ __('web.speak_to_our_team') }}</p><a
@@ -125,7 +125,7 @@
                             href="mailto:sales@ecom.com">{{ $first_branch->email ?? ' ' }}</a>
                     </div>
                     <div class="col-lg-3 text-center mb-30">
-                        <div class="box-image mb-20"><img src="/public/assets/web/ASSETS/imgs/page/contact/call.svg" loading="lazy"
+                        <div class="box-image mb-20"><img src="/public/assets/web/ASSETS_En/imgs/page/contact/call.svg" loading="lazy"
                             alt="Furniture Hub"></div>
                         <h4 class="mb-5">{{ __('web.call_us') }}</h4>
                         <p class="font-sm color-gray-700 mb-5">{{ $first_branch->work_time }} {{ __('web.daily') }}</p><a
@@ -133,7 +133,7 @@
                             href="tel:+2{{ $first_branch->phone ?? ' ' }}">{{ $first_branch->phone ?? ' ' }}</a>
                     </div>
                     <div class="col-lg-3 text-center mb-30">
-                        <div class="box-image mb-20"><img src="/public/assets/web/ASSETS/imgs/page/contact/map.svg" loading="lazy"
+                        <div class="box-image mb-20"><img src="/public/assets/web/ASSETS_En/imgs/page/contact/map.svg" loading="lazy"
                             alt="Furniture Hub">
                         </div>
                         <h4 class="mb-5">{{ __('web.visit_us') }}</h4>

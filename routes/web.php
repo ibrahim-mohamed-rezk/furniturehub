@@ -84,6 +84,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()],function(){
         Route::get('/addresses',function(){return view('web.pages.profile.address');})->name('web.addresses');
         Route::get('/download',function(){return view('web.pages.profile.download');})->name('web.download');
         Route::get('/orders',function(){return view('web.pages.profile.orders');})->name('web.orders');
+        Route::get('/testhtml',function(){return view('web.testhtml');})->name('web.testhtml');
 
         ////////////////////////////////
     

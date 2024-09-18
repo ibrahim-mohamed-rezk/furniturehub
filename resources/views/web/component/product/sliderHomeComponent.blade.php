@@ -1,8 +1,8 @@
-<div class="swiper-slide"> 
+<div class="swiper-slide">
     <div class="card-product-small">
         <div class="card-image">
             <a href="{{$product->url}}">
-                <img src="{{$product->image_url}}" loading="lazy" alt="{{ $product->name }}">
+                <img src="{{$product->image_url}}" loading="lazy" alt="{{ $product->name }}" class="downloadable-image" data-filename="{{ $product->image_url }}">
             </a>
         </div>
         <div class="card-info">
@@ -16,9 +16,9 @@
                 </div>
             @endif
             <div class="box-prices">
-                <div class="price-bold color-brand-3">{{$product->price['price']}} {{ __("web.$currency->symbol")  }}</div>
-                @if($product->price['discount'] == true)
-                    <div class="price-line text-end color-gray-500">{{$product->price['price_before']}} {{ __("web.$currency->symbol")  }}</div>
+                <div class="price-bold color-brand-3">{{$product->cost}} {{ __("web.L.E")  }}</div>
+                @if($product->cost_discount)
+                    <div class="price-line text-end color-gray-500">{{$product->cost_discount}} {{ __("web.L.E")  }}</div>
                 @endif
             </div>
             <!-- Add product title here -->

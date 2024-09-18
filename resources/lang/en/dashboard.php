@@ -49,6 +49,17 @@ return [
     'logout' =>"Logout ",
     'select'=>'Please Select Option',
     'show'=>'Show',
+    'force_delete'=>'Permanent deletion',
+    'are_you_sure_you_want_to_delete_this_item'=>'Are you sure you want to delete this item?',
+    'track'=>'Track',
+    'add_new_task'=>'Add New Task',
+    'task'=>'Task',
+    'type'=>'Task Type',
+    'end_date'=>'End Date',
+    'no_tasks'=>'No tasks Now',
+    'published'=>'Published',
+    'publish'=>'Publish',
+    'share'=>'Share',
 
 
 ];

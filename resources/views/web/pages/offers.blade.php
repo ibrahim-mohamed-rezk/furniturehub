@@ -15,6 +15,8 @@
     <section class="section-box shop-template mt-30">
         <div class="container">
             <div class="row">
+                
+                <!-- Banner column on the right -->
 
                 <section class="section-box mt-50">
                     <div class="container mt-10">
@@ -24,10 +26,9 @@
                                     <div class="swiper-slide">
                                         <div class="card-grid-style-1">
                                             <div class="image-box">
-                                                <a href="{{ $banner[0]->link }}">
-                                                    <img src="{{ asset($banner[0]->image) }}" alt="Ecom">
+                                                <a href="{{ route($banner[1]->url['first'], $banner[1]->url['second'] ??'') }}">
+                                                    <img src="{{ asset($banner[1]->image) }}" alt="Ecom">
                                                 </a>
-
                                             </div>
                                             </a>
                                         </div>
@@ -35,8 +36,19 @@
                                     <div class="swiper-slide">
                                         <div class="card-grid-style-1">
                                             <div class="image-box">
-                                                <a href="{{ $banner[4]->link }}">
-                                                    <img src="{{ asset($banner[4]->image) }}"
+                                                <a href="{{ route($banner[2]->url['first'], $banner[2]->url['second'] ??'') }}">
+                                                    <img src="{{ asset($banner[2]->image) }}"
+                                                         alt="furniture_hub">
+                                                </a>
+                                            </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card-grid-style-1">
+                                            <div class="image-box">
+                                                <a href="{{ route($banner[3]->url['first'], $banner[3]->url['second'] ??'') }}">
+                                                    <img src="{{ asset($banner[3]->image) }}"
                                                          alt="furniture_hub">
                                                 </a>
 
@@ -47,20 +59,8 @@
                                     <div class="swiper-slide">
                                         <div class="card-grid-style-1">
                                             <div class="image-box">
-                                                <a href="{{ $banner[6]->link }}">
-                                                    <img src="{{ asset($banner[6]->image) }}"
-                                                         alt="furniture_hub">
-                                                </a>
-
-                                            </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card-grid-style-1">
-                                            <div class="image-box">
-                                                <a href="{{ $banner[7]->link }}">
-                                                    <img src="{{ asset($banner[7]->image) }}"
+                                                <a href="{{ route($banner[5]->url['first'], $banner[5]->url['second'] ??'') }}">
+                                                    <img src="{{ asset($banner[5]->image) }}"
                                                          alt="Furniture_hub">
                                                 </a>
 
@@ -73,6 +73,7 @@
                         </div>
                     </div>
                 </section>
+
 
 
 
@@ -191,10 +192,6 @@
 
                 </div>
 
-
-
-                <!-- Banner column on the right -->
-
                 <section class="section-box mt-50">
                     <div class="container mt-10">
                         <div class="box-swiper">
@@ -203,9 +200,10 @@
                                     <div class="swiper-slide">
                                         <div class="card-grid-style-1">
                                             <div class="image-box">
-                                                <a href="{{ $banner[1]->link }}">
-                                                    <img src="{{ asset($banner[1]->image) }}" alt="Ecom">
+                                                <a href="{{ route($banner[0]->url['first'], $banner[0]->url['second'] ??'') }}">
+                                                    <img src="{{ asset($banner[0]->image) }}" alt="Ecom">
                                                 </a>
+
                                             </div>
                                             </a>
                                         </div>
@@ -213,19 +211,8 @@
                                     <div class="swiper-slide">
                                         <div class="card-grid-style-1">
                                             <div class="image-box">
-                                                <a href="{{ $banner[2]->link }}">
-                                                    <img src="{{ asset($banner[2]->image) }}"
-                                                         alt="furniture_hub">
-                                                </a>
-                                            </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="card-grid-style-1">
-                                            <div class="image-box">
-                                                <a href="{{ $banner[3]->link }}">
-                                                    <img src="{{ asset($banner[3]->image) }}"
+                                                <a href="{{ route($banner[4]->url['first'], $banner[4]->url['second'] ??'') }}">
+                                                    <img src="{{ asset($banner[4]->image) }}"
                                                          alt="furniture_hub">
                                                 </a>
 
@@ -236,8 +223,20 @@
                                     <div class="swiper-slide">
                                         <div class="card-grid-style-1">
                                             <div class="image-box">
-                                                <a href="{{ $banner[5]->link }}">
-                                                    <img src="{{ asset($banner[5]->image) }}"
+                                                <a href="{{ route($banner[6]->url['first'], $banner[6]->url['second'] ??'') }}">
+                                                    <img src="{{ asset($banner[6]->image) }}"
+                                                         alt="furniture_hub">
+                                                </a>
+
+                                            </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="card-grid-style-1">
+                                            <div class="image-box">
+                                                <a href="{{ route($banner[7]->url['first'], $banner[7]->url['second'] ??'') }}">
+                                                    <img src="{{ asset($banner[7]->image) }}"
                                                          alt="Furniture_hub">
                                                 </a>
 
@@ -250,6 +249,8 @@
                         </div>
                     </div>
                 </section>
+
+
 
             </div>
         </div>

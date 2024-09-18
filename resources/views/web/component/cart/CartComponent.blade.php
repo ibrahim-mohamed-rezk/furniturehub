@@ -1,38 +1,48 @@
-<div class="item-wishlist">
-    <div class="wishlist-cb">
-        <input class="cb-layout cb-select" type="checkbox">
-    </div>
-    <div class="wishlist-product">
-        <div class="product-wishlist">
-            <div class="product-image">
-                <a href="{{ $cart->product->url }}">
-                    <img src="{{$cart->product->image_url}}" alt="Ecom">
+<div class="item">
+    <div class="leftButtons">
+        <div class="upBTNs">
+            <a onclick="deleteCart(this)" data-id="{{ $cart->id }}" style="cursor: pointer"><i
+                    class="fas fa-trash-alt"></i></a>
+            @if ($cart && $cart->product && $cart->product->id !== null)
+                <a onclick="toggleFavoriteCart(this)" data-id="{{ $cart->product->id }}" style="cursor: pointer">
+                    @if ($cart->product->favorited())
+                        <i class="fas fa-heart" style="color: red;"></i>
+                    @else
+                        <i class="far fa-heart"></i>
+                    @endif
                 </a>
-            </div>
-            <div class="product-info">
-                <a href="{{ $cart->product->url }}">
-                    <h6 class="color-brand-3">{{$cart->product->details->name}}</h6>
-                </a>
-                <div class="rating">
-                    @include('web.component.rate.rateComponent',['rate'=>$cart->product->rates['rate']])
-                </div>
-            </div>
+            @endif
+
         </div>
-    </div>
-    <div class="wishlist-price">
-        <h4 class="color-brand-3">{{$cart->product->price['price']}} {{$currency->symbol}}</h4>
-    </div>
-    <div class="wishlist-status">
-        <div class="box-quantity">
+
+        {{-- <div class="downBTNs">
+            <i class="fas fa-plus"><span class="plus-cart"></span></i>
+            <span><input onchange="editCart(this)" data-id="{{$cart->id}}" type="text" value="{{$cart->count}}" disabled></span>
+            <i class="fas fa-minus"><span class="minus-cart"></span></i>
+        </div> --}}
+        @if ($cart && $cart->product && $cart->product->id !== null)
             <div class="input-quantity">
-                <input class="font-xl color-brand-3" onchange="editCart(this)" data-id="{{$cart->id}}" type="text" value="{{$cart->count}}" disabled>
-                <span class="minus-cart"></span>
-                <span class="plus-cart"></span>
+                <span class="minus-cart"><i class="fas fa-minus"></i></span>
+                <input class="font-xl color-brand-3 box-input" data-id="{{ $cart->id }}" type="text"
+                    value="{{ $cart->count }}" disabled>
+                <span class="plus-cart"><i class="fas fa-plus"></i></span>
             </div>
-        </div>
+        @endif
+
     </div>
-    <div class="wishlist-action">
-        <h4 class="color-brand-3">{{$cart->product->price['price'] * $cart->count}} {{$currency->symbol}}</h4>
+    <div class="itemInfo">
+        <a href="{{ $cart->product->url ?? '#' }}">
+
+            <div class="info">
+                <h4>{{ $cart->product->details->name ?? __('web.' . $cart->extension->title) }}</h4>
+                <span class="cat">{{ $cart->product->category->details->title ?? '' }} </span>
+                <span class="price">{{ $cart->product->cost_discount ??  $cart->product->cost ?? $cart->extension->value }}
+                    {{ __('web.L.E') }}</span>
+            </div>
+        </a>
+        <a href="{{ $cart->product->url ?? '#'}}">
+            <img src="{{ $cart->product->image_url ?? $cart->extension->image }}" height="135px"
+                style="padding:3px;border-radius:10px;min-width:170px !important;" />
+        </a>
     </div>
-    <div class="wishlist-remove"><a class="btn btn-delete" onclick="deleteCart(this)" data-id="{{$cart->id}}" style="cursor: pointer" ></a></div>
 </div>

@@ -43,6 +43,7 @@
                             <tr>
                                 <th>#ID</th>
                                 <th scope="col">{{ __('cobons.status') }}</th>
+                                <th scope="col">{{ __('cobons.code') }}</th>
                                 <th scope="col">{{ __('cobons.discount') }}</th>
                                 <th scope="col">{{ __('cobons.start_date') }}</th>
                                 <th scope="col">{{ __('cobons.end_date') }}</th>
@@ -54,6 +55,7 @@
                                 <tr>
                                     <td>{{ $key +1 }}</td>
                                     <td><b>{{ $row->status }}</b></td>
+                                    <td><b>{{ $row->code }}</b></td>
                                     <td><b>{{ $row->discount }}</b></td>
                                     <td>{{ $row->start_date }}</td>
                                     <td>{{ $row->end_date }}</td>

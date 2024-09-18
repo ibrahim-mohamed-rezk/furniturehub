@@ -9,7 +9,7 @@
                         <div class="col-xl-6 col-lg-12">
                             <div class="card mb-4">
                                 <article class="card-body">
-                                    <h5 class="card-title">{{ $row->title }} statistics</h5>
+                                    <h5 class="card-title">{{ __('statistics.index') }} {{ $row->title }} </h5>
                                     <canvas id="myChart{{ $key + 5 }}" height="120px"></canvas>
                                 </article>
                             </div>
@@ -33,12 +33,12 @@
                         data: {
                             labels: {!! json_encode($all_names[$key]) !!},
                             datasets: [{
-                                    label: "Count",
+                                    label: "{{ __('statistics.count') }}",
                                     backgroundColor: "#008000",
                                     barThickness: 10,
                                     data: {!! json_encode($all_count[$key]) !!}
                                 }, {
-                                    label: "Deleted",
+                                    label: "{{ __('statistics.deleted') }}",
                                     backgroundColor: "#FF0000",
                                     barThickness: 10,
                                     data: {!! json_encode($all_count_deleted[$key]) !!}

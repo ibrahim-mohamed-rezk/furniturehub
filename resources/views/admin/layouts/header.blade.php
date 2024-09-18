@@ -24,6 +24,8 @@
 
             <li class="nav-item"><a class="nav-link btn-icon" href="{{route('clear')}}" ><i
                             class="material-icons md-refresh" ></i></a></li>
+            <li class="nav-item"><a class="nav-link btn-icon" href="{{route('site-map.index')}}" ><i
+                            class="material-icons" >Site Map</i></a></li>
             <li class="dropdown nav-item"><a class="dropdown-toggle" id="dropdownLanguage" data-bs-toggle="dropdown"
                                              href="#" aria-expanded="false"><i class="material-icons md-public"></i></a>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">

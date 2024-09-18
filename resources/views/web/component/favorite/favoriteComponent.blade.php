@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="wishlist-price">
-        <h4 class="color-brand-3">{{$favorite->product->price['price']}}</h4>
+        <h4 class="color-brand-3">{{$favorite->product->cost_discount ?? $favorite->product->cost}}</h4>
     </div>
     <div class="wishlist-status">
         <span class="btn btn-gray font-md-bold color-brand-3"> {{ $favorite->product->stocked }}</span>

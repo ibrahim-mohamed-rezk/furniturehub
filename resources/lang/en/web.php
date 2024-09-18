@@ -6,9 +6,13 @@ return [
     'code'=>'Code',
     'verify_code'=>'Verify Code',
     'max_count'=>'Max Count Today',
-    'offers'=>'Offers',
+    'offers'=>'Summer offers',
     'paid'=>'Paid',
-    
+    'site_map'=>'Site Map',
+    'copy'=>'Copy',
+    'copied'=>'Copied',
+    'robots'=>'Robots File',
+
     'wait_pay'=>'Wait Pay',
     'finished'=>'finished',
     'old'=>'Old',
@@ -43,7 +47,7 @@ return [
     'available'=>'Available',
     'sold'=>'Sold',
     'view_all'=>'View All',
-    'download_your_app'=>"Download your app",
+    'download_your_app'=>"Get app",
     'app_name'=>'Furniture Hub',
     "create_an_account"=>"Create an account",
     "access_to_all_features_no_credit_card_required"=>"Access to all features no credit card required",
@@ -189,7 +193,7 @@ return [
     "remove"=>"Remove",
     "in_stock"=>"In stock",
 
-    "unit_price"=>"Unit Price",
+    "unit_price"=>"Unit Price Now",
     "creation_date"=>"Creation date",
     "transaction_ID"=>"Transaction ID",
     "transaction_time"=>"Transaction time",
@@ -395,7 +399,8 @@ return [
     'Oct'=>'Oct',
     'Nov'=>'Nov',
     'Dec'=>'Dec',
-    'statistics'=>'Statistics',
+    'statistics_products'=>'Products Statistics',
+    'statistics_articels'=>'Articles Statistics',
     'governorate'=>'Governorate',
     'please_add_address_first'=>'Please Add Address First',
     'search'=>'Search',
@@ -441,7 +446,97 @@ return [
     'welcome_with_our_family_affiliate'=>'Welcome to the Furniture Hub family, the leading platform for selling Egyptian furniture.
     Join our success partners through the affiliate system (commission selling system). We provide this system specifically for you to increase your profits and share the success.
     Register with us and our team will contact you soon.',
-    'address_details'=>'New Damietta, Elhay Al Motamayez',
+    'address_details'=>'At the end of Al-Saidi Street, in front of the gate of Al-Mostaqbal Club, Taiba Tower, second floor, New Damietta City',
+    'product'=>'Products',
+    'article'=>'Articles',
+    'cart'=>'Carts',
+    'order'=>'Orders',
+    'banner'=>'Banners',
 
+    
+
+    //cart
+    'cart_items' => 'Cart Items',
+    'the_delivery' => 'Delivery',
+    'payment' => 'Payment',
+    'receipt' => 'Receipt',
+    'show_more' => 'Show More',
+    'order_summary' => 'Order Summary',
+
+    //address
+    'the_address_current'=>'Current Address',
+    'the_address'=>'Address',
+    'change_address' => 'Edit Address',
+    'use_it' => 'Use It',
+    'egypt'=>'Egypt',
+
+
+    //payment
+    'choose_payment_method_below'=>'Choose Payment Method Below',
+    'pay_now'=>'Pay Now',
+    'deposit'=>'Pay 30%',
+    'choose_a_payment_method_to_complete_your_purchase'=>'Choose a payment method to complete your purchase',
+    'save_on_your_order'=>'Use and save',
+    'enter_voucher_code'=>'Enter Your Voucher Code',
+
+
+    //recicpt
+    'order_number'=>'Order Number',
+    'vat_amount'=>'Vat Amount',
+    'order_amount'=>'OrderAmount',
+    'amount_to_be_paid'=>'Amount paid',
+    'remain_amount'=>'The Remaining Amount',
+
+
+    //header
+    'or_continue_shopping'=>'OR CONTINUE SHOPPING',
+    'quick_view'=>'Quick View',
+    'cobon_for_use_for_one_time'=>'This coupon is for one-time use',
+
+    'cart_is_empty'=>'Add Some Products',
+    'furniture_hub_furniture_shopping_made_easy'=>'Furniture Hub | Furniture Shopping Made Easy',
+    'download_the_app_now_and_get_exclusive_offers'=>'Download the app now and get exclusive offers',
+
+    'electricity_one_move'=>'Add a single motion electric mechanism',
+    'massage'=>'Add a massage for one seat',
+    '2_massage'=>'Add a massage for two seats',
+    'usb'=>'Add a USB for one seat',
+    '2_usb'=>'Add a USB for two seats',
+    '2_seat_electric'=>'Add an electric mechanism for two seats',
+    'single_seat_electric'=>'Add an electric mechanism for one seat',
+    '3_electric_seats'=>'Add a 3-motion mechanism (rocking - rotating -chaise longue)',
+    'manual_seat'=>'Add two manual movable seats',
+    '2_manual_seat'=>'Add three manual movable seats',
+    'console_manual_seat'=>'two manual movable seats',
+    '2_console_manual_seat'=>'three manual movable seats',
+    'add_all_features_chair'=>'Add all features (massage - electricity - cooling - USB)',
+    'add_all_features_canaba'=>'Add all features (massage - electricity - cooling - USB)',
+    'add_all_features_rokna1'=>'Add all features (massage - electricity - cooling - USB)',
+    'add_all_features_rokna2'=>'Add all features for two chairs(massage - electricity - cooling - USB)',
+    'jumbo_mechanism' =>'Jumbo mechanism',
+    
+    'account_details'=>'Account Details',
+    'addresses'=>'Addresses',
+
+    'order_date'=>'Order history',
+    'for'=>'For',
+    'cart_details'=>'Cart Details',
+    'provider_id'=>'Provider ID',
+    'displayName'=>'Display Name',
+    'device_token'=>'Device Token',
+
+    'get_a_surprise_discount'=>'Get a surprise discount',
+    'join_our_email_subscription_now'=>'Join our email subscription now',
+    'shop_now_footer'=>'Shop now for all your home furniture, decor, office furniture and more, only on Furniture Hub.',
+    'subscribe'=>'Subscribe',
+    'follow_the_offers_first'=>'Follow the offers first',
+        'follow_us'=>'Follow Us',
+    'main_pages'=>'Main Pages',
+    'terms_conditions'=>'Terms and Conditions',
+    'read_our_latest_blog'=>'Read our latest blog',
+    'shop_our_products'=>'Shop our products',
+    'contact_us_for_inquiries'=>'Contact us for inquiries',
+    'read_our_return_policy'=>'Read our return policy',
+    'find_answers_to_frequently_asked_questions'=>'Find answers to frequently asked questions',
 ];
 

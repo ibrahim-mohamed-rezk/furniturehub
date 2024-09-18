@@ -98,7 +98,7 @@
         <div class="col-lg-9 mx-auto page-content">
 
             <h2 class="text-center mb-20">{{ __('web.FAQs') }}</h2>
-            <img class="mb-30" src="/public/storage/imgs/privcy Policy.jpg" alt="Furniture Hub">
+            <img class="mb-30" src="/storage/imgs/privcy Policy.jpg" alt="Furniture Hub">
 
             <div class="faq-section sec-padd">
                 <div class="container">

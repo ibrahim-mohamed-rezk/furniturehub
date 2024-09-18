@@ -107,7 +107,7 @@
                         <p class="font-sm color-gray-700">{{ __('web.chat_with_our_friendly_team') }}</p>
                     </div>
                     <div class="col-lg-3 text-center mb-30">
-                        <div class="box-image mb-20"><img src="{{ url('') }}/public/assets/web/ASSETS/imgs/page/contact/chat.svg"
+                        <div class="box-image mb-20"><img src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/page/contact/chat.svg"
                                 alt="Furniture Hub"></div>
                         <h4 class="mb-5">{{ __('web.chat_to_sales') }}</h4>
                         <p class="font-sm color-gray-700 mb-5">{{ __('web.speak_to_our_team') }}</p><a
@@ -115,7 +115,7 @@
                             href="mailto:sales@ecom.com">{{ $first_branch->email ?? ' ' }}</a>
                     </div>
                     <div class="col-lg-3 text-center mb-30">
-                        <div class="box-image mb-20"><img src="{{ url('') }}/public/assets/web/ASSETS/imgs/page/contact/call.svg"
+                        <div class="box-image mb-20"><img src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/page/contact/call.svg"
                                 alt="Furniture Hub"></div>
                         <h4 class="mb-5">{{ __('web.call_us') }}</h4>
                         <p class="font-sm color-gray-700 mb-5">{{ $first_branch->work_time }} {{ __('web.daily') }}</p><a
@@ -123,7 +123,7 @@
                             href="tel:+2{{ $first_branch->phone ?? ' ' }}">{{ $first_branch->phone ?? ' ' }}</a>
                     </div>
                     <div class="col-lg-3 text-center mb-30">
-                        <div class="box-image mb-20"><img src="{{ url('') }}/public/assets/web/ASSETS/imgs/page/contact/map.svg"
+                        <div class="box-image mb-20"><img src="{{ url('') }}/public/assets/web/ASSETS_En/imgs/page/contact/map.svg"
                                 alt="Furniture Hub">
                         </div>
                         <h4 class="mb-5">{{ __('web.visit_us') }}</h4>

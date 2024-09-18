@@ -6,8 +6,8 @@ return [
     'code'=>'كود التاكيد',
     'verify_code'=>'تاكيد',
     'max_count'=>'لقد وصلت للحد الاقصي اليوم',
-    'offers'=>'العروض',
-    "use_coupon_and_get_offer"=>"ادخل الكوبون واحصل على الخصم",
+    'offers'=>'عروض الصيف',
+    "use_coupon_and_get_offer"=>"ادخل الكوبون واحصل علي خصم اضافي",
     "use_social_network_account"=>"استخدم حسابات التواصل الاجتماعي",
     "sign_up_with"=>"سجل بواسطة",
     "Facebook"=>"Facebook",
@@ -59,6 +59,8 @@ return [
     "special_offers" => "عروض خاصة",
     "your_email_address" => "عنوان بريدك  الإلكتروني",
     'close'=>'اغلاق',
+    'copied'=>'تم النسخ',
+    'robots'=>'Robots File',
 
     "the_provided_credentials_are_incorrect"=>"البيانات غير صحيحة.",
     "code_send_successfully"=>"تم إرسال الرمز بنجاح",
@@ -73,6 +75,8 @@ return [
     "sign_up_with" => "سجل مع",
     "social_network_account" => "حساب الشبكة الاجتماعية",
     "sign_in" => "تسجيل الدخول",
+    'site_map'=>'خريطة الموقع',
+    'copy'=>'نسخ',
 
     //header
     "about_us" => "معلومات عنا",
@@ -211,7 +215,7 @@ return [
     "in_stock"=>"في المخزون",
 
 
-    "unit_price"=>"سعر الوحدة",
+    "unit_price"=>"سعر الوحدة الان",
     "subtotal"=>"المجموع الفرعي",
     "continue_shopping"=>"مواصلة التسوق",
     "update_cart"=>"تحديث عربة التسوق",
@@ -411,7 +415,8 @@ return [
     'Oct'=>'اكتوبر',
     'Nov'=>'نوفمبر',
     'Dec'=>'ديسمبر',
-    'statistics'=>'احصائيات',
+    'statistics_products'=>'احصائيات المنتجات',
+    'statistics_articels'=>'احصائيات المقالات',
     'governorate'=>'المدينة',
     'please_add_address_first'=>'يرجي اضافة عنوان اولا',
 
@@ -458,13 +463,91 @@ return [
     'welcome_with_our_family_affiliate'=>'مرحبا بك في عائلة فرنتشر هب المنصة الرائدة في مجال بيع الأثاث المصري.
     انضم لشركاء نجاحنا عن طريق نظام الافلييت (نظام البيع بالعمولة) ، نحن نوفر هذا النظام خصيصا لك لتزيد ارباحك ولنتشارك النجاح.
     سجل معنا وسيقوم فريقنا بالاتصال بك قريبا.',
-    'address_details'=>'دمياط الجديده الحي المميز امام زهران ترافيل',
+    'address_details'=>'اخر شارع الصعيدي امام بوابه نادي المستقبل برج طيبه الدور التاني, مدينة دمياط الجديدة',
+    'product'=>'منتجات',
+    'article'=>'مقاللات',
+    'cart'=>'سلة المشتريات',
+    'order'=>'الاوردرات',
+    'banner'=>'البنارات',
+
+   //cart
+   'cart_items'=>'عربة التسوق',
+   'the_delivery'=>'التوصيل',
+   'payment'=>'الدفع',
+   'receipt'=>'الفاتورة',
+   'show_more'=>'للمزيد',
+   'order_summary'=>'ملخص الطلب',
+
+   //address
+   'use_it'=>'التوصيل الي',
+   'change_address'=>'تعديل العنوان الحالي',
+   'the_address'=>'العنوان',
+   'the_address_current'=>'العنوان الحالي',
+   'egypt'=>'مصر',
+
+   //payment
+   'choose_payment_method_below'=>'اختر طريقة الدفع أدناه',
+   'pay_now'=>'ادفع الان',
+   'deposit'=>' ادفع 30%',
+   'choose_a_payment_method_to_complete_your_purchase'=>'اختر وسيلة الدفع لاستكمال عملية الشراء',
+   'save_on_your_order'=>'استخدم و وفر',
+   'enter_voucher_code'=>'ادخل كوبونك',
+
+   //recicpt
+   'order_number'=>'رقم الاوردر',
+   'vat_amount'=>'قيمة الضريبة',
+   'order_amount'=>'قيمة الاوردر',
+   'amount_to_be_paid'=>'المبلغ المدفوع',
+   'remain_amount'=>'المبلغ المتبقي',
 
 
+    //header
+    'or_continue_shopping'=>'او مواصلة التسوق',
+    'quick_view'=>'نظرة سريعة',
+    'cobon_for_use_for_one_time'=>'هذه القسيمة للاستخدام مرة واحدة',
+
+    'cart_is_empty'=>'اضف بعض المنتجات',
+    'furniture_hub_furniture_shopping_made_easy'=>'فرنتشر هب | لتجربة شراء اسهل',
+    'download_the_app_now_and_get_exclusive_offers'=>'حمل التطبيق الآن واحصل على العروض الحصرية',
+    'electricity_one_move'=>'اضافة ميكانيزم كهرباء حركه واحده',
+    'massage'=>'اضافة مساج لمقعد واحد',
+    '2_massage'=>'اضافة مساج لمقعدين',
+    'usb'=>'اضافة usb لمقعد واحد',
+    '2_usb'=>'اضافة usb لمقعدين',
+    '2_seat_electric'=>'اضافة ميكانيزم كهرباء لمقعدين',
+    'single_seat_electric'=>'اضافة ميكانيزم كهرباء لمقعد واحد',
+    '3_electric_seats'=>'اضافة ميكانيزم 3 حركه (هزاز - دوران - شازلونج )',
+    'manual_seat'=>'اضافة مقعدين متحركين مانيوال',
+    '2_manual_seat'=>'اضافة 3 مقاعد متحركين مانيوال',
+    'console_manual_seat'=>'مقعدين متحركين مانيوال',
+    '2_console_manual_seat'=>'3 مقاعد متحركين مانيوال',
+    'add_all_features_chair'=>'اضافة جميع المميزات ( مساج - كهرباء - تبريد - يو اس بي)',
+    'add_all_features_canaba'=>'اضافة جميع المميزات ( مساج - كهرباء - تبريد - يو اس بي)',
+    'add_all_features_rokna1'=>'اضافة جميع المميزات لمقعد( مساج - كهرباء - تبريد - يو اس بي)',
+    'add_all_features_rokna2'=>'اضافة جميع المميزات لمقعدين( مساج - كهرباء - تبريد - يو اس بي)',
+    'jumbo_mechanism' =>'ميكانيزم جامبو',
+    'account_details'=>'تفاصيل الحساب',
+    'addresses'=>'العناوين',
 
 
-
-
-
+    'order_date'=>'تاريخ الاوردر',
+    'for'=>'ل',
+    'cart_details'=>'تفاصيل البطاقة',
+    'provider_id'=>'رقم التعريف',
+    'displayName'=>'الاسم التعريفي',
+    'device_token'=>'رمز الجهاز',
+    'get_a_surprise_discount'=>'احصل على خصم مفاجئ',
+    'join_our_email_subscription_now'=>'انضم إلى اشتراك البريد الإلكتروني الخاص بنا الآن',
+    'shop_now_footer'=>'تسوق الآن كل ما تحتاجه من أثاث منزلي وديكور وأثاث مكتبي والمزيد، فقط على فرنتشر هب',
+    'subscribe'=>'اشترك',
+    'follow_the_offers_first'=>'اتبع العروض',
+    'follow_us'=>'تابعنا',
+    'main_pages'=>'الصفحات الرئيسية',
+    'terms_conditions'=>'الشروط والأحكام',
     
+    'read_our_latest_blog'=>'اقرأ أحدث مدوناتنا',
+    'shop_our_products'=>'تسوق منتجاتنا',
+    'contact_us_for_inquiries'=>'اتصل بنا للاستفسارات',
+    'read_our_return_policy'=>'اقرأ سياسة الإرجاع الخاصة بنا',
+    'find_answers_to_frequently_asked_questions'=>'اعثر على إجابات للأسئلة الشائعة',
 ];

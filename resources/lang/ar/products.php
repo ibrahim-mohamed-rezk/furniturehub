@@ -43,7 +43,7 @@ return[
     'type_product'=>'نوع سعر المنتج',
     "sku"=>'Sku',
     'title'=>'عنوان المنتج',
-
+    'extensions'=>'الاضافات'
 
 
 ];

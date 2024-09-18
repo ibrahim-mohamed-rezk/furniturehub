@@ -48,6 +48,17 @@ return [
     'logout' =>"تسجيل خروج",
     'select'=>'يرجى تحديد خيار',
     'show'=>'عرض',
+    'force_delete'=>'حذف نهائي',
+    'are_you_sure_you_want_to_delete_this_item'=>'هل انت متاكد انك تريد حذف هذا المنتج ؟',
+    'track'=>'مراجعه',
+    'add_new_task'=>'اضافة مهمة جديدة',
+    'task'=>'المهمة',
+    'type'=>'نوع المهمة',
+    'end_date'=>'تاريخ الانتهاء',
+    'no_tasks'=>'لا يوجد تاسكات الان',
+    'published'=>'تم النشر',
+    'publish'=>'نشر',
+    'share'=>'شير',
 
 
 

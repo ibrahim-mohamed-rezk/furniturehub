@@ -1,0 +1,278 @@
+/* global */
+
+*{
+    box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+p {
+  padding: 5px 0;
+  margin: 5px 0;
+}
+
+.gray {
+  color: #2c2c2c;
+}
+
+.bold {
+  font-weight: bold;
+  color: #000;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+/* page 1 en */
+
+.header {
+  width: 100%;
+}
+
+.invoice {
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.tax-card {
+  margin: 20px 0;
+  align-items: flex-start;
+}
+
+.tax-card .tax-table {
+  flex-direction: column;
+  background: #d7f6ff;
+  padding: 15px;
+  border: 1px solid #cecece;
+  box-shadow: 1px 1px 4px 1px #0000002c;
+  border-radius: 5px;
+  width: 50%;
+}
+
+.tax-table .table-head {
+  border-bottom: 1px solid #b1b1b1;
+  width: 100%;
+}
+
+.tax-table .table-body {
+  flex-direction: column;
+  width: 100%;
+}
+
+.tax-table .table-body div {
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1em;
+}
+
+.tax-table .table-body div p:nth-child(1) {
+  width: 35%;
+}
+
+.tax-info {
+  flex-direction: column;
+}
+
+.order-info {
+  flex-direction: column;
+  width: 40%;
+  margin-bottom: 100px;
+}
+
+.information {
+  gap: 2em;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.information p:nth-child(1) {
+  width: 35%;
+}
+
+
+/* page 2 en */
+
+.invoice-container {
+  width: 100%;
+  margin: 20px auto;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+.invoice-table thead, .invoice-table tbody{
+    width: 100%;
+}
+
+.invoice-table th,
+.invoice-table td {
+  padding: 8px;
+  text-align: left;
+  border: none;
+}
+
+.invoice-table th {
+  background-color: #dbf6f8;
+}
+
+.invoice-table tbody tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.item-code,
+.item-condition {
+  font-size: 0.9em;
+  color: #555;
+}
+
+.summary-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.total-amount {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 50%;
+  margin-left: auto;
+}
+
+.total-amount p {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.vat-summary {
+  width: 50%;
+}
+
+.vat-summary h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.vat-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid #85858542;
+}
+
+.vat-table th,
+.vat-table td {
+  padding: 8px;
+  text-align: left;
+  border: none;
+}
+
+.vat-table th {
+  background-color: #dbf6f8;
+}
+
+.vat-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.mt {
+  border-top: 1px solid #85858542;
+}
+
+
+/* responsive */
+
+@media (max-width: 1170px) {
+    .tax-table .table-body div p:nth-child(1) {
+      width: 45%;
+    }
+  }
+  
+  @media (max-width: 1000px) {
+    .tax-card {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .tax-table {
+      width: 100% !important;
+      box-sizing: border-box;
+    }
+  
+    .billing-table {
+      flex-direction: column;
+      width: 98%;
+      margin: 0 auto;
+    }
+  
+    .billing-table p {
+      margin-left: 20px;
+    }
+    s .order-info {
+      width: 100%;
+    }
+    .total-amount p {
+        font-size: 16px;
+      }
+
+      td, th {
+        font-size: 14px;
+      }
+  }
+  
+  @media (max-width: 600px) {
+    .container {
+      width: 97%;
+    }
+  
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .header div {
+      align-items: flex-start;
+    }
+  
+    h1 {
+      font-size: 16px !important;
+    }
+  
+    h3,
+    h2 {
+      font-size: 14px;
+    }
+  
+    p, td, th {
+      font-size: 12px;
+    }
+
+    .vat-summary{
+        width: 100%;
+    }
+    
+  }
+
+  @media (max-width: 415px){
+    td, th {
+        font-size: 10px;
+        margin: 0;
+        padding: 8px 3px !important;
+      }
+  }  
