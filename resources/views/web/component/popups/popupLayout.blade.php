@@ -5,12 +5,16 @@
         height: 100vh;
         background-color: #00000033;
         z-index: 99999;
-        display: flex;
         align-items: center;
         justify-content: center;
+        display: none;
+    }
+
+    .show{
+        display: flex;
     }
 </style>
 
-<div class="popup-layout">
+<div class="popup-layout show" id="popupLayout">
         @yield('popup-content')
 </div>

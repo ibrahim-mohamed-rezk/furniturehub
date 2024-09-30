@@ -4,7 +4,8 @@
 
     {{-- @include('web.component.popups.login.login-popup') --}}
     {{-- @include('web.component.popups.signup.signup') --}}
-    @include('web.component.popups.phone.add-number')
+    {{-- @include('web.component.popups.phone.add-number') --}}
+    @include('web.component.popups.phone.add-otp')
 
     @include('web.layouts.header')
 
