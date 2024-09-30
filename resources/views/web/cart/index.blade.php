@@ -19,28 +19,28 @@
             <div class="order_status">
                 <div class="order_status_item">
                     <div class="icon">
-                        <img src="{{ asset('public/storage/assets/cartIconOrange.png') }}" />
+                        <img src="{{ asset('storage/assets/cartIconOrange.png') }}" />
                     </div>
                     <div class="title orange-color">{{ __('web.cart_items') }}</div>
                 </div>
                 <div class="line ornge"></div>
                 <div class="order_status_item">
                     <div class="icon">
-                        <img src="{{ asset('public/storage/assets/deliveryIcon.png') }}" />
+                        <img src="{{ asset('storage/assets/deliveryIcon.png') }}" />
                     </div>
                     <div class="title">{{ __('web.the_delivery') }}</div>
                 </div>
                 <div class="line"></div>
                 <div class="order_status_item">
                     <div class="icon">
-                        <img src="{{ asset('public/storage/assets/paymentIcon.png') }}" />
+                        <img src="{{ asset('storage/assets/paymentIcon.png') }}" />
                     </div>
                     <div class="title">{{ __('web.payment') }}</div>
                 </div>
                 <div class="line"></div>
                 <div class="order_status_item">
                     <div class="icon">
-                        <img src="{{ asset('public/storage/assets/receptIcon.png') }}" />
+                        <img src="{{ asset('storage/assets/receptIcon.png') }}" />
                     </div>
                     <div class="title">{{ __('web.receipt') }}</div>
                 </div>
@@ -56,7 +56,7 @@
                         <h4>{{ __('web.save_on_your_order') }}</h4>
                         <div class="save-on-input">
                             <div class="input-section">
-                                <img src="{{ asset('public/storage/assets/discount.gif') }}" />
+                                <img src="{{ asset('storage/assets/discount.gif') }}" />
                                 <input type="text" onchange="viewCartInside()" id="cobon" name="cobon"
                                     placeholder="{{ __('web.enter_voucher_code') }}">
                             </div>

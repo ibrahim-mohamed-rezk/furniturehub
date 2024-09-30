@@ -2,6 +2,9 @@
 
 @section('container_content')
 
+    {{-- @include('web.component.popups.login.login-popup') --}}
+    {{-- @include('web.component.popups.signup.signup') --}}
+    @include('web.component.popups.phone.add-number')
 
     @include('web.layouts.header')
 

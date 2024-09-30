@@ -11640,6 +11640,12 @@ a:hover span {
   direction: ltr;
 }
 
+@media (max-width: 770px) {
+  .order_status {
+    width: 90%;
+  }
+}
+
 .order_status .order_status_item {
   width: 10%;
   margin: 0 auto;
@@ -11772,6 +11778,17 @@ a:hover span {
 
 .cartItems .items .item .itemInfo img {
   width: 100px;
+  padding: 3px;
+  border-radius: 10px;
+  min-width: 170px !important;
+}
+
+@media (max-width: 500px) {
+  .cartItems .items .item .itemInfo img {
+    width: 94px;
+    height: 94px;
+    min-width: 94px !important;
+  }
 }
 
 .cartItems .items .item .itemInfo .info {
@@ -11796,6 +11813,13 @@ a:hover span {
   font-size: 15px;
   margin-top: 20px;
   font-weight: bold;
+}
+
+@media (max-width: 500px) {
+  .cartItems .items .item .itemInfo .info .price {
+    font-size: 14px;
+    margin-top: 14px;
+  }
 }
 
 /* checkout */
@@ -11992,7 +12016,8 @@ a:hover span {
   }
 
   .cartItems .items .item .itemInfo .info h4 {
-    font-size: 10px !important;
+    font-size: 12px !important;
+    line-height: 22.49px;
   }
 }
 
@@ -12320,6 +12345,30 @@ a:hover span {
   font-size: 18px;
   font-weight: 400;
   line-height: 36.85px;
+}
+
+@media (max-width: 500px) {
+  .payments {
+    width: 100%;
+  }
+  .payments .payment-methods {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  
+  }
+
+  .payments .payment-methods .pay-now{
+    padding: 20px 30px;
+  }
+
+  .payments .payment-methods .installment {
+    padding: 20px 40px;
+  }
+
+  .methods{
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 /*************** receipt page  ***********/

@@ -4,45 +4,45 @@
             <a onclick="deleteCart(this)" data-id="{{ $cart->id }}" style="cursor: pointer"><i
                     class="fas fa-trash-alt"></i></a>
             @if ($cart && $cart->product && $cart->product->id !== null)
-                <a onclick="toggleFavoriteCart(this)" data-id="{{ $cart->product->id }}" style="cursor: pointer">
-                    @if ($cart->product->favorited())
-                        <i class="fas fa-heart" style="color: red;"></i>
-                    @else
-                        <i class="far fa-heart"></i>
-                    @endif
-                </a>
+            <a onclick="toggleFavoriteCart(this)" data-id="{{ $cart->product->id }}" style="cursor: pointer">
+                @if ($cart->product->favorited())
+                <i class="fas fa-heart" style="color: red;"></i>
+                @else
+                <i class="far fa-heart"></i>
+                @endif
+            </a>
             @endif
 
         </div>
 
         {{-- <div class="downBTNs">
             <i class="fas fa-plus"><span class="plus-cart"></span></i>
-            <span><input onchange="editCart(this)" data-id="{{$cart->id}}" type="text" value="{{$cart->count}}" disabled></span>
-            <i class="fas fa-minus"><span class="minus-cart"></span></i>
-        </div> --}}
-        @if ($cart && $cart->product && $cart->product->id !== null)
-            <div class="input-quantity">
-                <span class="minus-cart"><i class="fas fa-minus"></i></span>
-                <input class="font-xl color-brand-3 box-input" data-id="{{ $cart->id }}" type="text"
-                    value="{{ $cart->count }}" disabled>
-                <span class="plus-cart"><i class="fas fa-plus"></i></span>
-            </div>
-        @endif
-
+            <span><input onchange="editCart(this)" data-id="{{$cart->id}}" type="text" value="{{$cart->count}}"
+        disabled></span>
+        <i class="fas fa-minus"><span class="minus-cart"></span></i>
+    </div> --}}
+    @if ($cart && $cart->product && $cart->product->id !== null)
+    <div class="input-quantity">
+        <span class="minus-cart"><i class="fas fa-minus"></i></span>
+        <input class="font-xl color-brand-3 box-input" data-id="{{ $cart->id }}" type="text" value="{{ $cart->count }}"
+            disabled>
+        <span class="plus-cart"><i class="fas fa-plus"></i></span>
     </div>
-    <div class="itemInfo">
-        <a href="{{ $cart->product->url ?? '#' }}">
+    @endif
 
-            <div class="info">
-                <h4>{{ $cart->product->details->name ?? __('web.' . $cart->extension->title) }}</h4>
-                <span class="cat">{{ $cart->product->category->details->title ?? '' }} </span>
-                <span class="price">{{ $cart->product->cost_discount ??  $cart->product->cost ?? $cart->extension->value }}
-                    {{ __('web.L.E') }}</span>
-            </div>
-        </a>
-        <a href="{{ $cart->product->url ?? '#'}}">
-            <img src="{{ $cart->product->image_url ?? $cart->extension->image }}" height="135px"
-                style="padding:3px;border-radius:10px;min-width:170px !important;" />
-        </a>
-    </div>
+</div>
+<div class="itemInfo">
+    <a href="{{ $cart->product->url ?? '#' }}">
+
+        <div class="info">
+            <h4>{{ $cart->product->details->name ?? __('web.' . $cart->extension->title) }}</h4>
+            <span class="cat">{{ $cart->product->category->details->title ?? '' }} </span>
+            <span class="price">{{ $cart->product->cost_discount ??  $cart->product->cost ?? $cart->extension->value }}
+                {{ __('web.L.E') }}</span>
+        </div>
+    </a>
+    <a href="{{ $cart->product->url ?? '#'}}">
+        <img src="{{ $cart->product->image_url ?? $cart->extension->image }}" height="135px" />
+    </a>
+</div>
 </div>

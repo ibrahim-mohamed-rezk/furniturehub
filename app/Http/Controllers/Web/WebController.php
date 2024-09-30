@@ -80,25 +80,25 @@ class WebController extends Controller
             return Slider::withDescription()->where('sliders.status', 'slider')->select('sliders.id', 'sliders.link','ad.image')->get();
         }); 
         $news_products = Cache::remember(LaravelLocalization::getCurrentLocale().'news_products', 600, function () {
-            return Product::withDescription()->orderBy('id', 'DESC')->whereIn('products.sku_code', ["ofb0011", "fh0116", "why00063"])->where('products.only_offer', 'no')->take(3)->get();
+            // return Product::withDescription()->orderBy('id', 'DESC')->whereIn('products.sku_code', ["ofb0011", "fh0116", "why00063"])->where('products.only_offer', 'no')->take(3)->get();
         }); 
         $sale_products = Cache::remember(LaravelLocalization::getCurrentLocale().'sale_products', 600, function () {
-            return Product::withDescription()->whereIn('products.sku_code', ["FAY0042", "FH0111", "YAS0059"])->where('products.only_offer', 'no')->inRandomOrder()->take(3)->get();
+            // return Product::withDescription()->whereIn('products.sku_code', ["FAY0042", "FH0111", "YAS0059"])->where('products.only_offer', 'no')->inRandomOrder()->take(3)->get();
         }); 
         $hot_products = Cache::remember(LaravelLocalization::getCurrentLocale().'hot_products', 600, function () {
-            return Product::withDescription()->where('products.cost_discount', '!=', null)->whereIn('products.sku_code', ["FH0106", "SSF0042", "lio0008"])->orderBy('id', 'DESC')->where('products.only_offer', 'no')->take(3)->get();
+            // return Product::withDescription()->where('products.cost_discount', '!=', null)->whereIn('products.sku_code', ["FH0106", "SSF0042", "lio0008"])->orderBy('id', 'DESC')->where('products.only_offer', 'no')->take(3)->get();
         }); 
         $shipping_products = Cache::remember(LaravelLocalization::getCurrentLocale().'shipping_products', 600, function () use ($offer_ids){
-            return Product::withDescription()->whereRaw("products.id IN (" . implode(',', $offer_ids) . ")")->orderByRaw("field(products.id," . implode(',', $offer_ids) . ")")->take(6)->get();
+            // return Product::withDescription()->whereRaw("products.id IN (" . implode(',', $offer_ids) . ")")->orderByRaw("field(products.id," . implode(',', $offer_ids) . ")")->take(6)->get();
         }); 
         $cobonProduct = Cache::remember(LaravelLocalization::getCurrentLocale().'cobonProduct', 600, function () {
-            return Cobon::where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->where('type', 'product')->orderBy('id', 'DESC')->first();
+            // return Cobon::where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->where('type', 'product')->orderBy('id', 'DESC')->first();
         }); 
         $cobonCategory = Cache::remember(LaravelLocalization::getCurrentLocale().'cobonCategory', 600, function () {
-            return Cobon::where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->where('type', 'category')->orderBy('id', 'DESC')->first();
+            // return Cobon::where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->where('type', 'category')->orderBy('id', 'DESC')->first();
         }); 
         $only_product_offer = Cache::remember(LaravelLocalization::getCurrentLocale().'only_product_offer', 600, function () {
-            return Product::withDescription()->where('products.only_offer', 'yes')->first();
+            // return Product::withDescription()->where('products.only_offer', 'yes')->first();
         }); 
 
         $offer_categories_ids = $this->cobonNow()['ids'];

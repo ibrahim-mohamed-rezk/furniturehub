@@ -12,7 +12,6 @@
                     @endif
                 </a>
             @endif
-
         </div>
         @if ($cart && $cart->product && $cart->product->id !== null)
             <div class="input-quantity">
@@ -22,7 +21,6 @@
                 <a class="plus-cart" onclick="update_cart(this)"><i class="fas fa-plus"></i></a>
             </div>
         @endif
-
     </div>
     <div class="itemInfo">
         <div class="info">

@@ -41,7 +41,7 @@
                 <div class="order_status_item">
                     <a href="{{ route('cart.index') }}">
                         <div class="icon">
-                            <img src="{{ asset('public/storage/assets/cartIconFilled.png') }}" />
+                            <img src="{{ asset('storage/assets/cartIconFilled.png') }}" />
                         </div>
                     </a>
                     <div class="title orange-color">{{ __('web.cart_items') }}</div>
@@ -50,7 +50,7 @@
                 <div class="order_status_item">
                     <a href="{{ route('address.index') }}">
                         <div class="icon">
-                            <img src="{{ asset('public/storage/assets/deliveryIconFiled.png') }}" />
+                            <img src="{{ asset('storage/assets/deliveryIconFiled.png') }}" />
                         </div>
                     </a>
                     <div class="title orange-color">{{ __('web.delivery') }}</div>
@@ -58,14 +58,14 @@
                 <div class="line ornge"></div>
                 <div class="order_status_item">
                     <div class="icon">
-                        <img src="{{ asset('public/storage/assets/paymentIconOrange.png') }}" />
+                        <img src="{{ asset('storage/assets/paymentIconOrange.png') }}" />
                     </div>
                     <div class="title orange-color">{{ __('web.payment') }}</div>
                 </div>
                 <div class="line"></div>
                 <div class="order_status_item">
                     <div class="icon">
-                        <img src="{{ asset('public/storage/assets/receptIcon.png') }}" />
+                        <img src="{{ asset('storage/assets/receptIcon.png') }}" />
                     </div>
                     <div class="title">{{ __('web.receipt') }}</div>
                 </div>
@@ -79,15 +79,15 @@
                     <div class="payment-methods">
                         <div onclick="openPayMethods()" class="pay-now method">
                             <div class="icons ">
-                                <img src="{{ asset('public/storage/assets/cash.png') }}" />
-                                <img src="{{ asset('public/storage/assets/mastercard.png') }}" />
-                                <img src="{{ asset('public/storage/assets/visa.png') }}" />
+                                <img src="{{ asset('storage/assets/cash.png') }}" />
+                                <img src="{{ asset('storage/assets/mastercard.png') }}" />
+                                <img src="{{ asset('storage/assets/visa.png') }}" />
                             </div>
                             <div class="method-title">{{ __('web.pay_now') }}</div>
                         </div>
                         <div onclick="openInstallment()" class="installment method">
                             <div class="icons">
-                                <img src="{{ asset('public/storage/assets/installment.png') }}" />
+                                <img src="{{ asset('storage/assets/installment.png') }}" />
 
                             </div>
                             <div class="method-title">{{ __('web.instalment') }}</div>
@@ -97,49 +97,49 @@
                         {{-- <div class="cash">{{ __('web.deposit') }}</div> --}}
                         <div class="visa">
                             <input type="radio" name="status" value="card">
-                            <img src="{{ asset('public/assets/web/ASSETS_En/imgs/payment/paymob_cards.png') }}" loading="lazy"
+                            <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/paymob_cards.png') }}" loading="lazy"
                                 alt="PayPal" width="120px" height="70px">
                         </div>
                         <div class="visa">
                             <input type="radio" name="status" value="cardDeposit">
-                            <img src="{{ asset('public/assets/web/ASSETS_En/imgs/payment/deposit.png') }}" loading="lazy"
+                            <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/deposit.png') }}" loading="lazy"
                                 alt="PayPal" width="120px" height="70px">
                         </div>
                         {{-- <div class="visa">
                             <input type="radio" name="status" value="wallet">
-                            <img src="{{ asset('public/assets/web/ASSETS_En/imgs/payment/vod.png') }}" loading="lazy"
+                            <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/vod.png') }}" loading="lazy"
                                 alt="PayPal" width="120px" height="70px">
                         </div> --}}
                     </div>
                     <div id="installment-methods" class="methods">
                         <div class="visa">
                             <input type="radio" name="status" value="forsa">
-                            <img src="{{ asset('public/assets/web/ASSETS_En/imgs/payment/paymob_forsa.png') }}" loading="lazy"
+                            <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/paymob_forsa.png') }}" loading="lazy"
                                 alt="forsa">
                         </div>
                         <div class="visa">
                             <input type="radio" name="status" value="sympl">
-                            <img src="{{ asset('public/assets/web/ASSETS_En/imgs/payment/paymob_sympl.png') }}" loading="lazy"
+                            <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/paymob_sympl.png') }}" loading="lazy"
                                 alt="sympl">
                         </div>
                         <div class="visa">
                             <input type="radio" name="status" value="aman">
-                            <img src="{{ asset('public/assets/web/ASSETS_En/imgs/payment/paymob_aman.png') }}" loading="lazy"
+                            <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/paymob_aman.png') }}" loading="lazy"
                                 alt="aman">
                         </div>
                         <div class="visa">
                             <input type="radio" name="status" value="valu">
-                            <img src="{{ asset('public/assets/web/ASSETS_En/imgs/payment/paymob_valu.png') }}" loading="lazy"
+                            <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/paymob_valu.png') }}" loading="lazy"
                                 alt="valu">
                         </div>
                         <div class="visa">
                             <input type="radio" name="status" value="installment_discount">
-                            <img src="{{ asset('public/assets/web/ASSETS_En/imgs/payment/paymob_installment.png') }}"
+                            <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/paymob_installment.png') }}"
                                 loading="lazy" alt="installment discount">
                         </div>
                         <div class="visa">
                             <input type="radio" name="status" value="sohulia">
-                            <img src="{{ asset('public/storage/banks/souhola.png') }}" loading="lazy"
+                            <img src="{{ asset('storage/banks/souhola.png') }}" loading="lazy"
                                 alt="installment discount">
                         </div>
                     </div>
