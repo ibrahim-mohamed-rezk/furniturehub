@@ -183,51 +183,54 @@
 </style>
 
 @section('popup-content')
-<div class="popup-container">
-    <div class="close-btn" onclick="closePopup()">
-        <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path opacity="0.3"
-                d="M23.65 0H9.68333C4.33538 0 0 4.33538 0 9.68333V23.65C0 28.998 4.33538 33.3333 9.68333 33.3333H23.65C28.998 33.3333 33.3333 28.998 33.3333 23.65V9.68333C33.3333 4.33538 28.998 0 23.65 0Z"
-                fill="#6D6D6D" />
-            <path
-                d="M19.0166 16.6668L23.7332 11.9502C23.9077 11.8007 24.0494 11.6169 24.1494 11.4101C24.2495 11.2033 24.3057 10.9781 24.3146 10.7486C24.3234 10.519 24.2847 10.2902 24.201 10.0763C24.1172 9.8624 23.9901 9.66816 23.8276 9.50573C23.6652 9.34331 23.471 9.21621 23.2571 9.13242C23.0432 9.04863 22.8143 9.00995 22.5848 9.01882C22.3553 9.02769 22.13 9.0839 21.9233 9.18394C21.7165 9.28398 21.5326 9.42568 21.3832 9.60015L16.6666 14.3168L11.9499 9.60015C11.6311 9.32711 11.2209 9.18443 10.8015 9.20063C10.382 9.21683 9.98411 9.39072 9.68728 9.68755C9.39046 9.98437 9.21657 10.3823 9.20037 10.8017C9.18417 11.2212 9.32685 11.6313 9.59989 11.9502L14.3166 16.6668L9.59989 21.3835C9.28947 21.6958 9.11523 22.1182 9.11523 22.5585C9.11523 22.9988 9.28947 23.4212 9.59989 23.7335C9.91216 24.0439 10.3346 24.2181 10.7749 24.2181C11.2152 24.2181 11.6376 24.0439 11.9499 23.7335L16.6666 19.0168L21.3832 23.7335C21.6955 24.0439 22.1179 24.2181 22.5582 24.2181C22.9985 24.2181 23.4209 24.0439 23.7332 23.7335C24.0436 23.4212 24.2179 22.9988 24.2179 22.5585C24.2179 22.1182 24.0436 21.6958 23.7332 21.3835L19.0166 16.6668Z"
-                fill="#6D6D6D" />
-        </svg>
-    </div>
-    <h2 class="popup-title">قم بتأكيد رقم هاتفك</h2>
-    <div class="popup-info">
-        <h3>لقد تم إرسال رمز مكون من 6 أرقام إلى</h3>
-        <span>
-            <img src="{{url('/storage/assets/popups/eg-flag.png')}}" alt="eg-flag" />
-            +20 101 826 0856
-        </span>
-    </div>
-    <form>
-        @php
-        $err = false
-        @endphp
-        <div class="input-container">
-            <div id="otpInputs" class="inputs">
-                <input class="input {{ $err ? 'err' : '' }}" type="text" inputmode="numeric" maxlength="1" />
-                <input class="input {{ $err ? 'err' : '' }}" type="text" inputmode="numeric" maxlength="1" />
-                <input class="input {{ $err ? 'err' : '' }}" type="text" inputmode="numeric" maxlength="1" />
-                <input class="input {{ $err ? 'err' : '' }}" type="text" inputmode="numeric" maxlength="1" />
-                <input class="input {{ $err ? 'err' : '' }}" type="text" inputmode="numeric" maxlength="1" />
-                <input class="input {{ $err ? 'err' : '' }}" type="text" inputmode="numeric" maxlength="1" />
+    <div class="popup-layout show" id="popupLayout">
+
+        <div class="popup-container">
+        <div class="close-btn" onclick="closePopup()">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.3"
+                    d="M23.65 0H9.68333C4.33538 0 0 4.33538 0 9.68333V23.65C0 28.998 4.33538 33.3333 9.68333 33.3333H23.65C28.998 33.3333 33.3333 28.998 33.3333 23.65V9.68333C33.3333 4.33538 28.998 0 23.65 0Z"
+                    fill="#6D6D6D" />
+                <path
+                    d="M19.0166 16.6668L23.7332 11.9502C23.9077 11.8007 24.0494 11.6169 24.1494 11.4101C24.2495 11.2033 24.3057 10.9781 24.3146 10.7486C24.3234 10.519 24.2847 10.2902 24.201 10.0763C24.1172 9.8624 23.9901 9.66816 23.8276 9.50573C23.6652 9.34331 23.471 9.21621 23.2571 9.13242C23.0432 9.04863 22.8143 9.00995 22.5848 9.01882C22.3553 9.02769 22.13 9.0839 21.9233 9.18394C21.7165 9.28398 21.5326 9.42568 21.3832 9.60015L16.6666 14.3168L11.9499 9.60015C11.6311 9.32711 11.2209 9.18443 10.8015 9.20063C10.382 9.21683 9.98411 9.39072 9.68728 9.68755C9.39046 9.98437 9.21657 10.3823 9.20037 10.8017C9.18417 11.2212 9.32685 11.6313 9.59989 11.9502L14.3166 16.6668L9.59989 21.3835C9.28947 21.6958 9.11523 22.1182 9.11523 22.5585C9.11523 22.9988 9.28947 23.4212 9.59989 23.7335C9.91216 24.0439 10.3346 24.2181 10.7749 24.2181C11.2152 24.2181 11.6376 24.0439 11.9499 23.7335L16.6666 19.0168L21.3832 23.7335C21.6955 24.0439 22.1179 24.2181 22.5582 24.2181C22.9985 24.2181 23.4209 24.0439 23.7332 23.7335C24.0436 23.4212 24.2179 22.9988 24.2179 22.5585C24.2179 22.1182 24.0436 21.6958 23.7332 21.3835L19.0166 16.6668Z"
+                    fill="#6D6D6D" />
+            </svg>
+        </div>
+        <h2 class="popup-title">قم بتأكيد رقم هاتفك</h2>
+        <div class="popup-info">
+            <h3>لقد تم إرسال رمز مكون من 6 أرقام إلى</h3>
+            <span>
+                <img src="{{url('/storage/assets/popups/eg-flag.png')}}" alt="eg-flag" />
+                +20 101 826 0856
+            </span>
+        </div>
+        <form>
+            @php
+            $err = false
+            @endphp
+            <div class="input-container">
+                <div id="otpInputs" class="inputs">
+                    <input class="input {{ $err ? 'err' : '' }}" type="text" inputmode="numeric" maxlength="1" />
+                    <input class="input {{ $err ? 'err' : '' }}" type="text" inputmode="numeric" maxlength="1" />
+                    <input class="input {{ $err ? 'err' : '' }}" type="text" inputmode="numeric" maxlength="1" />
+                    <input class="input {{ $err ? 'err' : '' }}" type="text" inputmode="numeric" maxlength="1" />
+                    <input class="input {{ $err ? 'err' : '' }}" type="text" inputmode="numeric" maxlength="1" />
+                    <input class="input {{ $err ? 'err' : '' }}" type="text" inputmode="numeric" maxlength="1" />
+                </div>
+                @if ($err)
+                <span class="err-message">كلمة المرور غير صالحة أو غير صحيحة. حاول مرة أخرى!</span>
+                @endif
             </div>
-            @if ($err)
-            <span class="err-message">كلمة المرور غير صالحة أو غير صحيحة. حاول مرة أخرى!</span>
-            @endif
-        </div>
-        <span class="popup-aleart">
-            <span class="counter" id="countdown">01:00</span>
-            <span> إعادة إرسال OTP</span>
-        </span>
-        <div class="popup-btn">
-            <button disabled type="submit" id="submitButton">اكمل مشترياتك</button>
-        </div>
-    </form>
-</div>
+            <span class="popup-aleart">
+                <span class="counter" id="countdown">01:00</span>
+                <span> إعادة إرسال OTP</span>
+            </span>
+            <div class="popup-btn">
+                <button disabled type="submit" id="submitButton">اكمل مشترياتك</button>
+            </div>
+        </form>
+    </div>
+    </div>
 @endsection
 
 <script>

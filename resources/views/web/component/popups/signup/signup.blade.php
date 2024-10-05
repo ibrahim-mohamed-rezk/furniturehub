@@ -209,7 +209,9 @@
 </style>
 
 @section('popup-content')
-<div class="popup-contaier">
+    <div class="popup-layout {{$status}}" id="popupLayout">
+
+    <div class="popup-contaier">
     <div class="bg-img">
         <img src="{{url('')}}/storage/assets/popups/login-popup-bg.png" alt="bg">
     </div>
@@ -284,5 +286,6 @@
 
         </form>
     </div>
+</div>
 </div>
 @endsection

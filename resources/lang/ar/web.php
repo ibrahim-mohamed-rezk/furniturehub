@@ -550,4 +550,6 @@ return [
     'contact_us_for_inquiries'=>'اتصل بنا للاستفسارات',
     'read_our_return_policy'=>'اقرأ سياسة الإرجاع الخاصة بنا',
     'find_answers_to_frequently_asked_questions'=>'اعثر على إجابات للأسئلة الشائعة',
+    'image_width_required' => 'عرض الصورة يجب أن يكون بالضبط :width بكسل.',
+    'image_height_required' => 'ارتفاع الصورة يجب أن يكون بالضبط :height بكسل.',
 ];

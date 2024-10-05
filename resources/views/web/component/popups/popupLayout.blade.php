@@ -14,7 +14,4 @@
         display: flex;
     }
 </style>
-
-<div class="popup-layout show" id="popupLayout">
-        @yield('popup-content')
-</div>
+@yield('popup-content')

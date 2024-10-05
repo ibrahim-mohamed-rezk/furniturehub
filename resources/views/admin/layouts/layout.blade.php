@@ -12,7 +12,7 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset(settings('url_icon')) }}">
-    <link href="{{ url('/public') }}/assets/admin/assets/css/style3.css?v=1.0.0" rel="stylesheet">
+    <link href="{{ asset('/assets/admin/assets/css/style3.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -110,14 +110,14 @@
     @yield('container_content')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="{{ url('/public') }}/assets/admin/assets/js/vendors/jquery-3.6.0.min.js"></script>
-    <script src="{{ url('/public') }}/assets/admin/assets/js/vendors/bootstrap.bundle.min.js"></script>
-    {{-- <script src="{{url('/public')}}/assets/admin/assets/js/vendors/select2.min.js"></script> --}}
-    <script src="{{ url('/public') }}/assets/admin/assets/js/vendors/perfect-scrollbar.js"></script>
-    <script src="{{ url('/public') }}/assets/admin/assets/js/vendors/jquery.fullscreen.min.js"></script>
-    {{-- <script src="{{url('/public')}}/assets/admin/assets/js/vendors/chart.js"></script> --}}
-    <script src="{{ url('/public') }}/assets/admin/assets/js/main.js?v=1.0.0"></script>
-    <script src="{{ url('/public') }}/assets/admin/assets/js/custom-chart.js" type="text/javascript"></script>
+    <script src="{{ url('') }}/assets/admin/assets/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="{{ url('') }}/assets/admin/assets/js/vendors/bootstrap.bundle.min.js"></script>
+    {{-- <script src="{{url('')}}/assets/admin/assets/js/vendors/select2.min.js"></script> --}}
+    <script src="{{ url('') }}/assets/admin/assets/js/vendors/perfect-scrollbar.js"></script>
+    <script src="{{ url('') }}/assets/admin/assets/js/vendors/jquery.fullscreen.min.js"></script>
+    {{-- <script src="{{url('')}}/assets/admin/assets/js/vendors/chart.js"></script> --}}
+    <script src="{{ url('') }}/assets/admin/assets/js/main.js?v=1.0.0"></script>
+    <script src="{{ url('') }}/assets/admin/assets/js/custom-chart.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
 
 

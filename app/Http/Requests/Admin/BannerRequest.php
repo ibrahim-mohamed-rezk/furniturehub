@@ -21,6 +21,78 @@ class BannerRequest extends FormRequest
 
         return Auth::check();
     }
+    private function size()
+    {
+        $req_width = null;
+        $req_height = null;
+
+        switch ($this->banner->id) {
+            case 1:
+                $req_width = 572;
+                $req_height = 802;
+                break;
+            case 2:
+                $req_width = 600;
+                $req_height = 627;
+                break;
+            case 3:
+                $req_width = 600;
+                $req_height = 660;
+                break;
+            case 13:
+                $req_width = 562;
+                $req_height = 634;
+                break;
+                7,8,9,10,13,14, 15, 16,18,31,32,33,34,35,36,37,38,39,40,41,48,49,50,51,11,12,19,22, 24, 26, 28, 30,17,53,54,55
+
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+            case 13:
+            case 14:
+            case 15:
+            case 16:
+            case 18:
+            case 31:
+            case 32:
+            case 16:
+            case 16:
+            case 16:
+            case 16:
+            case 16:
+            case 16:
+            case 16:
+            case 16:
+            case 16:
+            case 16:
+            case 16:
+                $req_width = 48;
+                $req_height = 48;
+                break;
+            case 10:
+            case 11:
+            case 12:
+                $req_width = 38;
+                $req_height = 38;
+                break;
+            case 14:
+                $req_width = 608;
+                $req_height = 348;
+                break;
+            case 15:
+            case 16:
+                $req_width = 285;
+                $req_height = 285;
+                break;
+            case 17:
+                $req_width = 600;
+                $req_height = 630;
+                break;
+        }
+
+        return ['width' => $req_width, 'height' => $req_height];
+    }
 
     /**
      * Get the validation rules that apply to the request.

@@ -39,56 +39,58 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // \URL::forceScheme('https');
+//        \URL::forceScheme('https');
 
         Paginator::useBootstrap();
         Schema::defaultStringLength(191);
         // CMS Supported Languages
-        $languages= Language::where('status', 1)->cursor();
+        $languages = Language::where('status', 1)->cursor();
         View::share('languages', $languages);
 
-        View::composer('*', function($view) {
+        View::composer('*', function ($view) {
             // Current Lang
             $view->with('lang', LaravelLocalization::getCurrentLocale());
 
             $theme = request()->cookie('theme', 'default-theme');
             $view->with('theme', $theme);
             $currencies = Currency::withDescription()->cursor();
-            $view->with('currencies',$currencies);
+            $view->with('currencies', $currencies);
             $currency = (new CurrencyService())->getCurrency();
-            $view->with('currency',$currency);
+            $view->with('currency', $currency);
             $shipping_cost = settings('shipping_cost') / $currency->value;
-            $view->with('shipping_cost',$shipping_cost);
-            $footer_cards = Page::withDescription([1,2,3,4,5])->cursor();
-            $view->with('footer_cards',$footer_cards);
-            $mail_footer = Page::withDescription([6,7])->get();
-            $view->with('landingPages',$mail_footer);
+            $view->with('shipping_cost', $shipping_cost);
+            $footer_cards = Page::withDescription([1, 2, 3, 4, 5])->cursor();
+            $view->with('footer_cards', $footer_cards);
+            $mail_footer = Page::withDescription([6, 7])->get();
+            $view->with('landingPages', $mail_footer);
             $user_info = Auth::user();
-            $view->with('user_info',$user_info);
-            $categories = Category::withDescription([4,6,7,89,84,5,94,8,76,28,15,14])->get();
-            $view->with('categorieshome',$categories);
+            $view->with('user_info', $user_info);
+            $categories = Category::withDescription([4, 6, 7, 89, 84, 5, 94, 8, 76, 28, 15, 14])->get();
+            $view->with('categorieshome', $categories);
             $main_categories = Category::withDescription()->whereNull('categories.category_id')->get();
-            $view->with('categoriesMain',$main_categories);
-            $language= Language::where('local', LaravelLocalization::getCurrentLocale())->firstOrFail();
+            $view->with('categoriesMain', $main_categories);
+            $language = Language::where('local', LaravelLocalization::getCurrentLocale())->firstOrFail();
             $view->with('language', $language);
 
             // Current User Info
-            $userInfo= (object) ['photo'=> 'uploads/avatar.png'];
-            if(Auth::check() && Auth::user()->role != 'user')
-            {
-                $ids = UserModule::where('user_id',Auth::user()->id)->pluck('module_id');
+            $userInfo = (object) ['photo' => 'uploads/avatar.png'];
+            if (Auth::check()) {
+                $cart = (new CartService())->carts()['data'];
+                $carts = $cart['carts'];
+                $view->with('carts', $carts);
+            }
+            if (Auth::check() && Auth::user()->role != 'user') {
+                $ids = UserModule::where('user_id', Auth::user()->id)->pluck('module_id');
                 $userNodules = Module::find($ids);
                 $view->with('userNodules', $userNodules);
                 $view->with('CurrentUserInfo', $userInfo);
-                $special_modules = ['affiliateusers','affiliates','affiliateorders','sellerrequests','quantities','carts','settings','pages','mails','contacts','rates','orders','notifications','banners','accepts','demands'];
-                $stop_modules = ['profile','subcategories'];
+                $special_modules = ['affiliateusers', 'statistics', 'affiliates', 'affiliateorders', 'sellerrequests', 'quantities', 'carts', 'settings', 'pages', 'mails', 'contacts', 'rates', 'orders', 'notifications', 'banners', 'accepts', 'demands'];
+                $stop_modules = ['profile', 'subcategories', 'site-map'];
                 $sub_modules = ['categories'];
                 $view->with('special_modules', $special_modules);
                 $view->with('stop_modules', $stop_modules);
                 $view->with('sub_modules', $sub_modules);
-
             }
-
         });
     }
 }

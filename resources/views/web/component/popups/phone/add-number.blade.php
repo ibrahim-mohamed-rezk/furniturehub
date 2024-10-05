@@ -186,7 +186,9 @@
 </style>
 
 @section('popup-content')
-<div class="popup-container">
+    <div class="popup-layout {{$status}}" id="popupLayout">
+
+    <div class="popup-container">
     <div class="close-btn">
         <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path opacity="0.3"
@@ -231,6 +233,7 @@
     <button>تأكيد</button>
 </div>
 </div>
+    </div>
 @endsection
 
 <script>

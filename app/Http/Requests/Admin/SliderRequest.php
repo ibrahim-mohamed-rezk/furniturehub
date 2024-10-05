@@ -21,6 +21,14 @@ class SliderRequest extends FormRequest
 
         return Auth::check();
     }
+    private function size()
+    {
+        $req_width = 1540;
+        $req_height = 520;
+
+
+        return ['width' => $req_width, 'height' => $req_height];
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -50,12 +58,10 @@ class SliderRequest extends FormRequest
             if (request('image_'.$lang->local)) {
                 list($width, $height, $type, $attr) = getimagesize(request('image_'.$lang->local));
 
-                $req_width =  1000;
-                $req_height = 841;
-                if ($width != $req_width) {
+                if ($width != $this->size()['width'] ) {
                     $rules['width'] = 'required';
                 }
-                if ($height != $req_height) {
+                if ( $height != $this->size()['height']) {
                     $rules['height'] = 'required';
                 }
             }
@@ -83,6 +89,18 @@ class SliderRequest extends FormRequest
         }
 
         return $attributes;
+    }
+    /**
+     * Get custom error messages for validation failures.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'width.required' => __('web.image_width_required', ['width' => $this->size()['width']]),
+            'height.required' => __('web.image_height_required', ['height' => $this->size()['height']]),
+        ];
     }
     /**
      * Handle a failed validation attempt.

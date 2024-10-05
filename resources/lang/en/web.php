@@ -538,5 +538,8 @@ return [
     'contact_us_for_inquiries'=>'Contact us for inquiries',
     'read_our_return_policy'=>'Read our return policy',
     'find_answers_to_frequently_asked_questions'=>'Find answers to frequently asked questions',
+
+    'image_width_required' => 'The image width must be exactly :width pixels.',
+    'image_height_required' => 'The image height must be exactly :height pixels.',
 ];
 
