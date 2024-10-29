@@ -14438,9 +14438,11 @@ a:hover span {
 
 
 /* //////////////////////////////////////// */
-.seeProductModal{
-  .modal-dialog{
+.seeProductModal {
+  .modal-dialog {
     max-width: 1481px !important;
+    width: 80%;
+    margin: 50px auto !important;
 
     .product-details {
       display: flex;
@@ -14450,7 +14452,7 @@ a:hover span {
       border-radius: 12px;
       gap: clamp(12px, 2.03125vw, 39px);
       padding: clamp(0px, 1.4583333333333333vw, 28px)
-      clamp(0px, 1.6666666666666667vw, 32px);
+        clamp(0px, 1.6666666666666667vw, 32px);
 
       .product-image {
         display: flex;
@@ -14462,7 +14464,7 @@ a:hover span {
           flex-direction: column;
           width: 100%;
           padding: clamp(5px, 1.09375vw, 21px)
-          clamp(5px, 1.1979166666666667vw, 23px);
+            clamp(5px, 1.1979166666666667vw, 23px);
           border: 1px solid #f1f1f2;
           box-shadow: 0px 3px 4px 0px #00000008;
           border-radius: 12px;
@@ -14511,12 +14513,8 @@ a:hover span {
 
           .code {
             font-family: Alexandria;
-            font-size: clamp(
-                    8px,
-                    0.8333333333333334vw,
-                    clamp(px, 0.8333333333333334vw, 16px)
-            );
-            font-weight: 300;
+            font-size: clamp(8px, 0.8333333333333334vw, 16px);
+            font-weight: 700;
             line-height: clamp(8px, 0.9895833333333333vw, 19px);
             color: #000;
           }
@@ -14527,6 +14525,14 @@ a:hover span {
             justify-content: start;
             gap: clamp(3px, 0.5208333333333333vw, 10px);
 
+            span {
+              font-family: Alexandria;
+              font-size: clamp(8px, 0.8333333333333334vw, 16px);
+              font-weight: 700;
+              line-height: clamp(8px, 0.9895833333333333vw, 19px);
+              color: #000;
+            }
+
             .tags-content {
               display: flex;
               align-items: center;
@@ -14536,13 +14542,13 @@ a:hover span {
               span {
                 font-family: Alexandria;
                 font-size: clamp(8px, 0.8333333333333334vw, 16px);
-                font-weight: 300;
+                font-weight: 700;
                 line-height: clamp(8px, 0.9895833333333333vw, 19px);
                 color: #000;
                 background-color: #8c9ec51a;
                 border-radius: 8px;
                 padding: clamp(3px, 0.26041666666666663vw, 5px)
-                clamp(5px, 0.5208333333333333vw, 10px);
+                  clamp(5px, 0.5208333333333333vw, 10px);
               }
             }
           }
@@ -14580,22 +14586,26 @@ a:hover span {
               gap: 10px;
 
               span:nth-child(1) {
-                color: #8c9ec5;
+                a {
+                  color: #8c9ec5 !important;
+                }
               }
 
               span:nth-child(3) {
-                color: #a5b2cd;
-                font-family: Alexandria;
-                font-size: clamp(8px, 0.7291666666666666vw, 14px);
-                font-weight: 300;
-                line-height: clamp(9px, 0.8854166666666666vw, 17px);
+                a {
+                  color: #a5b2cd !important;
+                  font-family: Alexandria;
+                  font-size: clamp(8px, 0.7291666666666666vw, 14px);
+                  font-weight: 300;
+                  line-height: clamp(9px, 0.8854166666666666vw, 17px);
+                }
               }
             }
 
             .pro-title {
               font-family: Alexandria;
               font-size: clamp(16px, 1.1458333333333333vw, 22px);
-              font-weight: 500;
+              font-weight: 700;
               line-height: clamp(19px, 1.3541666666666667vw, 26px);
               color: #000;
             }
@@ -14667,12 +14677,14 @@ a:hover span {
               color: #ff1212;
             }
 
-            svg {
+            .saveIcon {
               width: clamp(27px, 2.4479166666666665vw, 47px);
               height: clamp(27px, 2.4479166666666665vw, 47px);
-            }
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
 
-            .saveIcon{
               .circle-text {
                 font-family: Alexandria;
                 font-size: clamp(5px, 0.46875vw, 9px);
@@ -14705,7 +14717,7 @@ a:hover span {
             justify-content: center;
             background: #f5f5f5;
             padding: clamp(3px, 0.4166666666666667vw, 8px)
-            clamp(3px, 0.5208333333333333vw, 10px);
+              clamp(3px, 0.5208333333333333vw, 10px);
             border-radius: 12px;
 
             * {
@@ -14716,7 +14728,7 @@ a:hover span {
             .plus,
             .minus {
               width: clamp(40px, 2.3958333333333335vw, 46px);
-              height: 31px;
+              height: clamp(25px, 1.6145833333333335vw, 31px);
               border-radius: 8px;
             }
 
@@ -14829,7 +14841,7 @@ a:hover span {
               outline: none;
               width: 100%;
               border-radius: 12px;
-              height: 55px;
+              height: clamp(40px, 2.864583333333333vw, 55px);
               display: flex;
               align-items: center;
               justify-content: center;
@@ -14842,7 +14854,6 @@ a:hover span {
             button {
               background: #00e510;
               gap: clamp(9px, 0.78125vw, 15px);
-              font-family: Alexandria;
               font-family: Alexandria;
               font-size: clamp(10px, 0.625vw, 12px);
               font-weight: 600;
@@ -14887,58 +14898,57 @@ a:hover span {
         }
       }
     }
-
   }
 
   @media (max-width: 992px) {
-    .modal-dialog{
+    .modal-dialog {
       margin: 20px 5px;
 
-      .product-details{
+      .product-details {
         flex-direction: column;
 
-        .product-image, .product-info-sec{
+        .product-image,
+        .product-info-sec {
           width: 100%;
         }
 
-        .product-info-sec{
-          .product-info{
+        .product-info-sec {
+          .product-info {
             flex-direction: column;
 
             .info,
-            .stars{
+            .stars {
               width: 100% !important;
-
             }
 
-            .stars{
+            .stars {
               flex-direction: row;
               justify-content: start;
               margin-top: 14px;
             }
           }
 
-          .product-count{
-            .count-name{
+          .product-count {
+            .count-name {
               display: none;
             }
           }
         }
 
-        .product-buttons{
+        .product-buttons {
           flex-wrap: wrap;
 
-          .whatsappBtn{
+          .whatsappBtn {
             width: 100% !important;
             order: 4;
           }
 
-          .addToCartBtn{
-            width: 48%  !important;
+          .addToCartBtn {
+            width: 48% !important;
           }
 
           .compareBtn,
-          .favoritBtn{
+          .favoritBtn {
             width: 23% !important;
           }
         }

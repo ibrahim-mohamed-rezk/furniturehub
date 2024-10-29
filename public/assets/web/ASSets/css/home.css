@@ -28,6 +28,8 @@
 .seeProductModal {
   .modal-dialog {
     max-width: 1481px !important;
+    width: 80%;
+    margin: 50px auto !important;
 
     .product-details {
       display: flex;
@@ -37,7 +39,7 @@
       border-radius: 12px;
       gap: clamp(12px, 2.03125vw, 39px);
       padding: clamp(0px, 1.4583333333333333vw, 28px)
-      clamp(0px, 1.6666666666666667vw, 32px);
+        clamp(0px, 1.6666666666666667vw, 32px);
 
       .product-image {
         display: flex;
@@ -49,7 +51,7 @@
           flex-direction: column;
           width: 100%;
           padding: clamp(5px, 1.09375vw, 21px)
-          clamp(5px, 1.1979166666666667vw, 23px);
+            clamp(5px, 1.1979166666666667vw, 23px);
           border: 1px solid #f1f1f2;
           box-shadow: 0px 3px 4px 0px #00000008;
           border-radius: 12px;
@@ -98,12 +100,8 @@
 
           .code {
             font-family: Alexandria;
-            font-size: clamp(
-                    8px,
-                    0.8333333333333334vw,
-                    clamp(px, 0.8333333333333334vw, 16px)
-            );
-            font-weight: 300;
+            font-size: clamp(8px, 0.8333333333333334vw, 16px);
+            font-weight: 700;
             line-height: clamp(8px, 0.9895833333333333vw, 19px);
             color: #000;
           }
@@ -114,6 +112,14 @@
             justify-content: start;
             gap: clamp(3px, 0.5208333333333333vw, 10px);
 
+            span {
+              font-family: Alexandria;
+              font-size: clamp(8px, 0.8333333333333334vw, 16px);
+              font-weight: 700;
+              line-height: clamp(8px, 0.9895833333333333vw, 19px);
+              color: #000;
+            }
+
             .tags-content {
               display: flex;
               align-items: center;
@@ -123,13 +129,13 @@
               span {
                 font-family: Alexandria;
                 font-size: clamp(8px, 0.8333333333333334vw, 16px);
-                font-weight: 300;
+                font-weight: 700;
                 line-height: clamp(8px, 0.9895833333333333vw, 19px);
                 color: #000;
                 background-color: #8c9ec51a;
                 border-radius: 8px;
                 padding: clamp(3px, 0.26041666666666663vw, 5px)
-                clamp(5px, 0.5208333333333333vw, 10px);
+                  clamp(5px, 0.5208333333333333vw, 10px);
               }
             }
           }
@@ -167,22 +173,26 @@
               gap: 10px;
 
               span:nth-child(1) {
-                color: #8c9ec5;
+                a {
+                  color: #8c9ec5 !important;
+                }
               }
 
               span:nth-child(3) {
-                color: #a5b2cd;
-                font-family: Alexandria;
-                font-size: clamp(8px, 0.7291666666666666vw, 14px);
-                font-weight: 300;
-                line-height: clamp(9px, 0.8854166666666666vw, 17px);
+                a {
+                  color: #a5b2cd !important;
+                  font-family: Alexandria;
+                  font-size: clamp(8px, 0.7291666666666666vw, 14px);
+                  font-weight: 300;
+                  line-height: clamp(9px, 0.8854166666666666vw, 17px);
+                }
               }
             }
 
             .pro-title {
               font-family: Alexandria;
               font-size: clamp(16px, 1.1458333333333333vw, 22px);
-              font-weight: 500;
+              font-weight: 700;
               line-height: clamp(19px, 1.3541666666666667vw, 26px);
               color: #000;
             }
@@ -264,9 +274,9 @@
 
               .circle-text {
                 font-family: Alexandria;
-                font-size: clamp( 5px, 0.46875vw, 9px);
+                font-size: clamp(5px, 0.46875vw, 9px);
                 font-weight: 400;
-                line-height: clamp( 5px, 0.46875vw, 9px);
+                line-height: clamp(5px, 0.46875vw, 9px);
                 letter-spacing: 0.20000000298023224px;
                 fill: #ff1212;
               }
@@ -294,7 +304,7 @@
             justify-content: center;
             background: #f5f5f5;
             padding: clamp(3px, 0.4166666666666667vw, 8px)
-            clamp(3px, 0.5208333333333333vw, 10px);
+              clamp(3px, 0.5208333333333333vw, 10px);
             border-radius: 12px;
 
             * {
@@ -305,7 +315,7 @@
             .plus,
             .minus {
               width: clamp(40px, 2.3958333333333335vw, 46px);
-              height: 31px;
+              height: clamp(25px, 1.6145833333333335vw, 31px);
               border-radius: 8px;
             }
 
@@ -353,20 +363,17 @@
             display: flex;
             flex-direction: column;
 
-            .product-description-text {
+            p {
               display: -webkit-box;
               -webkit-box-orient: vertical;
+              line-clamp: 3;
+              -webkit-line-clamp: 3;
+              overflow: hidden;
               font-family: Alexandria;
               font-size: clamp(10px, 0.625vw, 12px);
               font-weight: 400;
               line-height: 20px;
               color: #000;
-            }
-
-            .product-description-text.hideText{
-              line-clamp: 3;
-              -webkit-line-clamp: 3;
-              overflow: hidden;
             }
 
             span {
@@ -421,7 +428,7 @@
               outline: none;
               width: 100%;
               border-radius: 12px;
-              height: 55px;
+              height: clamp(40px, 2.864583333333333vw, 55px);
               display: flex;
               align-items: center;
               justify-content: center;
@@ -434,7 +441,6 @@
             button {
               background: #00e510;
               gap: clamp(9px, 0.78125vw, 15px);
-              font-family: Alexandria;
               font-family: Alexandria;
               font-size: clamp(10px, 0.625vw, 12px);
               font-weight: 600;
@@ -886,8 +892,8 @@
 
       .flash-sales-slider-3-next,
       .flash-sales-slider-3-prev {
-        width: clamp( 28px, 2.3958333333333335vw, 46px);
-        height: clamp( 28px, 2.3958333333333335vw, 46px);
+        width: clamp(28px, 2.3958333333333335vw, 46px);
+        height: clamp(28px, 2.3958333333333335vw, 46px);
         background-color: #f5f5f5;
         border-radius: 50%;
         color: #000;
@@ -895,11 +901,11 @@
         align-items: center;
         justify-content: center;
 
-        svg{
-          width: clamp( 8px, 1.25vw, 24px);
-          height: clamp( 8px, 1.25vw, 24px);
+        svg {
+          width: clamp(8px, 1.25vw, 24px);
+          height: clamp(8px, 1.25vw, 24px);
 
-          path{
+          path {
             stroke-width: 2;
           }
         }
@@ -938,8 +944,8 @@
           position: absolute;
           top: 0;
           right: 0;
-          width: clamp( 45px, 3.177083333333333vw, 61px);
-          height: clamp( 43px, 3.0729166666666665vw, 59px);
+          width: clamp(45px, 3.177083333333333vw, 61px);
+          height: clamp(43px, 3.0729166666666665vw, 59px);
           border-radius: 2px 0px 2px 16px;
           display: flex;
           align-items: center;
@@ -951,17 +957,17 @@
 
           span:nth-child(1) {
             font-family: "Alexandria", system-ui;
-            font-size: clamp( 10px, 0.625vw, 12px);
+            font-size: clamp(10px, 0.625vw, 12px);
             font-weight: 600;
-            line-height: clamp( 14px, 1.25vw, 24px);
+            line-height: clamp(14px, 1.25vw, 24px);
             color: #fff;
           }
 
           span:nth-child(2) {
             font-family: "Alexandria", system-ui;
-            font-size: clamp( 12px, 0.9375vw, 18px);
+            font-size: clamp(12px, 0.9375vw, 18px);
             font-weight: 600;
-            line-height: clamp( 14px, 1.25vw, 24px);
+            line-height: clamp(14px, 1.25vw, 24px);
             color: #fff;
           }
         }
@@ -1015,8 +1021,7 @@
               }
             }
 
-            a:has(img){
-
+            a:has(img) {
               width: 100%;
 
               img {
@@ -1169,7 +1174,7 @@
             width: 100%;
             text-align: center;
             font-family: "Alexandria", system-ui;
-            font-size: clamp( 6px, 0.7166666666666667vw, 9px);
+            font-size: clamp(6px, 0.7166666666666667vw, 9px);
             font-weight: 700;
             line-height: clamp(5px, 0.9375vw, 18px);
           }
@@ -1689,11 +1694,11 @@
             justify-content: center;
             z-index: 10;
             border-radius: 0px clamp(10px, 0.625vw, 12px) 0px
-            clamp(10px, 0.625vw, 12px);
+              clamp(10px, 0.625vw, 12px);
             background-color: #ff1212;
             color: #fff;
             padding: clamp(4px, 0.4166666666666667vw, 8px)
-            clamp(10px, 1.1458333333333333vw, 22px);
+              clamp(10px, 1.1458333333333333vw, 22px);
           }
         }
       }
@@ -1833,7 +1838,7 @@
                 background-color: #ff1212;
                 color: #fff;
                 padding: clamp(6px, 0.5729166666666666vw, 11px)
-                clamp(9px, 0.78125vw, 15px);
+                  clamp(9px, 0.78125vw, 15px);
               }
             }
           }
@@ -2418,7 +2423,7 @@
           background-color: #ff1212;
           color: #fff;
           padding: clamp(6px, 0.5729166666666666vw, 11px)
-          clamp(9px, 0.78125vw, 15px);
+            clamp(9px, 0.78125vw, 15px);
         }
       }
     }

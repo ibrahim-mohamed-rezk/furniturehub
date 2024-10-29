@@ -118,7 +118,7 @@
                     <div class="product-desctiption">
                         <span>{{__('web.description')}} :</span>
                         <div>
-                            <p>
+                            <p class="hideText">
                                 {!! $product->description !!}
                             </p>
                             <span class="see-more">{{__('web.see_more')}}</span>
