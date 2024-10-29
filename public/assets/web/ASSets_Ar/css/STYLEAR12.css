@@ -3341,7 +3341,7 @@ body.dark input::placeholder {
   width: 45%;
   text-align: center;
 }
-.header .main-header .header-left .header-search {
+/* .header .main-header .header-left .header-search {
   width: 35%;
 }
 .header .main-header .header-left .header-search .box-header-search,
@@ -3349,8 +3349,8 @@ body.dark input::placeholder {
   border-radius: 8px;
   border: 1px solid #d5dfe4;
   padding: 5px;
-}
-.header
+} */
+/* .header
   .main-header
   .header-left
   .header-search
@@ -3423,7 +3423,7 @@ body.dark input::placeholder {
   background-image: url(../imgs/template/arrow-down.svg);
   background-position: right center;
   background-repeat: no-repeat;
-}
+} */
 
 /* header-shop section */
 .header .main-header .header-left .header-shop {
@@ -10208,9 +10208,9 @@ a:hover span {
   .header .main-header .header-left .header-nav {
     width: 0%;
   }
-  .header .main-header .header-left .header-search {
+  /* .header .main-header .header-left .header-search {
     width: 65%;
-  }
+  } */
   .header .burger-icon {
     display: block !important;
   }
@@ -10793,9 +10793,9 @@ a:hover span {
   .swiper-button-prev-style-2 {
     display: block;
   }
-  .header .main-header .header-left .header-search {
+  /* .header .main-header .header-left .header-search {
     display: none;
-  }
+  } */
   .header .container {
     max-width: 100%;
   }
@@ -11711,20 +11711,20 @@ a:hover span {
 
 /* responsive sersh box form mobile view */
 @media (max-width: 1000px) {
-  .header .main-header .header-left .header-search {
+  /* .header .main-header .header-left .header-search {
     width: 50%;
-  }
+  } */
 }
 @media (max-width: 720px) {
-  .header .main-header .header-left .header-search {
+  /* .header .main-header .header-left .header-search {
     width: 35%;
-  }
+  } */
   a[class="btn btn-whatsapp"] {
     display: none;
   }
 }
 
-@media (max-width: 575px) {
+/* @media (max-width: 575px) {
   .mobile-header-search {
     display: flex !important;
     width: 90% !important;
@@ -11734,7 +11734,7 @@ a:hover span {
     width: 100%;
     margin-top: 15px;
   }
-}
+} */
 
 /* hide header compare icon from mobile view */
 /* @media (max-width: 770px){
