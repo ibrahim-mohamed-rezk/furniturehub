@@ -15,13 +15,12 @@ class OrderProductResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $currency = (new CurrencyService())->getCurrency();
         return [
             'id'=>$this->id,
             'image'=>asset($this->product->image),
             'title'=>$this->product->details->name,
             'count'=>$this->count,
-            'total'=>round($this->total / $currency->value) ,
+            'total'=>round($this->total ) ,
             'symbol'=>$request->user()->getCurrencyName() ?? 'L.E',
             'rate'=>(int) $this->product->rate,
 

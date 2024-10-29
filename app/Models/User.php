@@ -61,7 +61,7 @@ class User extends Authenticatable
      */
     public function modules()
     {
-        return $this->belongsToMany(Module::class,'user_modules');
+        return $this->belongsToMany(Module::class, 'user_modules');
     }
 
 
@@ -72,8 +72,7 @@ class User extends Authenticatable
      */
     public function hasModule($module)
     {
-        if($this->modules->contains('path',$module))
-        {
+        if ($this->modules->contains('path', $module)) {
             return true;
         }
         return false;
@@ -87,19 +86,57 @@ class User extends Authenticatable
     public function canAccess($module)
     {
         // dd($this->role);
-        if ( 'admin' == $this->role ) {
+        if ('admin' == $this->role) {
             return true;
-        }else {
+        } else {
             return $this->hasModule($module);
         }
         return false;
     }
-    public function articles(){
-        return $this->hasMany(Article::class,'user_id');
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'user_id');
     }
-    public function getCurrencyName(){
-        $currency_name = Currency::where('id',$this->currency_id)->value('symbol');
+    public function getCurrencyName()
+    {
+        $currency_name = Currency::where('id', $this->currency_id)->value('symbol');
         return $currency_name;
     }
+    public function getAdmin($admin_id, $user_id)
+    {
+        $user = Track::where('user_id', $user_id)->first();
+        if ($user) {
 
+            $track = Track::where('admin_id', $admin_id)->where('user_id', $user_id)->first();
+            if ($track) {
+                $admin_name = $this->where('id', $admin_id)->value('name');
+                return $admin_name;
+            } else {
+                return null;
+            }
+        } else {
+            return null;
+        }
+    }
+    public function checkTrack($user_id)
+    {
+        $user = Track::where('user_id', $user_id)->first();
+        if ($user) {
+            $user_name = $this->where('id', $user->admin_id)->value('name');
+
+            return $user_name;
+        } else {
+            return null;
+        }
+    }
+    public function addresses(){
+        return $this->hasMany(Address::class);
+    }
+
+    public function getDefaultAddressAttribute() {
+        return $this->addresses()->where('default_address', 1)->first();
+    }
+    public function governorate(){
+        return $this->belongsTo(Governorate::class);
+    }
 }

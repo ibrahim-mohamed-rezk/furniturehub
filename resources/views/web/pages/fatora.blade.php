@@ -160,13 +160,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <strong>{{ __('web.subtotal') }}</strong><br />
-                                                    <span>{{ $order->total_products }} {{ $currency->symbol }}</span>
+                                                    <span>{{ $order->total_products . " L.E"}} </span>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <strong>{{ __('web.tax_value') }}</strong><br />
-                                                    <span>{{ $order->tax_value }} {{ $currency->symbol }}
+                                                    <span>{{ $order->tax_value . " L.E"}} 
                                                     </span>
                                                 </div>
                                             </div>
@@ -175,7 +175,7 @@
                                                     <div class="form-group">
                                                         <strong
                                                             style="color: #F36621">{{ __('web.cobon_discount') }}</strong><br />
-                                                        <span>{{ $order->cobon_discount }} {{ $currency->symbol }}</span>
+                                                        <span>{{ $order->cobon_discount . " L.E"}} </span>
                                                     </div>
                                                 </div>
                                             @endif
@@ -184,14 +184,14 @@
                                                     <div class="form-group">
                                                         <strong
                                                             style="color: #F36621">{{ __('web.offer_discount') }}</strong><br />
-                                                        <span>{{ $order->offer_discount }} {{ $currency->symbol }}</span>
+                                                        <span>{{ $order->offer_discount . " L.E"}} </span>
                                                     </div>
                                                 </div>
                                             @endif
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <strong>{{ __('web.total') }}</strong><br />
-                                                    <span>{{ $order->total }} {{ $currency->symbol }}</span>
+                                                    <span>{{ $order->total . " L.E"}} </span>
                                                 </div>
                                             </div>
 
@@ -222,8 +222,8 @@
                                         <th scope="row">{{ $key + 1 }}</th>
                                         <td>{{ $product->product->details->name }}</td>
                                         <td>{{ $product->count }}</td>
-                                        <td>{{ $product->product->cost }} {{ $currency->symbol }}</td>
-                                        <td>{{ $product->total * $product->count}} {{ $currency->symbol }}</td>
+                                        <td>{{ $product->product->cost . " L.E"}} </td>
+                                        <td>{{ ($product->total * $product->count) . " L.E" }} </td>
                                     </tr>
                                 @endforeach
 
@@ -234,7 +234,7 @@
                                 <th scope="col"></th>
                                 <th scope="col"></th>
 
-                                <th scope="col">{{ $order->total }} {{ $currency->symbol }}</th>
+                                <th scope="col">{{ $order->total . " L.E"}} </th>
                             </tfoot>
                         </table>
                     </div>

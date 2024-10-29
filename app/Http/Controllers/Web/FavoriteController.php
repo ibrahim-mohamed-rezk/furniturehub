@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Requests\Web\FavoriteRequest;
+use App\Models\Favorite;
 use App\Models\Product;
 use App\Services\Product\Favorite\FavoriteService;
 use App\Services\Product\ProductService;
@@ -27,10 +28,14 @@ class FavoriteController extends Controller
     }
     public function viewFavorite()
     {
-        $favorites = (new FavoriteService())->favorites();
+        $user_id = auth()->user()->id;
+        $favoritesCount = Favorite::where('user_id', $user_id)->count();
 
-        $favorites['data'] =count($favorites['data']);
-        return $favorites;
+        $response = [
+            'data' => $favoritesCount
+        ];
+
+        return response()->json($response);
     }
     public function store(FavoriteRequest $request) :JsonResponse
     {

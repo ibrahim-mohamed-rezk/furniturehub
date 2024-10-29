@@ -38,16 +38,13 @@ class SliderRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'color' => [
-                'required',
-                'regex:/^#([a-f0-9]{6}|[a-f0-9]{3})$/i'
-            ],
+
             'link' => 'required'
 
         ];
         // $rules['image'] = (isset($this->slider) ? 'sometimes' : 'required') .$mimes;
         
-        $mimes = '|mimes:jpg,png,jpeg,webp';
+        $mimes = '|mimes:jpg,png,jpeg,webp,gif';
 
 
         foreach (languages() as $lang) {

@@ -11,7 +11,6 @@
                     <p class="font-md color-gray-500">{{ __('web.Welcome_back') }}</p>
                     <form action="{{ $action }}" method="post" onsubmit="formAction(this)">
                         @CSRF
-
                         @if (session('error'))
                             <div class="alert alert-danger">
                                 {{ session('error') }}

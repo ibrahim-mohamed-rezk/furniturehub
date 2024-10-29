@@ -44,7 +44,6 @@
                                 <th>#ID</th>
                                 <th scope="col">{{ __('sliders.photo') }}</th>
                                 <th scope="col">{{ __('sliders.name') }}</th>
-                                <th scope="col">{{ __('sliders.color') }}</th>
                                 <th class="text-end" scope="col"> {{ __('sliders.action') }}</th>
                             </tr>
                         </thead>
@@ -54,7 +53,6 @@
                                     <td>{{ $key +1 }}</td>
                                     <td><img src="{{ asset($row->image) }}" alt="slider_image" height="75px"></td>
                                     <td><b>{{ $row->name }}</b></td>
-                                    <td><div style="width: 50px;height: 50px; background-color: {{ $row->color }} "></td>
                                     <td class="text-end">
                                         @if (!$row->deleted_at)
                                             <a class="btn btn-sm font-sm rounded btn-brand mr-5"

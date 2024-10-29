@@ -13,7 +13,7 @@ class CategoryDescription extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'title','language_id','category_id'
+        'title','language_id','category_id','image_products'
     ];
 
 }

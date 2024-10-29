@@ -27,17 +27,24 @@
                                             placeholder="{{ __('sliders.name') }} {{ $language->name }}"
                                             value='{{ old("name_{$language->local}", $slider[$language->local]->name ?? '') }}'>
                                     </div>
+                                @endforeach
+
+                                @foreach (languages() as $key => $language)
+
                                     <div class="col-md-6 mb-4">
                                         <label for="validationServer">{{ __('sliders.image') }} {{ $language->name }}</label>
                                         <input type="file" name="image_{{$language->local}}" class="form-control {{ $errors->has('image_'.$language->locale) ? 'is-invalid' : '' }}" id="validationServer{{ $key }}" placeholder="{{ __('sliders.image') }} {{ $language->name }}" value='{{ old("image_{$language->local}") }}'>
                                     </div>
                                 @endforeach
-
+                                @foreach (languages() as $key => $language)
 
                                     <div class="col-md-6 mb-4">
-                                        <label for="validationServer">{{ __('sliders.color') }}</label>
-                                        <input type="color" name="color" class="form-control {{ $errors->has('color') ? 'is-invalid' : '' }}" id="validationServer" placeholder="{{__('sliders.color')}}" value='{{ old("color", $slider->color ?? "") }}'>
+                                        <label for="validationServer{{ $key }}">{{ __('banners.description') }}
+                                            {{ $language->name }}</label>
+                                        <textarea name="description_{{ $language->local }}" class="form-control {{ $errors->has('description_' . $language->local) ? 'is-invalid' : '' }}" placeholder="{{ __('banners.description') }} {{ $language->name }}" rows="4" style="height: 48px;">{{ old("description_{$language->local}", $slider[$language->local]->description ?? '') }}</textarea>
+
                                     </div>
+                                @endforeach
                                     <div class="col-md-6 mb-4">
                                         <label for="validationServer">{{ __('sliders.link') }}</label>
                                         <input type="text" name="link" class="form-control {{ $errors->has('link') ? 'is-invalid' : '' }}" id="validationServer" placeholder="{{__('sliders.link')}}" value='{{ old("link", $slider->link ?? "") }}'>

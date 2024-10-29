@@ -173,7 +173,7 @@ class SliderController extends Controller
             ];
             if ($request->file('image_' . $lang->local))
             {
-                $data['image'] = ImageService::uploadImage($requestData['image_' . $lang->local]);
+                $data['image'] = ImageService::uploadSliderImage($requestData['image_' . $lang->local]);
             }
             
             SliderDescription::where('slider_id',$slider_id)->where('language_id',$lang->id)->update($data);

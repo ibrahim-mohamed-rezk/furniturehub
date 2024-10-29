@@ -1,264 +1,129 @@
-<div class="card-grid-style-1">
-    <div class="card-grid-inner">
-        {{-- @if (in_array($product->id, $offer_ids))
-            @if (getCurrentLocale() == 'ar')
-                <span class="label" style="margin-left:230px"><span class="font-sm color-white ">Flash</span></span>
-            @else
-                <span class="label"><span class="font-sm color-white ">Flash</span></span>
-            @endif
-        @endif --}}
-        <div class="tools">
-            <a class="btn btn-wishlist btn-tooltip mb-10 @if ($product->favorited()) favorited @endif"
-                onclick="toggleFavorite(this)" data-id="{{ $product->id }}"
-style="@if ($product->favorited())
-                background:url({{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/wishlist-hover.svg) @else
-                background:url({{ url('') }}/assets/web/ASSETS_En/imgs/template/icons/wishlist.svg) @endif no-repeat center"
-                style="cursor:pointer;" aria-label="Add To Wishlist"></a>
-            <a class="btn btn-compare btn-tooltip mb-10" onclick="addCompare(this)" data-id="{{ $product->id }}"
-                style="cursor:pointer;" aria-label="Compare"></a>
-<a class="btn btn-quickview btn-tooltip mb-10" aria-label="{{ __('web.quick_view') }}" href="#{{ $product->sku_code }}"
-                data-bs-toggle="modal"></a>
-        </div>
-        <div class="image-box">
+<div class="side-baner-item">
+    <div class="side-banner-img">
+        <img src="{{asset($product->image_url)}}" alt="banner" loading="lazy">
+        <div class="top-icons">
+            <a onclick="addCompare(this)" data-id="{{ $product->id }}">
+                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.4"
+                          d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
+                          fill="#FD9636" />
+                    <path opacity="0.4"
+                          d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
+                          fill="#FD9636" />
+                    <path
+                            d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
+                            fill="#FD9636" />
+                    <path
+                            d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
+                            fill="#FD9636" />
+                </svg>
+            </a>
 
-            @if ($product->cost_discount)
-                <span class="rounded-full  text-white "
-style="font-size: 12px;width: auto;position: absolute;border-radius: 50px;padding: 2px 5px;background-color: #fd9636 ">{{ __('web.save') }}
-                    {{ 100 - $product->percentage }}% </span>
-            @elseif (in_array($product->id, $offer_ids))
-                <span class="rounded-full  text-white "
-style="font-size: 12px;width: auto;position: absolute;border-radius: 50px;padding: 2px 5px;background-color: #fd9636 ">{{ __('web.use_cobon_to_save') }}
-                </span>
-            @endif
-            <a href="{{ $product->url }}">
-<img src="{{ $product->image_url }}" loading="lazy" alt="Ecom" style="max-width: 100%; height: auto;"
-                    class="downloadable-image" data-filename="{{ $product->name }}">
+            <a href="#" class="openProductModal" data-id="{{ $product->id }}" onclick="quickView(this)">
+                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
+                            fill="#FD9636" />
+                    <path opacity="0.3"
+                          d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
+                          fill="#FD9636" />
+                    <path
+                            d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
+                            fill="#FD9636" />
+                </svg>
+
             </a>
         </div>
-        @if (in_array($product->id, $offer_ids) && isset($cobonProduct))
-            @if (request()->route()->getName() == 'web.index')
-                <div class="box-count">
-<div class="deals-countdown" data-countdown="{{ $cobonProduct->end_date }} 00:00:00" style="background-color: #fd9636">
-                        <span class="countdown-section">
-                            <span class="countdown-amount font-sm-bold lh-16">00</span>
-                            <span class="countdown-period lh-14 font-xs"> day </span>
-                        </span>
-                        <span class="countdown-section">
-                            <span class="countdown-amount font-sm-bold lh-16">00</span>
-                            <span class="countdown-period font-xs lh-14"> hour </span>
-                        </span>
-                        <span class="countdown-section">
-                            <span class="countdown-amount font-sm-bold lh-16">00</span>
-                            <span class="countdown-period font-xs lh-14"> min </span>
-                        </span>
-                        <span class="countdown-section">
-                            <span class="countdown-amount font-sm-bold lh-16">00</span>
-                            <span class="countdown-period font-xs lh-14"> sec </span>
-                        </span>
-                    </div>
-                </div>
-            @endif
-        @endif
+        <div class="bottom-button">
+            <button data-id="{{ $product->id }}" onclick="addCart(this)">
+                <span>{{__('web.add_to_cart')}}</span>
+                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
+                            stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                </svg>
 
-
-        <div class="info-right">
-            <a class="font-xs color-gray-500" href="{{ $product->url }}">{{ $product->category->details->title }}</a>
-            <br>
-            <a class="color-brand-3 font-sm-bold" href="{{ $product->url }}">{{ $product->name }}</a>
-            @if ($product->rates['count'] != 0)
-                <div class="rating">
-                    @include('web.component.rate.rateComponent', ['rate' => $product->rates['rate']])
-                    {{-- <span class="font-xs color-gray-500">({{ $product->rates['count'] }})</span> --}}
-                </div>
-            @endif
-            <div class="price-info">
-@if (in_array($product->id, $offer_ids) && !$product->cost_discount)
-                @if (isset($cobonProduct))
-                <strong class="font-md-bold color-brand-3 price-main ">{{ $product->calculate_cobon($cobonProduct->discount) }}
-                    {{ __('web.L.E') }}</strong>
-                    @else
-<strong class="font-md-bold color-brand-3 price-main ">{{ $product->calculate_cobon($cobonCategory->discount) }}
-                            {{ __('web.L.E') }}</strong>
-@endif
-                @else
-<strong class="font-md-bold color-brand-3 price-main ">{{ $product->cost_discount }}
-                        {{ __('web.L.E') }}</strong>
-                @endif
-@if ($product->cost_discount)
-                <span class="color-gray-500 price-line" style="text-decoration: line-through;">{{ $product->cost }}
-                    {{ __('web.L.E') }} </span>
-                @elseif (in_array($product->id, $offer_ids))
-                <span class="color-gray-500 price-line" style="text-decoration: line-through;">{{ $product->cost }}
-                    {{ __('web.L.E') }} </span>
-                @else
-                <strong class="font-md-bold color-brand-3 price-main ">{{ $product->cost }}
-                    {{ __('web.L.E') }}</strong>
-                @endif
-<span class="color-gray-500">{{ '/' . __('products.' . $product->type) }} </span>
-
-                @if (in_array($product->id, $offer_ids))
-<ul>
-                        <li>{{ __('web.use_coupon_and_get_offer') }}</li>
-                    </ul>
-                @endif
-
-
-            </div>
-            <div class="mt-20 box-btn-cart">
-                <a class="btn btn-cart" data-id="{{ $product->id }}" onclick="addCart(this)"
-style="cursor: pointer">{{ __('web.add_to_cart') }}</a>
-            </div>
-            <ul class="list-features">
-                @foreach ($product->items as $row)
-                    <li>{{ $row->details->name }}</li>
-                @endforeach
-            </ul>
+            </button>
         </div>
     </div>
-</div>
-
-<div class="modal fade" id="{{ $product->sku_code }}" tabindex="-1" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content apply-job-form">
-            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
-            <div class="modal-body p-30">
-                <div class="row">
-                    <div class="col-lg-6">
-
-
-                        <div class="gallery-image">
-                            <div class="galleries-2">
-                                <div class="detail-gallery">
-                                    @if ($product->cost_discount)
-                                    <label class="label">{{ __('web.save') }}
-                                        {{ 100 - $product->percentage }}%</label>
-                                    @endif
-                                    @if (in_array($product->id, $offer_ids))
-                                    <label class="label">{{ __('web.use_cobon_to_save') }}</label>
-                                    @endif
-                                    <div class="product-image-slider-2">
-
-                                        <figure class="border-radius-10"><img src="{{ $product->image_url }}"
-                                                alt="{{ $product->name }}"></figure>
-                                        @foreach ($product->photos as $photo)
-                                        <figure class="border-radius-10"><img src="{{ $photo->image_url }}"
-                                                alt="{{ $product->name }}"></figure>
-                                        @endforeach
-
-
-                                    </div>
-                                </div>
-                                {{-- <div class="slider-nav-thumbnails-2">
-
-                                    <div>
-                                        <div class="item-thumb"><img src="{{ $product->image_url }}"
-                                alt="{{ $product->name }}">
-                            </div>
-                        </div>
-                        @foreach ($product->photos as $photo)
-                        <div>
-                            <div class="item-thumb"><img src="{{ $photo->image_url }}" alt="{{ $product->name }}"></div>
-                        </div>
-                        @endforeach
-
-
-                    </div> --}}
-                </div>
+    <div class="side-banner-info">
+        <span class="cat">{{ $product->category->details->title }}</span>
+        <a  href="{{ $product->url }}" style="display: block; overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; max-height: 3em; line-height: 1.5em; text-overflow: ellipsis;" class="title">
+            {{ $product->name }}
+        </a>
+        <div class="price">
+            <div>
+                <span>{{ $product->cost }} {{ __('web.L.E') }} </span>
             </div>
         </div>
-        <div class="col-lg-6">
-            <h1 class="color-brand-3 mb-10" style="font-size: 1.75em;">{{ $product->name }}</h1>
+        <div class="stars">
             @if ($product->rates['rate'] != 0)
-            <div class="rating mt-5">
-                {{-- <h6>{{ $product->rates['rate'] }} {{ __('web.out_of') }} 5</h6> --}}
-                <span class="font-xs color-gray-500">({{ $product->rates['rate'] }}
-                    {{ __('web.out_of') }}
-                    5)</span>
+
                 @include('web.component.rate.rateComponent', [
-                'rate' => $product->rates['rate'],
-                ])
-            </div>
+                 'rate' => $product->rates['rate'],
+                 ])
             @endif
 
-            @if ($product->cost_discount)
-            @if ($product->cost < 10000) <sympl-widget productprice="{{ $product->cost }}" storecode="STR-343">
-                </sympl-widget>
-                @endif
-                @else
-                @if ($product->cost < 10000) <sympl-widget productprice="{{ $product->cost }}" storecode="STR-343">
-                    </sympl-widget>
-                    @endif
-                    @endif
-                    <div class="border-bottom pt-20 mb-10"></div>
-                    <div class="box-product-price">
-                        <h3 class="color-brand-3 price-main d-inline-block mr-10">{{ $product->cost }}
-                            {{ __('web.L.E') }}
-                        </h3>
-                        @if ($product->cost_discount)
-                        <span class="color-gray-500 price-line font-xl line-througt">{{ $product->cost_discount }}
-                            {{ __('web.L.E') }}</span>
-                        @endif
-                        <span class="color-brand-3 font-xl">{{ '/' . __('products.' . $product->type) }} </span>
-
-                    </div>
-                    <div class="progress mb-5" style="height: 5px;">
-                        <div class="progress-bar" role="progressbar" style="width: {{ $product->percentage }}%"
-                            aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    @if ($product->cost_discount)
-                    <span>{{ __('web.saving') }} :
-                        {{ $product->cost_discount - $product->cost }}
-                        {{ __('web.L.E') }}</span>
-                    @endif
-
-
-                    <div class="product-description mt-20 color-gray-900">
-                        @foreach ($product->items as $key => $item)
-                        @if ($key != 0)
-                        <br>
-                        @endif – {{ $item->details->name }}
-                        @endforeach
-                    </div>
-                    <div class="buy-product mt-20">
-                        <div class="box-quantity">
-                            {{-- <p class="font-sm mb-2">{{ __('web.quantity') }}</p> --}}
-                            <div class="input-quantity">
-                                <input class="font-xl color-brand-3 count" type="text" value="1" min="1">
-                                <span class="quantity-control minus-cart"></span>
-                                <span class="quantity-control plus-cart"></span>
-                            </div>
-                            <div class="button-buy mt-2">
-                                <a class="btn btn-cart" data-id="{{ $product->id }}" onclick="addCart(this)"
-                                    style="cursor: pointer"><i class="fa fa-shopping-cart"></i>
-                                    {{ __('web.cart') }}</a>
-                                {{-- <a class="btn btn-buy" data-id="{{ $product->id }}" onclick="buynow(this)"
-                                style="cursor: pointer"><i class="fa fa-money-bill-1"></i></a> --}}
-                                <a class="btn btn-buy" href="https://wa.me/201060552252?text={{ url()->current() }}"
-                                    style="cursor: pointer;background: #52d160;" target="_blank"><i
-                                        class="fab fa-whatsapp"></i> {{ __('web.contact_us') }}</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="border-bottom pt-30 mb-20"></div><a class="mr-30 " onclick="toggleFavoriteProduct(this)"
-                        data-id="{{ $product->id }}" style="cursor:pointer;"><span
-                            class="btn btn-wishlist mr-5 opacity-100 transform-none"></span><span
-                            class="font-md color-gray-900">{{ __('web.add_to_Wishlist') }}</span></a><a
-                        onclick="addCompare(this)" data-id="{{ $product->id }}" style="cursor:pointer;"><span
-                            class="btn btn-compare mr-5 opacity-100 transform-none"></span><span
-                            class="font-md color-gray-900">{{ __('web.add_to_Compare') }}</span></a>
-                    <div class="info-product mt-20 font-md color-gray-900">SKU:
-                        {{ $product->sku_code }}<br>{{ __('web.category') }}:
-                        {{ $product->category->details->title }}<br>Tags:
-                        @foreach ($product->tags as $key => $tag)
-                        {{ $tag->details->name }} @if (count($product->tags) - 1 != $key)
-                        ,
-                        @endif
-                        @endforeach
-                    </div>
         </div>
+        <span class="delivery">
+            @if($product->items)
+                @foreach($product->items as $item)
+                    <strong style="color: #fd9636">{{$item->details->name}}</strong>
+                @endforeach
+
+            @endif
+        </span>
+        <div class="flsh-pro-buttons">
+            <button data-id="{{ $product->id }}" onclick="addCart(this)">
+                <span>{{__('web.add_to_cart')}} </span>
+                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
+                            stroke="white" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                </svg>
+
+            </button>
+            <a onclick="addCompare(this)" data-id="{{ $product->id }}">
+                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.4"
+                          d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
+                          fill="#FD9636" />
+                    <path opacity="0.4"
+                          d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
+                          fill="#FD9636" />
+                    <path
+                            d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
+                            fill="#FD9636" />
+                    <path
+                            d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
+                            fill="#FD9636" />
+                </svg>
+            </a>
+
+            <a href="#" class="openProductModal" data-id="{{ $product->id }}" onclick="quickView(this)">
+                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path
+                            d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
+                            fill="#FD9636" />
+                    <path opacity="0.3"
+                          d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
+                          fill="#FD9636" />
+                    <path
+                            d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
+                            fill="#FD9636" />
+                </svg>
+
+            </a>
+        </div>
+        <div class="new-offer">{{__('web.new')}}</div>
     </div>
 </div>
-</div>
-</div>
-</div>
+@include('web.component.product.productExtention',['product'=>$product])

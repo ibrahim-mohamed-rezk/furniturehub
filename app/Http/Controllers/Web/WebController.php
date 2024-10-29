@@ -14,6 +14,7 @@ use App\Models\Article;
 use App\Models\Contact;
 use App\Models\Product;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\View\View;
 use App\Models\CobonProduct;
 use App\Models\OrderProduct;
@@ -47,61 +48,46 @@ class WebController extends Controller
             return Category::withDescription()->where('categories.category_id', null)->orderByDesc('id')->get();
         });
         $categories = [];
-        $index = 0; 
-
-        // $cachedCategories = cache(LaravelLocalization::getCurrentLocale() .'categories');
-
-        // if ($cachedCategories) {
-        //     $categories = $cachedCategories;
-        // } else {
-        //     $categories = [];
-        //     $index = 0;
-        
-        //     for ($i = 0; $i < count($categories_all); $i++) {
-        //         $categories[$index][] = $categories_all[$i];
-        
-        //         if (count($categories[$index]) == $index + 1) {
-        //             $index += 1;
-        //         }
-        //     }
-        //     cache()->put(LaravelLocalization::getCurrentLocale() .'categories', $categories, now()->addMinutes(60)); // Adjust the cache duration as needed
-        // }
-
-        $offer_ids = $this->cobonproductsNow()['ids'];
-        // $currentLanguage = LaravelLocalization::getCurrentLocale();
-
+        $index = 0;
         $banners = Cache::remember( LaravelLocalization::getCurrentLocale() . 'banners', 600, function () {
-            return Slider::withDescription([4, 5, 7, 8, 9, 10, 13, 14, 15, 16, 18, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47])
+            return Slider::withDescription([4, 5, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32])
             ->orderBy('sliders.id', 'ASC')->select('sliders.id', 'sliders.link','ad.image')
             ->get();
         }); 
 
         $sliders = Cache::remember(LaravelLocalization::getCurrentLocale().'sliders', 600, function () {
             return Slider::withDescription()->where('sliders.status', 'slider')->select('sliders.id', 'sliders.link','ad.image')->get();
-        }); 
+        }); //Done
         $news_products = Cache::remember(LaravelLocalization::getCurrentLocale().'news_products', 600, function () {
-            // return Product::withDescription()->orderBy('id', 'DESC')->whereIn('products.sku_code', ["ofb0011", "fh0116", "why00063"])->where('products.only_offer', 'no')->take(3)->get();
-        }); 
+             return Product::withDescription()->orderBy('id', 'DESC')->where('products.only_offer', 'no')->take(10)->get();
+        }); //Done
         $sale_products = Cache::remember(LaravelLocalization::getCurrentLocale().'sale_products', 600, function () {
-            // return Product::withDescription()->whereIn('products.sku_code', ["FAY0042", "FH0111", "YAS0059"])->where('products.only_offer', 'no')->inRandomOrder()->take(3)->get();
-        }); 
+            return Product::withDescription()->whereIn('products.sku_code', ["FAY0042", "FH0111", "YAS0059"])->where('products.only_offer', 'no')->take(10)->get();
+        }); //Done
         $hot_products = Cache::remember(LaravelLocalization::getCurrentLocale().'hot_products', 600, function () {
-            // return Product::withDescription()->where('products.cost_discount', '!=', null)->whereIn('products.sku_code', ["FH0106", "SSF0042", "lio0008"])->orderBy('id', 'DESC')->where('products.only_offer', 'no')->take(3)->get();
-        }); 
-        $shipping_products = Cache::remember(LaravelLocalization::getCurrentLocale().'shipping_products', 600, function () use ($offer_ids){
-            // return Product::withDescription()->whereRaw("products.id IN (" . implode(',', $offer_ids) . ")")->orderByRaw("field(products.id," . implode(',', $offer_ids) . ")")->take(6)->get();
-        }); 
-        $cobonProduct = Cache::remember(LaravelLocalization::getCurrentLocale().'cobonProduct', 600, function () {
-            // return Cobon::where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->where('type', 'product')->orderBy('id', 'DESC')->first();
-        }); 
-        $cobonCategory = Cache::remember(LaravelLocalization::getCurrentLocale().'cobonCategory', 600, function () {
-            // return Cobon::where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->where('type', 'category')->orderBy('id', 'DESC')->first();
-        }); 
-        $only_product_offer = Cache::remember(LaravelLocalization::getCurrentLocale().'only_product_offer', 600, function () {
-            // return Product::withDescription()->where('products.only_offer', 'yes')->first();
-        }); 
+            return Product::withDescription()->where('products.page_offer', "yes")->where('products.only_offer', 'no')->take(10)->get();
+        }); //Done
 
-        $offer_categories_ids = $this->cobonNow()['ids'];
+        $cobonProduct =Cobon::where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->where('type', 'product')->orderBy('id', 'DESC')->first();
+
+        if ($cobonProduct) {
+            // Get the current time
+            $now = Carbon::now();
+
+            // Get the end_date as a Carbon instance
+            $endDate = Carbon::parse($cobonProduct->end_date);
+
+            // Calculate the difference
+            $difference = $endDate->diff($now);
+
+            // Convert difference to total seconds
+            $totalSeconds = $endDate->diffInSeconds($now);
+        }
+        $right_products_cobon = Product::withDescription()->where('products.category_id',85)->where('products.only_offer', 'no')->take(2)->inRandomOrder()->get();
+
+        $left_products_cobon = Product::withDescription()->where('products.category_id',87)->where('products.only_offer', 'no')->take(2)->inRandomOrder()->get();
+        $only_product_offer =Product::withDescription()->where('products.only_offer', 'yes')->first();
+
         $articles =  Cache::remember(LaravelLocalization::getCurrentLocale().'articles', 600, function () {
             return Article::withDescription()->paginate(5);
         }); 
@@ -382,5 +368,21 @@ class WebController extends Controller
     public function account(): View
     {
         return view('web.pages.account');
+    }
+    public function download_app(Request $request)
+    {
+        $userAgent = $request->header('User-Agent');
+        // dd($userAgent);
+        $googleLink = Setting::where('key','google')->first();
+        $appleLink = Setting::where('key','apple')->first();
+        if (strpos($userAgent, 'iPhone') !== false || strpos($userAgent, 'iPad') !== false || strpos($userAgent, 'iPod') !== false) {
+            $downloadLink = $appleLink->value;
+        } elseif (strpos($userAgent, 'Android') !== false) {
+            $downloadLink = $googleLink->value;
+        } else {
+            $downloadLink = $googleLink->value;
+        }
+
+        return redirect()->away($downloadLink);
     }
 }

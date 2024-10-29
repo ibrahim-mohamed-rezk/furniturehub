@@ -29,6 +29,11 @@ class Product extends Model
     {
         return $this->hasMany(ProductItem::class);
     }
+    public function extensions()
+    {
+        return $this->belongsToMany(Extension::class, 'product_extensions');
+    }
+
     public function sections()
     {
         return $this->hasMany(ProductSection::class);
@@ -59,22 +64,21 @@ class Product extends Model
         }
 
         // If not in the cache, proceed with the original logic
-        $currency = (new CurrencyService())->getCurrency();
         $result = [
-            'price' => round($this->cost / $currency->value, 2),
+            'price' => round($this->cost , 2),
             'price_before' => null,
             'percentage' => 100,
             'discount' => false,
-            'symbol' => $currency->symbol,
+            'symbol' => 'L.E',
         ];
 
         if ($this->cost_discount) {
             $result = [
-                'price' => round($this->cost_discount / $currency->value, 2),
-                'price_before' => round($this->cost / $currency->value, 2),
+                'price' => round($this->cost_discount , 2),
+                'price_before' => round($this->cost , 2),
                 'percentage' => round(($this->cost_discount / $this->cost) * 100, 0),
                 'discount' => true,
-                'symbol' => $currency->symbol,
+                'symbol' => 'L.E',
             ];
         }
 
@@ -82,6 +86,9 @@ class Product extends Model
         cache()->put($cacheKey, $result, null); // Cache for 60 minutes
 
         return $result;
+    }
+    public function getPercentageAttribute(){
+        return round(($this->cost_discount / $this->cost) * 100, 0);
     }
 
     public function getRateAttribute()
@@ -222,6 +229,42 @@ class Product extends Model
             'ad.delivery',
             'ad.made_in',
         ]);
+        return $query;
+    }
+    public static function withDescriptionApp($product_id = null)
+    {
+
+        $query = self::join('product_descriptions as ad_current', 'ad_current.product_id', 'products.id')
+            ->where('ad_current.language_id', LaravelLocalization::getCurrentLocaleId())
+            ->leftJoin('product_descriptions as ad_english', function ($join) {
+                $join->on('ad_english.product_id', '=', 'products.id')
+                    ->where('ad_english.language_id', ReverseLanguage()->id);
+            });
+
+        $query->select([
+            'products.*',
+            'ad_current.name as current_name',
+            'ad_current.description as current_description',
+            'ad_english.name as english_name',
+            'ad_english.description as english_description',
+            'ad_current.slug',
+            'ad_current.keywords',
+            'ad_current.meta_description',
+            'ad_current.material',
+            'ad_current.dimensions',
+            'ad_current.color',
+            'ad_current.delivery',
+            'ad_current.made_in',
+        ]);
+
+        if ($product_id) {
+            if (is_array($product_id)) {
+                $query->whereIn('products.id', $product_id);
+            } else {
+                $query->where('products.id', $product_id);
+            }
+        }
+
         return $query;
     }
     public function calculate_cobon($discount)

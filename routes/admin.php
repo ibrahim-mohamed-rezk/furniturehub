@@ -66,7 +66,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function(){
                 Route::resource('teams','TeamController');
                 Route::resource('types','TypeController');
                 Route::resource('currencies','CurrencyController');
-                Route::resource('links','LinkController');
                 Route::resource('products','ProductController');
                 Route::resource('statistics','StatisticController');
                 Route::delete('product-force-delete/{id}','ProductController@force_delete')->name('products.force_delete');

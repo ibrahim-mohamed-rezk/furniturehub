@@ -31,4 +31,26 @@ class ImageService implements ShouldQueue, ShouldBeUnique
 
         return 'https://furnturehubactive.s3.eu-central-1.amazonaws.com/blogs/' . $newFileName;
     }
+    public static function uploadSliderImage($image){
+        // Get the original extension of the uploaded image
+        $originalExtension = $image->getClientOriginalExtension();
+
+        // Generate a new file name with the original extension
+        $newFileName = rand(10000, 99999) . time() . '.' . $originalExtension;
+
+        // Check if the image is a GIF
+        if (strtolower($originalExtension) === 'gif') {
+            // Directly upload the original GIF to S3 without conversion
+            Storage::disk('s3')->put('sliders/' . $newFileName, file_get_contents($image), 's3');
+        } else {
+            // Convert other formats using Intervention Image
+            $imageConverter = Image::make($image);
+
+            // Save the image to S3 in its original format
+            Storage::disk('s3')->put('sliders/' . $newFileName, $imageConverter->stream($originalExtension, 90), 's3');
+        }
+
+        // Return the S3 URL of the uploaded image
+        return 'https://furnturehubactive.s3.eu-central-1.amazonaws.com/sliders/' . $newFileName;
+    }
 }

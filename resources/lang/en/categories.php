@@ -10,8 +10,12 @@ return[
     'category_id' =>'Category type',
     'edit'=>'Edit Category',
 
-    'image'=>'Image',
-    'banner'=>'Banner'
+    'image'=>'Image In Header',
+    'banner'=>'Banner',
+
+    'icon'=>'Icon Category',
+    'icon_search'=>'Icon Category Search',
+    'image_products'=>'category cover inside products'
 
 
 ];

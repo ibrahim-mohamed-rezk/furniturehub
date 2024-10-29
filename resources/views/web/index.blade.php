@@ -1,2161 +1,432 @@
 @extends('web.layouts.container')
 
-
-
 @section('styles')
-<link rel="stylesheet" href="{{url('') }}/assets/web/ASSets_Ar/css/custom/home.css">
+    <link rel="stylesheet" href="{{ url('') }}/assets/web/ASSets/css/home.css">
 @endsection
 
 
 @section('content')
 
-<header class="container">
-    <div class="header-wrapper">
-        <div class="header-slider-1">
-            <div class="swiper-wrapper">
-                @php
-                $items = [
-                url('/storage/assets/home/slider-1.png'),
-                url('/storage/assets/home/slider-1.png'),
-                url('/storage/assets/home/slider-1.png'),
-                url('/storage/assets/home/slider-1.png'),
-                url('/storage/assets/home/slider-1.png'),
-                ];
-                @endphp
+    <header class="container">
+        <div class="header-wrapper">
+            <div class="header-slider-1">
+                <div class="swiper-wrapper">
+                    @foreach ($sliders as $slider)
+                        <div class="swiper-slide">
+                            <div class="slide-container">
+                                <a href="{{ route($slider->url['first'], $slider->url['second'] ?? '') }}">
+                                    <img src="{{ asset($slider->image) }}" alt="{{ asset($slider->title) }}" loading="lazy">
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
 
-                @foreach($items as $item)
-                <div class="swiper-slide">
-                    <div class="slide-container">
-                        <img src="{{ $item }}" alt="Slider Image">
-                    </div>
                 </div>
+                <div class="header-slider-1-pagination">
+                    <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
+                          aria-label="Go to slide 1"></span>
+                </div>
+
+                <div class="header-slider-1-next">
+                    <svg width="14" height="12" viewBox="0 0 14 12" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M1 4.99993H11L7.71 1.70994C7.61627 1.61697 7.54188 1.50637 7.49111 1.38451C7.44034 1.26265 7.4142 1.13195 7.4142 0.999937C7.4142 0.867925 7.44034 0.73722 7.49111 0.61536C7.54188 0.493501 7.61627 0.382901 7.71 0.289938C7.89736 0.103687 8.15081 -0.000854492 8.415 -0.000854492C8.67919 -0.000854492 8.93264 0.103687 9.12 0.289938L13.41 4.58993C13.7856 4.96328 13.9978 5.47035 14 5.99993C13.9951 6.52603 13.7832 7.02903 13.41 7.39993L9.12 11.6999C9.02676 11.7925 8.9162 11.8658 8.79463 11.9157C8.67306 11.9655 8.54286 11.9909 8.41146 11.9905C8.28007 11.99 8.15005 11.9637 8.02884 11.913C7.90762 11.8623 7.79758 11.7882 7.705 11.6949C7.61242 11.6017 7.53911 11.4911 7.48925 11.3696C7.4394 11.248 7.41398 11.1178 7.41444 10.9864C7.41491 10.855 7.44125 10.725 7.49196 10.6038C7.54267 10.4825 7.61676 10.3725 7.71 10.2799L11 6.99993H1C0.734783 6.99993 0.480429 6.89457 0.292892 6.70704C0.105356 6.5195 0 6.26515 0 5.99993C0 5.73471 0.105356 5.48036 0.292892 5.29283C0.480429 5.10529 0.734783 4.99993 1 4.99993Z"
+                                fill="white" />
+                    </svg>
+                </div>
+
+                <div class="header-slider-1-preve">
+                    <svg width="14" height="12" viewBox="0 0 14 12" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M13 4.99993H3L6.29 1.70994C6.38373 1.61697 6.45812 1.50637 6.50889 1.38451C6.55966 1.26265 6.5858 1.13195 6.5858 0.999937C6.5858 0.867925 6.55966 0.73722 6.50889 0.61536C6.45812 0.493501 6.38373 0.382901 6.29 0.289938C6.10264 0.103687 5.84919 -0.000854492 5.585 -0.000854492C5.32081 -0.000854492 5.06736 0.103687 4.88 0.289938L0.59 4.58993C0.214412 4.96328 0.00223279 5.47035 0 5.99993C0.00486659 6.52603 0.216844 7.02903 0.59 7.39993L4.88 11.6999C4.97324 11.7925 5.0838 11.8658 5.20537 11.9157C5.32694 11.9655 5.45714 11.9909 5.58854 11.9905C5.71993 11.99 5.84995 11.9637 5.97116 11.913C6.09238 11.8623 6.20242 11.7882 6.295 11.6949C6.38758 11.6017 6.46089 11.4911 6.51075 11.3696C6.5606 11.248 6.58602 11.1178 6.58556 10.9864C6.58509 10.855 6.55875 10.725 6.50804 10.6038C6.45733 10.4825 6.38324 10.3725 6.29 10.2799L3 6.99993H13C13.2652 6.99993 13.5196 6.89457 13.7071 6.70704C13.8946 6.5195 14 6.26515 14 5.99993C14 5.73471 13.8946 5.48036 13.7071 5.29283C13.5196 5.10529 13.2652 4.99993 13 4.99993Z"
+                                fill="white" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="section-wrapper">
+            <div class="catigory-slider-2">
+                <div class="swiper-wrapper">
+                    @foreach ($categories_all as $row)
+                        <div class="swiper-slide">
+                            <a href="{{ route('web.shop', $row->slug) }}" class="slide-container">
+                                <svg viewBox="0 0 82 119" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                            d="M14.0839 20.4864C14.8036 15.786 18.2308 11.954 22.8221 10.7162L59.5956 0.802412C66.8977 -1.16617 74.1782 4.02888 74.6915 11.5742L81.1282 106.185C81.5998 113.118 76.1039 119 69.1559 119H12.9772C5.62606 119 0.002859 112.45 1.11546 105.184L14.0839 20.4864Z"
+                                            fill="#E4EDED" />
+                                </svg>
+                                <img class="product-image" src="{{ asset($row->icon) }}" alt="cat-pro-1" loading="lazy">
+                                <h3>{{ $row->title }} </h3>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="catigory-slider-2-next">
+                    <svg width="14" height="12" viewBox="0 0 14 12" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M1 4.99993H11L7.71 1.70994C7.61627 1.61697 7.54188 1.50637 7.49111 1.38451C7.44034 1.26265 7.4142 1.13195 7.4142 0.999937C7.4142 0.867925 7.44034 0.73722 7.49111 0.61536C7.54188 0.493501 7.61627 0.382901 7.71 0.289938C7.89736 0.103687 8.15081 -0.000854492 8.415 -0.000854492C8.67919 -0.000854492 8.93264 0.103687 9.12 0.289938L13.41 4.58993C13.7856 4.96328 13.9978 5.47035 14 5.99993C13.9951 6.52603 13.7832 7.02903 13.41 7.39993L9.12 11.6999C9.02676 11.7925 8.9162 11.8658 8.79463 11.9157C8.67306 11.9655 8.54286 11.9909 8.41146 11.9905C8.28007 11.99 8.15005 11.9637 8.02884 11.913C7.90762 11.8623 7.79758 11.7882 7.705 11.6949C7.61242 11.6017 7.53911 11.4911 7.48925 11.3696C7.4394 11.248 7.41398 11.1178 7.41444 10.9864C7.41491 10.855 7.44125 10.725 7.49196 10.6038C7.54267 10.4825 7.61676 10.3725 7.71 10.2799L11 6.99993H1C0.734783 6.99993 0.480429 6.89457 0.292892 6.70704C0.105356 6.5195 0 6.26515 0 5.99993C0 5.73471 0.105356 5.48036 0.292892 5.29283C0.480429 5.10529 0.734783 4.99993 1 4.99993Z"
+                                fill="black" />
+                    </svg>
+                </div>
+
+                <div class="catigory-slider-2-preve">
+                    <svg width="14" height="12" viewBox="0 0 14 12" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M13 4.99993H3L6.29 1.70994C6.38373 1.61697 6.45812 1.50637 6.50889 1.38451C6.55966 1.26265 6.5858 1.13195 6.5858 0.999937C6.5858 0.867925 6.55966 0.73722 6.50889 0.61536C6.45812 0.493501 6.38373 0.382901 6.29 0.289938C6.10264 0.103687 5.84919 -0.000854492 5.585 -0.000854492C5.32081 -0.000854492 5.06736 0.103687 4.88 0.289938L0.59 4.58993C0.214412 4.96328 0.00223279 5.47035 0 5.99993C0.00486659 6.52603 0.216844 7.02903 0.59 7.39993L4.88 11.6999C4.97324 11.7925 5.0838 11.8658 5.20537 11.9157C5.32694 11.9655 5.45714 11.9909 5.58854 11.9905C5.71993 11.99 5.84995 11.9637 5.97116 11.913C6.09238 11.8623 6.20242 11.7882 6.295 11.6949C6.38758 11.6017 6.46089 11.4911 6.51075 11.3696C6.5606 11.248 6.58602 11.1178 6.58556 10.9864C6.58509 10.855 6.55875 10.725 6.50804 10.6038C6.45733 10.4825 6.38324 10.3725 6.29 10.2799L3 6.99993H13C13.2652 6.99993 13.5196 6.89457 13.7071 6.70704C13.8946 6.5195 14 6.26515 14 5.99993C14 5.73471 13.8946 5.48036 13.7071 5.29283C13.5196 5.10529 13.2652 4.99993 13 4.99993Z"
+                                fill="black" />
+                    </svg>
+                </div>
+                <div class="catigory-slider-2-scrollbar swiper-scrollbar"></div>
+            </div>
+        </div>
+    </section>
+
+    @include('web.component.category.categoryComponent',[
+        'title' => __('web.new_arrivals'),
+        'products' => $news_products,
+        'url' => route('web.shop', ['orderBy' => 'DESC']),  // Proper URL with query string
+        'index' => 1
+    ])
+
+    <section class="container">
+        <div class="home-banner-1-wrapper">
+            <div class="home-banner-content">
+                <div><a href="{{ route($banners['0']->url['first'], $banners['0']->url['second'] ?? '') }}"><img src="{{asset($banners['0']->image)}}" alt="{{asset($banners['0']->name)}}" loading="lazy"></a></div>
+                <div><a href="{{ route($banners['2']->url['first'], $banners['2']->url['second'] ?? '') }}"><img src="{{asset($banners['2']->image)}}" alt="{{asset($banners['2']->name)}}" loading="lazy"></a></div>
+                <div><a href="{{ route($banners['1']->url['first'], $banners['1']->url['second'] ?? '') }}"><img src="{{asset($banners['1']->image)}}" alt="{{asset($banners['1']->name)}}" loading="lazy"></a></div>
+            </div>
+        </div>
+    </section>
+    @include('web.component.category.categoryComponent',[
+        'title' => __('web.best_selling'),
+        'products' => $sale_products,
+        'url' => route('web.shop', ['orderBy' => 'DESC']),
+        'index' => 2
+    ])
+    <section class="container">
+        <div class="home-banner-2-wrapper">
+            <div class="home-banner-content">
+                <div>
+                    <a href="{{ route($banners['3']->url['first'], $banners['3']->url['second'] ?? '') }}">
+                        <img src="{{asset($banners['3']->image)}}" alt="{{asset($banners['3']->name)}}" loading="lazy">
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ route($banners['4']->url['first'], $banners['4']->url['second'] ?? '') }}">
+                        <img src="{{asset($banners['4']->image)}}" alt="{{asset($banners['4']->name)}}" loading="lazy">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    @include('web.component.category.categoryComponent',[
+        'title' => __('web.hot_deals'),
+        'products' => $hot_products,
+        'url' => route('web.offers'),
+        'index' => 3
+    ])
+
+    <section class="container">
+        <div class="home-banner-2-wrapper">
+            <div class="home-banner-content-reversed">
+                <div>
+                    <a href="{{ route($banners['4']->url['first'], $banners['4']->url['second'] ?? '') }}">
+                        <img src="{{asset($banners['4']->image)}}" alt="{{asset($banners['4']->name)}}" name="4" loading="lazy">
+
+                    </a>
+                </div>
+                <div>
+                    <a href="{{ route($banners['3']->url['first'], $banners['3']->url['second'] ?? '') }}">
+                        <img src="{{asset($banners['3']->image)}}" alt="{{asset($banners['3']->name)}}" name="3" loading="lazy">
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container">
+        <div class="home-banner-3-wrapper">
+            <div class="home-banner-3-content">
+                <div class="side-banner-col">
+                    @foreach($right_products_cobon as $product)
+                        @include('web.component.product.productCobon',['product'=>$product])
+
+                    @endforeach
+                </div>
+                @if($cobonProduct && $only_product_offer)
+                    <div class="side-banner-col">
+                        <div class="timer" data-total-seconds="{{ $totalSeconds }}">
+                            <div class="title">
+                                <div class="square"></div>
+                                <h2>{{__('web.big_sales')}}</h2>
+                            </div>
+                            <div class="timer-clock">
+                                <div class="days clock-unit">
+                                    <div class="num-label">{{__('web.days')}}</div>
+                                    <div class="number">
+                                        <span class="num" id="days">00</span>
+                                        <span>:</span>
+                                    </div>
+                                </div>
+                                <div class="hours clock-unit">
+                                    <div class="num-label">{{__('web.hour')}}</div>
+                                    <div class="number">
+                                        <span class="num" id="hours">00</span>
+                                        <span>:</span>
+                                    </div>
+                                </div>
+                                <div class="minutes clock-unit">
+                                    <div class="num-label">{{__('web.minutes')}}</div>
+                                    <div class="number">
+                                        <span class="num" id="minutes">00</span>
+                                        <span>:</span>
+                                    </div>
+                                </div>
+                                <div class="seconds clock-unit">
+                                    <div class="num-label">{{__('web.seconds')}}</div>
+                                    <div class="number">
+                                        <span class="num" id="seconds">00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="middle-banner-img">
+                            <div class="home-banner-3-swiper">
+                                <div class="swiper-wrapper">
+                                    @foreach ($only_product_offer->photos as $photo)
+                                        <div class="swiper-slide">
+                                            <div class="new-offer">
+                                                {{__('web.limited_time_offer')}}
+                                            </div>
+                                            <img src="{{ $photo->image_url }}" alt="{{ $only_product_offer->name }}" loading="lazy">
+                                        </div>
+                                    @endforeach
+                                </div>
+                                <div class="home-banner-3-next">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M5 10.9998H15L11.71 7.70981C11.6163 7.61685 11.5419 7.50625 11.4911 7.38439C11.4403 7.26253 11.4142 7.13183 11.4142 6.99981C11.4142 6.8678 11.4403 6.7371 11.4911 6.61524C11.5419 6.49338 11.6163 6.38278 11.71 6.28982C11.8974 6.10356 12.1508 5.99902 12.415 5.99902C12.6792 5.99902 12.9326 6.10356 13.12 6.28982L17.41 10.5898C17.7856 10.9632 17.9978 11.4702 18 11.9998C17.9951 12.5259 17.7832 13.0289 17.41 13.3998L13.12 17.6998C13.0268 17.7924 12.9162 17.8657 12.7946 17.9155C12.6731 17.9654 12.5429 17.9908 12.4115 17.9904C12.2801 17.9899 12.1501 17.9636 12.0288 17.9128C11.9076 17.8621 11.7976 17.788 11.705 17.6948C11.6124 17.6016 11.5391 17.491 11.4893 17.3694C11.4394 17.2479 11.414 17.1177 11.4144 16.9863C11.4149 16.8549 11.4412 16.7249 11.492 16.6036C11.5427 16.4824 11.6168 16.3724 11.71 16.2798L15 12.9998H5C4.73478 12.9998 4.48043 12.8945 4.29289 12.7069C4.10536 12.5194 4 12.265 4 11.9998C4 11.7346 4.10536 11.4802 4.29289 11.2927C4.48043 11.1052 4.73478 10.9998 5 10.9998Z"
+                                                fill="white" />
+                                    </svg>
+
+                                </div>
+
+                                <div class="home-banner-3-preve">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M19 10.9998H9L12.29 7.70981C12.3837 7.61685 12.4581 7.50625 12.5089 7.38439C12.5597 7.26253 12.5858 7.13183 12.5858 6.99981C12.5858 6.8678 12.5597 6.7371 12.5089 6.61524C12.4581 6.49338 12.3837 6.38278 12.29 6.28982C12.1026 6.10356 11.8492 5.99902 11.585 5.99902C11.3208 5.99902 11.0674 6.10356 10.88 6.28982L6.59 10.5898C6.21441 10.9632 6.00223 11.4702 6 11.9998C6.00487 12.5259 6.21684 13.0289 6.59 13.3998L10.88 17.6998C10.9732 17.7924 11.0838 17.8657 11.2054 17.9155C11.3269 17.9654 11.4571 17.9908 11.5885 17.9904C11.7199 17.9899 11.8499 17.9636 11.9712 17.9128C12.0924 17.8621 12.2024 17.788 12.295 17.6948C12.3876 17.6016 12.4609 17.491 12.5107 17.3694C12.5606 17.2479 12.586 17.1177 12.5856 16.9863C12.5851 16.8549 12.5588 16.7249 12.508 16.6036C12.4573 16.4824 12.3832 16.3724 12.29 16.2798L9 12.9998H19C19.2652 12.9998 19.5196 12.8945 19.7071 12.7069C19.8946 12.5194 20 12.265 20 11.9998C20 11.7346 19.8946 11.4802 19.7071 11.2927C19.5196 11.1052 19.2652 10.9998 19 10.9998Z"
+                                                fill="white" />
+                                    </svg>
+
+                                </div>
+                            </div>
+                            <div class="middle-banner-info">
+                                <div class="cat-title">
+                                    <div class="bann-title">
+                                        <span>{{$only_product_offer->category->details->title}}</span>
+                                        <h2>{{$only_product_offer->name}}</h2>
+                                    </div>
+                                    <div class="bann-price">
+                                        @if($only_product_offer->cost_discount)
+                                            <span>{{__('web.'.$only_product_offer->type)}}</span>
+                                            <span>{{ $only_product_offer->cost_discount }} {{ __('web.L.E') }} /</span>
+                                            <span>{{ $only_product_offer->cost }} {{ __('web.L.E') }}  </span>
+                                        @else
+                                             <span>{{__('web.'.$only_product_offer->type)}}</span>
+                                             <span>{{ $only_product_offer->cost }} {{ __('web.L.E') }} /</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="save-stars">
+                                    <div class="bann-stars">
+                                        @if ($only_product_offer->rates['rate'] != 0)
+
+                                            @include('web.component.rate.rateComponent', [
+                                             'rate' => $only_product_offer->rates['rate'],
+                                             ])
+                                        @endif
+                                    </div>
+                                    <div class="bann-save">
+                                        {{ __('web.save') }} {{ 100 - $only_product_offer->percentage }}%
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="middle-banner-buttons">
+                                <button data-id="{{ $only_product_offer->id }}" onclick="addCart(this)">
+                                    <span>{{__('web.add_to_cart')}}</span>
+                                    <svg width="20" height="21" viewBox="0 0 20 21" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M15.1699 15.5625C14.0654 15.5625 13.1699 16.4579 13.1699 17.5625C13.1699 18.6671 14.0654 19.5625 15.1699 19.5625C16.2745 19.5625 17.1699 18.6671 17.1699 17.5625C17.1699 16.4579 16.2745 15.5625 15.1699 15.5625ZM15.1699 15.5625H7.46387C7.00281 15.5625 6.77185 15.5625 6.58203 15.4805C6.41458 15.4081 6.2693 15.2916 6.16346 15.143C6.04482 14.9765 5.99711 14.7538 5.90267 14.313L3.44141 2.82715C3.34476 2.37613 3.29579 2.15088 3.17578 1.98242C3.06994 1.83385 2.92469 1.71691 2.75724 1.64455C2.56738 1.5625 2.33771 1.5625 1.87646 1.5625H1.16992M4.16992 4.5625H17.0431C17.7649 4.5625 18.1255 4.5625 18.3677 4.71286C18.5799 4.84456 18.7352 5.05112 18.803 5.2915C18.8803 5.56593 18.781 5.91246 18.5809 6.60596L17.1963 11.406C17.0767 11.8206 17.0169 12.0275 16.8955 12.1814C16.7884 12.3172 16.6471 12.4235 16.487 12.4888C16.306 12.5625 16.091 12.5625 15.662 12.5625H5.90039M6.16992 19.5625C5.06535 19.5625 4.16992 18.6671 4.16992 17.5625C4.16992 16.4579 5.06535 15.5625 6.16992 15.5625C7.27449 15.5625 8.16992 16.4579 8.16992 17.5625C8.16992 18.6671 7.27449 19.5625 6.16992 19.5625Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                    </svg>
+
+                                </button>
+                                <div>
+                                    <a href="#" class="openProductModal" data-id="{{ $only_product_offer->id }}" onclick="toggleFavorite(this)">
+
+                                        <svg width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                    d="M10.5 4.67381C8.5 -0.0206301 1.5 0.47937 1.5 6.4794C1.5 12.4794 10.5 17.4796 10.5 17.4796C10.5 17.4796 19.5 12.4794 19.5 6.4794C19.5 0.47937 12.5 -0.0206301 10.5 4.67381Z"
+                                                    stroke="#FD9636" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="del">
+                                @foreach($only_product_offer->items as $item)
+                                    <strong style="color: #fd9636">{{$item->details->name}}</strong><br>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
+                @endif
+                <div class="side-banner-col">
+                    @foreach($left_products_cobon as $product)
+                        @include('web.component.product.productCobon',['product'=>$product])
+
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    @foreach($categories_all as $key => $row)
+        @include('web.component.category.categoryComponent',[
+            'title' => $row->title,
+            'products' => $row->product_fourth(),
+            'url' =>  route('web.shop', $row->slug) ,
+            'index' => $key + 4
+        ])
+        @if($key % 2 == 0)
+            @if($key % 4 == 0)
+                <section class="container">
+                    <div class="home-banner-2-wrapper">
+                        <div class="home-banner-content">
+                            <div>
+                                <a href="{{ route($banners[$key+5]->url['first'], $banners[$key+5]->url['second'] ?? '') }}">
+                                    <img src="{{asset($banners[$key+5]->image)}}" alt="{{$banners[$key+5]->name}}" name="{{$key+5}}" loading="lazy">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="{{ route($banners[$key+6]->url['first'], $banners[$key+6]->url['second'] ?? '') }}">
+                                    <img src="{{asset($banners[$key+6]->image)}}" alt="{{$banners[$key+6]->name}}" name="{{$key+6}}" loading="lazy">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            @else
+                <section class="container">
+                    <div class="home-banner-2-wrapper">
+                        <div class="home-banner-content-reversed">
+                            <div>
+                                <a href="{{ route($banners[$key+5]->url['first'], $banners[$key+5]->url['second'] ?? '') }}">
+                                    <img src="{{asset($banners[$key+5]->image)}}" alt="{{$banners[$key+5]->name}}" name="{{$key+5}}" loading="lazy">
+
+                                </a>
+                            </div>
+                            <div>
+                                <a href="{{ route($banners[$key+6]->url['first'], $banners[$key+6]->url['second'] ?? '') }}">
+                                    <img src="{{asset($banners[$key+6]->image)}}" alt="{{$banners[$key+6]->name}}" name="{{$key+6}}" loading="lazy">
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            @endif
+        @endif
+
+    @endforeach
+    <section class="container">
+        <div class="home-articals-wrapper">
+            <h2>{{__('web.view_our_latest_articles')}}</h2>
+            <div class="home-articals-content">
+                @foreach($articles as $article)
+                    @include('web.component.blog.blogComponent',['article'=>$article])
+
                 @endforeach
-
-            </div>
-            <div class="header-slider-1-pagination">
-                <span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
-                    aria-label="Go to slide 1"></span>
-            </div>
-
-            <div class="header-slider-1-next">
-                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M1 4.99993H11L7.71 1.70994C7.61627 1.61697 7.54188 1.50637 7.49111 1.38451C7.44034 1.26265 7.4142 1.13195 7.4142 0.999937C7.4142 0.867925 7.44034 0.73722 7.49111 0.61536C7.54188 0.493501 7.61627 0.382901 7.71 0.289938C7.89736 0.103687 8.15081 -0.000854492 8.415 -0.000854492C8.67919 -0.000854492 8.93264 0.103687 9.12 0.289938L13.41 4.58993C13.7856 4.96328 13.9978 5.47035 14 5.99993C13.9951 6.52603 13.7832 7.02903 13.41 7.39993L9.12 11.6999C9.02676 11.7925 8.9162 11.8658 8.79463 11.9157C8.67306 11.9655 8.54286 11.9909 8.41146 11.9905C8.28007 11.99 8.15005 11.9637 8.02884 11.913C7.90762 11.8623 7.79758 11.7882 7.705 11.6949C7.61242 11.6017 7.53911 11.4911 7.48925 11.3696C7.4394 11.248 7.41398 11.1178 7.41444 10.9864C7.41491 10.855 7.44125 10.725 7.49196 10.6038C7.54267 10.4825 7.61676 10.3725 7.71 10.2799L11 6.99993H1C0.734783 6.99993 0.480429 6.89457 0.292892 6.70704C0.105356 6.5195 0 6.26515 0 5.99993C0 5.73471 0.105356 5.48036 0.292892 5.29283C0.480429 5.10529 0.734783 4.99993 1 4.99993Z"
-                        fill="white" />
-                </svg>
-            </div>
-
-            <div class="header-slider-1-preve">
-                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M13 4.99993H3L6.29 1.70994C6.38373 1.61697 6.45812 1.50637 6.50889 1.38451C6.55966 1.26265 6.5858 1.13195 6.5858 0.999937C6.5858 0.867925 6.55966 0.73722 6.50889 0.61536C6.45812 0.493501 6.38373 0.382901 6.29 0.289938C6.10264 0.103687 5.84919 -0.000854492 5.585 -0.000854492C5.32081 -0.000854492 5.06736 0.103687 4.88 0.289938L0.59 4.58993C0.214412 4.96328 0.00223279 5.47035 0 5.99993C0.00486659 6.52603 0.216844 7.02903 0.59 7.39993L4.88 11.6999C4.97324 11.7925 5.0838 11.8658 5.20537 11.9157C5.32694 11.9655 5.45714 11.9909 5.58854 11.9905C5.71993 11.99 5.84995 11.9637 5.97116 11.913C6.09238 11.8623 6.20242 11.7882 6.295 11.6949C6.38758 11.6017 6.46089 11.4911 6.51075 11.3696C6.5606 11.248 6.58602 11.1178 6.58556 10.9864C6.58509 10.855 6.55875 10.725 6.50804 10.6038C6.45733 10.4825 6.38324 10.3725 6.29 10.2799L3 6.99993H13C13.2652 6.99993 13.5196 6.89457 13.7071 6.70704C13.8946 6.5195 14 6.26515 14 5.99993C14 5.73471 13.8946 5.48036 13.7071 5.29283C13.5196 5.10529 13.2652 4.99993 13 4.99993Z"
-                        fill="white" />
-                </svg>
             </div>
         </div>
-    </div>
-</header>
+    </section>
 
-<section class="container">
-    <div class="section-wrapper">
-        <div class="catigory-slider-2">
-            <div class="swiper-wrapper">
-                @for ($i = 0; $i < 50; $i++) <div class="swiper-slide">
-                    <a href="#" class="slide-container">
-                        <svg width="82" height="119" viewBox="0 0 82 119" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M14.0839 20.4864C14.8036 15.786 18.2308 11.954 22.8221 10.7162L59.5956 0.802412C66.8977 -1.16617 74.1782 4.02888 74.6915 11.5742L81.1282 106.185C81.5998 113.118 76.1039 119 69.1559 119H12.9772C5.62606 119 0.002859 112.45 1.11546 105.184L14.0839 20.4864Z"
-                                fill="#E4EDED" />
-                        </svg>
-                        <img class="product-image" src="{{url('')}}/storage/assets/home/cat-pro-3.png" alt="cat-pro-1">
-                        <h3>Children’s Room</h3>
-                    </a>
-            </div>
-            @endfor
-        </div>
-
-        <div class="catigory-slider-2-next">
-            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M1 4.99993H11L7.71 1.70994C7.61627 1.61697 7.54188 1.50637 7.49111 1.38451C7.44034 1.26265 7.4142 1.13195 7.4142 0.999937C7.4142 0.867925 7.44034 0.73722 7.49111 0.61536C7.54188 0.493501 7.61627 0.382901 7.71 0.289938C7.89736 0.103687 8.15081 -0.000854492 8.415 -0.000854492C8.67919 -0.000854492 8.93264 0.103687 9.12 0.289938L13.41 4.58993C13.7856 4.96328 13.9978 5.47035 14 5.99993C13.9951 6.52603 13.7832 7.02903 13.41 7.39993L9.12 11.6999C9.02676 11.7925 8.9162 11.8658 8.79463 11.9157C8.67306 11.9655 8.54286 11.9909 8.41146 11.9905C8.28007 11.99 8.15005 11.9637 8.02884 11.913C7.90762 11.8623 7.79758 11.7882 7.705 11.6949C7.61242 11.6017 7.53911 11.4911 7.48925 11.3696C7.4394 11.248 7.41398 11.1178 7.41444 10.9864C7.41491 10.855 7.44125 10.725 7.49196 10.6038C7.54267 10.4825 7.61676 10.3725 7.71 10.2799L11 6.99993H1C0.734783 6.99993 0.480429 6.89457 0.292892 6.70704C0.105356 6.5195 0 6.26515 0 5.99993C0 5.73471 0.105356 5.48036 0.292892 5.29283C0.480429 5.10529 0.734783 4.99993 1 4.99993Z"
-                    fill="black" />
-            </svg>
-        </div>
-
-        <div class="catigory-slider-2-preve">
-            <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M13 4.99993H3L6.29 1.70994C6.38373 1.61697 6.45812 1.50637 6.50889 1.38451C6.55966 1.26265 6.5858 1.13195 6.5858 0.999937C6.5858 0.867925 6.55966 0.73722 6.50889 0.61536C6.45812 0.493501 6.38373 0.382901 6.29 0.289938C6.10264 0.103687 5.84919 -0.000854492 5.585 -0.000854492C5.32081 -0.000854492 5.06736 0.103687 4.88 0.289938L0.59 4.58993C0.214412 4.96328 0.00223279 5.47035 0 5.99993C0.00486659 6.52603 0.216844 7.02903 0.59 7.39993L4.88 11.6999C4.97324 11.7925 5.0838 11.8658 5.20537 11.9157C5.32694 11.9655 5.45714 11.9909 5.58854 11.9905C5.71993 11.99 5.84995 11.9637 5.97116 11.913C6.09238 11.8623 6.20242 11.7882 6.295 11.6949C6.38758 11.6017 6.46089 11.4911 6.51075 11.3696C6.5606 11.248 6.58602 11.1178 6.58556 10.9864C6.58509 10.855 6.55875 10.725 6.50804 10.6038C6.45733 10.4825 6.38324 10.3725 6.29 10.2799L3 6.99993H13C13.2652 6.99993 13.5196 6.89457 13.7071 6.70704C13.8946 6.5195 14 6.26515 14 5.99993C14 5.73471 13.8946 5.48036 13.7071 5.29283C13.5196 5.10529 13.2652 4.99993 13 4.99993Z"
-                    fill="black" />
-            </svg>
-        </div>
-        <div class="catigory-slider-2-scrollbar swiper-scrollbar"></div>
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="flash-sales-wrapper">
-        <h2>Flash Sales</h2>
-        <div class="flash-sales-slider-3">
-            <div class="swiper-wrapper">
-
-                @for ($i = 0; $i < 20; $i++) <div class="swiper-slide">
-                    <div class="flash-save-offer">
-                        <span>وفر</span>
-                        <span>35%</span>
-                    </div>
-                    <div class="flash-new-offer"></div>
-                    <div class="slide-container">
-                        <div class="flash-pro-img">
-                            <img src="{{url('')}}/storage/assets/home/flash-pro.png" alt="">
-                            <a>
-                                <svg id="heartIcon" onclick="redHeart(this)" width="21" height="18" viewBox="0 0 21 18"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="heart"
-                                        d="M10.5 4.15428C8.5 -0.540161 1.5 -0.0401611 1.5 5.95987C1.5 11.9599 10.5 16.9601 10.5 16.9601C10.5 16.9601 19.5 11.9599 19.5 5.95987C19.5 -0.0401611 12.5 -0.540161 10.5 4.15428Z"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-info">
-                            <div class="cat-stars">
-                                <a href="#">غرف سفرة</a>
-                                <div class="stars">
-                                    @for ($m = 0; $m < 1; $m++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617045 3.11332C0.532729 3.12497 0.453524 3.15885 0.388387 3.2111C0.32325 3.26336 0.274783 3.33193 0.248468 3.40903C0.222154 3.48614 0.219042 3.56872 0.239485 3.64742C0.259928 3.72612 0.303108 3.79781 0.364144 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53793 8.99565 2.61332 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.3274 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                            fill="black" fill-opacity="0.1" />
-                                        </svg>
-                                        @endfor
-                                        @for ($j = 0; $j < 4; $j++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617046 3.11332C0.532731 3.12497 0.453525 3.15885 0.388388 3.2111C0.323251 3.26336 0.274784 3.33193 0.248469 3.40903C0.222155 3.48614 0.219043 3.56872 0.239486 3.64742C0.259929 3.72612 0.30311 3.79781 0.364145 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53794 8.99565 2.61333 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.32741 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                                fill="#FFC100" />
-                                            </svg>
-                                            @endfor
-                                </div>
-                            </div>
-                            <a href="#"> غرفة سفره مودرن ستانليس | بيج و رمادي</a>
-                        </div>
-                        <div class="flash-pro-price">
-                            <span>
-                                69000ج.م
-                            </span>
-                            <div>
-                                <span>69000 ج.م</span>
-                                <span>PC-</span>
-                            </div>
-                        </div>
-                        <div class="flsh-pro-buttons">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-delivery">
-                            يتم التوصيل خلال 5 - 7 ايام عمل
-                        </div>
-                    </div>
-            </div>
-            @endfor
-
-        </div>
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="home-banner-1-wrapper">
-        <div class="home-banner-content">
-            <div>تقسيط</div>
-            <div>تقسيط</div>
-            <div>تقسيط</div>
-        </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="flash-sales-wrapper">
-        <h2>Flash Sales</h2>
-        <div class="flash-sales-slider-3">
-            <div class="swiper-wrapper">
-
-                @for ($i = 0; $i < 20; $i++) <div class="swiper-slide">
-                    <div class="flash-save-offer">
-                        <span>وفر</span>
-                        <span>35%</span>
-                    </div>
-                    <div class="flash-new-offer"></div>
-                    <div class="slide-container">
-                        <div class="flash-pro-img">
-                            <img src="{{url('')}}/storage/assets/home/flash-pro.png" alt="">
-                            <a>
-                                <svg id="heartIcon" onclick="redHeart(this)" width="21" height="18" viewBox="0 0 21 18"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="heart"
-                                        d="M10.5 4.15428C8.5 -0.540161 1.5 -0.0401611 1.5 5.95987C1.5 11.9599 10.5 16.9601 10.5 16.9601C10.5 16.9601 19.5 11.9599 19.5 5.95987C19.5 -0.0401611 12.5 -0.540161 10.5 4.15428Z"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-info">
-                            <div class="cat-stars">
-                                <a href="#">غرف سفرة</a>
-                                <div class="stars">
-                                    @for ($m = 0; $m < 1; $m++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617045 3.11332C0.532729 3.12497 0.453524 3.15885 0.388387 3.2111C0.32325 3.26336 0.274783 3.33193 0.248468 3.40903C0.222154 3.48614 0.219042 3.56872 0.239485 3.64742C0.259928 3.72612 0.303108 3.79781 0.364144 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53793 8.99565 2.61332 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.3274 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                            fill="black" fill-opacity="0.1" />
-                                        </svg>
-                                        @endfor
-                                        @for ($j = 0; $j < 4; $j++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617046 3.11332C0.532731 3.12497 0.453525 3.15885 0.388388 3.2111C0.323251 3.26336 0.274784 3.33193 0.248469 3.40903C0.222155 3.48614 0.219043 3.56872 0.239486 3.64742C0.259929 3.72612 0.30311 3.79781 0.364145 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53794 8.99565 2.61333 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.32741 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                                fill="#FFC100" />
-                                            </svg>
-                                            @endfor
-                                </div>
-                            </div>
-                            <a href="#"> غرفة سفره مودرن ستانليس | بيج و رمادي</a>
-                        </div>
-                        <div class="flash-pro-price">
-                            <span>
-                                69000ج.م
-                            </span>
-                            <div>
-                                <span>69000 ج.م</span>
-                                <span>PC-</span>
-                            </div>
-                        </div>
-                        <div class="flsh-pro-buttons">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-delivery">
-                            يتم التوصيل خلال 5 - 7 ايام عمل
-                        </div>
-                    </div>
-            </div>
-            @endfor
-
-        </div>
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="home-banner-2-wrapper">
-        <div class="home-banner-content">
-            <div>
-                <img src="{{url('')}}/storage/assets/home/banner-2-1.png" alt="baner">
-            </div>
-            <div>
-                <img src="{{url('')}}/storage/assets/home/banner-2-2.png" alt="baner">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="flash-sales-wrapper">
-        <h2>Flash Sales</h2>
-        <div class="flash-sales-slider-3">
-            <div class="swiper-wrapper">
-
-                @for ($i = 0; $i < 20; $i++) <div class="swiper-slide">
-                    <div class="flash-save-offer">
-                        <span>وفر</span>
-                        <span>35%</span>
-                    </div>
-                    <div class="flash-new-offer"></div>
-                    <div class="slide-container">
-                        <div class="flash-pro-img">
-                            <img src="{{url('')}}/storage/assets/home/flash-pro.png" alt="">
-                            <a>
-                                <svg id="heartIcon" onclick="redHeart(this)" width="21" height="18" viewBox="0 0 21 18"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="heart"
-                                        d="M10.5 4.15428C8.5 -0.540161 1.5 -0.0401611 1.5 5.95987C1.5 11.9599 10.5 16.9601 10.5 16.9601C10.5 16.9601 19.5 11.9599 19.5 5.95987C19.5 -0.0401611 12.5 -0.540161 10.5 4.15428Z"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-info">
-                            <div class="cat-stars">
-                                <a href="#">غرف سفرة</a>
-                                <div class="stars">
-                                    @for ($m = 0; $m < 1; $m++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617045 3.11332C0.532729 3.12497 0.453524 3.15885 0.388387 3.2111C0.32325 3.26336 0.274783 3.33193 0.248468 3.40903C0.222154 3.48614 0.219042 3.56872 0.239485 3.64742C0.259928 3.72612 0.303108 3.79781 0.364144 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53793 8.99565 2.61332 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.3274 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                            fill="black" fill-opacity="0.1" />
-                                        </svg>
-                                        @endfor
-                                        @for ($j = 0; $j < 4; $j++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617046 3.11332C0.532731 3.12497 0.453525 3.15885 0.388388 3.2111C0.323251 3.26336 0.274784 3.33193 0.248469 3.40903C0.222155 3.48614 0.219043 3.56872 0.239486 3.64742C0.259929 3.72612 0.30311 3.79781 0.364145 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53794 8.99565 2.61333 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.32741 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                                fill="#FFC100" />
-                                            </svg>
-                                            @endfor
-                                </div>
-                            </div>
-                            <a href="#"> غرفة سفره مودرن ستانليس | بيج و رمادي</a>
-                        </div>
-                        <div class="flash-pro-price">
-                            <span>
-                                69000ج.م
-                            </span>
-                            <div>
-                                <span>69000 ج.م</span>
-                                <span>PC-</span>
-                            </div>
-                        </div>
-                        <div class="flsh-pro-buttons">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-delivery">
-                            يتم التوصيل خلال 5 - 7 ايام عمل
-                        </div>
-                    </div>
-            </div>
-            @endfor
-
-        </div>
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="home-banner-3-wrapper">
-        <div class="home-banner-3-content">
-            <div class="side-banner-col">
-                <div class="side-baner-item">
-                    <div class="side-banner-img">
-                        <img src="{{url('')}}/storage/assets/home/ban-3-1.png" alt="banner">
-                        <div class="top-icons">
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="bottom-button">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                        </div>
-                    </div>
-                    <div class="side-banner-info">
-                        <span class="cat">غرف سفرة</span>
-                        <a href="#" class="title">
-                            غرفة سفره مودرن ستانليس | بيج و رمادي
-                        </a>
-                        <div class="price">
-                            <span>69000 ج.م</span>
-                            <span>PC-</span>
-                        </div>
-                        <div class="stars">
-                            @for ($m = 0; $m < 1; $m++) <svg width="24" height="21" viewBox="0 0 24 21" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M11.4984 0.564103L8.75478 5.85336C8.67844 6.00054 8.56563 6.12785 8.42607 6.22431C8.28652 6.32078 8.12441 6.3835 7.95371 6.40709L1.81957 7.2554C1.62308 7.28255 1.4385 7.36148 1.2867 7.48327C1.1349 7.60506 1.02195 7.76483 0.960629 7.94453C0.899303 8.12422 0.892052 8.31666 0.939693 8.50008C0.987333 8.68349 1.08797 8.85056 1.2302 8.98238L5.66963 13.0994C5.9207 13.3322 6.03453 13.6673 5.97602 13.9953L4.92813 19.8089C4.89461 19.9951 4.91649 20.1864 4.9913 20.3614C5.06611 20.5363 5.19087 20.6879 5.35147 20.7989C5.51206 20.9099 5.70209 20.9759 5.90007 20.9895C6.09805 21.0031 6.29608 20.9638 6.47177 20.8759L11.9591 18.1305C12.1119 18.0543 12.2818 18.0144 12.4543 18.0144C12.6268 18.0144 12.7968 18.0543 12.9495 18.1305L18.4368 20.8759C18.6125 20.9638 18.8106 21.0031 19.0085 20.9895C19.2065 20.9759 19.3966 20.9099 19.5571 20.7989C19.7177 20.6879 19.8425 20.5363 19.9173 20.3614C19.9921 20.1864 20.014 19.9951 19.9805 19.8089L18.9326 13.9953C18.9034 13.8335 18.9161 13.6674 18.9695 13.5113C19.0228 13.3552 19.1153 13.2139 19.239 13.0994L23.6784 8.98238C23.8206 8.85056 23.9213 8.68349 23.9689 8.50008C24.0166 8.31666 24.0093 8.12422 23.948 7.94453C23.8867 7.76483 23.7737 7.60506 23.6219 7.48327C23.4701 7.36148 23.2855 7.28255 23.089 7.2554L16.9549 6.40709C16.7842 6.3835 16.6221 6.32078 16.4825 6.22431C16.343 6.12785 16.2302 6.00054 16.1538 5.85336L13.4102 0.564103C13.0165 -0.188034 11.8889 -0.188034 11.4984 0.564103Z"
-                                    fill="black" fill-opacity="0.1" />
-                                </svg>
-
-                                @endfor
-                                @for ($j = 0; $j < 4; $j++) <svg width="24" height="21" viewBox="0 0 24 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.9535 0.564103L8.20986 5.85336C8.13352 6.00054 8.0207 6.12785 7.88115 6.22431C7.7416 6.32078 7.57948 6.3835 7.40879 6.40709L1.27465 7.2554C1.07816 7.28255 0.893574 7.36148 0.741777 7.48327C0.589981 7.60506 0.477032 7.76483 0.415707 7.94453C0.354382 8.12422 0.34713 8.31666 0.394772 8.50008C0.442411 8.68349 0.543043 8.85056 0.685282 8.98238L5.12471 13.0994C5.37578 13.3322 5.48961 13.6673 5.4311 13.9953L4.38321 19.8089C4.34969 19.9951 4.37157 20.1864 4.44638 20.3614C4.52119 20.5363 4.64595 20.6879 4.80654 20.7989C4.96714 20.9099 5.15717 20.9759 5.35515 20.9895C5.55313 21.0031 5.75116 20.9638 5.92685 20.8759L11.4142 18.1305C11.5669 18.0543 11.7369 18.0144 11.9094 18.0144C12.0819 18.0144 12.2518 18.0543 12.4046 18.1305L17.8919 20.8759C18.0676 20.9638 18.2656 21.0031 18.4636 20.9895C18.6616 20.9759 18.8516 20.9099 19.0122 20.7989C19.1728 20.6879 19.2976 20.5363 19.3724 20.3614C19.4472 20.1864 19.4691 19.9951 19.4356 19.8089L18.3877 13.9953C18.3585 13.8335 18.3712 13.6674 18.4245 13.5113C18.4779 13.3552 18.5704 13.2139 18.6941 13.0994L23.1335 8.98238C23.2757 8.85056 23.3764 8.68349 23.424 8.50008C23.4716 8.31666 23.4644 8.12422 23.4031 7.94453C23.3417 7.76483 23.2288 7.60506 23.077 7.48327C22.9252 7.36148 22.7406 7.28255 22.5441 7.2554L16.41 6.40709C16.2393 6.3835 16.0772 6.32078 15.9376 6.22431C15.7981 6.12785 15.6853 6.00054 15.6089 5.85336L12.8652 0.564103C12.4716 -0.188034 11.344 -0.188034 10.9535 0.564103Z"
-                                        fill="#FFC100" />
-                                    </svg>
-
-                                    @endfor
-                        </div>
-                        <span class="delivery">يتم التوصيل خلال 25-35 يوم عمل </span>
-                        <div class="new-offer">New</div>
-                    </div>
-                </div>
-                <div class="side-baner-item">
-                    <div class="side-banner-img">
-                        <img src="{{url('')}}/storage/assets/home/ban-3-2.png" alt="banner">
-                        <div class="top-icons">
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="bottom-button">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                        </div>
-                    </div>
-                    <div class="side-banner-info">
-                        <span class="cat">غرف سفرة</span>
-                        <a href="#" class="title">
-                            غرفة سفره مودرن ستانليس | بيج و رمادي
-                        </a>
-                        <div class="price">
-                            <span>69000 ج.م</span>
-                            <span>PC-</span>
-                        </div>
-                        <div class="stars">
-                            @for ($m = 0; $m < 1; $m++) <svg width="24" height="21" viewBox="0 0 24 21" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M11.4984 0.564103L8.75478 5.85336C8.67844 6.00054 8.56563 6.12785 8.42607 6.22431C8.28652 6.32078 8.12441 6.3835 7.95371 6.40709L1.81957 7.2554C1.62308 7.28255 1.4385 7.36148 1.2867 7.48327C1.1349 7.60506 1.02195 7.76483 0.960629 7.94453C0.899303 8.12422 0.892052 8.31666 0.939693 8.50008C0.987333 8.68349 1.08797 8.85056 1.2302 8.98238L5.66963 13.0994C5.9207 13.3322 6.03453 13.6673 5.97602 13.9953L4.92813 19.8089C4.89461 19.9951 4.91649 20.1864 4.9913 20.3614C5.06611 20.5363 5.19087 20.6879 5.35147 20.7989C5.51206 20.9099 5.70209 20.9759 5.90007 20.9895C6.09805 21.0031 6.29608 20.9638 6.47177 20.8759L11.9591 18.1305C12.1119 18.0543 12.2818 18.0144 12.4543 18.0144C12.6268 18.0144 12.7968 18.0543 12.9495 18.1305L18.4368 20.8759C18.6125 20.9638 18.8106 21.0031 19.0085 20.9895C19.2065 20.9759 19.3966 20.9099 19.5571 20.7989C19.7177 20.6879 19.8425 20.5363 19.9173 20.3614C19.9921 20.1864 20.014 19.9951 19.9805 19.8089L18.9326 13.9953C18.9034 13.8335 18.9161 13.6674 18.9695 13.5113C19.0228 13.3552 19.1153 13.2139 19.239 13.0994L23.6784 8.98238C23.8206 8.85056 23.9213 8.68349 23.9689 8.50008C24.0166 8.31666 24.0093 8.12422 23.948 7.94453C23.8867 7.76483 23.7737 7.60506 23.6219 7.48327C23.4701 7.36148 23.2855 7.28255 23.089 7.2554L16.9549 6.40709C16.7842 6.3835 16.6221 6.32078 16.4825 6.22431C16.343 6.12785 16.2302 6.00054 16.1538 5.85336L13.4102 0.564103C13.0165 -0.188034 11.8889 -0.188034 11.4984 0.564103Z"
-                                    fill="black" fill-opacity="0.1" />
-                                </svg>
-
-                                @endfor
-                                @for ($j = 0; $j < 4; $j++) <svg width="24" height="21" viewBox="0 0 24 21" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.9535 0.564103L8.20986 5.85336C8.13352 6.00054 8.0207 6.12785 7.88115 6.22431C7.7416 6.32078 7.57948 6.3835 7.40879 6.40709L1.27465 7.2554C1.07816 7.28255 0.893574 7.36148 0.741777 7.48327C0.589981 7.60506 0.477032 7.76483 0.415707 7.94453C0.354382 8.12422 0.34713 8.31666 0.394772 8.50008C0.442411 8.68349 0.543043 8.85056 0.685282 8.98238L5.12471 13.0994C5.37578 13.3322 5.48961 13.6673 5.4311 13.9953L4.38321 19.8089C4.34969 19.9951 4.37157 20.1864 4.44638 20.3614C4.52119 20.5363 4.64595 20.6879 4.80654 20.7989C4.96714 20.9099 5.15717 20.9759 5.35515 20.9895C5.55313 21.0031 5.75116 20.9638 5.92685 20.8759L11.4142 18.1305C11.5669 18.0543 11.7369 18.0144 11.9094 18.0144C12.0819 18.0144 12.2518 18.0543 12.4046 18.1305L17.8919 20.8759C18.0676 20.9638 18.2656 21.0031 18.4636 20.9895C18.6616 20.9759 18.8516 20.9099 19.0122 20.7989C19.1728 20.6879 19.2976 20.5363 19.3724 20.3614C19.4472 20.1864 19.4691 19.9951 19.4356 19.8089L18.3877 13.9953C18.3585 13.8335 18.3712 13.6674 18.4245 13.5113C18.4779 13.3552 18.5704 13.2139 18.6941 13.0994L23.1335 8.98238C23.2757 8.85056 23.3764 8.68349 23.424 8.50008C23.4716 8.31666 23.4644 8.12422 23.4031 7.94453C23.3417 7.76483 23.2288 7.60506 23.077 7.48327C22.9252 7.36148 22.7406 7.28255 22.5441 7.2554L16.41 6.40709C16.2393 6.3835 16.0772 6.32078 15.9376 6.22431C15.7981 6.12785 15.6853 6.00054 15.6089 5.85336L12.8652 0.564103C12.4716 -0.188034 11.344 -0.188034 10.9535 0.564103Z"
-                                        fill="#FFC100" />
-                                    </svg>
-
-                                    @endfor
-                        </div>
-                        <span class="delivery">يتم التوصيل خلال 25-35 يوم عمل </span>
-                        <div class="new-offer">New</div>
-                    </div>
-                </div>
-            </div>
-            <div class="side-banner-col">
-                <div class="timer">
-                    <div class="title">
-                        <div class="square"></div>
-                        <h2>Big Sales</h2>
-                    </div>
-                    <div class="timer-clock">
-                        <div class="days clock-unit">
-                            <div class="num-label">Days</div>
-                            <div class="number">
-                                <span class="num" id="days">10</span>
-                                <span>:</span>
-                            </div>
-                        </div>
-                        <div class="hours clock-unit">
-                            <div class="num-label">Hours</div>
-                            <div class="number">
-                                <span class="num" id="hours">10</span>
-                                <span>:</span>
-                            </div>
-                        </div>
-                        <div class="minutes clock-unit">
-                            <div class="num-label">Minutes</div>
-                            <div class="number">
-                                <span class="num" id="minutes">10</span>
-                                <span>:</span>
-                            </div>
-                        </div>
-                        <div class="seconds clock-unit">
-                            <div class="num-label">Seconds</div>
-                            <div class="number">
-                                <span class="num" id="seconds">10</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="middle-banner-img">
-                    <div class="home-banner-3-swiper">
-                        <div class="swiper-wrapper">
-                            @for ($i = 0; $i < 20; $i++) <div class="swiper-slide">
-                                <div class="new-offer">
-                                    عروض التوفير
-                                </div>
-                                <img src="{{url('')}}/storage/assets/home/bann-3-5.png" alt="middle banner">
-                        </div>
-                        @endfor
-                    </div>
-                    <div class="home-banner-3-next">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M5 10.9998H15L11.71 7.70981C11.6163 7.61685 11.5419 7.50625 11.4911 7.38439C11.4403 7.26253 11.4142 7.13183 11.4142 6.99981C11.4142 6.8678 11.4403 6.7371 11.4911 6.61524C11.5419 6.49338 11.6163 6.38278 11.71 6.28982C11.8974 6.10356 12.1508 5.99902 12.415 5.99902C12.6792 5.99902 12.9326 6.10356 13.12 6.28982L17.41 10.5898C17.7856 10.9632 17.9978 11.4702 18 11.9998C17.9951 12.5259 17.7832 13.0289 17.41 13.3998L13.12 17.6998C13.0268 17.7924 12.9162 17.8657 12.7946 17.9155C12.6731 17.9654 12.5429 17.9908 12.4115 17.9904C12.2801 17.9899 12.1501 17.9636 12.0288 17.9128C11.9076 17.8621 11.7976 17.788 11.705 17.6948C11.6124 17.6016 11.5391 17.491 11.4893 17.3694C11.4394 17.2479 11.414 17.1177 11.4144 16.9863C11.4149 16.8549 11.4412 16.7249 11.492 16.6036C11.5427 16.4824 11.6168 16.3724 11.71 16.2798L15 12.9998H5C4.73478 12.9998 4.48043 12.8945 4.29289 12.7069C4.10536 12.5194 4 12.265 4 11.9998C4 11.7346 4.10536 11.4802 4.29289 11.2927C4.48043 11.1052 4.73478 10.9998 5 10.9998Z"
-                                fill="white" />
-                        </svg>
-
-                    </div>
-
-                    <div class="home-banner-3-preve">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M19 10.9998H9L12.29 7.70981C12.3837 7.61685 12.4581 7.50625 12.5089 7.38439C12.5597 7.26253 12.5858 7.13183 12.5858 6.99981C12.5858 6.8678 12.5597 6.7371 12.5089 6.61524C12.4581 6.49338 12.3837 6.38278 12.29 6.28982C12.1026 6.10356 11.8492 5.99902 11.585 5.99902C11.3208 5.99902 11.0674 6.10356 10.88 6.28982L6.59 10.5898C6.21441 10.9632 6.00223 11.4702 6 11.9998C6.00487 12.5259 6.21684 13.0289 6.59 13.3998L10.88 17.6998C10.9732 17.7924 11.0838 17.8657 11.2054 17.9155C11.3269 17.9654 11.4571 17.9908 11.5885 17.9904C11.7199 17.9899 11.8499 17.9636 11.9712 17.9128C12.0924 17.8621 12.2024 17.788 12.295 17.6948C12.3876 17.6016 12.4609 17.491 12.5107 17.3694C12.5606 17.2479 12.586 17.1177 12.5856 16.9863C12.5851 16.8549 12.5588 16.7249 12.508 16.6036C12.4573 16.4824 12.3832 16.3724 12.29 16.2798L9 12.9998H19C19.2652 12.9998 19.5196 12.8945 19.7071 12.7069C19.8946 12.5194 20 12.265 20 11.9998C20 11.7346 19.8946 11.4802 19.7071 11.2927C19.5196 11.1052 19.2652 10.9998 19 10.9998Z"
-                                fill="white" />
-                        </svg>
-
-                    </div>
-                </div>
-                <div class="middle-banner-info">
-                    <div class="cat-title">
-                        <div class="bann-title">
-                            <span>غرف سفرة</span>
-                            <h2>غرفة سفره مودرن ستانليس | بيج و رمادي</h2>
-                        </div>
-                        <div class="bann-price">
-                            <span>- PC</span>
-                            <span>ج.م69000</span>
-                            <span>ج.م69000</span>
-                        </div>
-                    </div>
-                    <div class="save-stars">
-                        <div class="bann-stars">
-                            @for ($m = 0; $m < 1; $m++) <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M8.27989 0.432212L6.2864 4.48481C6.23093 4.59757 6.14896 4.69512 6.04756 4.76903C5.94617 4.84294 5.82838 4.891 5.70435 4.90907L1.24741 5.55904C1.10464 5.57984 0.970522 5.64032 0.860229 5.73363C0.749937 5.82694 0.667871 5.94936 0.623314 6.08705C0.578756 6.22473 0.573486 6.37217 0.608101 6.5127C0.642715 6.65323 0.715834 6.78124 0.819181 6.88224L4.04479 10.0367C4.22721 10.2151 4.30991 10.4718 4.2674 10.7231L3.50602 15.1775C3.48167 15.3201 3.49757 15.4667 3.55192 15.6008C3.60628 15.7348 3.69693 15.8509 3.81361 15.936C3.9303 16.021 4.06837 16.0716 4.21222 16.082C4.35607 16.0925 4.49995 16.0623 4.6276 15.995L8.61458 13.8915C8.72558 13.8331 8.84905 13.8025 8.9744 13.8025C9.09975 13.8025 9.22322 13.8331 9.33422 13.8915L13.3212 15.995C13.4489 16.0623 13.5927 16.0925 13.7366 16.082C13.8804 16.0716 14.0185 16.021 14.1352 15.936C14.2519 15.8509 14.3425 15.7348 14.3969 15.6008C14.4512 15.4667 14.4671 15.3201 14.4428 15.1775L13.6814 10.7231C13.6602 10.5991 13.6694 10.4719 13.7082 10.3523C13.747 10.2327 13.8142 10.1244 13.904 10.0367L17.1296 6.88224C17.233 6.78124 17.3061 6.65323 17.3407 6.5127C17.3753 6.37217 17.37 6.22473 17.3255 6.08705C17.2809 5.94936 17.1989 5.82694 17.0886 5.73363C16.9783 5.64032 16.8442 5.57984 16.7014 5.55904L12.2445 4.90907C12.1204 4.891 12.0026 4.84294 11.9012 4.76903C11.7998 4.69512 11.7179 4.59757 11.6624 4.48481L9.66891 0.432212C9.38292 -0.144071 8.56357 -0.144071 8.27989 0.432212Z"
-                                    fill="black" fill-opacity="0.1" />
-                                </svg>
-
-
-                                @endfor
-                                @for ($j = 0; $j < 4; $j++) <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M8.26817 0.432212L6.27468 4.48481C6.21921 4.59757 6.13724 4.69512 6.03584 4.76903C5.93445 4.84294 5.81666 4.891 5.69263 4.90907L1.23569 5.55904C1.09292 5.57984 0.958805 5.64032 0.848513 5.73363C0.738218 5.82694 0.656153 5.94936 0.611595 6.08705C0.567038 6.22473 0.561769 6.37217 0.596384 6.5127C0.630999 6.65323 0.704115 6.78124 0.807465 6.88224L4.03307 10.0367C4.21549 10.2151 4.2982 10.4718 4.25568 10.7231L3.49431 15.1775C3.46995 15.3201 3.48585 15.4667 3.54021 15.6008C3.59456 15.7348 3.68521 15.8509 3.80189 15.936C3.91858 16.021 4.05665 16.0716 4.2005 16.082C4.34435 16.0925 4.48823 16.0623 4.61589 15.995L8.60287 13.8915C8.71386 13.8331 8.83734 13.8025 8.96268 13.8025C9.08803 13.8025 9.2115 13.8331 9.3225 13.8915L13.3095 15.995C13.4371 16.0623 13.581 16.0925 13.7249 16.082C13.8687 16.0716 14.0068 16.021 14.1235 15.936C14.2402 15.8509 14.3308 15.7348 14.3852 15.6008C14.4395 15.4667 14.4554 15.3201 14.4311 15.1775L13.6697 10.7231C13.6485 10.5991 13.6577 10.4719 13.6965 10.3523C13.7352 10.2327 13.8025 10.1244 13.8923 10.0367L17.1179 6.88224C17.2212 6.78124 17.2944 6.65323 17.329 6.5127C17.3636 6.37217 17.3583 6.22473 17.3138 6.08705C17.2692 5.94936 17.1871 5.82694 17.0769 5.73363C16.9666 5.64032 16.8324 5.57984 16.6897 5.55904L12.2327 4.90907C12.1087 4.891 11.9909 4.84294 11.8895 4.76903C11.7881 4.69512 11.7062 4.59757 11.6507 4.48481L9.6572 0.432212C9.3712 -0.144071 8.55185 -0.144071 8.26817 0.432212Z"
-                                        fill="#FFC100" />
-                                    </svg>
-
-
-                                    @endfor
-                        </div>
-                        <div class="bann-save">
-                            وفر 50%
-                        </div>
-                    </div>
-                </div>
-                <div class="middle-banner-buttons">
-                    <button>
-                        <span>اضف الي العربة</span>
-                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M15.1699 15.5625C14.0654 15.5625 13.1699 16.4579 13.1699 17.5625C13.1699 18.6671 14.0654 19.5625 15.1699 19.5625C16.2745 19.5625 17.1699 18.6671 17.1699 17.5625C17.1699 16.4579 16.2745 15.5625 15.1699 15.5625ZM15.1699 15.5625H7.46387C7.00281 15.5625 6.77185 15.5625 6.58203 15.4805C6.41458 15.4081 6.2693 15.2916 6.16346 15.143C6.04482 14.9765 5.99711 14.7538 5.90267 14.313L3.44141 2.82715C3.34476 2.37613 3.29579 2.15088 3.17578 1.98242C3.06994 1.83385 2.92469 1.71691 2.75724 1.64455C2.56738 1.5625 2.33771 1.5625 1.87646 1.5625H1.16992M4.16992 4.5625H17.0431C17.7649 4.5625 18.1255 4.5625 18.3677 4.71286C18.5799 4.84456 18.7352 5.05112 18.803 5.2915C18.8803 5.56593 18.781 5.91246 18.5809 6.60596L17.1963 11.406C17.0767 11.8206 17.0169 12.0275 16.8955 12.1814C16.7884 12.3172 16.6471 12.4235 16.487 12.4888C16.306 12.5625 16.091 12.5625 15.662 12.5625H5.90039M6.16992 19.5625C5.06535 19.5625 4.16992 18.6671 4.16992 17.5625C4.16992 16.4579 5.06535 15.5625 6.16992 15.5625C7.27449 15.5625 8.16992 16.4579 8.16992 17.5625C8.16992 18.6671 7.27449 19.5625 6.16992 19.5625Z"
-                                stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-
-                    </button>
+    <section class="container">
+        <div class="home-banner-4-wrapper">
+            <div class="home-banner-content">
+                <div class="small-bann">
                     <div>
-                        <svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12.5 14.5625C14.4675 14.5625 16.0625 12.9675 16.0625 11C16.0625 9.03249 14.4675 7.4375 12.5 7.4375C10.5325 7.4375 8.9375 9.03249 8.9375 11C8.9375 12.9675 10.5325 14.5625 12.5 14.5625Z"
-                                fill="#FD9636" />
-                            <path opacity="0.3"
-                                d="M12.5 14.5625C14.4675 14.5625 16.0625 12.9675 16.0625 11C16.0625 9.03249 14.4675 7.4375 12.5 7.4375C10.5325 7.4375 8.9375 9.03249 8.9375 11C8.9375 12.9675 10.5325 14.5625 12.5 14.5625Z"
-                                fill="#FD9636" />
-                            <path
-                                d="M12.5 0.299805C6.5875 0.299805 0 6.0748 0 10.9998C0 15.6998 6.5875 21.6998 12.5 21.6998C18.75 21.6998 25 15.9623 25 10.9998C25 6.2248 18.4125 0.299805 12.5 0.299805ZM12.5 16.4373C11.4246 16.4373 10.3733 16.1184 9.47909 15.5209C8.58489 14.9234 7.88796 14.0742 7.47641 13.0806C7.06485 12.0871 6.95717 10.9938 7.16698 9.939C7.37679 8.88423 7.89466 7.91536 8.65511 7.15491C9.41556 6.39446 10.3844 5.87659 11.4392 5.66678C12.494 5.45698 13.5873 5.56466 14.5808 5.97621C15.5744 6.38776 16.4236 7.0847 17.0211 7.97889C17.6186 8.87308 17.9375 9.92437 17.9375 10.9998C17.9375 12.4419 17.3646 13.825 16.3449 14.8447C15.3252 15.8644 13.9421 16.4373 12.5 16.4373Z"
-                                fill="#FD9636" />
-                        </svg>
-                    </div>
-                </div>
-                <div class="del">يتم التوصيل خلال 25-35 يوم عمل </div>
-            </div>
-        </div>
-        <div class="side-banner-col">
-            <div class="side-baner-item">
-                <div class="side-banner-img">
-                    <img src="{{url('')}}/storage/assets/home/ban-3-3.png" alt="banner">
-                    <div class="top-icons">
-                        <a href="#">
-                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path opacity="0.4"
-                                    d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                    fill="#FD9636" />
-                                <path opacity="0.4"
-                                    d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                    fill="#FD9636" />
-                                <path
-                                    d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                    fill="#FD9636" />
-                                <path
-                                    d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                    fill="#FD9636" />
-                            </svg>
-
-                        </a>
-                        <a href="#">
-                            <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                    fill="#FD9636" />
-                                <path opacity="0.3"
-                                    d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                    fill="#FD9636" />
-                                <path
-                                    d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                    fill="#FD9636" />
-                            </svg>
-
+                        <a href="{{ route($banners[25]->url['first'], $banners[25]->url['second'] ?? '') }}">
+                            <img src="{{$banners[25]->image}}" alt="{{$banners[25]->name}}" loading="lazy">
                         </a>
                     </div>
-                    <div class="bottom-button">
-                        <button>
-                            <span>اضف الي العربة</span>
-                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                    <div>
+                        <a href="{{ route($banners[26]->url['first'], $banners[26]->url['second'] ?? '') }}">
+                            <img src="{{$banners[26]->image}}" alt="{{$banners[26]->name}}" loading="lazy">
+                        </a>
 
-                        </button>
                     </div>
                 </div>
-                <div class="side-banner-info">
-                    <span class="cat">غرف سفرة</span>
-                    <a href="#" class="title">
-                        غرفة سفره مودرن ستانليس | بيج و رمادي
+                <div class="big-bann">
+                    <a href="{{ route($banners[27]->url['first'], $banners[27]->url['second'] ?? '') }}">
+                        <img src="{{$banners[27]->image}}" alt="{{$banners[27]->name}}" loading="lazy">
                     </a>
-                    <div class="price">
-                        <span>69000 ج.م</span>
-                        <span>PC-</span>
-                    </div>
-                    <div class="stars">
-                        @for ($m = 0; $m < 1; $m++) <svg width="24" height="21" viewBox="0 0 24 21" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M11.4984 0.564103L8.75478 5.85336C8.67844 6.00054 8.56563 6.12785 8.42607 6.22431C8.28652 6.32078 8.12441 6.3835 7.95371 6.40709L1.81957 7.2554C1.62308 7.28255 1.4385 7.36148 1.2867 7.48327C1.1349 7.60506 1.02195 7.76483 0.960629 7.94453C0.899303 8.12422 0.892052 8.31666 0.939693 8.50008C0.987333 8.68349 1.08797 8.85056 1.2302 8.98238L5.66963 13.0994C5.9207 13.3322 6.03453 13.6673 5.97602 13.9953L4.92813 19.8089C4.89461 19.9951 4.91649 20.1864 4.9913 20.3614C5.06611 20.5363 5.19087 20.6879 5.35147 20.7989C5.51206 20.9099 5.70209 20.9759 5.90007 20.9895C6.09805 21.0031 6.29608 20.9638 6.47177 20.8759L11.9591 18.1305C12.1119 18.0543 12.2818 18.0144 12.4543 18.0144C12.6268 18.0144 12.7968 18.0543 12.9495 18.1305L18.4368 20.8759C18.6125 20.9638 18.8106 21.0031 19.0085 20.9895C19.2065 20.9759 19.3966 20.9099 19.5571 20.7989C19.7177 20.6879 19.8425 20.5363 19.9173 20.3614C19.9921 20.1864 20.014 19.9951 19.9805 19.8089L18.9326 13.9953C18.9034 13.8335 18.9161 13.6674 18.9695 13.5113C19.0228 13.3552 19.1153 13.2139 19.239 13.0994L23.6784 8.98238C23.8206 8.85056 23.9213 8.68349 23.9689 8.50008C24.0166 8.31666 24.0093 8.12422 23.948 7.94453C23.8867 7.76483 23.7737 7.60506 23.6219 7.48327C23.4701 7.36148 23.2855 7.28255 23.089 7.2554L16.9549 6.40709C16.7842 6.3835 16.6221 6.32078 16.4825 6.22431C16.343 6.12785 16.2302 6.00054 16.1538 5.85336L13.4102 0.564103C13.0165 -0.188034 11.8889 -0.188034 11.4984 0.564103Z"
-                                fill="black" fill-opacity="0.1" />
-                            </svg>
-
-                            @endfor
-                            @for ($j = 0; $j < 4; $j++) <svg width="24" height="21" viewBox="0 0 24 21" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10.9535 0.564103L8.20986 5.85336C8.13352 6.00054 8.0207 6.12785 7.88115 6.22431C7.7416 6.32078 7.57948 6.3835 7.40879 6.40709L1.27465 7.2554C1.07816 7.28255 0.893574 7.36148 0.741777 7.48327C0.589981 7.60506 0.477032 7.76483 0.415707 7.94453C0.354382 8.12422 0.34713 8.31666 0.394772 8.50008C0.442411 8.68349 0.543043 8.85056 0.685282 8.98238L5.12471 13.0994C5.37578 13.3322 5.48961 13.6673 5.4311 13.9953L4.38321 19.8089C4.34969 19.9951 4.37157 20.1864 4.44638 20.3614C4.52119 20.5363 4.64595 20.6879 4.80654 20.7989C4.96714 20.9099 5.15717 20.9759 5.35515 20.9895C5.55313 21.0031 5.75116 20.9638 5.92685 20.8759L11.4142 18.1305C11.5669 18.0543 11.7369 18.0144 11.9094 18.0144C12.0819 18.0144 12.2518 18.0543 12.4046 18.1305L17.8919 20.8759C18.0676 20.9638 18.2656 21.0031 18.4636 20.9895C18.6616 20.9759 18.8516 20.9099 19.0122 20.7989C19.1728 20.6879 19.2976 20.5363 19.3724 20.3614C19.4472 20.1864 19.4691 19.9951 19.4356 19.8089L18.3877 13.9953C18.3585 13.8335 18.3712 13.6674 18.4245 13.5113C18.4779 13.3552 18.5704 13.2139 18.6941 13.0994L23.1335 8.98238C23.2757 8.85056 23.3764 8.68349 23.424 8.50008C23.4716 8.31666 23.4644 8.12422 23.4031 7.94453C23.3417 7.76483 23.2288 7.60506 23.077 7.48327C22.9252 7.36148 22.7406 7.28255 22.5441 7.2554L16.41 6.40709C16.2393 6.3835 16.0772 6.32078 15.9376 6.22431C15.7981 6.12785 15.6853 6.00054 15.6089 5.85336L12.8652 0.564103C12.4716 -0.188034 11.344 -0.188034 10.9535 0.564103Z"
-                                    fill="#FFC100" />
-                                </svg>
-
-                                @endfor
-                    </div>
-                    <span class="delivery">يتم التوصيل خلال 25-35 يوم عمل </span>
-                    <div class="new-offer">New</div>
-                </div>
-            </div>
-            <div class="side-baner-item">
-                <div class="side-banner-img">
-                    <img src="{{url('')}}/storage/assets/home/ban-3-4.png" alt="banner">
-                    <div class="top-icons">
-                        <a href="#">
-                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path opacity="0.4"
-                                    d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                    fill="#FD9636" />
-                                <path opacity="0.4"
-                                    d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                    fill="#FD9636" />
-                                <path
-                                    d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                    fill="#FD9636" />
-                                <path
-                                    d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                    fill="#FD9636" />
-                            </svg>
-
-                        </a>
-                        <a href="#">
-                            <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                    fill="#FD9636" />
-                                <path opacity="0.3"
-                                    d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                    fill="#FD9636" />
-                                <path
-                                    d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                    fill="#FD9636" />
-                            </svg>
-
-                        </a>
-                    </div>
-                    <div class="bottom-button">
-                        <button>
-                            <span>اضف الي العربة</span>
-                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-
-                        </button>
-                    </div>
-                </div>
-                <div class="side-banner-info">
-                    <span class="cat">غرف سفرة</span>
-                    <a href="#" class="title">
-                        غرفة سفره مودرن ستانليس | بيج و رمادي
-                    </a>
-                    <div class="price">
-                        <span>69000 ج.م</span>
-                        <span>PC-</span>
-                    </div>
-                    <div class="stars">
-                        @for ($m = 0; $m < 1; $m++) <svg width="24" height="21" viewBox="0 0 24 21" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M11.4984 0.564103L8.75478 5.85336C8.67844 6.00054 8.56563 6.12785 8.42607 6.22431C8.28652 6.32078 8.12441 6.3835 7.95371 6.40709L1.81957 7.2554C1.62308 7.28255 1.4385 7.36148 1.2867 7.48327C1.1349 7.60506 1.02195 7.76483 0.960629 7.94453C0.899303 8.12422 0.892052 8.31666 0.939693 8.50008C0.987333 8.68349 1.08797 8.85056 1.2302 8.98238L5.66963 13.0994C5.9207 13.3322 6.03453 13.6673 5.97602 13.9953L4.92813 19.8089C4.89461 19.9951 4.91649 20.1864 4.9913 20.3614C5.06611 20.5363 5.19087 20.6879 5.35147 20.7989C5.51206 20.9099 5.70209 20.9759 5.90007 20.9895C6.09805 21.0031 6.29608 20.9638 6.47177 20.8759L11.9591 18.1305C12.1119 18.0543 12.2818 18.0144 12.4543 18.0144C12.6268 18.0144 12.7968 18.0543 12.9495 18.1305L18.4368 20.8759C18.6125 20.9638 18.8106 21.0031 19.0085 20.9895C19.2065 20.9759 19.3966 20.9099 19.5571 20.7989C19.7177 20.6879 19.8425 20.5363 19.9173 20.3614C19.9921 20.1864 20.014 19.9951 19.9805 19.8089L18.9326 13.9953C18.9034 13.8335 18.9161 13.6674 18.9695 13.5113C19.0228 13.3552 19.1153 13.2139 19.239 13.0994L23.6784 8.98238C23.8206 8.85056 23.9213 8.68349 23.9689 8.50008C24.0166 8.31666 24.0093 8.12422 23.948 7.94453C23.8867 7.76483 23.7737 7.60506 23.6219 7.48327C23.4701 7.36148 23.2855 7.28255 23.089 7.2554L16.9549 6.40709C16.7842 6.3835 16.6221 6.32078 16.4825 6.22431C16.343 6.12785 16.2302 6.00054 16.1538 5.85336L13.4102 0.564103C13.0165 -0.188034 11.8889 -0.188034 11.4984 0.564103Z"
-                                fill="black" fill-opacity="0.1" />
-                            </svg>
-
-                            @endfor
-                            @for ($j = 0; $j < 4; $j++) <svg width="24" height="21" viewBox="0 0 24 21" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10.9535 0.564103L8.20986 5.85336C8.13352 6.00054 8.0207 6.12785 7.88115 6.22431C7.7416 6.32078 7.57948 6.3835 7.40879 6.40709L1.27465 7.2554C1.07816 7.28255 0.893574 7.36148 0.741777 7.48327C0.589981 7.60506 0.477032 7.76483 0.415707 7.94453C0.354382 8.12422 0.34713 8.31666 0.394772 8.50008C0.442411 8.68349 0.543043 8.85056 0.685282 8.98238L5.12471 13.0994C5.37578 13.3322 5.48961 13.6673 5.4311 13.9953L4.38321 19.8089C4.34969 19.9951 4.37157 20.1864 4.44638 20.3614C4.52119 20.5363 4.64595 20.6879 4.80654 20.7989C4.96714 20.9099 5.15717 20.9759 5.35515 20.9895C5.55313 21.0031 5.75116 20.9638 5.92685 20.8759L11.4142 18.1305C11.5669 18.0543 11.7369 18.0144 11.9094 18.0144C12.0819 18.0144 12.2518 18.0543 12.4046 18.1305L17.8919 20.8759C18.0676 20.9638 18.2656 21.0031 18.4636 20.9895C18.6616 20.9759 18.8516 20.9099 19.0122 20.7989C19.1728 20.6879 19.2976 20.5363 19.3724 20.3614C19.4472 20.1864 19.4691 19.9951 19.4356 19.8089L18.3877 13.9953C18.3585 13.8335 18.3712 13.6674 18.4245 13.5113C18.4779 13.3552 18.5704 13.2139 18.6941 13.0994L23.1335 8.98238C23.2757 8.85056 23.3764 8.68349 23.424 8.50008C23.4716 8.31666 23.4644 8.12422 23.4031 7.94453C23.3417 7.76483 23.2288 7.60506 23.077 7.48327C22.9252 7.36148 22.7406 7.28255 22.5441 7.2554L16.41 6.40709C16.2393 6.3835 16.0772 6.32078 15.9376 6.22431C15.7981 6.12785 15.6853 6.00054 15.6089 5.85336L12.8652 0.564103C12.4716 -0.188034 11.344 -0.188034 10.9535 0.564103Z"
-                                    fill="#FFC100" />
-                                </svg>
-
-                                @endfor
-                    </div>
-                    <span class="delivery">يتم التوصيل خلال 25-35 يوم عمل </span>
-                    <div class="new-offer">New</div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-</section>
+    </section>
 
-<section class="container">
-    <div class="flash-sales-wrapper">
-        <h2>Flash Sales</h2>
-        <div class="flash-sales-slider-3">
-            <div class="swiper-wrapper">
-
-                @for ($i = 0; $i < 20; $i++) <div class="swiper-slide">
-                    <div class="flash-save-offer">
-                        <span>وفر</span>
-                        <span>35%</span>
-                    </div>
-                    <div class="flash-new-offer"></div>
-                    <div class="slide-container">
-                        <div class="flash-pro-img">
-                            <img src="{{url('')}}/storage/assets/home/flash-pro.png" alt="">
-                            <a>
-                                <svg id="heartIcon" onclick="redHeart(this)" width="21" height="18" viewBox="0 0 21 18"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="heart"
-                                        d="M10.5 4.15428C8.5 -0.540161 1.5 -0.0401611 1.5 5.95987C1.5 11.9599 10.5 16.9601 10.5 16.9601C10.5 16.9601 19.5 11.9599 19.5 5.95987C19.5 -0.0401611 12.5 -0.540161 10.5 4.15428Z"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-info">
-                            <div class="cat-stars">
-                                <a href="#">غرف سفرة</a>
-                                <div class="stars">
-                                    @for ($m = 0; $m < 1; $m++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617045 3.11332C0.532729 3.12497 0.453524 3.15885 0.388387 3.2111C0.32325 3.26336 0.274783 3.33193 0.248468 3.40903C0.222154 3.48614 0.219042 3.56872 0.239485 3.64742C0.259928 3.72612 0.303108 3.79781 0.364144 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53793 8.99565 2.61332 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.3274 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                            fill="black" fill-opacity="0.1" />
-                                        </svg>
-                                        @endfor
-                                        @for ($j = 0; $j < 4; $j++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617046 3.11332C0.532731 3.12497 0.453525 3.15885 0.388388 3.2111C0.323251 3.26336 0.274784 3.33193 0.248469 3.40903C0.222155 3.48614 0.219043 3.56872 0.239486 3.64742C0.259929 3.72612 0.30311 3.79781 0.364145 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53794 8.99565 2.61333 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.32741 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                                fill="#FFC100" />
-                                            </svg>
-                                            @endfor
-                                </div>
-                            </div>
-                            <a href="#"> غرفة سفره مودرن ستانليس | بيج و رمادي</a>
-                        </div>
-                        <div class="flash-pro-price">
-                            <span>
-                                69000ج.م
-                            </span>
-                            <div>
-                                <span>69000 ج.م</span>
-                                <span>PC-</span>
-                            </div>
-                        </div>
-                        <div class="flsh-pro-buttons">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-delivery">
-                            يتم التوصيل خلال 5 - 7 ايام عمل
-                        </div>
-                    </div>
-            </div>
-            @endfor
-
-        </div>
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="home-banner-2-wrapper">
-        <div class="home-banner-content-reversed">
-            <div>
-                <img src="{{url('')}}/storage/assets/home/banner-2-2.png" alt="baner">
-            </div>
-            <div>
-                <img src="{{url('')}}/storage/assets/home/banner-2-1.png" alt="baner">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="flash-sales-wrapper">
-        <h2>Flash Sales</h2>
-        <div class="flash-sales-slider-3">
-            <div class="swiper-wrapper">
-
-                @for ($i = 0; $i < 20; $i++) <div class="swiper-slide">
-                    <div class="flash-save-offer">
-                        <span>وفر</span>
-                        <span>35%</span>
-                    </div>
-                    <div class="flash-new-offer"></div>
-                    <div class="slide-container">
-                        <div class="flash-pro-img">
-                            <img src="{{url('')}}/storage/assets/home/flash-pro.png" alt="">
-                            <a>
-                                <svg id="heartIcon" onclick="redHeart(this)" width="21" height="18" viewBox="0 0 21 18"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="heart"
-                                        d="M10.5 4.15428C8.5 -0.540161 1.5 -0.0401611 1.5 5.95987C1.5 11.9599 10.5 16.9601 10.5 16.9601C10.5 16.9601 19.5 11.9599 19.5 5.95987C19.5 -0.0401611 12.5 -0.540161 10.5 4.15428Z"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-info">
-                            <div class="cat-stars">
-                                <a href="#">غرف سفرة</a>
-                                <div class="stars">
-                                    @for ($m = 0; $m < 1; $m++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617045 3.11332C0.532729 3.12497 0.453524 3.15885 0.388387 3.2111C0.32325 3.26336 0.274783 3.33193 0.248468 3.40903C0.222154 3.48614 0.219042 3.56872 0.239485 3.64742C0.259928 3.72612 0.303108 3.79781 0.364144 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53793 8.99565 2.61332 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.3274 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                            fill="black" fill-opacity="0.1" />
-                                        </svg>
-                                        @endfor
-                                        @for ($j = 0; $j < 4; $j++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617046 3.11332C0.532731 3.12497 0.453525 3.15885 0.388388 3.2111C0.323251 3.26336 0.274784 3.33193 0.248469 3.40903C0.222155 3.48614 0.219043 3.56872 0.239486 3.64742C0.259929 3.72612 0.30311 3.79781 0.364145 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53794 8.99565 2.61333 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.32741 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                                fill="#FFC100" />
-                                            </svg>
-                                            @endfor
-                                </div>
-                            </div>
-                            <a href="#"> غرفة سفره مودرن ستانليس | بيج و رمادي</a>
-                        </div>
-                        <div class="flash-pro-price">
-                            <span>
-                                69000ج.م
-                            </span>
-                            <div>
-                                <span>69000 ج.م</span>
-                                <span>PC-</span>
-                            </div>
-                        </div>
-                        <div class="flsh-pro-buttons">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-delivery">
-                            يتم التوصيل خلال 5 - 7 ايام عمل
-                        </div>
-                    </div>
-            </div>
-            @endfor
-
-        </div>
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="flash-sales-wrapper">
-        <h2>Flash Sales</h2>
-        <div class="flash-sales-slider-3">
-            <div class="swiper-wrapper">
-
-                @for ($i = 0; $i < 20; $i++) <div class="swiper-slide">
-                    <div class="flash-save-offer">
-                        <span>وفر</span>
-                        <span>35%</span>
-                    </div>
-                    <div class="flash-new-offer"></div>
-                    <div class="slide-container">
-                        <div class="flash-pro-img">
-                            <img src="{{url('')}}/storage/assets/home/flash-pro.png" alt="">
-                            <a>
-                                <svg id="heartIcon" onclick="redHeart(this)" width="21" height="18" viewBox="0 0 21 18"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="heart"
-                                        d="M10.5 4.15428C8.5 -0.540161 1.5 -0.0401611 1.5 5.95987C1.5 11.9599 10.5 16.9601 10.5 16.9601C10.5 16.9601 19.5 11.9599 19.5 5.95987C19.5 -0.0401611 12.5 -0.540161 10.5 4.15428Z"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-info">
-                            <div class="cat-stars">
-                                <a href="#">غرف سفرة</a>
-                                <div class="stars">
-                                    @for ($m = 0; $m < 1; $m++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617045 3.11332C0.532729 3.12497 0.453524 3.15885 0.388387 3.2111C0.32325 3.26336 0.274783 3.33193 0.248468 3.40903C0.222154 3.48614 0.219042 3.56872 0.239485 3.64742C0.259928 3.72612 0.303108 3.79781 0.364144 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53793 8.99565 2.61332 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.3274 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                            fill="black" fill-opacity="0.1" />
-                                        </svg>
-                                        @endfor
-                                        @for ($j = 0; $j < 4; $j++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617046 3.11332C0.532731 3.12497 0.453525 3.15885 0.388388 3.2111C0.323251 3.26336 0.274784 3.33193 0.248469 3.40903C0.222155 3.48614 0.219043 3.56872 0.239486 3.64742C0.259929 3.72612 0.30311 3.79781 0.364145 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53794 8.99565 2.61333 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.32741 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                                fill="#FFC100" />
-                                            </svg>
-                                            @endfor
-                                </div>
-                            </div>
-                            <a href="#"> غرفة سفره مودرن ستانليس | بيج و رمادي</a>
-                        </div>
-                        <div class="flash-pro-price">
-                            <span>
-                                69000ج.م
-                            </span>
-                            <div>
-                                <span>69000 ج.م</span>
-                                <span>PC-</span>
-                            </div>
-                        </div>
-                        <div class="flsh-pro-buttons">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-delivery">
-                            يتم التوصيل خلال 5 - 7 ايام عمل
-                        </div>
-                    </div>
-            </div>
-            @endfor
-
-        </div>
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="home-banner-2-wrapper">
-        <div class="home-banner-content">
-            <div>
-                <img src="{{url('')}}/storage/assets/home/banner-2-1.png" alt="baner">
-            </div>
-            <div>
-                <img src="{{url('')}}/storage/assets/home/banner-2-2.png" alt="baner">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="flash-sales-wrapper">
-        <h2>Flash Sales</h2>
-        <div class="flash-sales-slider-3">
-            <div class="swiper-wrapper">
-
-                @for ($i = 0; $i < 20; $i++) <div class="swiper-slide">
-                    <div class="flash-save-offer">
-                        <span>وفر</span>
-                        <span>35%</span>
-                    </div>
-                    <div class="flash-new-offer"></div>
-                    <div class="slide-container">
-                        <div class="flash-pro-img">
-                            <img src="{{url('')}}/storage/assets/home/flash-pro.png" alt="">
-                            <a>
-                                <svg id="heartIcon" onclick="redHeart(this)" width="21" height="18" viewBox="0 0 21 18"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="heart"
-                                        d="M10.5 4.15428C8.5 -0.540161 1.5 -0.0401611 1.5 5.95987C1.5 11.9599 10.5 16.9601 10.5 16.9601C10.5 16.9601 19.5 11.9599 19.5 5.95987C19.5 -0.0401611 12.5 -0.540161 10.5 4.15428Z"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-info">
-                            <div class="cat-stars">
-                                <a href="#">غرف سفرة</a>
-                                <div class="stars">
-                                    @for ($m = 0; $m < 1; $m++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617045 3.11332C0.532729 3.12497 0.453524 3.15885 0.388387 3.2111C0.32325 3.26336 0.274783 3.33193 0.248468 3.40903C0.222154 3.48614 0.219042 3.56872 0.239485 3.64742C0.259928 3.72612 0.303108 3.79781 0.364144 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53793 8.99565 2.61332 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.3274 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                            fill="black" fill-opacity="0.1" />
-                                        </svg>
-                                        @endfor
-                                        @for ($j = 0; $j < 4; $j++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617046 3.11332C0.532731 3.12497 0.453525 3.15885 0.388388 3.2111C0.323251 3.26336 0.274784 3.33193 0.248469 3.40903C0.222155 3.48614 0.219043 3.56872 0.239486 3.64742C0.259929 3.72612 0.30311 3.79781 0.364145 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53794 8.99565 2.61333 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.32741 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                                fill="#FFC100" />
-                                            </svg>
-                                            @endfor
-                                </div>
-                            </div>
-                            <a href="#"> غرفة سفره مودرن ستانليس | بيج و رمادي</a>
-                        </div>
-                        <div class="flash-pro-price">
-                            <span>
-                                69000ج.م
-                            </span>
-                            <div>
-                                <span>69000 ج.م</span>
-                                <span>PC-</span>
-                            </div>
-                        </div>
-                        <div class="flsh-pro-buttons">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-delivery">
-                            يتم التوصيل خلال 5 - 7 ايام عمل
-                        </div>
-                    </div>
-            </div>
-            @endfor
-
-        </div>
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="flash-product-wrapper">
-        <h2>Flash Sales</h2>
-        <div class="products-container">
-            @for ($i = 0; $i < 4; $i++) <div class="product-item">
-                <div class="side-banner-img">
-                    <img src="{{url('')}}/storage/assets/home/ban-3-1.png" alt="banner">
-                    <div class="top-icons">
-                        <a href="#">
-                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path opacity="0.4"
-                                    d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                    fill="#FD9636" />
-                                <path opacity="0.4"
-                                    d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                    fill="#FD9636" />
-                                <path
-                                    d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                    fill="#FD9636" />
-                                <path
-                                    d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                    fill="#FD9636" />
-                            </svg>
-
-                        </a>
-                        <a href="#">
-                            <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                    fill="#FD9636" />
-                                <path opacity="0.3"
-                                    d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                    fill="#FD9636" />
-                                <path
-                                    d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                    fill="#FD9636" />
-                            </svg>
-
-                        </a>
-                    </div>
-                    <div class="bottom-button">
-                        <button>
-                            <span>اضف الي العربة</span>
-                            <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-
-                        </button>
-                    </div>
-                </div>
-                <div class="side-banner-info">
-                    <span class="cat">غرف سفرة</span>
-                    <a href="#" class="title">
-                        غرفة سفره مودرن ستانليس | بيج و رمادي
-                    </a>
-                    <div class="price">
-                        <span>69000 ج.م</span>
-                        <span>PC-</span>
-                    </div>
-                    <div class="stars">
-                        @for ($m = 0; $m < 1; $m++) <svg width="24" height="21" viewBox="0 0 24 21" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M11.4984 0.564103L8.75478 5.85336C8.67844 6.00054 8.56563 6.12785 8.42607 6.22431C8.28652 6.32078 8.12441 6.3835 7.95371 6.40709L1.81957 7.2554C1.62308 7.28255 1.4385 7.36148 1.2867 7.48327C1.1349 7.60506 1.02195 7.76483 0.960629 7.94453C0.899303 8.12422 0.892052 8.31666 0.939693 8.50008C0.987333 8.68349 1.08797 8.85056 1.2302 8.98238L5.66963 13.0994C5.9207 13.3322 6.03453 13.6673 5.97602 13.9953L4.92813 19.8089C4.89461 19.9951 4.91649 20.1864 4.9913 20.3614C5.06611 20.5363 5.19087 20.6879 5.35147 20.7989C5.51206 20.9099 5.70209 20.9759 5.90007 20.9895C6.09805 21.0031 6.29608 20.9638 6.47177 20.8759L11.9591 18.1305C12.1119 18.0543 12.2818 18.0144 12.4543 18.0144C12.6268 18.0144 12.7968 18.0543 12.9495 18.1305L18.4368 20.8759C18.6125 20.9638 18.8106 21.0031 19.0085 20.9895C19.2065 20.9759 19.3966 20.9099 19.5571 20.7989C19.7177 20.6879 19.8425 20.5363 19.9173 20.3614C19.9921 20.1864 20.014 19.9951 19.9805 19.8089L18.9326 13.9953C18.9034 13.8335 18.9161 13.6674 18.9695 13.5113C19.0228 13.3552 19.1153 13.2139 19.239 13.0994L23.6784 8.98238C23.8206 8.85056 23.9213 8.68349 23.9689 8.50008C24.0166 8.31666 24.0093 8.12422 23.948 7.94453C23.8867 7.76483 23.7737 7.60506 23.6219 7.48327C23.4701 7.36148 23.2855 7.28255 23.089 7.2554L16.9549 6.40709C16.7842 6.3835 16.6221 6.32078 16.4825 6.22431C16.343 6.12785 16.2302 6.00054 16.1538 5.85336L13.4102 0.564103C13.0165 -0.188034 11.8889 -0.188034 11.4984 0.564103Z"
-                                fill="black" fill-opacity="0.1" />
-                            </svg>
-
-                            @endfor
-                            @for ($j = 0; $j < 4; $j++) <svg width="24" height="21" viewBox="0 0 24 21" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10.9535 0.564103L8.20986 5.85336C8.13352 6.00054 8.0207 6.12785 7.88115 6.22431C7.7416 6.32078 7.57948 6.3835 7.40879 6.40709L1.27465 7.2554C1.07816 7.28255 0.893574 7.36148 0.741777 7.48327C0.589981 7.60506 0.477032 7.76483 0.415707 7.94453C0.354382 8.12422 0.34713 8.31666 0.394772 8.50008C0.442411 8.68349 0.543043 8.85056 0.685282 8.98238L5.12471 13.0994C5.37578 13.3322 5.48961 13.6673 5.4311 13.9953L4.38321 19.8089C4.34969 19.9951 4.37157 20.1864 4.44638 20.3614C4.52119 20.5363 4.64595 20.6879 4.80654 20.7989C4.96714 20.9099 5.15717 20.9759 5.35515 20.9895C5.55313 21.0031 5.75116 20.9638 5.92685 20.8759L11.4142 18.1305C11.5669 18.0543 11.7369 18.0144 11.9094 18.0144C12.0819 18.0144 12.2518 18.0543 12.4046 18.1305L17.8919 20.8759C18.0676 20.9638 18.2656 21.0031 18.4636 20.9895C18.6616 20.9759 18.8516 20.9099 19.0122 20.7989C19.1728 20.6879 19.2976 20.5363 19.3724 20.3614C19.4472 20.1864 19.4691 19.9951 19.4356 19.8089L18.3877 13.9953C18.3585 13.8335 18.3712 13.6674 18.4245 13.5113C18.4779 13.3552 18.5704 13.2139 18.6941 13.0994L23.1335 8.98238C23.2757 8.85056 23.3764 8.68349 23.424 8.50008C23.4716 8.31666 23.4644 8.12422 23.4031 7.94453C23.3417 7.76483 23.2288 7.60506 23.077 7.48327C22.9252 7.36148 22.7406 7.28255 22.5441 7.2554L16.41 6.40709C16.2393 6.3835 16.0772 6.32078 15.9376 6.22431C15.7981 6.12785 15.6853 6.00054 15.6089 5.85336L12.8652 0.564103C12.4716 -0.188034 11.344 -0.188034 10.9535 0.564103Z"
-                                    fill="#FFC100" />
-                                </svg>
-
-                                @endfor
-                    </div>
-                    <span class="delivery">يتم التوصيل خلال 25-35 يوم عمل </span>
-                    <div class="new-offer">New</div>
-                </div>
-        </div>
-        @endfor
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="flash-sales-wrapper">
-        <h2>Flash Sales</h2>
-        <div class="flash-sales-slider-3">
-            <div class="swiper-wrapper">
-
-                @for ($i = 0; $i < 20; $i++) <div class="swiper-slide">
-                    <div class="flash-save-offer">
-                        <span>وفر</span>
-                        <span>35%</span>
-                    </div>
-                    <div class="flash-new-offer"></div>
-                    <div class="slide-container">
-                        <div class="flash-pro-img">
-                            <img src="{{url('')}}/storage/assets/home/flash-pro.png" alt="">
-                            <a>
-                                <svg id="heartIcon" onclick="redHeart(this)" width="21" height="18" viewBox="0 0 21 18"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="heart"
-                                        d="M10.5 4.15428C8.5 -0.540161 1.5 -0.0401611 1.5 5.95987C1.5 11.9599 10.5 16.9601 10.5 16.9601C10.5 16.9601 19.5 11.9599 19.5 5.95987C19.5 -0.0401611 12.5 -0.540161 10.5 4.15428Z"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-info">
-                            <div class="cat-stars">
-                                <a href="#">غرف سفرة</a>
-                                <div class="stars">
-                                    @for ($m = 0; $m < 1; $m++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617045 3.11332C0.532729 3.12497 0.453524 3.15885 0.388387 3.2111C0.32325 3.26336 0.274783 3.33193 0.248468 3.40903C0.222154 3.48614 0.219042 3.56872 0.239485 3.64742C0.259928 3.72612 0.303108 3.79781 0.364144 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53793 8.99565 2.61332 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.3274 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                            fill="black" fill-opacity="0.1" />
-                                        </svg>
-                                        @endfor
-                                        @for ($j = 0; $j < 4; $j++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617046 3.11332C0.532731 3.12497 0.453525 3.15885 0.388388 3.2111C0.323251 3.26336 0.274784 3.33193 0.248469 3.40903C0.222155 3.48614 0.219043 3.56872 0.239486 3.64742C0.259929 3.72612 0.30311 3.79781 0.364145 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53794 8.99565 2.61333 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.32741 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                                fill="#FFC100" />
-                                            </svg>
-                                            @endfor
-                                </div>
-                            </div>
-                            <a href="#"> غرفة سفره مودرن ستانليس | بيج و رمادي</a>
-                        </div>
-                        <div class="flash-pro-price">
-                            <span>
-                                69000ج.م
-                            </span>
-                            <div>
-                                <span>69000 ج.م</span>
-                                <span>PC-</span>
-                            </div>
-                        </div>
-                        <div class="flsh-pro-buttons">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-delivery">
-                            يتم التوصيل خلال 5 - 7 ايام عمل
-                        </div>
-                    </div>
-            </div>
-            @endfor
-
-        </div>
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="home-banner-2-wrapper">
-        <div class="home-banner-content">
-            <div>
-                <img src="{{url('')}}/storage/assets/home/banner-2-1.png" alt="baner">
-            </div>
-            <div>
-                <img src="{{url('')}}/storage/assets/home/banner-2-2.png" alt="baner">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="flash-sales-wrapper">
-        <h2>Flash Sales</h2>
-        <div class="flash-sales-slider-3">
-            <div class="swiper-wrapper">
-
-                @for ($i = 0; $i < 20; $i++) <div class="swiper-slide">
-                    <div class="flash-save-offer">
-                        <span>وفر</span>
-                        <span>35%</span>
-                    </div>
-                    <div class="flash-new-offer"></div>
-                    <div class="slide-container">
-                        <div class="flash-pro-img">
-                            <img src="{{url('')}}/storage/assets/home/flash-pro.png" alt="">
-                            <a>
-                                <svg id="heartIcon" onclick="redHeart(this)" width="21" height="18" viewBox="0 0 21 18"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="heart"
-                                        d="M10.5 4.15428C8.5 -0.540161 1.5 -0.0401611 1.5 5.95987C1.5 11.9599 10.5 16.9601 10.5 16.9601C10.5 16.9601 19.5 11.9599 19.5 5.95987C19.5 -0.0401611 12.5 -0.540161 10.5 4.15428Z"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-info">
-                            <div class="cat-stars">
-                                <a href="#">غرف سفرة</a>
-                                <div class="stars">
-                                    @for ($m = 0; $m < 1; $m++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617045 3.11332C0.532729 3.12497 0.453524 3.15885 0.388387 3.2111C0.32325 3.26336 0.274783 3.33193 0.248468 3.40903C0.222154 3.48614 0.219042 3.56872 0.239485 3.64742C0.259928 3.72612 0.303108 3.79781 0.364144 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53793 8.99565 2.61332 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.3274 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                            fill="black" fill-opacity="0.1" />
-                                        </svg>
-                                        @endfor
-                                        @for ($j = 0; $j < 4; $j++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617046 3.11332C0.532731 3.12497 0.453525 3.15885 0.388388 3.2111C0.323251 3.26336 0.274784 3.33193 0.248469 3.40903C0.222155 3.48614 0.219043 3.56872 0.239486 3.64742C0.259929 3.72612 0.30311 3.79781 0.364145 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53794 8.99565 2.61333 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.32741 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                                fill="#FFC100" />
-                                            </svg>
-                                            @endfor
-                                </div>
-                            </div>
-                            <a href="#"> غرفة سفره مودرن ستانليس | بيج و رمادي</a>
-                        </div>
-                        <div class="flash-pro-price">
-                            <span>
-                                69000ج.م
-                            </span>
-                            <div>
-                                <span>69000 ج.م</span>
-                                <span>PC-</span>
-                            </div>
-                        </div>
-                        <div class="flsh-pro-buttons">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-delivery">
-                            يتم التوصيل خلال 5 - 7 ايام عمل
-                        </div>
-                    </div>
-            </div>
-            @endfor
-
-        </div>
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="flash-sales-wrapper">
-        <h2>Flash Sales</h2>
-        <div class="flash-sales-slider-3">
-            <div class="swiper-wrapper">
-
-                @for ($i = 0; $i < 20; $i++) <div class="swiper-slide">
-                    <div class="flash-save-offer">
-                        <span>وفر</span>
-                        <span>35%</span>
-                    </div>
-                    <div class="flash-new-offer"></div>
-                    <div class="slide-container">
-                        <div class="flash-pro-img">
-                            <img src="{{url('')}}/storage/assets/home/flash-pro.png" alt="">
-                            <a>
-                                <svg id="heartIcon" onclick="redHeart(this)" width="21" height="18" viewBox="0 0 21 18"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="heart"
-                                        d="M10.5 4.15428C8.5 -0.540161 1.5 -0.0401611 1.5 5.95987C1.5 11.9599 10.5 16.9601 10.5 16.9601C10.5 16.9601 19.5 11.9599 19.5 5.95987C19.5 -0.0401611 12.5 -0.540161 10.5 4.15428Z"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-info">
-                            <div class="cat-stars">
-                                <a href="#">غرف سفرة</a>
-                                <div class="stars">
-                                    @for ($m = 0; $m < 1; $m++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617045 3.11332C0.532729 3.12497 0.453524 3.15885 0.388387 3.2111C0.32325 3.26336 0.274783 3.33193 0.248468 3.40903C0.222154 3.48614 0.219042 3.56872 0.239485 3.64742C0.259928 3.72612 0.303108 3.79781 0.364144 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53793 8.99565 2.61332 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.3274 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                            fill="black" fill-opacity="0.1" />
-                                        </svg>
-                                        @endfor
-                                        @for ($j = 0; $j < 4; $j++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617046 3.11332C0.532731 3.12497 0.453525 3.15885 0.388388 3.2111C0.323251 3.26336 0.274784 3.33193 0.248469 3.40903C0.222155 3.48614 0.219043 3.56872 0.239486 3.64742C0.259929 3.72612 0.30311 3.79781 0.364145 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53794 8.99565 2.61333 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.32741 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                                fill="#FFC100" />
-                                            </svg>
-                                            @endfor
-                                </div>
-                            </div>
-                            <a href="#"> غرفة سفره مودرن ستانليس | بيج و رمادي</a>
-                        </div>
-                        <div class="flash-pro-price">
-                            <span>
-                                69000ج.م
-                            </span>
-                            <div>
-                                <span>69000 ج.م</span>
-                                <span>PC-</span>
-                            </div>
-                        </div>
-                        <div class="flsh-pro-buttons">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-delivery">
-                            يتم التوصيل خلال 5 - 7 ايام عمل
-                        </div>
-                    </div>
-            </div>
-            @endfor
-
-        </div>
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="home-banner-4-wrapper">
-        <div class="home-banner-content">
-            <div class="small-bann">
-                <div>
-                    <img src="{{url('')}}/storage/assets/home/bann-4-small.png.png" alt="baner">
-                </div>
-                <div>
-                    <img src="{{url('')}}/storage/assets/home/bann-4-small.png.png" alt="baner">
-                </div>
-            </div>
-            <div class="big-bann">
-                <img src="{{url('')}}/storage/assets/home/bann-4-big.png" alt="baner">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="flash-sales-wrapper">
-        <h2>Flash Sales</h2>
-        <div class="flash-sales-slider-3">
-            <div class="swiper-wrapper">
-
-                @for ($i = 0; $i < 20; $i++) <div class="swiper-slide">
-                    <div class="flash-save-offer">
-                        <span>وفر</span>
-                        <span>35%</span>
-                    </div>
-                    <div class="flash-new-offer"></div>
-                    <div class="slide-container">
-                        <div class="flash-pro-img">
-                            <img src="{{url('')}}/storage/assets/home/flash-pro.png" alt="">
-                            <a>
-                                <svg id="heartIcon" onclick="redHeart(this)" width="21" height="18" viewBox="0 0 21 18"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="heart"
-                                        d="M10.5 4.15428C8.5 -0.540161 1.5 -0.0401611 1.5 5.95987C1.5 11.9599 10.5 16.9601 10.5 16.9601C10.5 16.9601 19.5 11.9599 19.5 5.95987C19.5 -0.0401611 12.5 -0.540161 10.5 4.15428Z"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-info">
-                            <div class="cat-stars">
-                                <a href="#">غرف سفرة</a>
-                                <div class="stars">
-                                    @for ($m = 0; $m < 1; $m++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617045 3.11332C0.532729 3.12497 0.453524 3.15885 0.388387 3.2111C0.32325 3.26336 0.274783 3.33193 0.248468 3.40903C0.222154 3.48614 0.219042 3.56872 0.239485 3.64742C0.259928 3.72612 0.303108 3.79781 0.364144 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53793 8.99565 2.61332 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.3274 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                            fill="black" fill-opacity="0.1" />
-                                        </svg>
-                                        @endfor
-                                        @for ($j = 0; $j < 4; $j++) <svg width="11" height="9" viewBox="0 0 11 9"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M4.77029 0.242059L3.59298 2.5117C3.56021 2.57486 3.51181 2.62949 3.45192 2.67088C3.39204 2.71227 3.32248 2.73919 3.24923 2.74931L0.617046 3.11332C0.532731 3.12497 0.453525 3.15885 0.388388 3.2111C0.323251 3.26336 0.274784 3.33193 0.248469 3.40903C0.222155 3.48614 0.219043 3.56872 0.239486 3.64742C0.259929 3.72612 0.30311 3.79781 0.364145 3.85438L2.26912 5.62101C2.37686 5.72092 2.4257 5.8647 2.4006 6.00544L1.95094 8.50009C1.93656 8.57998 1.94595 8.6621 1.97805 8.73717C2.01015 8.81224 2.06368 8.87726 2.1326 8.9249C2.20151 8.97253 2.28305 9.00087 2.36801 9.0067C2.45296 9.01254 2.53794 8.99565 2.61333 8.95793L4.96796 7.77989C5.03351 7.74716 5.10643 7.73007 5.18046 7.73007C5.25448 7.73007 5.32741 7.74716 5.39296 7.77989L7.74759 8.95793C7.82298 8.99565 7.90796 9.01254 7.99291 9.0067C8.07786 9.00087 8.15941 8.97253 8.22832 8.9249C8.29723 8.87726 8.35076 8.81224 8.38287 8.73717C8.41497 8.6621 8.42436 8.57998 8.40997 8.50009L7.96032 6.00544C7.9478 5.93602 7.95323 5.86474 7.97614 5.79776C7.99904 5.73079 8.03874 5.67012 8.09179 5.62101L9.99677 3.85438C10.0578 3.79781 10.101 3.72612 10.1214 3.64742C10.1419 3.56872 10.1388 3.48614 10.1124 3.40903C10.0861 3.33193 10.0377 3.26336 9.97253 3.2111C9.90739 3.15885 9.82818 3.12497 9.74387 3.11332L7.11168 2.74931C7.03844 2.73919 6.96887 2.71227 6.90899 2.67088C6.84911 2.62949 6.8007 2.57486 6.76794 2.5117L5.59062 0.242059C5.42172 -0.0806864 4.93783 -0.0806864 4.77029 0.242059Z"
-                                                fill="#FFC100" />
-                                            </svg>
-                                            @endfor
-                                </div>
-                            </div>
-                            <a href="#"> غرفة سفره مودرن ستانليس | بيج و رمادي</a>
-                        </div>
-                        <div class="flash-pro-price">
-                            <span>
-                                69000ج.م
-                            </span>
-                            <div>
-                                <span>69000 ج.م</span>
-                                <span>PC-</span>
-                            </div>
-                        </div>
-                        <div class="flsh-pro-buttons">
-                            <button>
-                                <span>اضف الي العربة</span>
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M15.6699 15C14.5654 15 13.6699 15.8954 13.6699 17C13.6699 18.1046 14.5654 19 15.6699 19C16.7745 19 17.6699 18.1046 17.6699 17C17.6699 15.8954 16.7745 15 15.6699 15ZM15.6699 15H7.96387C7.50281 15 7.27185 15 7.08203 14.918C6.91458 14.8456 6.7693 14.7291 6.66346 14.5805C6.54482 14.414 6.49711 14.1913 6.40267 13.7505L3.94141 2.26465C3.84476 1.81363 3.79579 1.58838 3.67578 1.41992C3.56994 1.27135 3.42469 1.15441 3.25724 1.08205C3.06738 1 2.83771 1 2.37646 1H1.66992M4.66992 4H17.5431C18.2649 4 18.6255 4 18.8677 4.15036C19.0799 4.28206 19.2352 4.48862 19.303 4.729C19.3803 5.00343 19.281 5.34996 19.0809 6.04346L17.6963 10.8435C17.5767 11.2581 17.5169 11.465 17.3955 11.6189C17.2884 11.7547 17.1471 11.861 16.987 11.9263C16.806 12 16.591 12 16.162 12H6.40039M6.66992 19C5.56535 19 4.66992 18.1046 4.66992 17C4.66992 15.8954 5.56535 15 6.66992 15C7.77449 15 8.66992 15.8954 8.66992 17C8.66992 18.1046 7.77449 19 6.66992 19Z"
-                                        stroke="white" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </button>
-                            <a href="#">
-                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.4"
-                                        d="M9.5 14.15V16.85C9.5 19.1 8.6 20 6.35 20H3.65C1.4 20 0.5 19.1 0.5 16.85V14.15C0.5 11.9 1.4 11 3.65 11H6.35C8.6 11 9.5 11.9 9.5 14.15Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.4"
-                                        d="M16 9C18.4853 9 20.5 6.98528 20.5 4.5C20.5 2.01472 18.4853 0 16 0C13.5147 0 11.5 2.01472 11.5 4.5C11.5 6.98528 13.5147 9 16 9Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M13.2805 20C13.0105 20 12.7605 19.85 12.6305 19.62C12.5005 19.38 12.5005 19.1 12.6405 18.86L13.6105 17.24C13.8205 16.88 14.2805 16.77 14.6405 16.98C15.0005 17.19 15.1105 17.65 14.9005 18.01L14.7205 18.31C17.1905 17.67 19.0105 15.43 19.0105 12.77C19.0105 12.36 19.3505 12.02 19.7605 12.02C20.1705 12.02 20.5005 12.36 20.5005 12.78C20.5005 16.76 17.2605 20 13.2805 20Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M1.25 7.97C0.84 7.97 0.5 7.64 0.5 7.22C0.5 3.24 3.74 0 7.72 0C8 0 8.24 0.15 8.38 0.38C8.51 0.62 8.51 0.9 8.37 1.14L7.4 2.75C7.18 3.11 6.72 3.23 6.37 3.01C6.01 2.8 5.9 2.34 6.11 1.98L6.29 1.68C3.83 2.32 2 4.56 2 7.22C2 7.64 1.66 7.97 1.25 7.97Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                            <a href="#">
-                                <svg width="21" height="18" viewBox="0 0 21 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path opacity="0.3"
-                                        d="M10.5004 11.8499C12.0744 11.8499 13.3504 10.5739 13.3504 8.9999C13.3504 7.42589 12.0744 6.1499 10.5004 6.1499C8.92638 6.1499 7.65039 7.42589 7.65039 8.9999C7.65039 10.5739 8.92638 11.8499 10.5004 11.8499Z"
-                                        fill="#FD9636" />
-                                    <path
-                                        d="M10.5 0.439941C5.77 0.439941 0.5 5.05994 0.5 8.99994C0.5 12.7599 5.77 17.5599 10.5 17.5599C15.5 17.5599 20.5 12.9699 20.5 8.99994C20.5 5.17994 15.23 0.439941 10.5 0.439941ZM10.5 13.3499C9.63965 13.3499 8.79862 13.0948 8.08327 12.6168C7.36792 12.1389 6.81037 11.4595 6.48112 10.6646C6.15188 9.86975 6.06574 8.99512 6.23358 8.1513C6.40143 7.30748 6.81573 6.53239 7.42409 5.92403C8.03244 5.31567 8.80754 4.90137 9.65136 4.73353C10.4952 4.56568 11.3698 4.65182 12.1647 4.98107C12.9595 5.31031 13.6389 5.86786 14.1169 6.58321C14.5949 7.29856 14.85 8.13959 14.85 8.99994C14.85 10.1536 14.3917 11.2601 13.5759 12.0759C12.7601 12.8916 11.6537 13.3499 10.5 13.3499Z"
-                                        fill="#FD9636" />
-                                </svg>
-
-                            </a>
-                        </div>
-                        <div class="flash-pro-delivery">
-                            يتم التوصيل خلال 5 - 7 ايام عمل
-                        </div>
-                    </div>
-            </div>
-            @endfor
-
-        </div>
-    </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="home-banner-2-wrapper">
-        <div class="home-banner-content">
-            <div>
-                <img src="{{url('')}}/storage/assets/home/banner-2-1.png" alt="baner">
-            </div>
-            <div>
-                <img src="{{url('')}}/storage/assets/home/banner-2-2.png" alt="baner">
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="container">
-    <div class="home-articals-wrapper">
-        <h2>شاهد احدث المقالات الخاصه بينا</h2>
-        <div class="home-articals-content">
-            @for ($i = 0; $i < 5; $i++) <div class="home-artical-card">
-                <div class="card-img">
-                    <img src="{{url('')}}/storage/assets/home/artical-1.png" alt="" />
-                </div>
-                <div class="card-info">
-                    <h3>
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="0.75" y="0.75" width="11" height="11" rx="2.25" fill="#FD9636" stroke="black"
-                                stroke-width="0.5" />
-                            <path
-                                d="M1 6C1 5.86868 1.02587 5.73864 1.07612 5.61732C1.12638 5.49599 1.20003 5.38575 1.29289 5.29289C1.38575 5.20003 1.49599 5.12638 1.61732 5.07612C1.73864 5.02587 1.86868 5 2 5C2.13132 5 2.26136 5.02587 2.38268 5.07612C2.50401 5.12638 2.61425 5.20003 2.70711 5.29289C2.79997 5.38575 2.87362 5.49599 2.92388 5.61732C2.97413 5.73864 3 5.86868 3 6C3 6.13132 3.02587 6.26136 3.07612 6.38268C3.12638 6.50401 3.20003 6.61425 3.29289 6.70711C3.38575 6.79997 3.49599 6.87362 3.61732 6.92388C3.73864 6.97413 3.86868 7 4 7C4.13132 7 4.26136 6.97413 4.38268 6.92388C4.50401 6.87362 4.61425 6.79997 4.70711 6.70711C4.79997 6.61425 4.87362 6.50401 4.92388 6.38268C4.97413 6.26136 5 6.13132 5 6C5 5.86868 5.02587 5.73864 5.07612 5.61732C5.12638 5.49599 5.20003 5.38575 5.29289 5.29289C5.38575 5.20003 5.49599 5.12638 5.61732 5.07612C5.73864 5.02587 5.86868 5 6 5C6.13132 5 6.26136 5.02587 6.38268 5.07612C6.50401 5.12638 6.61425 5.20003 6.70711 5.29289C6.79997 5.38575 6.87362 5.49599 6.92388 5.61732C6.97413 5.73864 7 5.86868 7 6C7 6.13132 7.02587 6.26136 7.07612 6.38268C7.12638 6.50401 7.20003 6.61425 7.29289 6.70711C7.38575 6.79997 7.49599 6.87362 7.61732 6.92388C7.73864 6.97413 7.86868 7 8 7C8.13132 7 8.26136 6.97413 8.38268 6.92388C8.50401 6.87362 8.61425 6.79997 8.70711 6.70711C8.79997 6.61425 8.87362 6.50401 8.92388 6.38268C8.97413 6.26136 9 6.13132 9 6C9 5.86868 9.02587 5.73864 9.07612 5.61732C9.12638 5.49599 9.20003 5.38575 9.29289 5.29289C9.38575 5.20003 9.49599 5.12638 9.61732 5.07612C9.73864 5.02587 9.86868 5 10 5C10.1313 5 10.2614 5.02587 10.3827 5.07612C10.504 5.12638 10.6142 5.20003 10.7071 5.29289C10.8 5.38575 10.8736 5.49599 10.9239 5.61732C10.9741 5.73864 11 5.86868 11 6"
-                                stroke="black" stroke-width="0.25" />
-                        </svg>
-
-                        <span>أحدث نيش مودرن ايطالي صغير من فرنتشر هب</span>
-                    </h3>
-                    <div class="date">
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_3114_29996)">
-                                <path
-                                    d="M7.91667 0.833333H7.5V0.416667C7.5 0.30616 7.4561 0.200179 7.37796 0.122039C7.29982 0.0438987 7.19384 0 7.08333 0C6.97283 0 6.86685 0.0438987 6.7887 0.122039C6.71057 0.200179 6.66667 0.30616 6.66667 0.416667V0.833333H3.33333V0.416667C3.33333 0.30616 3.28943 0.200179 3.21129 0.122039C3.13315 0.0438987 3.02717 0 2.91667 0C2.80616 0 2.70018 0.0438987 2.62204 0.122039C2.5439 0.200179 2.5 0.30616 2.5 0.416667V0.833333H2.08333C1.531 0.833995 1.00148 1.0537 0.610925 1.44426C0.220367 1.83482 0.000661607 2.36434 0 2.91667L0 7.91667C0.000661607 8.469 0.220367 8.99852 0.610925 9.38908C1.00148 9.77963 1.531 9.99934 2.08333 10H7.91667C8.469 9.99934 8.99852 9.77963 9.38908 9.38908C9.77963 8.99852 9.99934 8.469 10 7.91667V2.91667C9.99934 2.36434 9.77963 1.83482 9.38908 1.44426C8.99852 1.0537 8.469 0.833995 7.91667 0.833333ZM0.833333 2.91667C0.833333 2.58515 0.965029 2.2672 1.19945 2.03278C1.43387 1.79836 1.75181 1.66667 2.08333 1.66667H7.91667C8.24819 1.66667 8.56613 1.79836 8.80055 2.03278C9.03497 2.2672 9.16667 2.58515 9.16667 2.91667V3.33333H0.833333V2.91667ZM7.91667 9.16667H2.08333C1.75181 9.16667 1.43387 9.03497 1.19945 8.80055C0.965029 8.56613 0.833333 8.24819 0.833333 7.91667V4.16667H9.16667V7.91667C9.16667 8.24819 9.03497 8.56613 8.80055 8.80055C8.56613 9.03497 8.24819 9.16667 7.91667 9.16667Z"
-                                    fill="#8C9EC5" />
-                                <path
-                                    d="M5 6.875C5.34518 6.875 5.625 6.59518 5.625 6.25C5.625 5.90482 5.34518 5.625 5 5.625C4.65482 5.625 4.375 5.90482 4.375 6.25C4.375 6.59518 4.65482 6.875 5 6.875Z"
-                                    fill="#8C9EC5" />
-                                <path
-                                    d="M2.91602 6.875C3.26119 6.875 3.54102 6.59518 3.54102 6.25C3.54102 5.90482 3.26119 5.625 2.91602 5.625C2.57084 5.625 2.29102 5.90482 2.29102 6.25C2.29102 6.59518 2.57084 6.875 2.91602 6.875Z"
-                                    fill="#8C9EC5" />
-                                <path
-                                    d="M7.08398 6.875C7.42916 6.875 7.70898 6.59518 7.70898 6.25C7.70898 5.90482 7.42916 5.625 7.08398 5.625C6.73881 5.625 6.45898 5.90482 6.45898 6.25C6.45898 6.59518 6.73881 6.875 7.08398 6.875Z"
-                                    fill="#8C9EC5" />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_3114_29996">
-                                    <rect width="10" height="10" fill="white" />
-                                </clipPath>
-                            </defs>
-                        </svg>
-                        <span>20 Dec, 2024</span>
-                    </div>
-                    <div class="corner-square">
-                        كرسي
-                    </div>
-                </div>
-        </div>
-        @endfor
-    </div>
-    </div>
-</section>
 
 @endsection
 @section('container_js')
-<script>
-    var swiper = new Swiper(".header-slider-1", {
-        loop: true,
-        autoplay: {
-            delay: 8000,
-        },
-        
-        pagination: {
-            el: ".header-slider-1-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".header-slider-1-next",
-            prevEl: ".header-slider-1-preve",
-        },
-    });
+    <script src="{{url('')}}/assets/web/ASSets/js/home.js"></script>
+    <script>
 
-    function calculateSlidesPerView(width, swiperContainer) {
-        const containerWidth = swiperContainer.clientWidth;
-        const slideWidth = width; 
-        const slidesPerView = Math.floor(containerWidth / slideWidth);
-        return slidesPerView;
-    }
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the timer element and the total seconds
+            const timerElement = document.querySelector(".timer");
+            let countdownTime = parseInt(timerElement.getAttribute("data-total-seconds"), 10);
 
-    var swiper = new Swiper(".catigory-slider-2", {
-        spaceBetween: 10,
-        slidesPerView: calculateSlidesPerView(116, document.querySelector('.catigory-slider-2')),
-        navigation: {
-            nextEl: ".catigory-slider-2-next",
-            prevEl: ".catigory-slider-2-preve",
-        },
-        scrollbar: {
-            el: '.catigory-slider-2-scrollbar',
-            draggable: true,
-        },
-        on: {
-            resize: function () {
-                this.params.slidesPerView = calculateSlidesPerView(116, document.querySelector('.catigory-slider-2'));
-                this.update();
+            const daysElement = document.getElementById("days");
+            const hoursElement = document.getElementById("hours");
+            const minutesElement = document.getElementById("minutes");
+            const secondsElement = document.getElementById("seconds");
+
+            function updateTimer() {
+                if (countdownTime >= 0) {
+                    let days = Math.floor(countdownTime / (60 * 60 * 24));
+                    let hours = Math.floor((countdownTime % (60 * 60 * 24)) / (60 * 60));
+                    let minutes = Math.floor((countdownTime % (60 * 60)) / 60);
+                    let seconds = countdownTime % 60;
+
+                    daysElement.textContent = days < 10 ? "0" + days : days;
+                    hoursElement.textContent = hours < 10 ? "0" + hours : hours;
+                    minutesElement.textContent = minutes < 10 ? "0" + minutes : minutes;
+                    secondsElement.textContent = seconds < 10 ? "0" + seconds : seconds;
+
+                    countdownTime--;
+                } else {
+                    clearInterval(timerInterval);  // Stop the countdown when it reaches zero
+                }
             }
-        }
-    });
 
-    var swiper = new Swiper(".flash-sales-slider-3", {
-        spaceBetween: 30,
-        slidesPerView: calculateSlidesPerView(286, document.querySelector('.flash-sales-slider-3')),
-        on: {
-            resize: function () {
-                this.params.slidesPerView = calculateSlidesPerView(286, document.querySelector('.flash-sales-slider-3'));
-                this.update();
-            }
-        }
-    });
+            const timerInterval = setInterval(updateTimer, 1000);
+            updateTimer();  // Initial call to show the timer immediately
+        });
 
-    var swiper = new Swiper(".home-banner-3-swiper", {
-        loop: true,
-        spaceBetween: 5,
-        autoplay: {
-            delay: 8000,
-        },
-        navigation: {
-            nextEl: ".home-banner-3-next",
-            prevEl: ".home-banner-3-preve",
-        },
-    });
-
-    function redHeart(element) {
-        const heart = element.querySelector('.heart');
-        heart.classList.toggle('filled'); 
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-        // countdownTime start from first number ==> (10 *) 
-    let countdownTime = (10 * 24 * 60 * 60) + (10 * 60 * 60) + (10 * 60) + 10; 
-    const daysElement = document.getElementById("days");
-    const hoursElement = document.getElementById("hours");
-    const minutesElement = document.getElementById("minutes");
-    const secondsElement = document.getElementById("seconds");
-
-    function updateTimer() {
-        let days = Math.floor(countdownTime / (60 * 60 * 24));
-        let hours = Math.floor((countdownTime % (60 * 60 * 24)) / (60 * 60));
-        let minutes = Math.floor((countdownTime % (60 * 60)) / 60);
-        let seconds = countdownTime % 60;
-
-        daysElement.textContent = days < 10 ? "0" + days : days;
-        hoursElement.textContent = hours < 10 ? "0" + hours : hours;
-        minutesElement.textContent = minutes < 10 ? "0" + minutes : minutes;
-        secondsElement.textContent = seconds < 10 ? "0" + seconds : seconds;
-        countdownTime--;
-        if (countdownTime < 0) {
-            clearInterval(timerInterval);
-        }
-    }
-    const timerInterval = setInterval(updateTimer, 1000);
-    updateTimer();
-});
-</script>
+    </script>
 @endsection

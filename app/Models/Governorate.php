@@ -14,7 +14,10 @@ class Governorate extends Model
     protected $fillable = [
         'delivery_cost'
     ];
-
+    public function cities()
+    {
+        return $this->hasMany(City::class);
+    }
 
     /**
      * Return descriptions for Country

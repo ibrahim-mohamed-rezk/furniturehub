@@ -91,123 +91,110 @@
                 </div>
             </div>
 
-            <h4 class="color-brand-3">{{ __('web.you_may_also_like') }}</h4>
-            <div class="list-products-5 mt-20 mb-40">
-                @foreach ($suggest_products as $row)
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 p-2" id="component_product">
-                        @include('web.component.product.productCobon', ['product' => $row])
-                    </div>
-                @endforeach
-            </div>
-            <h4 class="color-brand-3">{{ __('web.recently_viewed_items') }}</h4>
-            <div class="row mt-40">
-                @foreach ($views_products as $row)
-                    @include('web.component.product.viewComponent', ['product' => $row])
-                @endforeach
-            </div>
+
         </div>
     </section>
 
 
 
 
-@section('container_js')
-    <script>
-        setTimeout(
-            function() {
-                viewCartInside()
-            }, 500);
-
-        function viewCartInside() {
-            let cobon = $('#cobon').val();
-            let deposit = $('#cobon').val();
-
-            localStorage.setItem('userCobon', cobon);
-
-            $.ajax({
-                url: url_view_cart_inside,
-                type: 'GET',
-                data: 'cobon=' + cobon,
-                dataType: 'json',
-                success: function(data) {
-                    $('#checkoutContent').html(data.data);
-                    $('#items').html(data.data.products);
-                },
-                error: function(data) {
-                    toasterError(Object.values(data.responseJSON.errors)[0]);
-                }
-            })
-        }
-
-        function getCobonFromCache() {
-            return localStorage.getItem('userCobon');
-        }
-
-        function deleteCart(elem) {
-            event.preventDefault();
-            let cart_id = $(elem).attr('data-id');
-            let url_delete_cart = "{{ route('cart.destroy', ':cart_id') }}"
-            url_delete_cart = url_delete_cart.replace(':cart_id', cart_id);
-            $.ajax({
-                url: url_delete_cart,
-                type: 'DELETE',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data: '',
-                dataType: 'json',
-                success: function(data) {
-                    if (data.message != '') {
-                        toasterSuccess(data.message);
-                    }
-                    $(elem).closest('.item').fadeOut(1000)
-                    viewCart()
+    @section('container_js')
+        <script>
+            setTimeout(
+                function() {
                     viewCartInside()
+                }, 500);
 
-                },
-                error: function(data) {
-                    toasterError(Object.values(data.responseJSON.errors)[0]);
-                }
-            })
-        }
+            function viewCartInside() {
+                let cobon = $('#cobon').val();
+                let deposit = $('#cobon').val();
 
-        function toggleFavoriteCart(elem) {
-            event.preventDefault();
-            let id = $(elem).attr('data-id');
-            if (user_auth == null) {
-                window.location.href = login_page
-            } else {
+                localStorage.setItem('userCobon', cobon);
+
                 $.ajax({
-                    url: url_toggle_fav,
-                    type: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: 'product_id=' + id,
+                    url: url_view_cart_inside,
+                    type: 'GET',
+                    data: 'cobon=' + cobon,
                     dataType: 'json',
                     success: function(data) {
-                        if (data.message != '') {
-                            toasterSuccess(data.message);
-                        }
-                        let check_fav = $(elem).hasClass("favorited");
-                        if (check_fav) {
-                            $(elem).removeClass('favorited');
-                            $(elem).find('i').removeClass('fas').addClass('far').css('color',
-                            ''); // Use empty color to reset
-                        } else {
-                            $(elem).addClass('favorited');
-                            $(elem).find('i').removeClass('far').addClass('fas').css('color',
-                            'red'); // Set color to red
-                        }
-                        viewFavorite();
+                        $('#checkoutContent').html(data.data);
+                        $('#items').html(data.data.products);
                     },
                     error: function(data) {
                         toasterError(Object.values(data.responseJSON.errors)[0]);
                     }
                 })
             }
-        }
-    </script>
 
-@endsection
+            function getCobonFromCache() {
+                return localStorage.getItem('userCobon');
+            }
+
+            function deleteCart(elem) {
+                event.preventDefault();
+                let cart_id = $(elem).attr('data-id');
+                let url_delete_cart = "{{ route('cart.destroy', ':cart_id') }}"
+                url_delete_cart = url_delete_cart.replace(':cart_id', cart_id);
+                $.ajax({
+                    url: url_delete_cart,
+                    type: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: '',
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.message != '') {
+                            toasterSuccess(data.message);
+                        }
+                        $(elem).closest('.item').fadeOut(1000)
+                        viewCart()
+                        viewCartInside()
+
+                    },
+                    error: function(data) {
+                        toasterError(Object.values(data.responseJSON.errors)[0]);
+                    }
+                })
+            }
+
+            function toggleFavoriteCart(elem) {
+                event.preventDefault();
+                let id = $(elem).attr('data-id');
+                if (user_auth == null) {
+                    window.location.href = login_page
+                } else {
+                    $.ajax({
+                        url: url_toggle_fav,
+                        type: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        data: 'product_id=' + id,
+                        dataType: 'json',
+                        success: function(data) {
+                            if (data.message != '') {
+                                toasterSuccess(data.message);
+                            }
+                            let check_fav = $(elem).hasClass("favorited");
+                            if (check_fav) {
+                                $(elem).removeClass('favorited');
+                                $(elem).find('i').removeClass('fas').addClass('far').css('color',
+                                ''); // Use empty color to reset
+                            } else {
+                                $(elem).addClass('favorited');
+                                $(elem).find('i').removeClass('far').addClass('fas').css('color',
+                                'red'); // Set color to red
+                            }
+                            viewFavorite();
+                        },
+                        error: function(data) {
+                            toasterError(Object.values(data.responseJSON.errors)[0]);
+                        }
+                    })
+                }
+            }
+        </script>
+
+    @endsection
 @endsection

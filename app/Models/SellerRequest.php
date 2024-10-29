@@ -17,8 +17,17 @@ class SellerRequest extends Model
         return $this->belongsTo(Governorate::class)->withTrashed();
     }
 
-    public function normalImages()
+    public function normalImages(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(SellerRequestImage::class);
+    }
+    public function branches(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(SellerRequestBranch::class);
+
+    }
+    public function socialMediaPages(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(SellerRequestSocialMedia::class);
     }
 }

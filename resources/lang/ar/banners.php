@@ -8,6 +8,7 @@ return[
     'color' => 'اللون',
     'photo' => 'الصورة',
     'image' => 'الصورة',
-    'action'=>'الاجراءات'
+    'action'=>'الاجراءات',
+    'description'=>'الوصف'
 
 ];

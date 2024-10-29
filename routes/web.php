@@ -31,6 +31,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()],function(){
 
         });
         Route::get('/','WebController@index')->name('web.index');
+        Route::get('/download/app','WebController@download_app')->name('web.app');
         Route::get('/change/currency/{id}','CurrencyController@setCurrency')->name('web.change_currency');
         Route::get('product/quick/{id}','ProductController@quickView')->name('web.quick_view');
         Route::get('/contact-us','WebController@contact')->name('web.contact');
@@ -39,6 +40,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()],function(){
         Route::get('/faq','FaqController@index')->name('web.faq');
 
         Route::get('/about_us','WebController@about_us')->name('web.about_us');
+        Route::get('/get-cities/{governorate_id}', 'LocationController@getCities')->name('get.cities');
 
         Route::get('/condition' ,'WebController@condition')->name('web.condition');
 
@@ -69,32 +71,27 @@ Route::group(['prefix' => LaravelLocalization::setLocale()],function(){
             Route::get('/logout', 'AuthController@logout')->name('web.logout');
             Route::resource('/cart','CartController')->only('index','store','update','destroy');
             Route::get('/cart/view','CartController@viewCart')->name('cart.view');
+            Route::get('/cart/view/inside','CartController@viewCartInside')->name('cart.view.inside');
             Route::resource('/favorite','FavoriteController')->only('index','store','destroy');
             Route::get('/favorite/view','FavoriteController@viewFavorite')->name('favorite.view');
             Route::resource('/compare','CompareController')->only('index','store','destroy');
             Route::resource('/order','OrderController')->only('index','store','show');
+            Route::get('/profile','AccountController@profile')->name('web.profile');
+            Route::get('/addresses','AccountController@addresses')->name('web.addresses');
+            Route::get('/download','AccountController@download')->name('web.download');
+            Route::get('/orders','AccountController@orders')->name('web.orders');
+            Route::post('/update-phone','AccountController@update_phone')->name('web.update_phone');
 
 
         });
 
-        // //////////////////////////////
-        // ibrahim mohamed routes
-        Route::get('/dashboard',function(){return view('web.pages.profile.dashboard');})->name('web.dashboard');
-        Route::get('/profile',function(){return view('web.pages.profile.account');})->name('web.profile');
-        Route::get('/addresses',function(){return view('web.pages.profile.address');})->name('web.addresses');
-        Route::get('/download',function(){return view('web.pages.profile.download');})->name('web.download');
-        Route::get('/orders',function(){return view('web.pages.profile.orders');})->name('web.orders');
-        Route::get('/testhtml',function(){return view('web.testhtml');})->name('web.testhtml');
-
-        ////////////////////////////////
-    
         Route::get('/wishlist','WebController@wishlist')->name('web.wishlist');
 
     
         Route::get('/checkout','WebController@checkout')->name('web.checkout');
 
         Route::post('/message/send','WebController@send_message')->name('message.send');
-    
+
         
         Route::get('/customization','CustomizationController@index')->name('web.customization');
         Route::post('/customization','CustomizationController@check')->name('web.customization.check');
@@ -114,6 +111,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale()],function(){
         Route::post('/quantities','QuantitiesController@quantities_check')->name('web.quantities_check');
         Route::get('/web/quantities/addphoto', 'QuantitiesController@addphotoquantities');
 
+
+        Route::get('show_address','AddressController@getAddresses')->name('web.address_show');
+        Route::get('show_address_profile','AddressController@getAddressesProfile')->name('web.address_show_profile');
     
         Route::get('/soon','WebController@soon')->name('web.soon');
         Route::get('/offers','OfferController@offers')->name('web.offers');
@@ -121,7 +121,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()],function(){
 
         Route::get('/shop/{title?}','ProductController@index')->name('web.shop')->where('title', '.*');
         Route::get('/pd/{title}','ProductController@product_details')->name('web.product_details')->where('title', '.*');
-    
+        Route::get('/product/quickView/{id}', 'ProductController@quickView')->name('product.quickView');
     
         Route::get('/blog','BlogController@index')->name('web.blog');
         Route::get('/blog-details/{title}','BlogController@blog_details')->name('web.blog_details')->where('title', '.*');

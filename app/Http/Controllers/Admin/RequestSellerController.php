@@ -78,8 +78,10 @@ class RequestSellerController extends Controller
         ];
     }
 
-    public function show(SellerRequest $sellerRequest)
+    public function show($sellerRequestId)
     {
+        $sellerRequest = SellerRequest::where('id',$sellerRequestId)->first();
+        // dd($sellerRequest);
         $title = __('demands.edit'); 
 
         return view($this->view . 'form', get_defined_vars());

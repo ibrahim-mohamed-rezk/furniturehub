@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\Governorate;
 use App\Models\Slider;
 use App\Models\Category;
 use App\Models\Quantity;
@@ -23,13 +24,14 @@ class QuantitiesController extends Controller
         $title = __('web.wholesale_orders_and_quantities');
         $count_photos = 0;
         $action = route('web.quantities_check');
-        $categories = Category::withDescription()->where('categories.category_id',null)->get();
         $banner = Slider::withDescription(17)->get();
+        $governorates = Governorate::withDescription()->get();
         return view($this->view . 'index',get_defined_vars());
 
     } 
-    public function quantities_check(QuantityRequest $request) : JsonResponse
+    public function quantities_check(Request $request) : JsonResponse
     {
+        dd($request->all());
         $content = [
             'name' => $request->name,
             'business_activity' => $request->business_activity,

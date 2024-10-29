@@ -29,12 +29,7 @@ class CategoryController extends Controller
     public function index(Request $request): View
     {
         $title = __('categories.index');
-        $query = Category::latest()
-            ->join('category_descriptions AS td', 'categories.id', 'td.category_id')
-            ->join('languages', 'languages.id', 'td.language_id')
-            ->where('local', LaravelLocalization::getCurrentLocale())
-            ->where('categories.category_id',null)
-            ->select(['td.title', 'categories.*']);
+        $query = Category::withDescription()->whereNull('categories.category_id');
 
         $routes = $this->routes;
 
@@ -48,6 +43,7 @@ class CategoryController extends Controller
 
         return view($this->view . 'index', get_defined_vars());
     }
+
 
     /**
      * Filter data
@@ -118,10 +114,12 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request): RedirectResponse
     {
         $image = ImageService::uploadImage($request->image);
-        $banner = ImageService::uploadImage($request->banner);
+        $icon = ImageService::uploadImage($request->icon);
+        $icon_search = ImageService::uploadImage($request->icon_search);
         $content = $request->except('image','banner');
         $content['image'] = $image;
-        $content['banner'] = $banner;
+        $content['icon'] = $icon;
+        $content['icon_search'] = $icon_search;
         $data = Category::create($content);
         $this->saveData($request, $data->id);
 
@@ -168,10 +166,15 @@ class CategoryController extends Controller
             $image = ImageService::uploadImage($request->image);
             $content['image'] = $image;
         }
-        if($request->hasFile('banner'))
+        if($request->hasFile('icon'))
         {
-            $banner = ImageService::uploadImage($request->banner);
-            $content['banner'] = $banner;
+            $icon = ImageService::uploadImage($request->icon);
+            $content['icon'] = $icon;
+        }
+        if($request->hasFile('icon_search'))
+        {
+            $icon_search = ImageService::uploadImage($request->icon_search);
+            $content['icon_search'] = $icon_search;
         }
         $category->update($content);
 
@@ -198,6 +201,10 @@ class CategoryController extends Controller
                 'language_id' => $lang->id,
                 'title' => $requestData['title_' . $lang->local],
             ];
+            if ($request->file('image_products_' . $lang->local))
+            {
+                $data['image_products'] = ImageService::uploadImage($requestData['image_products_' . $lang->local]);
+            }
             CategoryDescription::create($data);
         }
     }

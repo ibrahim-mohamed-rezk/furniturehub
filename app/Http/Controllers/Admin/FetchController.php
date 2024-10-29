@@ -12,6 +12,8 @@ use Illuminate\Http\JsonResponse;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Illuminate\Support\Facades\File;
 
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 class FetchController extends Controller
 {
     /**
@@ -79,5 +81,22 @@ class FetchController extends Controller
             ->select(['ad.*', 'categories.*'])->where('ad.title', 'like', '%' . $request->name . '%')->get();
 
         return json_encode($categories);
+    }
+    public function upload_ckeditor(Request $request){
+        if($request->hasFile('upload')){
+            $image = $request->file('upload');
+            $imageConverter = Image::make($image);
+            $imageConverter->resize(800, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+            $newFileName = rand(10000, 99999) . time() . '.webp';
+            Storage::disk('s3')->put('products/' . $newFileName, $imageConverter->encode('webp',80)->stream(), 's3');
+            return response()->json([
+                'fileName'=>$newFileName,
+                'uploaded'=> 1,
+                'url'=>'https://furnturehubactive.s3.eu-central-1.amazonaws.com/products/' . $newFileName
+            ]);
+
+        }
     }
 }

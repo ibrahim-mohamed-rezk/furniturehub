@@ -22,9 +22,8 @@ class CartController extends Controller
 {
     public function index(Request $request)
     {
-        $currency = (new CurrencyService())->getCurrency();
         $user = Auth::guard('sanctum')->user();
-        $userCurrencyName = $user ? $user->getCurrencyName() : 'L.E';
+        $userCurrencyName ='L.E';
 
         $offer_ids = (new WebController())->cobonNow();
         $cart = (new CartService())->carts()['data'];
@@ -92,17 +91,16 @@ class CartController extends Controller
     }
     public function use_cobon(Request $request)
     {
-        $currency = (new CurrencyService())->getCurrency();
         $calculate = (new OrderService())->calculate($request->all());
 
         $total = $calculate['total'];
         $data =[
-            'total_cart'=>$total * $currency->value,
-            'products_cart'=>$calculate['total_products'] * $currency->value,
-            'delivery'=>$calculate['total_delivery'] * $currency->value,
-            'tax'=>$calculate['tax_value'] * $currency->value,
-            'cobon_discount'=>$calculate['cobon']['discount'] * $currency->value,
-            'offer_discount'=>$calculate['offer']['discount'] * $currency->value,
+            'total_cart'=>$total ,
+            'products_cart'=>$calculate['total_products'] ,
+            'delivery'=>$calculate['total_delivery'] ,
+            'tax'=>$calculate['tax_value'] ,
+            'cobon_discount'=>$calculate['cobon']['discount'] ,
+            'offer_discount'=>$calculate['offer']['discount'] ,
             'cobon_id'=>$calculate['cobon']['cobon_id'],
             'offer_id'=>$calculate['offer']['offer_id'],
             'symbol'=> $request->user()->getCurrencyName() ?? 'L.E',

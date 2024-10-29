@@ -27,7 +27,17 @@
                                                placeholder="{{ __('categories.title') }} {{ $language->name }}"
                                                value='{{ old("title_{$language->local}", $category[$language->local]->title ?? '') }}'>
                                     </div>
-
+                                @endforeach
+                                @foreach (languages() as $key => $language)
+                                    <div class="col-md-6 mb-4">
+                                        <label for="validationServer">{{ __('categories.image_products') }}
+                                            {{ $language->name }}</label>
+                                        <input type="file" name="image_products_{{ $language->local }}"
+                                               class="form-control {{ $errors->has('image_products_' . $language->local) ? 'is-invalid' : '' }}"
+                                               id="validationServer"
+                                               placeholder="{{ __('categories.image_products') }} {{ $language->name }}"
+                                               value='{{ old("image_products_{$language->local}", $category[$language->local]->image_products ?? '') }}'>
+                                    </div>
                                 @endforeach
                                 <div class="col-md-6 mb-4">
                                     <label for="validationServer">{{ __('categories.image') }}</label>
@@ -36,10 +46,16 @@
                                            id="validationServer" placeholder="{{ __('categories.image') }}">
                                 </div>
                                 <div class="col-md-6 mb-4">
-                                    <label for="validationServer">{{ __('categories.banner') }}</label>
-                                    <input type="file" name="banner"
-                                           class="form-control {{ $errors->has('banner') ? 'is-invalid' : '' }}"
-                                           id="validationServer" placeholder="{{ __('categories.banner') }}">
+                                    <label for="validationServer">{{ __('categories.icon') }}</label>
+                                    <input type="file" name="icon"
+                                           class="form-control {{ $errors->has('icon') ? 'is-invalid' : '' }}"
+                                           id="validationServer" placeholder="{{ __('categories.icon') }}">
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label for="validationServer">{{ __('categories.icon_search') }}</label>
+                                    <input type="file" name="icon_search"
+                                           class="form-control {{ $errors->has('icon_search') ? 'is-invalid' : '' }}"
+                                           id="validationServer" placeholder="{{ __('categories.icon_search') }}">
                                 </div>
 
 
@@ -59,7 +75,8 @@
                                 
                                     <div class="col-md-6 mb-4">
                                         <img src="{{ asset($category->image) }}" alt="" width="200px">
-                                        <img src="{{ asset($category->banner) }}" alt="" width="200px">
+                                        <img src="{{ asset($category->icon) }}" alt="" width="200px">
+                                        <img src="{{ asset($category->icon_search) }}" alt="" width="200px">
 
                                     </div>
                                 @endif

@@ -42,6 +42,14 @@ class PaymentMethod {
         {
                 $id = 2331735;
         }
+        elseif($this->payment_method ==  "contact")
+        {
+                $id = 4750088;
+        }
+        elseif($this->payment_method ==  "khazna")
+        {
+                $id = 4812371;
+        }
         elseif($this->payment_method ==  "vodafone_cash")
         {
                 $id = 3887489;

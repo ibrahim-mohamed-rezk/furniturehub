@@ -27,32 +27,35 @@ class SellerRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = [
-            'name'=>'required',
-            'brand_name'=>'required',
-            'city'=>'required|exists:governorates,id',
-            'email'=>'required|email',
-            'website_link'=>'sometimes',
-            'social_media_page'=>'sometimes',
-            'phone'=> [
-                "required",
-                "numeric"
-            ],
-            'section'=>'required',
+        return [
+            'full_name' => 'required|string|max:255',
+            'brand_name' => 'required|string|max:255',
+            'phone' => ['required', 'numeric', 'digits_between:8,15'], // Adjust the digits according to your needs
+            'governorate_id' => 'required|exists:governorates,id',
+            'city_id' => 'required|exists:cities,id',
+            'email' => 'required|email|max:255',
+            'website_url' => 'nullable|url',
+            'specialization_id' => 'required|exists:specializations,id',
+            'other_specializations' => 'nullable|string|max:255',
+            'question_one' => 'required|in:yes,no',
+            'question_two' => 'required|in:yes,no',
+            'number_of_branches' => 'required|numeric|min:1',
 
-            'question'=>'required|in:yes,no',
+            // Validate images if they are uploaded
+            'images' => 'nullable|array',
+            'images.*' => 'image|mimes:jpg,png,jpeg|max:2048', // Max file size set to 2MB
 
+            // Validate social media pages
+            'social_media_pages' => 'nullable|array',
+            'social_media_pages.*.url' => 'nullable|url',
+            'social_media_pages.*.position' => 'nullable|string|max:255',
 
-
-            
+            // Validate branches if they are added
+            'branches' => 'nullable|array',
+            'branches.*.name' => 'required|string|max:255',
         ];
-
-        $mimes = '|mimes:jpg,png,jpeg';
-        $rules['image'] =  'required|image'.$mimes;
-        $rules['images.*'] = 'sometimes'.$mimes;
-
-        return $rules;
     }
+
 
     /**
      * Get custom attributes for validator errors.
@@ -61,21 +64,25 @@ class SellerRequest extends FormRequest
      */
     public function attributes()
     {
-        $attributes= [
-            'name'=>__('web.name'),
-            'phone'=>__('web.phone'),
-            'brand_name'=>__('web.brand_name'),
-            'city'=>__('web.city'),
-            'image'=>__('web.image_for_room'),
-            'section'=>__('web.section'),
-            'email'=>__('web.email'),
-            'website_link'=>__('web.website_link'),
-            'social_media_page'=>__('web.social_media_page'),
-            'question'=>__('web.question'),
-
+        return [
+            'full_name' => __('web.full_name'),
+            'brand_name' => __('web.brand_name'),
+            'phone' => __('web.phone'),
+            'governorate_id' => __('web.governorate'),
+            'city_id' => __('web.city'),
+            'email' => __('web.email'),
+            'website_url' => __('web.website_url'),
+            'specialization_id' => __('web.specialization'),
+            'other_specializations' => __('web.other_specializations'),
+            'question_one' => __('web.question_one'),
+            'question_two' => __('web.question_two'),
+            'number_of_branches' => __('web.number_of_branches'),
+            'images' => __('web.images'),
+            'social_media_pages' => __('web.social_media_pages'),
+            'branches' => __('web.branches'),
         ];
-        return $attributes;
     }
+
 
     /**
      * Handle a failed validation attempt.

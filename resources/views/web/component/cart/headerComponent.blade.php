@@ -15,10 +15,10 @@
         </div>
         @if ($cart && $cart->product && $cart->product->id !== null)
             <div class="input-quantity">
-                <a class="minus-cart" onclick="decrease_cart(this)"><i class="fas fa-minus"></i></a>
-                <input class="font-xl color-brand-3 box-input" data-id="{{ $cart->id }}" type="text"
+                <a class="minus-cart" onclick="decrease_cart(this)" data-id="{{ $cart->id }}"><i class="fas fa-minus"></i></a>
+                <input class="font-xl color-brand-3 box-input"  type="text"
                     value="{{ $cart->count }}" disabled>
-                <a class="plus-cart" onclick="update_cart(this)"><i class="fas fa-plus"></i></a>
+                <a class="plus-cart" onclick="update_cart(this)" data-id="{{ $cart->id }}"><i class="fas fa-plus"></i></a>
             </div>
         @endif
     </div>

@@ -25,10 +25,14 @@ class AddressController extends Controller
             ->where('local', LaravelLocalization::getCurrentLocale())
             ->where('governorates.deleted_at', null)
             ->select('gd.*', 'governorates.*')->get();
-
         $action = route('address.store');
-        $prev = URL::previous();
-        return view('web.pages.address', get_defined_vars());
+        $query_address = Address::latest()
+            ->where('deleted_at', null)
+            ->where('user_id', Auth::user()->id);
+        $addresses = $query_address->take(5)->get();
+        $default_address = Address::where('user_id', auth()->user()->id)->where('default_address', 1)->first();
+
+        return view('web.address.index', get_defined_vars());
     }
 
     /**
@@ -40,8 +44,8 @@ class AddressController extends Controller
         $content['user_id'] = Auth::user()->id;
         $create = Address::create($content);
 
-        $count = Address::where('user_id',Auth::user()->id)->count();
-        if($count == 1){
+        $count = Address::where('user_id', Auth::user()->id)->count();
+        if ($count == 1) {
             $create->update([
                 'default_address' => 1,
             ]);
@@ -50,23 +54,20 @@ class AddressController extends Controller
         if ($create) {
             $status = 200;
             $msg = [__('web.success')];
-            $target = $content['prev'];
-
+            $target = back();
         } else {
             $status = 400;
             $msg = [__('web.failed')];
             $target = route('address.index');
-
         }
 
         $response =
             [
-            'status' => $status,
-            'msg' => $msg,
-            'data' => $target,
-        ];
+                'status' => $status,
+                'msg' => $msg,
+                'data' => $target,
+            ];
         return ResponseService::response($response);
-
     }
 
     public function default_address($id)
@@ -77,20 +78,33 @@ class AddressController extends Controller
             'default_address' => 1,
         ]);
 
-        Address::where('id', '<>', $id)
+        $success=Address::where('id', '<>', $id)
             ->where('user_id', Auth::user()->id)
             ->update([
-                'default_address' => 0,
+                'default_address' => '0',
             ]);
 
-        return redirect(getCurrentLocale() . '/account');
+        if ($success) {
+            $response = [
+                'status' => 200,
+                'msg' => __('web.success'),
+                'data' => route('account.index')
+            ];
+        } else {
+            $response = [
+                'status' => 400,
+                'msg' => __('web.failed'),
+                'data' => route('account.index')
+            ];
+        }
 
+        return ResponseService::response($response);
     }
     public function edit(string $id)
     {
         $title = __('web.edit_address');
         $address = Address::findOrFail($id);
-        $prev = URL::previous();
+        // $prev = URL::previous();
 
         $action = route('address.update', $id);
         $governorates = Governorate::latest()
@@ -115,22 +129,19 @@ class AddressController extends Controller
             $status = 200;
             $msg = [__('web.success')];
             $target = route('account.index');
-
         } else {
             $status = 400;
             $msg = [__('web.failed')];
             $target = route('account.index');
-
         }
 
         $response =
             [
-            'status' => $status,
-            'msg' => $msg,
-            'data' => $target,
-        ];
+                'status' => $status,
+                'msg' => $msg,
+                'data' => $target,
+            ];
         return ResponseService::response($response);
-
     }
 
     /**
@@ -144,17 +155,48 @@ class AddressController extends Controller
             $response = [
                 'status' => 200,
                 'msg' => __('web.success'),
-                'data'=>route('account.index')
+                'data' => route('account.index')
             ];
         } else {
             $response = [
                 'status' => 400,
                 'msg' => __('web.failed'),
-                'data'=>route('account.index')
+                'data' => route('account.index')
             ];
         }
-        
+
         return ResponseService::response($response);
     }
+    public function getAddresses()
+    {
+        $query_address = Address::latest()
+            ->where('deleted_at', null)
+            ->where('user_id', Auth::user()->id);
+        $addresses = $query_address->take(5)->get();
+        $res = view('web.component.address.addressList')->with(['addresses' => $addresses])->render();
 
+        $default_address = Address::where('user_id', auth()->user()->id)->where('default_address', 1)->first();
+
+        $res_default = view('web.component.address.defaultAddressComponent')->with(['default_address' => $default_address])->render();
+        $data = [
+            'address' => $res,
+            'default_address' => $res_default,
+            'data_default_address'=>$default_address,
+        ];
+        return $data;
+    }
+    public function getAddressesProfile()
+    {
+        $query_address = Address::latest()
+            ->where('deleted_at', null)
+            ->where('user_id', Auth::user()->id);
+        $addresses = $query_address->take(5)->get();
+        $default_address = Address::where('user_id', auth()->user()->id)->where('default_address', 1)->first();
+        $res = view('web.component.address.addressListProfile')->with(['addresses' => $addresses,'default_address'=>$default_address])->render();
+
+        $data = [
+            'address' => $res,
+        ];
+        return $data;
+    }
 }

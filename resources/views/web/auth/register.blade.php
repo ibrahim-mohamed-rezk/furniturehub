@@ -9,7 +9,7 @@
                 <div class="col-lg-5">
                     <h3>{{ __('web.create_an_account') }}</h3>
                     {{-- <p class="font-md color-gray-500">{{ __('web.access_to_all_features_no_credit_card_required') }}</p> --}}
-                    <form action="{{ $action }}" method="post" onsubmit="formAction(this)">
+                    <form action="{{route('web.register_check') }}" method="post" onsubmit="formAction(this)">
                         @CSRF
                         <div class="form-register mt-30 mb-30">
 

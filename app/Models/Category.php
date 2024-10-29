@@ -13,7 +13,7 @@ class Category extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'category_id', 'image', 'banner', 'slug'
+        'category_id', 'image', 'icon','icon_search', 'slug'
     ];
 
     public function getImageUrlAttribute()
@@ -71,7 +71,7 @@ class Category extends Model
                 'tags.details',
                 'category.details',
             ])->latest()
-            ->take(4)
+            ->take(10)
             ->get();
 
         // Cache the result for a certain duration (adjust as needed)
@@ -115,6 +115,7 @@ class Category extends Model
         $query->select([
             'categories.*',
             'ad.title',
+            'ad.image_products'
         ]);
         return $query;
     }

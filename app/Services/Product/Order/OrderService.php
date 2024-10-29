@@ -57,7 +57,6 @@ class OrderService
             ];
 
         $cobons = Cobon::where('code', $cobon)->where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->orderBy('id', 'DESC')->get();
-
         foreach ($cobons as $cobon) {
             $discount = 0;
             $msg = null;
@@ -72,19 +71,21 @@ class OrderService
 
                         $res['cobon_id'] = $cobon->id;
                         if ($cobon->status == 'value') {
-                            $discount += round($cobon->discount / $currency->value, 2);
+                            $discount = round($cobon->discount / $currency->value, 0);
                             $msg = __('web.cobon_discount') . ' ' . $discount . $currency->symbol;
                         } else {
-                            $discount +=  round($cartItem->product->cost * ($cobon->discount / 100) / $currency->value, 2);
+                            $discount =  round(($cartItem->product->cost_discount ?? $cartItem->product->cost) * ($cartItem->count) * ($cobon->discount / 100) / $currency->value, 0);
                             $msg = __('web.cobon_discount') . ' ' . $discount . $currency->symbol;
                         }
                         $total = $total - $discount;
+
                         $res['msg'] = $msg;
                         $res['total'] = $total < 0 ? 0 : $total;
                         $res['discount'] = $discount;
                         $res['check_valid'] = true;
                     }
                 }
+                break;
             } elseif ($cobon && $cobon->type == "category") {
                 $ids = [];
                 $category_ids = CobonCategory::where('cobon_id', $cobon->id)->pluck('category_id')->toArray();
@@ -96,10 +97,10 @@ class OrderService
 
                         $res['cobon_id'] = $cobon->id;
                         if ($cobon->status == 'value') {
-                            $discount += round($cobon->discount / $currency->value, 2);
+                            $discount = round($cobon->discount / $currency->value, 0);
                             $msg = __('web.cobon_discount') . ' ' . $discount . $currency->symbol;
                         } else {
-                            $discount +=  round($cartItem->product->cost * ($cobon->discount / 100) / $currency->value, 2);
+                            $discount =  round(($cartItem->product->cost_discount   ?? $cartItem->product->cost)  * ($cartItem->count) * ($cobon->discount / 100) / $currency->value, 0);
                             $msg = __('web.cobon_discount') . ' ' . $discount . $currency->symbol;
                         }
                         $total -= $discount;
@@ -118,6 +119,15 @@ class OrderService
                     $discount =  round($total * ($cobon->discount / 100) / $currency->value, 2);
                     $msg = __('web.cobon_discount') . ' ' . $discount . $currency->symbol;
                 }
+                $total -= $discount;
+                $res['msg'] = $msg;
+                $res['total'] = $total < 0 ? 0 : $total;
+                $res['discount'] = $discount;
+                $res['check_valid'] = true;
+            } elseif ($cobon && $cobon->type == "sales") {
+                $res['cobon_id'] = $cobon->id;
+                $discount =  round($total * ($cobon->discount / 100) / $currency->value, 2);
+                $msg = __('web.cobon_discount') . ' ' . $discount . $currency->symbol;
                 $total -= $discount;
                 $res['msg'] = $msg;
                 $res['total'] = $total < 0 ? 0 : $total;

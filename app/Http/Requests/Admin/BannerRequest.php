@@ -16,140 +16,93 @@ class BannerRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
 
         return Auth::check();
     }
-    private function size()
+    private function size(): array
     {
         $req_width = null;
         $req_height = null;
 
         switch ($this->banner->id) {
-            case 1:
-                $req_width = 572;
-                $req_height = 802;
+            case 8: case 10: case 13: case 14: case 17: case 18: case 21: case 22: case 25: case 26: case 29:
+                $req_width = 956;
+                $req_height = 303;
                 break;
-            case 2:
-                $req_width = 600;
-                $req_height = 627;
-                break;
-            case 3:
-                $req_width = 600;
-                $req_height = 660;
-                break;
-            case 13:
-                $req_width = 562;
-                $req_height = 634;
-                break;
-                7,8,9,10,13,14, 15, 16,18,31,32,33,34,35,36,37,38,39,40,41,48,49,50,51,11,12,19,22, 24, 26, 28, 30,17,53,54,55
-
             case 7:
-            case 8:
-            case 9:
-            case 10:
-            case 13:
-            case 14:
-            case 15:
-            case 16:
-            case 18:
-            case 31:
-            case 32:
-            case 16:
-            case 16:
-            case 16:
-            case 16:
-            case 16:
-            case 16:
-            case 16:
-            case 16:
-            case 16:
-            case 16:
-            case 16:
-                $req_width = 48;
-                $req_height = 48;
+                $req_width = 738;
+                $req_height = 267;
                 break;
-            case 10:
-            case 11:
-            case 12:
-                $req_width = 38;
-                $req_height = 38;
+            case 9: case 11:case 12:case 15:case 16:case 19:case 20:case 23:case 24:case 27:case 28:
+                $req_width = 568;
+                $req_height = 303;
                 break;
-            case 14:
-                $req_width = 608;
-                $req_height = 348;
+            case 56: case 57: case 84: case 85: case 86: case 91: case 94: case 95: case 96:
+            case 97: case 98: case 99:
+                $req_width = 1000;
+                $req_height = 532;
                 break;
-            case 15:
-            case 16:
-                $req_width = 285;
-                $req_height = 285;
+            case 58: case 59: case 60: case 61: case 62: case 63: case 64: case 65: case 66:
+            case 67: case 68: case 69: case 70: case 71: case 72: case 73: case 74: case 75:
+            case 76: case 78: case 80: case 81: case 82: case 83:
+                $req_width = 360;
+                $req_height = 358;
                 break;
-            case 17:
+
+            case 4: case 5:
+                $req_width = 354;
+                $req_height = 267;
+                break;
+
+            case 101: case 102: case 103: case 46:
+                $req_width = 1000;
+                $req_height = 650;
+                break;
+
+            case 34:
                 $req_width = 600;
-                $req_height = 630;
+                $req_height = 637;
+                break;
+
+            case 33:
+                $req_width = 1201;
+                $req_height = 250;
+                break;
+
+            case 30: case 31:
+                $req_width = 566;
+                $req_height = 289;
+                break;
+            case 32:
+                $req_width = 953;
+                $req_height = 602;
+                break;
+
+            default:
+                $req_width = 221;
+                $req_height = 161;
                 break;
         }
 
         return ['width' => $req_width, 'height' => $req_height];
     }
 
+
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $rules = [
-            'color' => [
-                'required',
-                'regex:/^#([a-f0-9]{6}|[a-f0-9]{3})$/i'
-            ],
             'link' => 'required'
 
         ];
         $mimes = '|mimes:jpg,png,jpeg,webp';
-        // $rules['image'] = (isset($this->banner) ? 'sometimes' : 'required') . $mimes;
-        if (in_array($this->banner->id, [ 7,8,9,10,13,14, 15, 16,18,31,32,33,34,35,36,37,38,39,40,41,48,49,50,51,11,12,19,22, 24, 26, 28, 30,17,53,54,55])) {
-            $req_width =  1000;
-            $req_height = 809;
-        }elseif(in_array($this->banner->id, [56,57,84,85,86,91])){
-            $req_width =  1000;
-            $req_height = 532;
-        }elseif(in_array($this->banner->id, [58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,78,80,81,82,83])){
-            $req_width =  360;
-            $req_height = 358;
-        }
-        elseif (in_array($this->banner->id, [4, 5])) {
-            $req_width =  481;
-            $req_height = 841;
-        }elseif (in_array($this->banner->id, [42, 44,45,46])) {
-            $req_width =  1000;
-            $req_height = 650;
-        } elseif ($this->banner->id == 43) {
-            $req_width =  1536;
-            $req_height = 2010;
-        } elseif (in_array($this->banner->id, [ 20,52])) {
-            $req_width =  1269;
-            $req_height = 269;
-        } elseif (in_array($this->banner->id, [21, 23,])) {
-            $req_width =  269;
-            $req_height = 1269;
-        } elseif (in_array($this->banner->id, [27, 29])) {
-            $req_width =  196;
-            $req_height = 193;
-        } elseif (in_array($this->banner->id, [25])) {
-            $req_width =  856;
-            $req_height = 181;
 
-        } elseif($this->banner->id == 47){
-            $req_width =  1320;
-            $req_height = 290;
-        }else {
-            $req_width =  221;
-            $req_height = 161;
-        }
         
         foreach (languages() as $lang) {
             $lang_rules = [
@@ -158,15 +111,15 @@ class BannerRequest extends FormRequest
                 'image_'.$lang->local=>(isset($this->banner) ? 'sometimes' : 'required') . $mimes,
             ];
             $rules = array_merge($rules, $lang_rules);
-        }
-        if (request('image_'.$lang->local)) {
-            list($width, $height, $type, $attr) = getimagesize(request('image_'.$lang->local));
+            if (request('image_'.$lang->local)) {
+                list($width, $height, $type, $attr) = getimagesize(request('image_'.$lang->local));
 
-            if ($width != $req_width) {
-                $rules['width'] = 'required';
-            }
-            if ($height != $req_height) {
-                $rules['height'] = 'required';
+                if ($width != $this->size()['width']) {
+                    $rules['width'] = 'required';
+                }
+                if ($height != $this->size()['height']) {
+                    $rules['height'] = 'required';
+                }
             }
         }
         return $rules;
@@ -176,7 +129,7 @@ class BannerRequest extends FormRequest
      *
      * @return array
      */
-    public function attributes()
+    public function attributes(): array
     {
         $attributes = [
             'image' => __('sliders.image'),
@@ -192,6 +145,18 @@ class BannerRequest extends FormRequest
         }
 
         return $attributes;
+    }
+    /**
+     * Get custom error messages for validation failures.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'width.required' => __('web.image_width_required', ['width' => $this->size()['width']]),
+            'height.required' => __('web.image_height_required', ['height' => $this->size()['height']]),
+        ];
     }
     /**
      * Handle a failed validation attempt.

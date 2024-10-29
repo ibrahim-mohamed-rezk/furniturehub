@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Models\Module;
 use App\Models\Product;
+use App\Models\Track;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -12,6 +13,8 @@ use App\Http\Controllers\Controller;
 use App\Services\Upload\ImageService;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\UserRequest;
+use App\Http\Requests\Admin\TaskRequest;
+use App\Models\Article;
 
 class UserController extends Controller
 {
@@ -138,6 +141,9 @@ class UserController extends Controller
     {
         $title = __('users.edit');
         $action = route('users.update', $user->id);
+        $tracks = Track::where('user_id', $user->id)->get();
+
+        $actionCreateTask = route('users.create_task', $user->id);
         $edit = 1;
         $modules = Module::get();
         $products_created = Product::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
@@ -150,9 +156,16 @@ class UserController extends Controller
             ->groupBy('month')
             ->orderBy('month')
             ->get();
+        $articles_created = Article::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+            ->whereYear('created_at', date('Y'))->where('user_id', $user->id)
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
 
         $data_products_created = [];
         $data_products_updated = [];
+        $data_articles_created = [];
 
         for ($i = 1; $i < 12; $i++) {
             $month = date('F', mktime(0, 0, 0, $i, 1));
@@ -179,6 +192,18 @@ class UserController extends Controller
             array_push($data_products_updated, $count);
         }
 
+        for ($i = 1; $i < 12; $i++) {
+            $month = date('F', mktime(0, 0, 0, $i, 1));
+            $count = 0;
+            foreach ($articles_created as $articel) {
+                if ($articel->month == $i) {
+                    $count = $articel->count;
+                    break;
+                }
+            }
+            array_push($data_articles_created, $count);
+        }
+
         $labels = [__('web.Jan'), __('web.Feb'), __('web.Mar'), __('web.Apr'), __('web.May'), __('web.Jun'), __('web.Jul'), __('web.Aug'), __('web.Sep'), __('web.Oct'), __('web.Nov'), __('web.Dec')];
 
 
@@ -188,6 +213,7 @@ class UserController extends Controller
             ->groupBy('day')
             ->orderBy('day')
             ->get();
+
         $data_products_created_daily = [];
         $labels_daily = [];
         $startDate = \Carbon\Carbon::now()->startOfMonth();
@@ -199,8 +225,29 @@ class UserController extends Controller
             if ($product) {
                 $count = $product->count;
             }
+
             array_push($data_products_created_daily, $count);
             array_push($labels_daily, $startDate->format('m-d'));
+            $startDate->addDay();
+        }
+        $articles_created_daily = Article::selectRaw('DATE(created_at) as day, COUNT(*) as count')
+            ->whereYear('created_at', date('Y'))->where('user_id', $user->id)
+            ->where('user_id', $user->id)
+            ->groupBy('day')
+            ->orderBy('day')
+            ->get();
+        $startDate = \Carbon\Carbon::now()->startOfMonth();
+        $endDate = \Carbon\Carbon::now()->endOfMonth();
+        $data_articles_created_daily = [];
+
+        while ($startDate->lte($endDate)) {
+            $day = $startDate->toDateString();
+            $count = 0;
+            $article = $articles_created_daily->firstWhere('day', $day);
+            if ($article) {
+                $count = $article->count;
+            }
+            array_push($data_articles_created_daily, $count);
             $startDate->addDay();
         }
 
@@ -237,6 +284,7 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user): RedirectResponse
     {
         $data = $request->all();
+
         if ($data['password']) {
             $data['password'] = bcrypt($data['password']);
         } else {
@@ -270,5 +318,44 @@ class UserController extends Controller
             $user->restore();
         }
         return redirect(getCurrentLocale() . $this->redirect);
+    }
+    public function track($id)
+    {
+        $track = Track::where('user_id', $id)->first();
+        if ($track) {
+            $track->update([
+                'admin_id' => auth()->user()->id,
+                'user_id' => $id
+            ]);
+        } else {
+
+            Track::create([
+                'admin_id' => auth()->user()->id,
+                'user_id' => $id
+            ]);
+        }
+        return back();
+    }
+    public function make_task(TaskRequest $request, User $user)
+    {
+        $track = Track::where('user_id', $user->id)->first();
+        if ($track) {
+            Track::create([
+                'task' => $request->task,
+                'type' => $request->type,
+                'end' => $request->end_date,
+                'admin_id' => $track->admin_id,
+                'user_id' => $user->id
+            ]);
+        } else {
+            Track::create([
+                'task' => $request->task,
+                'type' => $request->type,
+                'end' => $request->end_date,
+                'admin_id' => auth()->user()->id,
+                'user_id' => $user->id
+            ]);
+        }
+        return back();
     }
 }

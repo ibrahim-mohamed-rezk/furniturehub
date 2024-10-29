@@ -1,34 +1,36 @@
-<section class="section-box pt-50 bg-home9">
-    <div class="container">
-        <div class="box-product-category">
-            <div class="d-flex">
-                <div class="box-category-left">
-                    <div class="box-menu-category bg-white">
-                        <a href="{{ route('web.shop',$category->slug) }}">
-                            <h5 class="title-border-bottom mb-20">{{ $category->title }}</h5>
-                        </a>
-                        {{-- <h5 class="title-border-bottom mb-20">{{$category->title}}</h5> --}}
-                        <ul class="list-nav-arrow">
-                            @foreach ($category->models as $model)
-                                <li>
-                                    <a
-                                        href="{{ route('web.shop',$category->slug.'/'.$model->slug) }}">{{ $model->details->title }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
+<section class="container no-padding-container">
+    <div class="flash-sales-wrapper">
+        <div class="sec-title">
+            <h2><a href="{{$url}}">{{$title}}</a></h2>
+            <div class="flash-navigation">
+                <a href="{{$url}}">{{__('web.show_more')}}</a>
+                <div class="flash-sales-slider-3-next flash-sales-slider-3-next-{{$index}}">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12H20.5M20.5 12L13.5 5M20.5 12L13.5 19" stroke="black" stroke-width="1.5"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </div>
-                <div class="box-category-right">
-                    <div class="row">
-                        @foreach ($category->product_fourth() as $row)
-                            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6" id="component_category">
-                                @include('web.component.product.productComponentCategory', [
-                                    'product' => $row,
-                                ])
-                            </div>
-                        @endforeach
-                    </div>
+                <div class="flash-sales-slider-3-prev flash-sales-slider-3-prev-{{$index}}">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.5 5L4.5 12L11.5 19M4.5 12H20.5" stroke="black" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </div>
+            </div>
+        </div>
+        <div class="flash-sales-slider-3">
+            <div class="swiper-wrapper">
+                @if($index == 1)
+                    @foreach ($products as $row)
+                        @include('web.component.product.productNew',['product'=>$row])
+                    @endforeach
+                @else
+                    @foreach ($products as $row)
+                        @include('web.component.product.product',['product'=>$row])
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

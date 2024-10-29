@@ -1,10 +1,8 @@
-<div class="list-products-5 mt-20">
-    @foreach ($products as $row)
-        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 p-2" id="component_product">
-            @include('web.component.product.productCobon', ['product' => $row])
-        </div>
+
+@foreach($products as $product)
+            @include('web.component.product.productCategory',['product'=>$product])
     @endforeach
-</div>
+<br>
 @if ($paginates > 1)
     <nav>
         <ul class="pagination">

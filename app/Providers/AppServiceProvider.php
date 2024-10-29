@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Currency;
 use App\Models\Language;
 use App\Models\UserModule;
+use Illuminate\Support\Facades\Cache;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Pagination\Paginator;
@@ -44,33 +45,17 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
         Schema::defaultStringLength(191);
         // CMS Supported Languages
-        $languages = Language::where('status', 1)->cursor();
-        View::share('languages', $languages);
-
         View::composer('*', function ($view) {
             // Current Lang
-            $view->with('lang', LaravelLocalization::getCurrentLocale());
-
             $theme = request()->cookie('theme', 'default-theme');
             $view->with('theme', $theme);
-            $currencies = Currency::withDescription()->cursor();
-            $view->with('currencies', $currencies);
-            $currency = (new CurrencyService())->getCurrency();
-            $view->with('currency', $currency);
-            $shipping_cost = settings('shipping_cost') / $currency->value;
+            $shipping_cost = 0 ;
             $view->with('shipping_cost', $shipping_cost);
-            $footer_cards = Page::withDescription([1, 2, 3, 4, 5])->cursor();
-            $view->with('footer_cards', $footer_cards);
-            $mail_footer = Page::withDescription([6, 7])->get();
-            $view->with('landingPages', $mail_footer);
             $user_info = Auth::user();
             $view->with('user_info', $user_info);
-            $categories = Category::withDescription([4, 6, 7, 89, 84, 5, 94, 8, 76, 28, 15, 14])->get();
-            $view->with('categorieshome', $categories);
-            $main_categories = Category::withDescription()->whereNull('categories.category_id')->get();
-            $view->with('categoriesMain', $main_categories);
-            $language = Language::where('local', LaravelLocalization::getCurrentLocale())->firstOrFail();
-            $view->with('language', $language);
+
+            $footer_cards = Page::withDescription([1, 2, 3, 4, 5])->cursor();
+            $view->with('footer_cards', $footer_cards);
 
             // Current User Info
             $userInfo = (object) ['photo' => 'uploads/avatar.png'];

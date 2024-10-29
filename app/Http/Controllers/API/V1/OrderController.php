@@ -26,7 +26,6 @@ class OrderController extends Controller
         if($address)
         {
 
-            $currency = (new CurrencyService())->getCurrency();
             $calculate = (new OrderService())->calculate($request->all());
             $token = bcrypt(rand(11111,99999).time());
             $total = $calculate['total'];
@@ -37,17 +36,17 @@ class OrderController extends Controller
             $order = Order::create
             ([
                 'status'=>'wait_pay',
-                'total'=>$total * $currency->value,
-                'total_products'=>$calculate['total_products'] * $currency->value,
-                'total_delivery'=>$calculate['total_delivery'] * $currency->value,
-                'tax_value'=>$calculate['tax_value'] * $currency->value,
-                'cobon_discount'=>$calculate['cobon']['discount'] * $currency->value,
-                'offer_discount'=>$calculate['offer']['discount'] * $currency->value,
+                'total'=>$total ,
+                'total_products'=>$calculate['total_products'] ,
+                'total_delivery'=>$calculate['total_delivery'] ,
+                'tax_value'=>$calculate['tax_value'] ,
+                'cobon_discount'=>$calculate['cobon']['discount'] ,
+                'offer_discount'=>$calculate['offer']['discount'] ,
                 'cobon_id'=>$calculate['cobon']['cobon_id'],
                 'offer_id'=>$calculate['offer']['offer_id'],
                 'user_id'=>$user->id,
                 'seller_id'=>$user->seller_id,
-                'affiliate_profit'=>($total * $currency->value) * settings('affiliat_profit')
+                'affiliate_profit'=>($total ) * settings('affiliat_profit')
             ]);
             $carts = (new CartService())->carts()['data']['carts'];
             foreach ($carts as $cart)
@@ -57,7 +56,7 @@ class OrderController extends Controller
                     'order_id' => $order->id,
                     'count' => $cart->count,
                     'product_id' => $cart->product_id,
-                    'total' => $cart->product->price['price'] * $currency->value,
+                    'total' => $cart->product->price['price'] ,
                 ]);
             }
             

@@ -26,4 +26,9 @@ class Cart extends Model
     {
         return $this->belongsTo(User::class)->withTrashed();
     }
+    public function extensions()
+    {
+        return $this->belongsToMany(Extension::class, 'cart_item_extensions', 'cart_id', 'extension_id');
+    }
+
 }

@@ -105,11 +105,11 @@
                             <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/deposit.png') }}" loading="lazy"
                                 alt="PayPal" width="120px" height="70px">
                         </div>
-                        {{-- <div class="visa">
-                            <input type="radio" name="status" value="wallet">
+                        <div class="visa">
+                            <input type="radio" name="status" value="vodafone_cash">
                             <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/vod.png') }}" loading="lazy"
                                 alt="PayPal" width="120px" height="70px">
-                        </div> --}}
+                        </div>
                     </div>
                     <div id="installment-methods" class="methods">
                         <div class="visa">
@@ -137,6 +137,17 @@
                             <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/paymob_installment.png') }}"
                                 loading="lazy" alt="installment discount">
                         </div>
+                        <div class="visa">
+                            <input type="radio" name="status" value="contact">
+                            <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/contact.webp') }}"
+                                loading="lazy" alt="installment discount">
+                        </div>
+                        <div class="visa">
+                            <input type="radio" name="status" value="khazna">
+                            <img src="{{ asset('assets/web/ASSETS_En/imgs/payment/khazna.webp') }}"
+                                loading="lazy" alt="installment discount">
+                        </div>
+
                         <div class="visa">
                             <input type="radio" name="status" value="sohulia">
                             <img src="{{ asset('storage/banks/souhola.png') }}" loading="lazy"

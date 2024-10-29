@@ -28,6 +28,7 @@ use App\Models\ProductPointDescription;
 use App\Models\ProductSectionDescription;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Models\Rate;
+use App\Models\Extension;
 use App\Models\UserProducts;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -154,7 +155,8 @@ class ProductController extends Controller
         $count_points = 0;
         $count_items = 0;
         $count_tags = 0;
-
+        $extensions = Extension::get();
+        $product_extensions = [];
         return view($this->view . 'form', get_defined_vars());
     }
 
@@ -192,6 +194,7 @@ class ProductController extends Controller
             "user_id" => 1068,
             "product_id" => $product->id
         ]);
+        $product->extensions()->attach($request->extensions);
 
         $this->saveData($request, $product->id);
 
@@ -242,6 +245,9 @@ class ProductController extends Controller
         $query = ProductTag::where('product_id', $product->id);
         $tags = $query->cursor();
         $count_tags = $query->count();
+        $extensions = Extension::get();
+
+        $product_extensions = old('extensions',  $product->extensions()->pluck('extensions.id')->toArray() ?? []);
 
         return view($this->view . 'form', get_defined_vars());
     }
@@ -302,7 +308,8 @@ class ProductController extends Controller
 
         $this->saveData($request, $product->id);
         $this->clearProductCache($product);
-        
+        $product->extensions()->sync($request->extensions);
+
         return redirect(getCurrentLocale() . $this->redirect);
     }
     /**
@@ -442,6 +449,14 @@ class ProductController extends Controller
             $product->restore();
         }
         return redirect(getCurrentLocale() . $this->redirect);
+    }
+    public function force_delete($id): RedirectResponse
+    {
+        $product = Product::where('id', $id)->withTrashed()->first();
+        $product->forceDelete();
+
+        return redirect(getCurrentLocale() . $this->redirect);
+
     }
     private function clearProductCache(Product $product)
     {

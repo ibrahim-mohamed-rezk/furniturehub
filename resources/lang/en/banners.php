@@ -8,6 +8,8 @@ return[
     'color' => 'Color',
     'photo' => 'Image',
     'image' => 'Image',
-    'action'=>'Actions'
+    'action'=>'Actions',
+    'description'=>'Description',
+
 
 ];

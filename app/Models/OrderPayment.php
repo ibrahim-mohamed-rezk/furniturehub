@@ -15,5 +15,7 @@ class OrderPayment extends Model
     protected $fillable = [
         'payment_id','payment_log','order_id','payment_type'
     ];
-
+    public function payment_log(){
+        return json_decode($this->payment_log);
+    }
 }

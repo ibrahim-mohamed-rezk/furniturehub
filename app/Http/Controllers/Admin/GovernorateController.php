@@ -175,6 +175,8 @@ class GovernorateController extends Controller
                 'governorate_id' => $governorate_id,
                 'language_id' => $lang->id,
                 'name' => $requestData['name_' . $lang->local],
+                'label' => $requestData['label_' . $lang->local],
+
             ];
             GovernorateDescription::create($data);
         }

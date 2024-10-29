@@ -156,6 +156,10 @@ class SubCategoryController extends Controller
                 'language_id' => $lang->id,
                 'title' => $requestData['title_' . $lang->local],
             ];
+            if ($request->file('image_products_' . $lang->local))
+            {
+                $data['image_products'] = ImageService::uploadImage($requestData['image_products_' . $lang->local]);
+            }
             CategoryDescription::create($data);
         }
     }

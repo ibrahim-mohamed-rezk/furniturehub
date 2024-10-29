@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Type;
+use App\Models\User;
 use App\Models\Article;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
@@ -15,6 +16,9 @@ use App\Services\Upload\ImageService;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\ArticleRequest;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use DOMDocument;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -45,7 +49,7 @@ class ArticleController extends Controller
         $count = $filter['count'];
         $trashed_title = $filter['trashed_title'];
         $delete_button = $filter['delete_button'];
-
+        $users = User::where('role','admin')->cursor();
         return view($this->view . 'index', get_defined_vars());
     }
 
@@ -70,6 +74,9 @@ class ArticleController extends Controller
         if ($request->end_date) {
             $query->whereDate('articles.created_at', '<=', $request->end_date);
         }
+        if ($request->user_id) {
+            $query->where('articles.user_id', $request->user_id);
+        }
 
         $action = route($this->routes . '.index');
 
@@ -88,7 +95,7 @@ class ArticleController extends Controller
         return [
             'action' => $action,
             'articles' => $articles,
-            'count'=>$count,
+            'count' => $count,
             'trashed_title' => $trashed_title,
             'delete_button' => $delete_button,
         ];
@@ -103,9 +110,8 @@ class ArticleController extends Controller
         $title = __('articles.create');
         $action = route('articles.store');
         $types = Type::withDescription()->cursor();
-
+        $users = User::where('role', 'admin')->get();
         return view($this->view . 'form', get_defined_vars());
-
     }
 
     /**
@@ -116,13 +122,11 @@ class ArticleController extends Controller
     public function store(ArticleRequest $request): RedirectResponse
     {
         $content = $request->all();
-
-        $content['user_id'] = Auth::user()->id;
-
+        $content['show'] = '0';
         $data = Article::create($content);
         $this->saveData($request, $data->id);
 
-        return redirect(getCurrentLocale().$this->redirect);
+        return redirect(getCurrentLocale() . $this->redirect);
     }
 
     /**
@@ -135,12 +139,10 @@ class ArticleController extends Controller
     {
         $title = __('articles.edit');
         $action = route('articles.update', $article->id);
-
-
         $query = ArticleDescription::where('article_id', $article->id)
             ->join('languages', 'languages.id', 'article_descriptions.language_id')
             ->select(['article_descriptions.*', 'languages.local']);
-
+        $users = User::where('role', 'admin')->get();
         $articleDescription = $query->get();
 
         foreach ($articleDescription as $row) {
@@ -161,15 +163,12 @@ class ArticleController extends Controller
      */
     public function update(ArticleRequest $request, Article $article): RedirectResponse
     {
-        $content= $request->all();
-
-        
-
+        $content = $request->all();
         $article->update($content);
 
         $this->saveData($request, $article->id);
 
-        return redirect(getCurrentLocale().$this->redirect);
+        return redirect(getCurrentLocale() . $this->redirect);
     }
     /**
      * Handle Save form data
@@ -182,8 +181,8 @@ class ArticleController extends Controller
     {
         $requestData = $request->all();
         $slug = Str::slug($requestData['title_en']);
-        Article::where('id',$article_id)->update([
-            'slug_title'=>$slug
+        Article::where('id', $article_id)->update([
+            'slug_title' => $slug
         ]);
         foreach (languages() as $lang) {
             $data = [
@@ -194,43 +193,59 @@ class ArticleController extends Controller
                 'keywords' => $requestData['keywords_' . $lang->local],
                 'description' => $requestData['description_' . $lang->local],
             ];
-            if($request->file('image_' . $lang->local)){
-                $imagePath = ImageService::uploadImageBlog($requestData['image_' . $lang->local]);
-                $data['image'] = $imagePath;
+            if ($requestData['image_' . $lang->local]) {
+                // $imagePath = ImageService::uploadImageBlog($requestData['image_' . $lang->local]);
+                // $data['image'] = $imagePath;
+                $data['image'] = $requestData['image_' . $lang->local];
+            }
+            if ($requestData['image_two_' . $lang->local]) {
 
+                // $imageTwoPath = ImageService::uploadImageBlog($requestData['image_two_' . $lang->local]);
+                // $data['image_two'] = $imageTwoPath;
+                $data['image_two'] = $requestData['image_two_' . $lang->local];
             }
-            if($request->file('image_two_' . $lang->local)){
-    
-                $imageTwoPath = ImageService::uploadImageBlog($requestData['image_two_' . $lang->local]);
-                $data['image_two'] = $imageTwoPath;
+            if ($requestData['user_image_' . $lang->local]) {
+
+                // $imageUserPath = ImageService::uploadImageBlog($requestData['user_image_' . $lang->local]);
+                // $data['user_image'] = $imageUserPath;
+                $data['user_image'] = $requestData['user_image_' . $lang->local];
             }
-            if($request->file('user_image_' . $lang->local)){
-                
-                $imageUserPath = ImageService::uploadImageBlog($requestData['user_image_' . $lang->local]);
-                $data['user_image'] = $imageUserPath;
-            }
-            if($request->file('image_logo_' . $lang->local)){
-                
-                $imageLogoPath = ImageService::uploadImageBlog($requestData['image_logo_' . $lang->local]);
-                $data['image_logo'] = $imageLogoPath;
+            if ($requestData['image_logo_' . $lang->local]) {
+
+                // $imageLogoPath = ImageService::uploadImageBlog($requestData['image_logo_' . $lang->local]);
+                // $data['image_logo'] = $imageLogoPath;
+                $data['image_logo'] = $requestData['image_logo_' . $lang->local];
             }
             
 
-            $blog = ArticleDescription::where('article_id',$article_id)->where('language_id',$lang->id)->first();
-            if($blog){
+            $blog = ArticleDescription::where('article_id', $article_id)->where('language_id', $lang->id)->first();
+            if ($blog) {
                 $blog->Update($data);
-            }else{
-                $data['article_id']=$article_id;
-                $data['language_id']=$lang->id;
+            } else {
+                $data['article_id'] = $article_id;
+                $data['language_id'] = $lang->id;
                 ArticleDescription::create($data);
             }
         }
     }
 
+    public function show($id)
+    {
+        $article = Article::withDescription()
+            ->where('articles.id', $id)
+            ->firstOrFail();
+
+        $relate_blogs =  Article::withDescription()
+            ->where('articles.id', '!=', $article->id)->where('type_id', $article->type_id)->where('show', 1)
+            ->paginate(4);
+
+        $title = $article->title;
+        return view($this->view . 'show', get_defined_vars());
+    }
     /**
      * Remove the specified resource from storage.
      */
-     /**
+    /**
      * Remove Or Return the specified resource from storage.
      *
      * @param  int  $id
@@ -246,6 +261,21 @@ class ArticleController extends Controller
             $article->restore();
         }
 
-        return redirect(getCurrentLocale().$this->redirect);
+        return redirect(getCurrentLocale() . $this->redirect);
     }
+    public function show_article($id): RedirectResponse
+    {
+        $article = Article::where('id', $id)->withTrashed()->first();
+        if ($article->show == 1) {
+            $article->update([
+                'show' => 0
+            ]);
+        } else {
+            $article->update([
+                'show' => 1
+            ]);
+        }
+        return redirect(getCurrentLocale() . $this->redirect);
+    }
+    
 }

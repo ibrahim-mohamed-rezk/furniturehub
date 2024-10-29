@@ -109,7 +109,11 @@ class AuthController extends Controller
     public function logout(): RedirectResponse
     {
         Auth::logout();
-        return redirect(route('web.login'));
+        return redirect()->back()->withHeaders([
+            'Cache-Control' => 'no-cache, no-store, must-revalidate',
+            'Pragma' => 'no-cache',
+            'Expires' => '0',
+        ]);
     }
 
 
@@ -277,12 +281,21 @@ class AuthController extends Controller
 
                 auth()->login($existing_User, true);
             } else {
+                if ($request->ref != null) {
+                    $affiliate = AffiliateSystem::where('affiliate_code', $request->ref)->first();
+
+                    $affiliate->update([
+                        'affiliate_count_user' => ++$affiliate->affiliate_count_user
+                    ]);
+                    $affiliate_id = $affiliate->user_id;
+                }
                 $newUser = new User;
                 $newUser->name = $user->name;
                 $newUser->email = $user->email;
                 $newUser->photo = $user->user['picture'];
                 $newUser->email_verified_at = date('Y-m-d Hms');
                 $newUser->provider_id = $user->id;
+                $newUser->affiliate_id = $affiliate_id ?? null;
                 $newUser->save();
 
                 auth()->login($newUser, true);

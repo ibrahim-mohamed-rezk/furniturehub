@@ -34,24 +34,7 @@
                 @endforeach
             </div>
         </div>
-        <h4 class="color-brand-3">{{ __('web.you_may_also_like') }}</h4>
-        <div class="list-products-5 mt-20 mb-40">
-            @foreach($suggest_products as $row)
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 p-2" id="component_product">
 
-                    @include('web.component.product.productCobon',['product'=>$row])
-                </div>
-            @endforeach
-        </div>
-        <h4 class="color-brand-3">{{ __('web.recently_viewed_items') }}</h4>
-        <div class="list-products-5 mt-20 mb-40">
-            @foreach($views_products as $row)
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-6 p-2" id="component_product">
-
-                    @include('web.component.product.productCobon',['product'=>$row])
-                </div>
-            @endforeach
-        </div>
         
     </div>
 </section>

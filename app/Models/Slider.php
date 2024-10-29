@@ -49,4 +49,13 @@ class Slider extends Model
 
         return $query;
     }
+    public function getUrlAttribute(){
+        $array = explode('=', $this->link );
+        $first = $array[0];
+        $second = $array[1] ?? null;
+        return [
+            'first'=>$first,
+            'second'=>$second,
+        ];
+    }
 }

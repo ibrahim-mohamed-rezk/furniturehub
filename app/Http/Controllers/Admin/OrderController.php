@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -28,7 +29,7 @@ class OrderController extends Controller
     {
         $title = __('orders.index');
         $query = Order::latest();
-        $ratings = [1,2,3,4,5];
+        $ratings = [1, 2, 3, 4, 5];
         $routes = $this->routes;
 
         $filter = $this->filter($request, $query);
@@ -60,8 +61,8 @@ class OrderController extends Controller
         }
 
         if ($request->user) {
-            $ids = User::where('name', 'LIKE', '%'.$request->name.'%')->pluck('id');
-            $query->whereIn('user_id',$ids);
+            $ids = User::where('name', 'LIKE', '%' . $request->name . '%')->pluck('id');
+            $query->whereIn('user_id', $ids);
         }
         if ($request->start_date) {
             $query->whereDate('created_at', '>=', $request->start_date);
@@ -89,8 +90,8 @@ class OrderController extends Controller
         return [
             'action' => $action,
             'orders' => $orders,
-            'count'=>$count,
-            'sum'=>$sum,
+            'count' => $count,
+            'sum' => $sum,
             'trashed_title' => $trashed_title,
             'delete_button' => $delete_button,
         ];
@@ -99,9 +100,11 @@ class OrderController extends Controller
     public function show(Order $order)
     {
         $title = __('orders.show');
-        $products = OrderProduct::where('order_id',$order->id)->cursor();
-        $payment = OrderPayment::where('order_id',$order->id)->first();
-        $address = Address::where('user_id',$order->user_id)->first();
+        $order_id = $order->id;
+        $label_message = $order->label_message;
+        $products = OrderProduct::where('order_id', $order->id)->cursor();
+        $payment = OrderPayment::where('order_id', $order->id)->first();
+        $address = Address::where('user_id', $order->user_id)->first();
 
         return view($this->view . 'form', get_defined_vars());
     }
@@ -122,6 +125,26 @@ class OrderController extends Controller
         } else {
             $order->restore();
         }
-        return redirect(getCurrentLocale().$this->redirect);
+        return redirect(getCurrentLocale() . $this->redirect);
+    }
+    public function confirm($id)
+    {
+        $order = Order::where('id', $id)->first();
+        $order->update([
+            'label' => Auth::user()->name
+        ]);
+
+
+        return back();
+    }
+    public function label_text(Request $request)
+    {
+        $order = Order::where('id', $request->id)->first();
+        $order->update([
+            'label'=>Auth::user()->name,
+            'label_message' => $request->message
+        ]);
+
+        return back();
     }
 }

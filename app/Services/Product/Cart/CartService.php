@@ -38,6 +38,12 @@ class CartService
         foreach ($carts as $row)
         {
             $total_cart += ($row->product->price['price'] * $row->count);
+            if($row->extensions()){
+                foreach ($row->extensions as $extension){
+                    $total_cart += ($extension->value);
+                }
+
+            }
         }
         return $total_cart;
     }
@@ -61,7 +67,11 @@ class CartService
             {
                 return ResponseService::response($checkAvailable);
             }
-            Cart::create($requestContent);
+            $cart = Cart::create($requestContent);
+            if (isset($requestContent['extensions']) && !empty($requestContent['extensions'])) {
+                $cart->extensions()->attach($requestContent['extensions']);
+            }
+
         }
         else
         {

@@ -8,6 +8,7 @@ use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Cobon;
 use App\Services\Currency\CurrencyService;
+use App\Services\Product\Order\OrderService;
 use App\Services\Product\ProductService;
 use App\Services\Response\ResponseService;
 use Illuminate\Http\Request;
@@ -31,7 +32,6 @@ class CartController extends Controller
         $cobonCategory = Cobon::where('start_date', '<=', date('Y-m-d'))->where('end_date', '>=', date('Y-m-d'))->where('type','category')->orderBy('id', 'DESC')->first();
         $cart = (new CartService())->carts()['data'];
         $carts = $cart['carts'];
-        $currency = (new CurrencyService())->getCurrency();
         $total_cart = round($cart['total_cart'] ,2);
         $views_products = (new ProductService())->viewBefore();
         $suggest_products = (new ProductService())->suggestProducts();
@@ -50,23 +50,51 @@ class CartController extends Controller
             ];
         return $carts;
     }
+
+    public function viewCartInside(Request $request)
+    {
+        $calculate = (new OrderService())->calculate($request->all());
+
+        $res = view($this->viewAjax . 'details')
+            ->with(
+                [
+                    'response' => $calculate
+                ]
+            )
+            ->render();
+        $response =
+            [
+                'status' => 200,
+                'msg' => null,
+                'data' => $res,
+            ];
+        // dd($response);
+        return ResponseService::response($response);
+    }
     public function store(CartRequest $request)
     {
+        // Retrieve the product
         $product = Product::withDescription()->find($request->product_id);
-        if(!$product)
-        {
+        if (!$product) {
             return ResponseService::notFound();
         }
-        $carts = (new CartService())->createCart($request->all());
- 
+
+        // Create the cart item (assuming CartService handles adding products to the cart)
+        $cartService = new CartService();
+        $cartItem = $cartService->createCart($request->all());
+
+
+        // Prepare data for further actions (like sending an email, etc.)
         $data['subject'] = 'FurnitureHub';
         $data['name'] = Auth::user()->name;
         $data['productName'] = $product->name;
         $data['productImage'] = $product->image;
         $data['productsku'] = $product->sku_code;
 
-        return $carts;
+        // Return the cart item
+        return $cartItem;
     }
+
     public function update(Request $request,$id) :JsonResponse
     {
         $carts = (new CartService())->editCart($request->all(),$id);

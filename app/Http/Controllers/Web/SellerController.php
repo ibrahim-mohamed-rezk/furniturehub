@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\Category;
 use App\Models\Governorate;
+use App\Models\SellerRequestBranch;
+use App\Models\SellerRequestSocialMedia;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Models\SellerRequestImage;
@@ -11,47 +15,49 @@ use App\Services\Upload\ImageService;
 use App\Http\Requests\Web\SellerRequest;
 use App\Services\Response\ResponseService;
 use App\Models\SellerRequest as ModelsSellerRequest;
+use Illuminate\View\View;
 
 class SellerController extends Controller
 {
-    private $view = 'web.auth.';
+    private $view = 'web.pages.';
 
     /**
         * view of seller_register
         * @return view
     */
-    public function seller_register()
+    public function seller_register() : view
     {
         $title = __('web.seller_register');
 
         $count_photos = 0;
         $action = route('web.seller_request');
-        $cities = Governorate::withDescription()->get();
-
-        return view($this->view . 'seller_register', get_defined_vars());
+        $governorates = Governorate::withDescription()->get();
+        $categories = Category::withDescription()->get();
+        $banner= Slider::withDescription(34)->first();
+        return view($this->view . 'seller.seller', get_defined_vars());
     }
-    public function check(SellerRequest $request): JsonResponse
+    public function check(Request $request): JsonResponse
     {
+        dd($request->all());
         $content = [
-            'name' => $request->name,
+            'full_name' => $request->full_name,
             'brand_name' => $request->brand_name,
             'phone' => $request->phone,
-            'city_id' => $request->city,
+            'governorate_id'=>$request->governorate_id,
+            'city_id' => $request->city_id,
             'email' => $request->email,
-            'website_link' => $request->website_link,
-            'social_media_page' =>$request->social_media_page,
-            'social_media_page' => $request->social_media_page,
-            'section' => $request->section,
-            'question' => $request->question,
+            'website_url' => $request->website_url,
+            'specialization_id' =>$request->specialization_id,
+            'other_specializations' => $request->other_specializations,
+            'question_one' => $request->question_one,
+            'question_two' => $request->question_two,
+            'platforms'=>$request->platforms,
+            'number_of_branches' => $request->number_of_branches,
         ];
+
         $seller_request = ModelsSellerRequest::create($content);
 
         if ($seller_request) {
-            $image = ImageService::uploadImage($request->image);
-            SellerRequestImage::create([
-                'seller_request_id' => $seller_request->id,
-                'image' => $image,
-            ]);
             $requestData = $request->all();
 
             if (isset($requestData['images'])) {
@@ -59,6 +65,23 @@ class SellerController extends Controller
                     $image = ImageService::uploadImage($row);
 
                     SellerRequestImage::create(['seller_request_id' => $seller_request->id, 'image' => $image]);
+                }
+            }
+            if (isset($requestData['social_media_pages'])) {
+                foreach ($requestData['social_media_pages'] as $row) {
+                    SellerRequestSocialMedia::create([
+                        'seller_request_id' => $seller_request->id,
+                        'url' => $row->url,
+                        'position'=>$row->position,
+                    ]);
+                }
+            }
+            if (isset($requestData['branches'])) {
+                foreach ($requestData['branches'] as $row) {
+                    SellerRequestBranch::create([
+                        'seller_request_id' => $seller_request->id,
+                        'name' => $row->name,
+                    ]);
                 }
             }
 

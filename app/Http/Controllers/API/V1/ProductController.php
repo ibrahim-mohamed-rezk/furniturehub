@@ -26,7 +26,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $query = Product::withDescription();
+        $query = Product::withDescriptionApp();
         $filter = $this->filter($request, $query);
         $sliders = Slider::withDescription([84,85,86])->get();
 

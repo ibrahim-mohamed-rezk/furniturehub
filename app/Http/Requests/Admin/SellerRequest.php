@@ -58,6 +58,7 @@ class SellerRequest extends FormRequest
 
         return $attributes;
     }
+
     /**
      * Handle a failed validation attempt.
      *
