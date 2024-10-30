@@ -96,7 +96,10 @@
                 <span class="burger-icon-top"></span>
                 <span class="burger-icon-mid"></span>
                 <span class="burger-icon-bottom"></span>
-                <img src="{{ asset('storage/vector.png') }}" alt="Furniture hub" />
+                <div><svg width="18" height="10" viewBox="0 0 18 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.8203 9H0.820312M16.8203 5H0.820312M16.8203 1H5.26476" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    </div>
             </div>
             <div class="header-left">
                 {{-- logo image --}}

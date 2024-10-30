@@ -1,8 +1,8 @@
 /* fonts */
 @import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,7;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,7;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Poppins:ital,wght@0,100;0,200;0,7;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,7;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /* ///////////////////////////////////////// */
 /* container */
@@ -167,7 +167,7 @@
               justify-content: start;
               font-family: Alexandria;
               font-size: clamp(10px, 0.8333333333333334vw, 16px);
-              font-weight: 300;
+              font-weight: 700;
               line-height: clamp(12px, 0.9895833333333333vw, 19px);
               color: #8c9ec5;
               gap: 10px;
@@ -183,7 +183,7 @@
                   color: #a5b2cd !important;
                   font-family: Alexandria;
                   font-size: clamp(8px, 0.7291666666666666vw, 14px);
-                  font-weight: 300;
+                  font-weight: 700;
                   line-height: clamp(9px, 0.8854166666666666vw, 17px);
                 }
               }
