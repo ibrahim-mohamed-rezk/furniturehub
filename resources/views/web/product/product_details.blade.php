@@ -25,7 +25,9 @@
 
                         </div>
                     </div>
-                    <div class="small-images big-img-swiper-pagination">
+                    <div class="small-imgs">
+                        <div class="small-images big-img-swiper-pagination">
+                        </div>
                     </div>
                 </div>
                 <div class="keys">

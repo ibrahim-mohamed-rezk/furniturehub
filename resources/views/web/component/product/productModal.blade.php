@@ -18,13 +18,15 @@
 
                             </div>
                         </div>
-                        <div class="small-images big-img-swiper-pagination">
-                            @foreach($product->photos as $key => $image)
-                                <div class="small-img" data-swiper-slide-index="0">
-                                    <img src="{{$image->image}}" alt="{{$product->name}}">
-                                </div>
-                            @endforeach
+                        <div class="small-imgs">
+                            <div class="small-images big-img-swiper-pagination">
+                                @foreach($product->photos as $key => $image)
+                                    <div class="small-img" data-swiper-slide-index="0">
+                                        <img src="{{$image->image}}" alt="{{$product->name}}">
+                                    </div>
+                                @endforeach
 
+                            </div>
                         </div>
                     </div>
                     <div class="keys">

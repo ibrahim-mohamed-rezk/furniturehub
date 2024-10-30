@@ -14472,31 +14472,49 @@ a:hover span {
 
             img {
               width: 100%;
+              border-radius: 12px;
             }
           }
 
-          .small-images {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: clamp(7px, 0.6770833333333334vw, 13px);
-            margin-top: clamp(0px, 0.625vw, 12px);
+          .small-imgs{
+            overflow: auto;
+            width: 100%;
 
-            .small-img {
+            .small-images {
               display: flex;
               align-items: center;
               justify-content: center;
-              border-radius: 12px;
-              overflow: hidden;
-              width: calc((100% - (3 * clamp(0px, 0.625vw, 12px))) / 4);
-              cursor: pointer;
-              height: fit-content;
-              margin: 0;
-
-              img {
-                width: 100%;
+              gap: clamp(7px, 0.6770833333333334vw, 13px);
+              width: fit-content;
+              
+              .small-img {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 12px;
+                overflow: hidden;
+                width: calc((100% - (3 * clamp(0px, 0.625vw, 12px))) / 4);
+                cursor: pointer;
+                height: fit-content;
+                margin: 0;
+                min-width: clamp( 100px, 7.8125vw, 150px);
+  
+                img {
+                  width: 100%;
+                  border-radius: 12px;
+                }
               }
             }
+          }
+
+
+          .small-imgs {
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
+          }
+          
+          .small-imgs::-webkit-scrollbar {
+            display: none; 
           }
         }
 
