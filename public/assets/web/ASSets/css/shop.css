@@ -901,6 +901,31 @@
       }
     }
 
+    @media (max-width: 1324px) and (min-width: 1201px) {
+      .shop-products {
+        #filtering{
+          gap: 4px;
+
+          .product-card {
+            width: 190px;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 767px) and (min-width: 577px) {
+      .shop-products {
+        #filtering{
+          gap: 15px;
+          padding: 0 15px;
+
+          .product-card {
+            width: 220px;
+          }
+        }
+      }
+    }
+
     @media (max-width: 576px) {
       .shop-products {
         .product-card {
@@ -1095,6 +1120,6 @@
   align-items: start;
   justify-content: start;
   flex-wrap: wrap;
-  gap: clamp(10px, 1.5625vw, 30px);
+  gap: clamp( 10px, 1.3020833333333335vw, 25px);
   margin-top: clamp(9px, 1.6666666666666667vw, 32px);
 }
