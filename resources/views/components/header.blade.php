@@ -490,45 +490,47 @@
         </div>
     </div>
 </header>
-{{-- <div class="sec-header"> --}}
-{{-- <div class="container"> --}}
-{{-- <ul class='categories-shop'> --}}
-{{-- @foreach ($categories as $index => $row) --}}
-{{-- <li class='categories-item'  style="font-size:15px"> --}}
-{{-- {{ $row->title }} --}}
-{{-- </li> --}}
-{{-- @endforeach --}}
-{{-- </ul> --}}
-{{-- </div> --}}
-{{-- <div class="box-categories-shop"> --}}
-{{-- @foreach ($categories as $index => $row) --}}
-{{-- <div id="content{{ $index + 1 }}-1" class="hidden-content tob-header" --}}
-{{-- onmouseover="showContent('content{{ $index + 1 }}-1')" --}}
-{{-- onmouseout="hideContent('content{{ $index + 1 }}-1')"> --}}
-{{-- <div class="main"> --}}
-{{-- <div class="main-items main-items-tags " style="height:200px"> --}}
-{{-- <div class="tags"> --}}
-{{-- <ul class='main-cat'> --}}
-{{-- @foreach ($row->models as $model) --}}
-{{-- <li class='cat-item' style="list-style:circle;"><a --}}
-{{-- href="{{ route('web.shop', $model->slug) }}" Style="color:black;"> --}}
-{{-- {{ $model->details->title }}</a></li> --}}
-{{-- @endforeach --}}
 
-{{-- </ul> --}}
-{{-- </div> --}}
-{{-- <span class='view'><a href="{{ route('web.shop', $row->slug) }}" --}}
-{{-- Style="color:#fd9636">{{ __('web.view_all') }}</a></span> --}}
-{{-- </div> --}}
-{{-- <div class="image" style="background-image: url({{ asset($row->banner) }});"> --}}
+<div class="sec-header">
+    <div class="container">
+        <ul class="categories-shop">
+            @foreach ($categories as $index => $row)
+                @if ($index >= 10)
+                    @break
+                @endif
+                <li class="categories-item dropdown @if($index >= 5) last-four @endif" >
+                    {{ $row->title }}
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton-{{$index}}">
+                        <div class="menu-img">
+                            <img src="{{url('')}}/storage/gatigoryBg.png" alt="">
+                        </div>
+                        <div class="menuList">
+                            <h3>Toolbars</h3>
+                            <ul>
+                                <li><div></div>Classic</li>
+                                <li><div></div>Dark Sidebar</li>
+                                <li><div></div>Classic</li>
+                                <li><div></div>Classic</li>
+                                <li><div></div>Classic</li>
+                            </ul>
+                        </div>
+                        <div class="menuList">
+                            <h3>Layouts</h3>
+                            <ul>
+                                <li><div></div>Extended</li>
+                                <li><div></div>Classic</li>
+                                <li><div></div>Dark Sidebar</li>
+                                <li><div></div>Classic</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <div class="sepLine"></div>
+            @endforeach
+        </ul>
+    </div>
+</div>
 
-{{-- </div> --}}
-{{-- </div> --}}
-{{-- </div> --}}
-{{-- @endforeach --}}
-
-{{-- </div> --}}
-{{-- </div> --}}
 {{-- shearch box in mobile view --}}
 <div class="mobile-header-search" style="display: none">
     <div class="mobile-box-header-search">
