@@ -1,5 +1,8 @@
 @extends('web.layouts.container')
 
+@section('styles')
+<link href="{{ url('') }}/assets/web/ASSets/css/cart.css" rel="stylesheet">
+@endsection
 
 @section('content')
     <div class="section-box">

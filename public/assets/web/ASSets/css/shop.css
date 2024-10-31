@@ -36,7 +36,7 @@
 
   .filters-container {
     width: clamp(250px, 15.729166666666666vw, 302px);
-    
+
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -80,10 +80,10 @@
 
         span {
           font-family: Alexandria;
-          font-size: clamp( 12px, 0.8333333333333334vw, 16px);
+          font-size: clamp(12px, 0.8333333333333334vw, 16px);
           font-weight: 700;
           line-height: 10px;
-          color: #fd9636;
+          color: #fd9636 !important;
         }
 
         .price-arrow {
@@ -112,7 +112,7 @@
           border-bottom: 1px solid #f1f1f2;
           gap: clamp(10px, 0.7291666666666666vw, 14px);
           padding: clamp(14px, 1.09375vw, 21px) 15px
-          clamp(14px, 1.09375vw, 21px) 20px;
+            clamp(14px, 1.09375vw, 21px) 20px;
 
           .filter-direction-item {
             display: flex;
@@ -121,9 +121,9 @@
             gap: 10px;
 
             span {
-              a{
+              a {
                 font-family: Alexandria;
-                font-size: clamp( 10px, 0.7291666666666666vw, 14px);
+                font-size: clamp(10px, 0.7291666666666666vw, 14px);
                 font-weight: 700;
                 line-height: 22px;
                 color: #000;
@@ -257,7 +257,7 @@
               border-radius: 50%;
             }
 
-            span{
+            span {
               font-family: Alexandria;
               font-size: 11px;
               font-weight: 700;
@@ -266,7 +266,7 @@
             }
 
             .priceCircle.active {
-              border: 3px solid #fd9636;
+              border: 3px solid #fd9636 !important;
             }
           }
         }
@@ -302,10 +302,10 @@
 
           span {
             font-family: Alexandria;
-            font-size: clamp( 12px, 0.8333333333333334vw, 16px);
+            font-size: clamp(12px, 0.8333333333333334vw, 16px);
             font-weight: 700;
             line-height: 10px;
-            color: #fd9636;
+            color: #fd9636 !important;
           }
 
           .catigory-arrow {
@@ -350,7 +350,8 @@
         width: 100%;
         align-items: start;
         justify-content: start;
-        padding: clamp( 12px, 0.8333333333333334vw, 16px) clamp( 14px, 1.0416666666666665vw, 20px);
+        padding: clamp(12px, 0.8333333333333334vw, 16px)
+          clamp(14px, 1.0416666666666665vw, 20px);
         gap: 15px;
 
         .catigoryCollapceItem {
@@ -370,8 +371,9 @@
             border: none;
             outline: none;
             background: transparent;
-            padding: clamp( 12px, 0.8333333333333334vw, 16px) clamp( 14px, 1.0416666666666665vw, 20px);
-            gap: clamp( 12px, 0.8333333333333334vw, 16px);
+            padding: clamp(12px, 0.8333333333333334vw, 16px)
+              clamp(14px, 1.0416666666666665vw, 20px);
+            gap: clamp(12px, 0.8333333333333334vw, 16px);
             border: 1px solid #f1f1f2;
             border-radius: 6px;
 
@@ -379,11 +381,11 @@
               display: flex;
               align-items: center;
               justify-content: start;
-              gap: clamp( 8px, 0.5729166666666666vw, 11px);
+              gap: clamp(8px, 0.5729166666666666vw, 11px);
 
               .priceCircle {
-                width: clamp( 20px, 1.3541666666666667vw, 26px);
-                height: clamp( 20px, 1.3541666666666667vw, 26px);
+                width: clamp(20px, 1.3541666666666667vw, 26px);
+                height: clamp(20px, 1.3541666666666667vw, 26px);
                 border: 3px solid #e1e3ea;
                 border-radius: 50%;
               }
@@ -396,7 +398,7 @@
 
                 span {
                   font-family: Alexandria;
-                  font-size: clamp( 10px, 0.7291666666666666vw, 14px);
+                  font-size: clamp(10px, 0.7291666666666666vw, 14px);
                   font-weight: 700;
                   line-height: 18px;
                   color: #000;
@@ -410,12 +412,12 @@
 
             .collapseHead {
               .priceCircle {
-                border: 5px solid #fd9636;
+                border: 5px solid #fd9636 !important;
               }
 
               .collapseItemTitle {
                 span {
-                  color: #fd9636;
+                  color: #fd9636 !important;
                 }
 
                 svg {
@@ -440,12 +442,12 @@
 
             .collapseHead {
               .priceCircle {
-                border: 5px solid #fd9636;
+                border: 5px solid #fd9636 !important;
               }
 
               .collapseItemTitle {
                 span {
-                  color: #fd9636;
+                  color: #fd9636 !important;
                 }
 
                 svg {
@@ -510,9 +512,7 @@
           ) {
           border: 1px solid #fd9636;
         }
-        .catigoryCollapceItem:has(
-            .catigoryCollapceItem-collapse.selected
-          ) {
+        .catigoryCollapceItem:has(.catigoryCollapceItem-collapse.selected) {
           border: 1px solid #fd9636;
         }
       }
@@ -648,8 +648,8 @@
           position: absolute;
           top: 0;
           right: 0;
-          width: clamp( 45px, 3.177083333333333vw, 61px);
-          height: clamp( 43px, 3.0729166666666665vw, 59px);
+          width: clamp(45px, 3.177083333333333vw, 61px);
+          height: clamp(43px, 3.0729166666666665vw, 59px);
           border-radius: 2px 0px 2px 16px;
           display: flex;
           align-items: center;
@@ -661,17 +661,17 @@
 
           span:nth-child(1) {
             font-family: "Alexandria", system-ui;
-            font-size: clamp( 10px, 0.625vw, 12px);
+            font-size: clamp(10px, 0.625vw, 12px);
             font-weight: 600;
-            line-height: clamp( 14px, 1.25vw, 24px);
+            line-height: clamp(14px, 1.25vw, 24px);
             color: #fff;
           }
 
           span:nth-child(2) {
             font-family: "Alexandria", system-ui;
-            font-size: clamp( 12px, 0.9375vw, 18px);
+            font-size: clamp(12px, 0.9375vw, 18px);
             font-weight: 600;
-            line-height: clamp( 14px, 1.25vw, 24px);
+            line-height: clamp(14px, 1.25vw, 24px);
             color: #fff;
           }
         }
@@ -726,7 +726,7 @@
               }
             }
 
-            a:has(img){
+            a:has(img) {
               width: 100%;
 
               img {
@@ -836,8 +836,8 @@
             gap: 5px;
 
             button {
-              width: clamp( 125px, 7.395833333333333vw, 142px);
-              height: clamp( 28px, 2.1875vw, 42px);
+              width: clamp(125px, 7.395833333333333vw, 142px);
+              height: clamp(28px, 2.1875vw, 42px);
               border-radius: 12px;
               border: none;
               outline: none;
@@ -848,28 +848,28 @@
               gap: 10px;
               color: #fff;
               font-family: "Alexandria", system-ui;
-              font-size: clamp( 6px, 0.625vw, 12px);
+              font-size: clamp(6px, 0.625vw, 12px);
               font-weight: 600;
-              line-height: clamp( 7px, 0.7291666666666666vw, 14px);
+              line-height: clamp(7px, 0.7291666666666666vw, 14px);
 
-              svg{
-                width: clamp( 10px, 0.9375vw, 18px);
-                height: clamp( 10px, 0.9375vw, 18px);
+              svg {
+                width: clamp(10px, 0.9375vw, 18px);
+                height: clamp(10px, 0.9375vw, 18px);
               }
             }
 
             a {
-              width: clamp( 28px, 2.1875vw, 42px);
-              height: clamp( 28px, 2.1875vw, 42px);
+              width: clamp(28px, 2.1875vw, 42px);
+              height: clamp(28px, 2.1875vw, 42px);
               border: 1px solid #fd9636;
-              border-radius: clamp( 8px, 0.625vw, 12px);
+              border-radius: clamp(8px, 0.625vw, 12px);
               display: flex;
               align-items: center;
               justify-content: center;
 
-              svg{
-                width: clamp( 14px, 1.09375vw, 21px);
-                height: clamp( 14px, 1.09375vw, 21px);
+              svg {
+                width: clamp(14px, 1.09375vw, 21px);
+                height: clamp(14px, 1.09375vw, 21px);
               }
             }
 
@@ -889,7 +889,7 @@
             width: 100%;
             text-align: center;
             font-family: "Alexandria", system-ui;
-            font-size: clamp( 6px, 0.4166666666666667vw, 8px);
+            font-size: clamp(6px, 0.4166666666666667vw, 8px);
             font-weight: 400;
             line-height: clamp(5px, 0.9375vw, 18px);
           }
@@ -903,7 +903,7 @@
 
     @media (max-width: 1324px) and (min-width: 1201px) {
       .shop-products {
-        #filtering{
+        #filtering {
           gap: 4px;
 
           .product-card {
@@ -915,7 +915,7 @@
 
     @media (max-width: 767px) and (min-width: 577px) {
       .shop-products {
-        #filtering{
+        #filtering {
           gap: 15px;
           padding: 0 15px;
 
@@ -1114,12 +1114,237 @@
   }
 }
 
-
-#filtering{
+#filtering {
   display: flex;
   align-items: start;
   justify-content: start;
   flex-wrap: wrap;
-  gap: clamp( 10px, 1.3020833333333335vw, 25px);
+  gap: clamp(10px, 1.3020833333333335vw, 25px);
   margin-top: clamp(9px, 1.6666666666666667vw, 32px);
+}
+
+/* ///////////////////////////// */
+/* dark mode */
+body.dark {
+  .shop-content-wrapper {
+    .filters-container {
+      .filters-title {
+        span {
+          color: #fff;
+        }
+      }
+
+      .price-filtring {
+        border: 1px solid var(--dark-mode-white);
+
+        .price-collapse {
+          .filter-direction {
+            border-top: 1px solid var(--dark-mode-white);
+            border-bottom: 1px solid var(--dark-mode-white);
+            .filter-direction-item {
+              span {
+                a {
+                  color: #fff !important;
+                }
+              }
+            }
+            .line {
+              border-top: 1px solid var(--dark-mode-white);
+            }
+          }
+
+          .mid-price {
+            h3 {
+              color: #191c1f;
+            }
+
+            .price-range {
+              .range-slider {
+                input[type="range"]::-moz-range-thumb {
+                  background: var(--dark-mode-white-second);
+                }
+
+                .slider-track {
+                  background: var(--dark-mode-white-second);
+                }
+
+                .slider-track-active {
+                  background: var(--dark-mode-white-second);
+                }
+              }
+
+              .range-values {
+                input {
+                  border: 1px solid var(--dark-mode-white-second);
+                  background: transparent;
+                  color: #fff;
+                }
+              }
+            }
+          }
+
+          .all-prices {
+
+            .priceItem {
+              .priceCircle {
+                border: 2px solid var(--dark-mode-white-second);
+              }
+
+              span {
+                color: var(--dark-mode-white-second);
+              }
+            }
+          }
+        }
+      }
+
+      .catigory-filtring {
+        border: 1px solid var(--dark-mode-white);
+
+        .allcatigory-collapse {
+
+          .collapseSearch {
+            border: 1px solid #fd9636;
+            background: var(--dark-mode-second);
+            input {
+              color: #fff;
+            }
+          }
+        }
+
+        .catigory-collapse {
+          .catigoryCollapceItem {
+            border: 1px solid var(--dark-mode-white);
+
+            .catigoryCollapceItem-collapse {
+              border: 1px solid var(--dark-mode-white);
+
+              .collapseHead {
+                .priceCircle {
+                  border: 3px solid var(--dark-mode-white-second);
+                }
+
+                .collapseItemTitle {
+                  span {
+                    color: #fff;
+                  }
+                }
+              }
+            }
+
+            
+           
+           
+
+            .catigoryItem-collapse {
+           
+
+              div {
+                input {
+                  background: var(--dark-mode-white);
+                }
+
+                span {
+                  color: var(--dark-mode-white-second);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .products-container {
+      .shop-catigory {
+        .section-wrapper {
+          .catigory-slider-2 {
+            .swiper-wrapper {
+              .swiper-slide {
+                .slide-container {
+                  svg {
+                    stroke: #565c5f;
+                    stroke-width: 1px;
+                    path {
+                      fill: var(--dark-mode-second);
+                    }
+                  }
+                  h3 {
+                    color: #c4c1c1;
+                  }
+                }
+              }
+            }
+
+            .catigory-slider-2-next,
+            .catigory-slider-2-preve {
+              background: var(--dark-mode-white);
+
+              svg {
+                path {
+                  fill: #fff;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .line {
+        border-top: 1px solid var(--dark-mode-white);
+      }
+
+      /* flash sales */
+      .shop-products {
+        .product-card {
+          border: 1px solid var(--dark-mode-white);
+          background-color: var(--main-dark);
+
+          .slide-container {
+            .flash-pro-info {
+              a {
+                color: #fff;
+              }
+
+              .cat-stars {
+                a {
+                  color: #a9a9a9;
+                }
+
+                .stars {
+                  svg {
+                    path[fill-opacity="0.1"] {
+                      fill-opacity: 1;
+                      fill: #d9d9d980;
+                    }
+                  }
+                }
+              }
+            }
+
+            .flash-pro-price {
+              span {
+                color: #a9a9a9;
+              }
+
+              div {
+                span {
+                  color: #fff;
+                }
+              }
+            }
+
+            .flsh-pro-buttons {
+              a {
+                background-color: var(--dark-mode-second);
+              }
+            }
+
+            .flash-pro-delivery {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
 }

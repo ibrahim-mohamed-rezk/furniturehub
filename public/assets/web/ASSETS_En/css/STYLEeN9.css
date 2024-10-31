@@ -14837,6 +14837,131 @@ a:hover span {
   }
 }
 
+/* ///////////////////////// */
+/* modal dark mode */
+body.dark {
+  .modal-content {
+    border: 1px solid var(--dark-mode-white);
+    background: var(--dark-mode-second);
+    .product-details {
+      border: 1px solid var(--dark-mode-white);
+      background: var(--dark-mode-second);
+      .product-image {
+        .images {
+          border: 1px solid var(--dark-mode-white);
+        }
+
+        .keys {
+          .code {
+            color: #fff;
+          }
+
+          .tags {
+            span {
+              color: #fff;
+            }
+            .tags-content {
+              span {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+
+      .product-info-sec {
+        .product-info {
+          .info {
+            .catigory {
+              span:nth-child(1) {
+                a {
+                  color: #fff !important;
+                }
+              }
+
+              span:nth-child(3) {
+                a {
+                  color: #ffffffaf !important;
+                }
+              }
+            }
+
+            .pro-title {
+              color: #fff;
+            }
+          }
+
+          .stars {
+            svg {
+              path[fill-opacity="0.1"] {
+                fill-opacity: 1;
+                fill: #d9d9d980;
+              }
+            }
+          }
+        }
+
+        .product-price {
+          .price {
+            span:nth-child(1) {
+              color: #fff;
+            }
+            span:nth-child(2) {
+              color: #ffffffaf;
+            }
+          }
+
+          .save {
+            .saveIcon {
+              circle:first-of-type {
+                fill: transparent;
+                stroke: var(--dark-mode-white-second);
+              }
+              .circle-text {
+                fill: #fff;
+              }
+            }
+          }
+        }
+
+        .product-count {
+          .count-name {
+            color: #fff;
+          }
+
+          .count-buttons {
+            background: var(--dark-mode-second);
+            border: 1px solid var(--dark-mode-white);
+            input {
+              color: var(--main);
+            }
+          }
+        }
+
+        .product-desctiption {
+          span {
+            color: #f1f1f2 !important;
+          }
+
+          div {
+              color: #fff;
+              p {
+                color: #fff !important;
+              }
+          }
+        }
+        .line {
+          border-top: 1px solid var(--dark-mode-white);
+        }
+
+        .product-del {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
 .productAdditionsModal {
   .modal-dialog {
     max-width: 1116px !important;

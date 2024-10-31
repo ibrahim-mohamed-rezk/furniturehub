@@ -1,0 +1,171 @@
+/* //////////////////// */
+/* dark mode */
+body.dark {
+  .breadcrumbs-div {
+    background-color: var(--dark-mode-second);
+    border: none;
+
+    .breadcrumb {
+      li:nth-child(4) {
+        a {
+            color: #fff !important;
+        }
+      }
+      li:nth-child(3) {
+        a {
+            color: #ffffffcb !important;
+        }
+      }
+      li:nth-child(2) {
+        a {
+            color: #ffffff8f !important;
+        }
+      }
+      li:nth-child(1) {
+        a {
+            color: #ffffff28 !important;
+        }
+      }
+    }
+  }
+
+  .order_status {
+    .line {
+      border-color: #fff;
+    }
+
+    .title {
+      color: #fff;
+    }
+  }
+
+  .cartItems,
+  .items,
+  .checkout {
+    border-color: var(--dark-mode-white);
+  }
+
+  .cartItems {
+    .items {
+      .item-container {
+        border-color: var(--dark-mode-white);
+        background-color: var(--dark-mode-second);
+        .item {
+          border-color: var(--dark-mode-white);
+
+          .leftButtons {
+            .input-quantity {
+              border-color: var(--dark-mode-white);
+              border-radius: 8px;
+
+              input {
+                background-color: var(--dark-mode-white-second);
+                color: var(--main) !important;
+              }
+            }
+          }
+
+          .itemInfo {
+            .info {
+              h4 {
+                color: #fff;
+              }
+
+              .cat {
+                color: var(--dark-mode-white-second);
+              }
+            }
+          }
+        }
+
+        .additions {
+          .additions-head {
+            span {
+              color: #fff;
+            }
+          }
+
+          .addition-items {
+            .line {
+              border-color: var(--dark-mode-white);
+            }
+            .addition-item {
+              .addition-info {
+                .addition-title {
+                  .addition-title-text {
+                    color: #fff;
+                  }
+                }
+
+                .addition-price {
+                  .old-price {
+                    color: var(--dark-mode-white-second);
+                  }
+
+                  .newPrice {
+                    color: #fff;
+                  }
+                }
+
+                .addition-count {
+                  .addition-count-text {
+                    color: var(--main);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .checkout {
+    background-color: var(--dark-mode-second);
+
+    .save-on {
+      h4 {
+        color: #fff;
+      }
+
+      .save-on-input {
+        border-color: var(--dark-mode-white);
+
+        input {
+          color: #fff;
+        }
+      }
+    }
+
+    label {
+      color: #fff;
+    }
+
+    .orderSummary {
+      .checkoutContent {
+        border-color: var(--dark-mode-white);
+
+        .line {
+          border-color: var(--dark-mode-white);
+        }
+
+        .checkoutItem {
+          span {
+            color: #fff;
+          }
+        }
+      }
+
+      .checkoutButtons {
+        a {
+          .left {
+            border-color: var(--dark-mode-white);
+            span {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}

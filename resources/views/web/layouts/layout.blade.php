@@ -531,6 +531,21 @@
 
 @yield('container_content')
 
+<script>
+    const switchMode = () => {
+        const body = document.querySelector('body');
+        body.classList.toggle("dark"); 
+    
+        localStorage.setItem('switchMode', body.classList.contains("dark"));
+    };
+    
+    if (localStorage.getItem('switchMode') === 'true') {
+        document.querySelector('body').classList.add("dark");
+        document.getElementById('darkModeInput').checked = true;
+    }
+    
+    </script>
+
 @if (getCurrentLocale() == 'en')
     <script src="{{ url('') }}/assets/web/ASSETS_En/js/vendors/modernizr-3.6.0.min.js"></script>
     <script src="{{ url('') }}/assets/web/ASSETS_En/js/vendors/jquery-3.6.0.min.js"></script>
@@ -838,20 +853,7 @@
     });
 </script>
 
-<script>
-const switchMode = () => {
-    const body = document.querySelector('body');
-    body.classList.toggle("dark"); 
 
-    localStorage.setItem('switchMode', body.classList.contains("dark"));
-};
-
-if (localStorage.getItem('switchMode') === 'true') {
-    document.querySelector('body').classList.add("dark");
-    document.getElementById('darkModeInput').checked = true;
-}
-
-</script>
 
 </body>
 

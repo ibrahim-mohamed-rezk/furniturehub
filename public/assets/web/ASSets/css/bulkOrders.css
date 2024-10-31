@@ -7,794 +7,759 @@
 /* ///////////////////////////////////////// */
 /* container */
 @media (min-width: 1400px) {
-    .container,
-    .container-lg,
-    .container-md,
-    .container-sm,
-    .container-xl,
-    .container-xxl {
-        max-width: 1540px !important;
-        padding: 0 !important;
-    }
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1540px !important;
+    padding: 0 !important;
+  }
 }
 
 @media (max-width: 576px) {
-    .no-padding-container {
-        padding: 0 !important;
-    }
+  .no-padding-container {
+    padding: 0 !important;
+  }
 }
 
 /* /////////////////////////////////// */
 /* seller1 styles */
 .container {
-    .content-wrapper {
-        width: 100%;
+  .content-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    margin-top: clamp(15px, 1.4583333333333333vw, 28px);
+    gap: 10px;
+
+    form {
+      width: 58.441558%;
+      .page-details {
         display: flex;
+        flex-direction: column;
         align-items: start;
         justify-content: start;
-        margin-top: clamp(15px, 1.4583333333333333vw, 28px);
-        gap: 10px;
+        border: 1px solid #f1f1f2;
+        border-radius: 12px;
+        padding: clamp(0px, 0.78125vw, 15px);
+        box-shadow: 0px 3px 4px 0px #00000008;
+        width: 100%;
 
-        form {
-            width: 58.441558%;
-            .page-details {
+        .page-heade {
+          width: 100%;
+          display: flex;
+          align-items: start;
+          justify-content: start;
+          flex-direction: column;
+          border-inline-start: 2px solid #fd9636;
+          padding-inline-start: clamp(10px, 0.78125vw, 15px);
+          gap: clamp(5px, 0.5208333333333333vw, 10px);
+
+          h2 {
+            font-family: Alexandria;
+            font-size: clamp(14px, 1.5625vw, 30px);
+            font-weight: 500;
+            line-height: clamp(20px, 2.083333333333333vw, 40px);
+            color: #000;
+          }
+
+          span {
+            font-family: Alexandria;
+            font-size: clamp(8px, 0.6770833333333334vw, 13px);
+            font-weight: 400;
+            line-height: clamp(14px, 1.3020833333333335vw, 25px);
+            color: #000;
+            width: 70%;
+          }
+
+          @media (max-width: 500px) {
+            span {
+              width: 100%;
+            }
+          }
+        }
+
+        .page-from {
+          display: flex;
+          align-items: start;
+          justify-content: start;
+          flex-direction: column;
+          margin-top: clamp(18px, 1.5625vw, 30px);
+          width: 100%;
+          border: 1px solid #f1f1f2;
+          padding: clamp(8px, 1.0416666666666665vw, 20px);
+          border-radius: 8px;
+          box-shadow: 0px 3px 4px 0px #00000008;
+
+          .form {
+            display: flex;
+            align-items: start;
+            justify-content: start;
+            flex-wrap: wrap;
+            width: 100%;
+            gap: clamp(15px, 1.5625vw, 30px);
+
+            .pageFormInput {
+              display: flex;
+              flex-direction: column;
+              align-items: start;
+              justify-content: start;
+              width: 48.17%;
+              gap: clamp(10px, 0.78125vw, 15px);
+
+              label {
+                font-family: Alexandria;
+                font-size: clamp(10px, 0.7291666666666666vw, 14px);
+                font-weight: 500;
+                line-height: 15px;
+                letter-spacing: -0.01em;
+                color: #000;
+              }
+
+              .inputContainer {
+                width: 100%;
+                border: 1px solid #e1e3ea;
                 display: flex;
-                flex-direction: column;
+                align-items: center;
+                justify-content: start;
+                border-radius: 6px;
+                overflow: hidden;
+                padding-inline-end: 5px;
+
+                .inputIconContainer {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  width: 48px;
+                  height: 48px;
+                  border-inline-end: 1px solid #e1e3ea;
+                  background-color: #f9f9f9;
+                }
+
+                input,
+                select {
+                  border: none;
+                  outline: none;
+                  width: calc(100% - 48px);
+                  padding: 17px 15px;
+                  font-family: Alexandria;
+                  font-size: 12px;
+                  font-weight: 500;
+                  line-height: 14px;
+                  color: #7e8299;
+                }
+              }
+
+              .textContainer {
+                background-color: #f9f9f9;
+                width: 100%;
+                display: flex;
                 align-items: start;
                 justify-content: start;
-                border: 1px solid #f1f1f2;
-                border-radius: 12px;
-                padding: clamp(0px, 0.78125vw, 15px);
-                box-shadow: 0px 3px 4px 0px #00000008;
+                overflow: hidden;
+                padding-inline-end: 5px;
+                flex-direction: column;
+                padding: 12px;
+                border-radius: 6px;
+
+                label {
+                  font-family: Alexandria;
+                  font-size: 11px;
+                  font-weight: 600;
+                  line-height: 12px;
+                  color: #a1a5b7;
+                }
+
+                textarea {
+                  width: 100%;
+                  border: none;
+                  outline: none;
+                  padding: 17px 15px;
+                  font-family: Alexandria;
+                  font-size: 12px;
+                  font-weight: 500;
+                  line-height: 14px;
+                  color: #7e8299;
+                  background: transparent;
+                }
+              }
+            }
+
+            .products {
+              width: 100%;
+
+              .product {
                 width: 100%;
+                display: flex;
+                align-items: start;
+                justify-content: start;
+                flex-direction: column;
+                margin-top: clamp(18px, 1.5625vw, 30px);
 
-                .page-heade {
-                    width: 100%;
-                    display: flex;
-                    align-items: start;
-                    justify-content: start;
-                    flex-direction: column;
-                    border-inline-start: 2px solid #fd9636;
-                    padding-inline-start: clamp(10px, 0.78125vw, 15px);
-                    gap: clamp(5px, 0.5208333333333333vw, 10px);
-
-                    h2 {
-                        font-family: Alexandria;
-                        font-size: clamp(14px, 1.5625vw, 30px);
-                        font-weight: 500;
-                        line-height: clamp(20px, 2.083333333333333vw, 40px);
-                        color: #000;
-                    }
-
-                    span {
-                        font-family: Alexandria;
-                        font-size: clamp(8px, 0.6770833333333334vw, 13px);
-                        font-weight: 400;
-                        line-height: clamp(14px, 1.3020833333333335vw, 25px);
-                        color: #000;
-                        width: 70%;
-                    }
-
-                    @media (max-width: 500px) {
-                        span {
-                            width: 100%;
-                        }
-                    }
+                .proTitle {
+                  font-family: Alexandria;
+                  font-size: clamp(12px, 0.7291666666666666vw, 14px);
+                  font-weight: 500;
+                  line-height: 15px;
+                  letter-spacing: -0.01em;
+                  color: #000;
                 }
 
-                .page-from {
+                .product-images {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: start;
+                  justify-content: start;
+                  gap: clamp(10px, 1.0416666666666665vw, 20px);
+                  border: 1px solid #f1f1f2;
+                  border-radius: 12px;
+                  overflow: hidden;
+                  margin-top: clamp(10px, 1.0416666666666665vw, 20px);
+                  width: 100%;
+
+                  .product-images-head {
                     display: flex;
-                    align-items: start;
-                    justify-content: start;
-                    flex-direction: column;
-                    margin-top: clamp(18px, 1.5625vw, 30px);
-                    width: 100%;
-                    border: 1px solid #f1f1f2;
-                    padding: clamp(8px, 1.0416666666666665vw, 20px);
-                    border-radius: 8px;
-                    box-shadow: 0px 3px 4px 0px #00000008;
-
-                    .form {
-                        display: flex;
-                        align-items: start;
-                        justify-content: start;
-                        flex-wrap: wrap;
-                        width: 100%;
-                        gap: clamp(15px, 1.5625vw, 30px);
-
-                        .pageFormInput {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: start;
-                            justify-content: start;
-                            width: 48.17%;
-                            gap: clamp(10px, 0.78125vw, 15px);
-
-                            label {
-                                font-family: Alexandria;
-                                font-size: clamp(10px, 0.7291666666666666vw, 14px);
-                                font-weight: 500;
-                                line-height: 15px;
-                                letter-spacing: -0.01em;
-                                color: #000;
-                            }
-
-                            .inputContainer {
-                                width: 100%;
-                                border: 1px solid #e1e3ea;
-                                display: flex;
-                                align-items: center;
-                                justify-content: start;
-                                border-radius: 6px;
-                                overflow: hidden;
-                                padding-inline-end: 5px;
-
-                                .inputIconContainer {
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    width: 48px;
-                                    height: 48px;
-                                    border-inline-end: 1px solid #e1e3ea;
-                                    background-color: #f9f9f9;
-                                }
-
-                                input,
-                                select {
-                                    border: none;
-                                    outline: none;
-                                    width: calc(100% - 48px);
-                                    padding: 17px 15px;
-                                    font-family: Alexandria;
-                                    font-size: 12px;
-                                    font-weight: 500;
-                                    line-height: 14px;
-                                    color: #7e8299;
-                                }
-                            }
-
-                            .textContainer {
-                                background-color: #f9f9f9;
-                                width: 100%;
-                                display: flex;
-                                align-items: start;
-                                justify-content: start;
-                                overflow: hidden;
-                                padding-inline-end: 5px;
-                                flex-direction: column;
-                                padding: 12px;
-                                border-radius: 6px;
-
-                                label {
-                                    font-family: Alexandria;
-                                    font-size: 11px;
-                                    font-weight: 600;
-                                    line-height: 12px;
-                                    color: #a1a5b7;
-                                }
-
-                                textarea {
-                                    width: 100%;
-                                    border: none;
-                                    outline: none;
-                                    padding: 17px 15px;
-                                    font-family: Alexandria;
-                                    font-size: 12px;
-                                    font-weight: 500;
-                                    line-height: 14px;
-                                    color: #7e8299;
-                                    background: transparent;
-                                }
-                            }
-                        }
-
-                        .checkContainer {
-                            width: 100%;
-                            display: flex;
-                            align-items: start;
-                            justify-content: start;
-                            flex-direction: column;
-                            gap: 20px;
-
-                            span {
-                                font-family: Alexandria;
-                                font-size: clamp(12px, 0.7291666666666666vw, 14px);
-                                font-weight: 500;
-                                line-height: 15px;
-                                letter-spacing: -0.01em;
-                                color: #000;
-                            }
-
-                            .checkboxes {
-                                display: flex;
-                                align-items: center;
-                                justify-content: start;
-                                gap: clamp(20px, 4.6875vw, 90px);
-
-                                .checkbox {
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: start;
-                                    gap: 10px;
-
-                                    input {
-                                        width: 30px;
-                                        height: 30px;
-                                        border-radius: 6px;
-                                    }
-
-                                    label {
-                                        font-family: Alexandria;
-                                        font-size: 13px;
-                                        font-weight: 600;
-                                        line-height: 14px;
-                                        color: #5e6278;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    .products {
-                        width: 100%;
-
-                        .product {
-                            width: 100%;
-                            display: flex;
-                            align-items: start;
-                            justify-content: start;
-                            flex-direction: column;
-                            margin-top: clamp(18px, 1.5625vw, 30px);
-
-                            .proTitle {
-                                font-family: Alexandria;
-                                font-size: clamp(12px, 0.7291666666666666vw, 14px);
-                                font-weight: 500;
-                                line-height: 15px;
-                                letter-spacing: -0.01em;
-                                color: #000;
-                            }
-
-                            .product-images {
-                                display: flex;
-                                flex-direction: column;
-                                align-items: start;
-                                justify-content: start;
-                                gap: clamp(10px, 1.0416666666666665vw, 20px);
-                                border: 1px solid #f1f1f2;
-                                border-radius: 12px;
-                                overflow: hidden;
-                                margin-top: clamp(10px, 1.0416666666666665vw, 20px);
-                                width: 100%;
-
-                                .product-images-head {
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: space-between;
-                                    width: 100%;
-                                    border-bottom: 1px solid #f1f1f2;
-
-                                    .deletProduct {
-                                        display: flex;
-                                        align-items: center;
-                                        justify-content: start;
-                                        gap: clamp(12px, 0.9375vw, 18px);
-
-                                        .icon {
-                                            display: flex;
-                                            align-items: center;
-                                            justify-content: center;
-                                            width: clamp(48px, 3.6979166666666665vw, 71px);
-                                            height: clamp(59px, 3.958333333333333vw, 76px);
-                                            background-color: #f1416c;
-                                            cursor: pointer;
-                                        }
-
-                                        .info {
-                                            display: flex;
-                                            align-items: start;
-                                            justify-content: center;
-                                            gap: clamp(5px, 0.5208333333333333vw, 10px);
-                                            flex-direction: column;
-
-                                            h3 {
-                                                font-family: Alexandria;
-                                                font-size: clamp(10px, 0.7291666666666666vw, 14px);
-                                                font-weight: 500;
-                                                line-height: 15px;
-                                                letter-spacing: -0.01em;
-                                                color: #000;
-                                            }
-
-                                            span {
-                                                font-family: Alexandria;
-                                                font-size: clamp(8px, 0.5208333333333333vw, 10px);
-                                                font-weight: 400;
-                                                line-height: 15px;
-                                                letter-spacing: -0.01em;
-                                                color: #ff1212;
-                                            }
-                                        }
-                                    }
-
-                                    .productInputs {
-                                        display: flex;
-                                        gap: 30px;
-                                        align-items: center;
-                                        justify-content: end;
-                                        padding: 0 26px;
-
-                                        .dimensions,
-                                        .quantity {
-                                            display: flex;
-                                            align-items: center;
-                                            justify-content: center;
-
-                                            .inputContainer {
-                                                width: 100%;
-                                                border: 1px solid #e1e3ea;
-                                                display: flex;
-                                                align-items: center;
-                                                justify-content: start;
-                                                border-radius: 6px;
-                                                overflow: hidden;
-                                                padding-inline-end: 5px;
-
-                                                .inputIconContainer {
-                                                    display: flex;
-                                                    align-items: center;
-                                                    justify-content: center;
-                                                    width: 48px;
-                                                    height: 48px;
-                                                    border-inline-end: 1px solid #e1e3ea;
-                                                    background-color: #f9f9f9;
-                                                }
-
-                                                input,
-                                                select {
-                                                    border: none;
-                                                    outline: none;
-                                                    padding: 17px 15px;
-                                                    font-family: Alexandria;
-                                                    font-size: 12px;
-                                                    font-weight: 500;
-                                                    line-height: 14px;
-                                                    color: #7e8299;
-                                                }
-                                            }
-                                        }
-
-                                        .dimensions {
-                                            .inputContainer {
-                                                input {
-                                                    width: 146px;
-                                                }
-                                            }
-                                        }
-
-                                        .quantity {
-                                            .inputContainer {
-                                                input {
-                                                    width: 122;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-
-                                .product-images-inputs {
-                                    display: flex;
-                                    flex-wrap: wrap;
-                                    width: 100%;
-                                    align-items: start;
-                                    justify-content: start;
-                                    gap: 10px;
-                                    margin: clamp(7px, 0.9375vw, 18px);
-
-                                    .imgInput {
-                                        display: flex;
-                                        align-items: center;
-                                        justify-content: center;
-                                        flex-direction: column;
-                                        width: clamp(50px, 4.166666666666666vw, 80px);
-                                        height: clamp(50px, 4.166666666666666vw, 80px);
-                                        gap: clamp(5px, 0.625vw, 12px);
-                                        border: 1px dashed #7e8299;
-                                        border-radius: 8px;
-                                        overflow: hidden;
-                                        position: relative;
-
-                                        span {
-                                            font-family: Inter;
-                                            font-size: 10px;
-                                            font-weight: 600;
-                                            line-height: clamp(6px, 0.5208333333333333vw, 10px);
-                                            color: #7e8299;
-                                        }
-
-                                        img {
-                                            width: 100%;
-                                            height: 100%;
-                                        }
-
-                                        button {
-                                            position: absolute;
-                                            top: 2px;
-                                            inset-inline-start: 2px;
-                                            background-color: transparent;
-                                            border: none;
-                                            outline: none;
-                                            width: 15px;
-                                            height: 15px;
-                                            display: flex;
-                                            align-items: center;
-                                            justify-content: center;
-
-                                            svg {
-                                                width: 100%;
-                                                height: 100%;
-                                            }
-                                        }
-                                    }
-                                    .imgInput:has(.img) {
-                                        border: 1px solid #f1f1f2;
-                                    }
-                                }
-                            }
-                        }
-
-                        .addProduct{
-                            display: flex;
-                            align-items: center;
-                            justify-content: start;
-                            width: 100%;
-                            margin-top: clamp( 15px, 1.0416666666666665vw, 20px);
-
-                            div{
-                                font-family: Alexandria;
-                                font-size: clamp( 8px, 0.5208333333333333vw, 10px);
-                                font-weight: 600;
-                                line-height: 14px;
-                                color: #fff;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                border: none;
-                                outline: none;
-                                width: clamp( 91px, 5.260416666666667vw, 101px);
-                                height: clamp( 29px, 2.2395833333333335vw, 43px);
-                                background-color: #FD9636;
-                                border-radius: 8px;
-                            }
-                        }
-                    }
-                }
-
-                .page-btn {
-                    display: flex;
-                    align-items: start;
+                    align-items: center;
                     justify-content: space-between;
                     width: 100%;
-                    margin-top: clamp(18px, 1.5625vw, 30px);
+                    border-bottom: 1px solid #f1f1f2;
 
-                    button {
-                        border: none;
-                        outline: none;
-                        background-color: #fd9636;
-                        border-radius: 6px;
+                    .deletProduct {
+                      display: flex;
+                      align-items: center;
+                      justify-content: start;
+                      gap: clamp(12px, 0.9375vw, 18px);
+
+                      .icon {
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        gap: 8px;
-                        font-family: Alexandria;
-                        font-size: clamp(12px, 0.8333333333333334vw, 16px);
-                        font-weight: 600;
-                        line-height: 16px;
-                        color: #ffff;
-                        width: clamp(99px, 9.583333333333334vw, 184px);
-                        height: clamp(44px, 3.3854166666666665vw, 65px);
-                    }
-                }
+                        width: clamp(48px, 3.6979166666666665vw, 71px);
+                        height: clamp(59px, 3.958333333333333vw, 76px);
+                        background-color: #f1416c;
+                        cursor: pointer;
+                      }
 
-                .branches {
-                    display: flex;
-                    align-items: start;
-                    justify-content: start;
-                    flex-direction: column;
-                    gap: clamp(15px, 1.5625vw, 30px);
-                    margin-top: clamp(15px, 1.5625vw, 30px);
-                    width: 100%;
-
-                    .branchNumbers {
-                        display: flex;
-                        align-items: center;
-                        justify-content: start;
-                        gap: 20px;
-
-                        span {
-                            font-family: Alexandria;
-                            font-size: 14px;
-                            font-weight: 500;
-                            line-height: 15px;
-                            letter-spacing: -0.01em;
-                            color: #000;
-                        }
-
-                        .branchCOunter {
-                            display: flex;
-                            align-items: center;
-                            justify-content: start;
-                            border: 1px solid #f1f1f2;
-                            border-radius: 8px;
-                            overflow: hidden;
-
-                            button {
-                                border: none;
-                                outline: none;
-                                width: 33px;
-                                height: 37px;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                background: #fff;
-                            }
-
-                            .counterInput {
-                                background: #8c9ec533;
-                                width: 33px;
-                                height: 37px;
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-
-                                input {
-                                    font-family: Poppins;
-                                    font-size: 18px;
-                                    font-weight: 600;
-                                    line-height: 19.98px;
-                                    letter-spacing: 0.005em;
-                                    color: #fd9636;
-                                    border: none;
-                                    outline: none;
-                                    background: transparent;
-                                    max-width: 100%;
-                                    padding-inline-start: 10px;
-                                }
-                            }
-
-                            input[type="number"]::-webkit-outer-spin-button,
-                            input[type="number"]::-webkit-inner-spin-button {
-                                -webkit-appearance: none;
-                                margin: 0;
-                            }
-
-                            input[type="number"] {
-                                appearance: textfield;
-                                -moz-appearance: textfield;
-                            }
-                        }
-                    }
-
-                    .branchesLocations {
+                      .info {
                         display: flex;
                         align-items: start;
-                        justify-content: start;
-                        gap: 20px;
+                        justify-content: center;
+                        gap: clamp(5px, 0.5208333333333333vw, 10px);
                         flex-direction: column;
-                        width: 100%;
+
+                        h3 {
+                          font-family: Alexandria;
+                          font-size: clamp(10px, 0.7291666666666666vw, 14px);
+                          font-weight: 500;
+                          line-height: 15px;
+                          letter-spacing: -0.01em;
+                          color: #000;
+                        }
 
                         span {
-                            font-family: Alexandria;
-                            font-size: 14px;
-                            font-weight: 500;
-                            line-height: 15px;
-                            letter-spacing: -0.01em;
-                            color: #000;
+                          font-family: Alexandria;
+                          font-size: clamp(8px, 0.5208333333333333vw, 10px);
+                          font-weight: 400;
+                          line-height: 15px;
+                          letter-spacing: -0.01em;
+                          color: #ff1212;
                         }
-
-                        .loactionItems {
-                            display: flex;
-                            flex-direction: column;
-                            width: 100%;
-                            align-items: start;
-                            justify-content: start;
-                            gap: clamp(10px, 1.0416666666666665vw, 20px);
-
-                            .locationItem {
-                                width: 100%;
-                                border: 1px solid #e1e3ea;
-                                border-radius: 6px;
-                                height: 48px;
-                                display: flex;
-                                align-items: center;
-                                justify-content: start;
-                                padding: 0 20px;
-
-                                input {
-                                    width: 100%;
-                                    border: none;
-                                    outline: none;
-                                }
-                            }
-                        }
+                      }
                     }
+
+                    .productInputs {
+                      display: flex;
+                      gap: 30px;
+                      align-items: center;
+                      justify-content: end;
+                      padding: 0 26px;
+
+                      .dimensions,
+                      .quantity {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        .inputContainer {
+                          width: 100%;
+                          border: 1px solid #e1e3ea;
+                          display: flex;
+                          align-items: center;
+                          justify-content: start;
+                          border-radius: 6px;
+                          overflow: hidden;
+                          padding-inline-end: 5px;
+
+                          .inputIconContainer {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 48px;
+                            height: 48px;
+                            border-inline-end: 1px solid #e1e3ea;
+                            background-color: #f9f9f9;
+                          }
+
+                          input,
+                          select {
+                            border: none;
+                            outline: none;
+                            padding: 17px 15px;
+                            font-family: Alexandria;
+                            font-size: 12px;
+                            font-weight: 500;
+                            line-height: 14px;
+                            color: #7e8299;
+                          }
+                        }
+                      }
+
+                      .dimensions {
+                        .inputContainer {
+                          input {
+                            width: 146px;
+                          }
+                        }
+                      }
+
+                      .quantity {
+                        .inputContainer {
+                          input {
+                            width: 122;
+                          }
+                        }
+                      }
+                    }
+                  }
+
+                  .product-images-inputs {
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 100%;
+                    align-items: start;
+                    justify-content: start;
+                    gap: 10px;
+                    margin: clamp(7px, 0.9375vw, 18px);
+
+                    .imgInput {
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      flex-direction: column;
+                      width: clamp(50px, 4.166666666666666vw, 80px);
+                      height: clamp(50px, 4.166666666666666vw, 80px);
+                      gap: clamp(5px, 0.625vw, 12px);
+                      border: 1px dashed #7e8299;
+                      border-radius: 8px;
+                      overflow: hidden;
+                      position: relative;
+
+                      span {
+                        font-family: Inter;
+                        font-size: 10px;
+                        font-weight: 600;
+                        line-height: clamp(6px, 0.5208333333333333vw, 10px);
+                        color: #7e8299;
+                      }
+
+                      img {
+                        width: 100%;
+                        height: 100%;
+                      }
+
+                      button {
+                        position: absolute;
+                        top: 2px;
+                        inset-inline-start: 2px;
+                        background-color: transparent;
+                        border: none;
+                        outline: none;
+                        width: 15px;
+                        height: 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        svg {
+                          width: 100%;
+                          height: 100%;
+                        }
+                      }
+                    }
+                    .imgInput:has(.img) {
+                      border: 1px solid #f1f1f2;
+                    }
+                  }
                 }
+              }
+
+              .addProduct {
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                width: 100%;
+                margin-top: clamp(15px, 1.0416666666666665vw, 20px);
+
+                div {
+                  font-family: Alexandria;
+                  font-size: clamp(8px, 0.5208333333333333vw, 10px);
+                  font-weight: 600;
+                  line-height: 14px;
+                  color: #fff;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border: none;
+                  outline: none;
+                  width: clamp(91px, 5.260416666666667vw, 101px);
+                  height: clamp(29px, 2.2395833333333335vw, 43px);
+                  background-color: #fd9636;
+                  border-radius: 8px;
+                }
+              }
             }
+          }
         }
 
-        .page-img {
-            width: 40%;
+        .page-btn {
+          display: flex;
+          align-items: start;
+          justify-content: space-between;
+          width: 100%;
+          margin-top: clamp(18px, 1.5625vw, 30px);
+
+          button {
+            border: none;
+            outline: none;
+            background-color: #fd9636;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            border-radius: 12px;
-
-            img {
-                width: 100%;
-            }
+            gap: 8px;
+            font-family: Alexandria;
+            font-size: clamp(12px, 0.8333333333333334vw, 16px);
+            font-weight: 600;
+            line-height: 16px;
+            color: #ffff;
+            width: clamp(99px, 9.583333333333334vw, 184px);
+            height: clamp(44px, 3.3854166666666665vw, 65px);
+          }
         }
+      }
     }
 
-    @media (max-width: 999px) {
-        .content-wrapper {
-            flex-direction: column;
+    .page-img {
+      width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 12px;
 
-            .page-img,
-            form {
-                width: 100%;
-            }
+      img {
+        width: 100%;
+      }
+    }
+  }
 
-            .page-img {
-                order: 1;
-            }
+  @media (max-width: 999px) {
+    .content-wrapper {
+      flex-direction: column;
 
-            form {
-                order: 2;
-                border: none;
-                padding: 0;
-                box-shadow: none;
+      .page-img,
+      form {
+        width: 100%;
+      }
 
-                .pageFormInput {
-                    width: 100% !important;
-                }
+      .page-img {
+        order: 1;
+      }
 
-                .page-details {
-                    .page-from {
-                        .products {
-                            .product {
-                                .product-images {
-                                    .product-images-head {
-                                        .productInputs {
-                                            display: none;
-                                        }
-                                    }
-                                }
+      form {
+        order: 2;
+        border: none;
+        padding: 0;
+        box-shadow: none;
 
-                                .bottomBroductInputs {
-                                    display: flex !important;
-                                    gap: 20px;
-                                    align-items: center;
-                                    justify-content: start;
-                                    margin-top: 15px;
+        .pageFormInput {
+          width: 100% !important;
+        }
 
-                                    .dimensions,
-                                    .quantity {
-                                        display: flex;
-                                        align-items: center;
-                                        justify-content: center;
-
-                                        .inputContainer {
-                                            width: 100%;
-                                            border: 1px solid #e1e3ea;
-                                            display: flex;
-                                            align-items: center;
-                                            justify-content: start;
-                                            border-radius: 6px;
-                                            overflow: hidden;
-                                            padding-inline-end: 5px;
-
-                                            .inputIconContainer {
-                                                display: flex;
-                                                align-items: center;
-                                                justify-content: center;
-                                                width: 48px;
-                                                height: 48px;
-                                                border-inline-end: 1px solid #e1e3ea;
-                                                background-color: #f9f9f9;
-                                            }
-
-                                            input,
-                                            select {
-                                                border: none;
-                                                outline: none;
-                                                padding: 17px 15px;
-                                                font-family: Alexandria;
-                                                font-size: 12px;
-                                                font-weight: 500;
-                                                line-height: 14px;
-                                                color: #7e8299;
-                                            }
-                                        }
-                                    }
-
-                                    .dimensions {
-                                        .inputContainer {
-                                            input {
-                                                width: 146px;
-                                            }
-                                        }
-                                    }
-
-                                    .quantity {
-                                        .inputContainer {
-                                            input {
-                                                width: 122;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+        .page-details {
+          .page-from {
+            .products {
+              .product {
+                .product-images {
+                  .product-images-head {
+                    .productInputs {
+                      display: none;
                     }
+                  }
                 }
+
+                .bottomBroductInputs {
+                  display: flex !important;
+                  gap: 20px;
+                  align-items: center;
+                  justify-content: start;
+                  margin-top: 15px;
+
+                  .dimensions,
+                  .quantity {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .inputContainer {
+                      width: 100%;
+                      border: 1px solid #e1e3ea;
+                      display: flex;
+                      align-items: center;
+                      justify-content: start;
+                      border-radius: 6px;
+                      overflow: hidden;
+                      padding-inline-end: 5px;
+
+                      .inputIconContainer {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 48px;
+                        height: 48px;
+                        border-inline-end: 1px solid #e1e3ea;
+                        background-color: #f9f9f9;
+                      }
+
+                      input,
+                      select {
+                        border: none;
+                        outline: none;
+                        padding: 17px 15px;
+                        font-family: Alexandria;
+                        font-size: 12px;
+                        font-weight: 500;
+                        line-height: 14px;
+                        color: #7e8299;
+                      }
+                    }
+                  }
+
+                  .dimensions {
+                    .inputContainer {
+                      input {
+                        width: 146px;
+                      }
+                    }
+                  }
+
+                  .quantity {
+                    .inputContainer {
+                      input {
+                        width: 122;
+                      }
+                    }
+                  }
+                }
+              }
             }
+          }
         }
+      }
     }
+  }
 }
 
 /* ////////////////// */
 /* modal style */
 #senSuccessModal {
-    .modal-dialog {
-        max-width: 550px;
-        width: clamp(283px, 28.645833333333332vw, 550px);
-        margin: 0 auto;
+  .modal-dialog {
+    max-width: 550px;
+    width: clamp(283px, 28.645833333333332vw, 550px);
+    margin: 0 auto;
 
-        .modal-content {
-            width: 100%;
-            height: clamp(193px, 22.1875vw, 426px);
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    .modal-content {
+      width: 100%;
+      height: clamp(193px, 22.1875vw, 426px);
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-            .modal-body {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: clamp(15px, 1.5625vw, 30px);
-                flex-direction: column;
+      .modal-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(15px, 1.5625vw, 30px);
+        flex-direction: column;
 
-                svg {
-                    width: clamp(72px, 7.5vw, 144px);
-                    height: clamp(72px, 7.5vw, 144px);
-                }
-
-                .info {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-
-                    h2 {
-                        font-family: Alexandria;
-                        font-size: clamp(14px, 1.5625vw, 30px);
-                        font-weight: 600;
-                        line-height: clamp(20px, 2.604166666666667vw, 50px);
-                        color: #000;
-                    }
-
-                    span {
-                        font-family: Alexandria;
-                        font-size: clamp(10px, 1.0416666666666665vw, 20px);
-                        font-weight: 400;
-                        line-height: clamp(20px, 2.083333333333333vw, 40px);
-                        color: #000;
-                    }
-                }
-            }
+        svg {
+          width: clamp(72px, 7.5vw, 144px);
+          height: clamp(72px, 7.5vw, 144px);
         }
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+
+          h2 {
+            font-family: Alexandria;
+            font-size: clamp(14px, 1.5625vw, 30px);
+            font-weight: 600;
+            line-height: clamp(20px, 2.604166666666667vw, 50px);
+            color: #000;
+          }
+
+          span {
+            font-family: Alexandria;
+            font-size: clamp(10px, 1.0416666666666665vw, 20px);
+            font-weight: 400;
+            line-height: clamp(20px, 2.083333333333333vw, 40px);
+            color: #000;
+          }
+        }
+      }
     }
+  }
+}
+
+/* ///////////////////////// */
+/* dark mode */
+body.dark {
+  /* seller1 styles */
+  .container {
+    .content-wrapper {
+      form {
+        .page-details {
+          border: 1px solid var(--dark-mode-white);
+          background: var(--dark-mode-second);
+
+          .page-heade {
+            h2 {
+              color: #fff;
+            }
+
+            span {
+              color: #fffffff0;
+            }
+          }
+
+          .page-from {
+            border: 1px solid var(--dark-mode-white);
+
+            .form {
+              .pageFormInput {
+                label {
+                  color: #fff;
+                }
+
+                .inputContainer {
+                  border: 1px solid var(--dark-mode-white);
+
+                  .inputIconContainer {
+                    border-inline-end: 1px solid var(--dark-mode-white);
+                    background-color: var(--dark-mode-second);
+                  }
+
+                  input,
+                  select {
+                    background: transparent;
+                    color: #fff;
+
+                    option {
+                      background: var(--dark-mode-second);
+                    }
+                  }
+                }
+
+                .textContainer {
+                  background-color: transparent;
+                  border: 1px solid var(--dark-mode-white);
+
+                  label {
+                    color: #fff;
+                  }
+
+                  textarea {
+                    color: #fff;
+                    background: transparent;
+                  }
+                }
+              }
+
+              .products {
+                .product {
+                  .proTitle {
+                    color: #fff;
+                  }
+
+                  .product-images {
+                    border: 1px solid var(--dark-mode-white);
+
+                    .product-images-head {
+                      border-bottom: 1px solid var(--dark-mode-white);
+                      .deletProduct {
+                        .info {
+                          h3 {
+                            color: #fff;
+                          }
+                        }
+                      }
+
+                      .productInputs {
+                        .dimensions,
+                        .quantity {
+                          .inputContainer {
+                            border: 1px solid var(--dark-mode-white);
+                            .inputIconContainer {
+                              border-inline-end: 1px solid
+                                var(--dark-mode-white);
+                              background-color: transparent;
+
+                              svg{
+                                path{
+                                    fill: #fff;
+                                }
+                              }
+                            }
+
+                            input,
+                            select {
+                              background: transparent;
+                              color: #fff;
+                              
+                              option{
+                                color: #fff;
+                                background: var(--dark-mode-second);
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+
+                    .product-images-inputs {
+                      .imgInput {
+                        border: 1px dashed var(--dark-mode-white);
+
+                        span {
+                          color: #fff;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
