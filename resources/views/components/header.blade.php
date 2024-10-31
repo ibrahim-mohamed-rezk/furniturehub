@@ -34,7 +34,7 @@
             </div>
             <div>
                 <label class="switch">
-                    <input type="checkbox" checked>
+                    <input id="darkModeInput" type="checkbox" onchange="switchMode()">
                     <span class="slider round"></span>
                 </label>
             </div>

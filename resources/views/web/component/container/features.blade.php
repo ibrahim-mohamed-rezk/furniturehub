@@ -70,11 +70,32 @@
             border-radius: 0px;
         }
 
-        .icon-left{
-            svg{
+        .icon-left {
+            svg {
                 width: 30px;
                 height: 30px;
             }
+        }
+    }
+
+    body.dark {
+        .features-section-wrapper {
+            .swiper-wrapper {
+                .swiper-slide {
+                    .item-list {
+                        .info-right {
+                            h5 {
+                                color: #fff;
+                            }
+
+                            p {
+                                color: ##A6A6A6;
+                            }
+                        }
+                    }
+                }
+            }
+
         }
     }
 </style>

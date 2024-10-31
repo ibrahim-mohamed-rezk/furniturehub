@@ -160,7 +160,6 @@
                 <div class="side-banner-col">
                     @foreach($right_products_cobon as $product)
                         @include('web.component.product.productCobon',['product'=>$product])
-
                     @endforeach
                 </div>
                 @if($cobonProduct && $only_product_offer)
@@ -299,7 +298,6 @@
                 <div class="side-banner-col">
                     @foreach($left_products_cobon as $product)
                         @include('web.component.product.productCobon',['product'=>$product])
-
                     @endforeach
                 </div>
             </div>

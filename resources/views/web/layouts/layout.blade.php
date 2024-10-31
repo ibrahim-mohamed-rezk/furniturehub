@@ -36,6 +36,7 @@
 
     <link href="{{ url('') }}/assets/web/ASSets/css/footer.css" rel="stylesheet">
     <link href="{{ url('') }}/assets/web/ASSets/css/header.css" rel="stylesheet">
+    <link href="{{ url('') }}/assets/web/ASSets/css/darkMode.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -816,24 +817,39 @@
 </script>
 
 <script>
+    // to show dropdown menue when hovering over sec-header
    document.querySelectorAll('.categories-item').forEach(function(item) {
         item.addEventListener('mouseover', function() {
             const dropdownMenu = item.querySelector('.dropdown-menu');
             if (dropdownMenu) {
-                dropdownMenu.classList.add('show');  // Show the dropdown
-                item.setAttribute('aria-expanded', 'true');  // Set aria-expanded to true
+                dropdownMenu.classList.add('show');  
+                item.setAttribute('aria-expanded', 'true');  
             }
         });
 
         item.addEventListener('mouseleave', function() {
             const dropdownMenu = item.querySelector('.dropdown-menu');
+            const categoriesShop = item.querySelector('.categories-shop');
             if (dropdownMenu) {
-                dropdownMenu.classList.remove('show');  // Hide the dropdown
-                item.setAttribute('aria-expanded', 'false');  // Set aria-expanded to false
+                dropdownMenu.classList.remove('show');  
+                item.setAttribute('aria-expanded', 'false');  
             }
         });
     });
-;
+</script>
+
+<script>
+const switchMode = () => {
+    const body = document.querySelector('body');
+    body.classList.toggle("dark"); 
+
+    localStorage.setItem('switchMode', body.classList.contains("dark"));
+};
+
+if (localStorage.getItem('switchMode') === 'true') {
+    document.querySelector('body').classList.add("dark");
+    document.getElementById('darkModeInput').checked = true;
+}
 
 </script>
 
