@@ -138,3 +138,8 @@ Route::get('/clear', function () {
     Artisan::call('view:clear');
     return back();
 })->name('clear');
+
+// //////////////////////////////////
+Route::get('/about-installments', function () {
+    return view('web.pages.about-installments.about-installments');
+})->name('about-installments');
