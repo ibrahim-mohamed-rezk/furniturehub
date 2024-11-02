@@ -66,8 +66,8 @@
                         </div>
                     @endforeach
                 </div>
-
-                <div class="catigory-slider-2-next">
+                
+                <div @if (getCurrentLocale() == 'ar') class="catigory-slider-2-preve" @else class="catigory-slider-2-next" @endif >
                     <svg width="14" height="12" viewBox="0 0 14 12" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -76,7 +76,7 @@
                     </svg>
                 </div>
 
-                <div class="catigory-slider-2-preve">
+                <div @if (getCurrentLocale() == 'ar') class="catigory-slider-2-next" @else class="catigory-slider-2-preve" @endif>
                     <svg width="14" height="12" viewBox="0 0 14 12" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path

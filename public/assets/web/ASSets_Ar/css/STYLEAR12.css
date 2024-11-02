@@ -190,7 +190,7 @@ input,
 select,
 button,
 textarea {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 14px;
 }
 
@@ -367,108 +367,108 @@ a:hover {
 }
 
 body {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
 }
 
 .font-xs-bold {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 13px;
   line-height: 18px;
   font-weight: bold;
 }
 
 .font-sm-bold {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 14px !important;
   line-height: 20px !important;
   font-weight: bold !important;
 }
 
 .font-md-bold {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 16px !important;
   line-height: 24px !important;
   font-weight: bold !important;
 }
 
 .font-lg-bold {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 20px;
   line-height: 28px;
   font-weight: bold;
 }
 
 .font-xs {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 12px !important;
   line-height: 18px !important;
   font-weight: 400;
 }
 
 .font-sm {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 14px !important;
   line-height: 20px !important;
   font-weight: 400;
 }
 
 .font-sm-lh32 {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 14px;
   line-height: 32px;
   font-weight: 400;
 }
 
 .font-md {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
 }
 
 .font-lg {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 20px;
   line-height: 28px;
   font-weight: 400;
 }
 
 .font-xl {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 28px;
   line-height: 32px;
 }
 
 .font-xxl {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 24px;
   line-height: 24px;
   font-weight: 400;
 }
 
 .font-2xl {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 24px;
   line-height: 32px;
   font-weight: 400;
 }
 
 .font-3xl {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 30px;
   line-height: 36px;
   font-weight: 400;
 }
 
 .font-base {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
 }
 
 .font-desc {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 19px;
   line-height: 27px;
   font-weight: 400;
@@ -603,42 +603,42 @@ body {
 }
 
 h1 {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 64px;
   line-height: 83px;
   font-weight: bold;
 }
 
 h2 {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 45px;
   line-height: 58px;
   font-weight: bold;
 }
 
 h3 {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 32px;
   line-height: 41px;
   font-weight: bold;
 }
 
 h4 {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 24px;
   line-height: 31px;
   font-weight: bold;
 }
 
 h5 {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 20px;
   line-height: 26px;
   font-weight: bold;
 }
 
 h6 {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 16px;
   line-height: 18px;
   font-weight: bold;
@@ -1197,7 +1197,7 @@ h4 {
 /*TYPOGRAPHY*/
 body {
   color: #425a8b;
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 14px;
   line-height: 18px;
   font-style: normal;
@@ -1209,7 +1209,7 @@ body {
 .display-2,
 .heading-lg,
 .heading-sm-1 {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   color: #425a8b;
   font-weight: 700;
   line-height: 1.2;
@@ -1235,7 +1235,7 @@ a.text-brand-3:hover {
 .btn {
   border-radius: 4px;
   padding: 10px 22px;
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -3490,7 +3490,7 @@ body.dark input::placeholder {
 }
 .header .main-menu li.has-children > a::after {
   content: "\f151";
-  font-family: uicons-regular-rounded !important;
+  font-family: Alexandria !important;
   font-style: normal;
   font-weight: normal !important;
   font-variant: normal;
@@ -3513,7 +3513,7 @@ body.dark input::placeholder {
   margin: 5px 0;
 }
 .header .main-menu li a {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -3581,7 +3581,7 @@ body.dark input::placeholder {
   width: 100%;
 }
 .header .text-link-bd-btom {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
@@ -3680,7 +3680,7 @@ body.dark input::placeholder {
   padding: 10px 0px;
 }
 .header-top span {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: bold;
@@ -4057,7 +4057,7 @@ body.dark input::placeholder {
   li
   a {
   font-size: 16px;
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   line-height: 1;
   text-transform: capitalize;
   font-weight: 500;
@@ -6753,7 +6753,7 @@ body.dark input::placeholder {
   line-height: 32px;
   font-weight: bold;
   color: #ffffff;
-  font-family: "Kanit", sans-serif;
+  font-family: Alexandria, sans-serif;
   padding: 25px 0px 0px 15px;
   border-radius: 8px 0 0 0;
 }
@@ -9705,7 +9705,7 @@ a:hover span {
   margin: 0px -10px 0px -10px;
 }
 .list-services li {
-  font-family: "DM Sans", sans-serif;
+  font-family: Alexandria, sans-serif;
   font-size: 14px !important;
   line-height: 22px !important;
   font-weight: bold !important;
@@ -9923,7 +9923,7 @@ a:hover span {
 }
 .dropdown-sort .dropdown-toggle:after {
   content: "\f151";
-  font-family: uicons-regular-rounded !important;
+  font-family: Alexandria !important;
   font-style: normal;
   font-weight: normal !important;
   font-variant: normal;
@@ -13227,7 +13227,7 @@ a:hover span {
   text-align: right;
   text-transform: capitalize;
   font-weight: 500;
-  font-family: Cairo;
+  font-family: Alexandria;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -13241,7 +13241,7 @@ a:hover span {
   text-align: right;
   text-transform: capitalize;
   font-weight: 500;
-  font-family: Cairo;
+  font-family: Alexandria;
 }
 
 .dropdown-cart .items .item .itemInfo .info .price {
@@ -13251,7 +13251,7 @@ a:hover span {
   font-weight: bold;
   letter-spacing: 0.5px;
   line-height: 150%;
-  font-family: Poppins;
+  font-family: Alexandria;
   text-align: right;
 }
 
@@ -13281,7 +13281,7 @@ a:hover span {
 
       a {
         width: 100%;
-        font-family: Inter;
+        font-family: Alexandria;
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
@@ -13309,7 +13309,7 @@ a:hover span {
   .continu-shopping {
     color: #646464;
     text-align: center;
-    font-family: Inter;
+    font-family: Alexandria;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -13436,7 +13436,7 @@ a:hover span {
 .header-title {
   color: #493e47;
   font-size: 20px;
-  font-family: Inter;
+  font-family: Alexandria;
   font-weight: 400;
   word-wrap: break-word;
 }
@@ -13503,7 +13503,7 @@ a:hover span {
 .item-title {
   color: #a19297;
   font-size: 16px;
-  font-family: Inter;
+  font-family: Alexandria;
   font-weight: 600;
   word-wrap: break-word;
 }
@@ -13525,7 +13525,7 @@ a:hover span {
       h5 {
         text-align: center;
         padding: 30px 0;
-        font-family: Poppins;
+        font-family: Alexandria;
         font-size: 20px;
         font-weight: 500;
         line-height: 36px;
@@ -13547,7 +13547,7 @@ a:hover span {
           max-width: 200px;
           padding: 10px 0;
           border-radius: 8px;
-          font-family: Poppins;
+          font-family: Alexandria;
           font-size: 20px;
           font-weight: 500;
           line-height: 37.5px;
@@ -13639,7 +13639,7 @@ a:hover span {
 .card .title {
   color: #374957;
   font-size: 12px;
-  font-family: Inter, sans-serif;
+  font-family: Alexandria, sans-serif;
   font-weight: 600;
   word-wrap: break-word;
   text-align: center;
@@ -13706,7 +13706,7 @@ a:hover span {
         .text {
           color: #a6a6a6;
           font-size: 15px;
-          font-family: Cairo, sans-serif;
+          font-family: Alexandria, sans-serif;
           font-weight: 400;
           line-height: 20px;
           word-wrap: break-word;
@@ -13715,7 +13715,7 @@ a:hover span {
         .required {
           color: #ff1212;
           font-size: 15px;
-          font-family: Cairo, sans-serif;
+          font-family: Alexandria, sans-serif;
           font-weight: 400;
           line-height: 20px;
           word-wrap: break-word;
@@ -13738,7 +13738,7 @@ a:hover span {
       text-align: center;
       color: white;
       font-size: 20px;
-      font-family: Cairo, sans-serif;
+      font-family: Alexandria, sans-serif;
       font-weight: 600;
       line-height: 18px;
       word-wrap: break-word;
@@ -13867,7 +13867,7 @@ a:hover span {
               .remove-text {
                 color: #ff1212;
                 font-size: 22px;
-                font-family: Cairo;
+                font-family: Alexandria;
                 font-weight: 500;
                 line-height: 20px;
                 word-wrap: break-word;
@@ -13891,7 +13891,7 @@ a:hover span {
               padding: 16px 10px;
               color: black;
               font-size: 22px;
-              font-family: Cairo;
+              font-family: Alexandria;
               font-weight: 500;
               line-height: 20px;
               word-wrap: break-word;
@@ -13917,7 +13917,7 @@ a:hover span {
             width: 100%;
             color: white;
             font-size: 17px;
-            font-family: Cairo;
+            font-family: Alexandria;
             font-weight: 500;
             line-height: 20px;
             text-wrap: nowrap;
@@ -13948,7 +13948,7 @@ a:hover span {
             text-align: center;
             color: white;
             font-size: 12px;
-            font-family: Cairo;
+            font-family: Alexandria;
             font-weight: 600;
             line-height: 18px;
           }
@@ -13977,7 +13977,7 @@ a:hover span {
           .delivery-title {
             color: black;
             font-size: 20px;
-            font-family: Cairo;
+            font-family: Alexandria;
             font-weight: 700;
             line-height: 20px;
             text-wrap: nowrap;
@@ -13986,7 +13986,7 @@ a:hover span {
           .delivery-address {
             color: black;
             font-size: 15px;
-            font-family: Cairo;
+            font-family: Alexandria;
             font-weight: 500;
             line-height: 20px;
             white-space: break-spaces;
@@ -14070,7 +14070,7 @@ a:hover span {
       text-align: center;
       color: black;
       font-size: 19px;
-      font-family: Cairo, sans-serif;
+      font-family: Alexandria, sans-serif;
       font-weight: 600;
       line-height: 18px;
       word-wrap: break-word;
@@ -14162,7 +14162,7 @@ a:hover span {
             .text {
               color: #a6a6a6;
               font-size: 15px;
-              font-family: Cairo, sans-serif;
+              font-family: Alexandria, sans-serif;
               font-weight: 400;
               line-height: 20px;
               word-wrap: break-word;
@@ -14171,7 +14171,7 @@ a:hover span {
             .required {
               color: #ff1212;
               font-size: 15px;
-              font-family: Cairo, sans-serif;
+              font-family: Alexandria, sans-serif;
               font-weight: 400;
               line-height: 20px;
               word-wrap: break-word;
@@ -14221,7 +14221,7 @@ a:hover span {
         .check-lable {
           color: #5c5c5c;
           font-size: 18px;
-          font-family: Cairo;
+          font-family: Alexandria;
           font-weight: 600;
           line-height: 18px;
           word-wrap: break-word;
@@ -14318,7 +14318,7 @@ a:hover span {
       .product-title {
         color: white;
         font-size: 12px;
-        font-family: Poppins;
+        font-family: Alexandria;
         font-weight: 500;
         word-wrap: break-word;
       }
@@ -14326,7 +14326,7 @@ a:hover span {
       .product-category {
         color: #fdfdfd;
         font-size: 12px;
-        font-family: Poppins;
+        font-family: Alexandria;
         font-weight: 400;
         word-wrap: break-word;
       }
@@ -14394,7 +14394,7 @@ a:hover span {
         th {
           padding: 30px 0;
           text-align: center;
-          font-family: Poppins;
+          font-family: Alexandria;
           font-size: 18px;
           font-weight: 500;
           line-height: 30px;
@@ -14510,7 +14510,7 @@ a:hover span {
           .oreder-date,
           .order-status,
           .order-total {
-            font-family: Poppins;
+            font-family: Alexandria;
             font-size: 16px;
             font-weight: 400;
             line-height: 30px;
@@ -14546,7 +14546,7 @@ a:hover span {
             .custom-button-text {
               color: white;
               font-size: 18px;
-              font-family: Poppins;
+              font-family: Alexandria;
               font-weight: 500;
               text-transform: uppercase;
               line-height: 30px;
@@ -14822,7 +14822,7 @@ a:hover span {
             gap: clamp(5px, 0.5729166666666666vw, 11px);
 
             span {
-              font-family: Cairo;
+              font-family: Alexandria;
               font-size: clamp(10px, 0.8333333333333334vw, 16px);
               font-weight: 400;
               line-height: 18px;
@@ -14951,7 +14951,7 @@ a:hover span {
             input {
               background: transparent;
               width: 50px;
-              font-family: Helvetica Neue;
+              font-family: Alexandria Neue;
               font-size: 20px;
               font-weight: 700;
               line-height: 24px;

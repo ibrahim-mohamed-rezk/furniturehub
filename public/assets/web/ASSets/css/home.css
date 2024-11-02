@@ -223,7 +223,7 @@
             gap: clamp(5px, 0.5729166666666666vw, 11px);
 
             span {
-              font-family: Cairo;
+              font-family: Alexandria;
               font-size: clamp(10px, 0.8333333333333334vw, 16px);
               font-weight: 400;
               line-height: 18px;
@@ -802,7 +802,7 @@
     .catigory-slider-2-next {
       position: absolute;
       top: 30%;
-      right: -40px;
+      inset-inline-end: -40px;
       transform: translateX(50%);
       width: 52px;
       height: 40px;
@@ -816,7 +816,7 @@
     .catigory-slider-2-preve {
       position: absolute;
       top: 30%;
-      left: -40px;
+      inset-inline-start: -40px;
       transform: translateX(-50%);
       width: 52px;
       height: 40px;
@@ -869,7 +869,7 @@
 
     h2 {
       a {
-        font-family: Inter;
+        font-family: Alexandria;
         font-size: clamp(14px, 1.875vw, 36px);
         font-weight: 600;
         line-height: 48px;
@@ -1003,7 +1003,7 @@
           background-color: #ff1212;
           z-index: 10;
           color: #fff;
-          font-family: Cairo;
+          font-family: Alexandria;
           font-size: 12px;
           font-weight: 600;
           line-height: 12px;
@@ -1257,7 +1257,7 @@
           .flash-new-offer {
             width: 46px;
             height: 16px;
-            font-family: Cairo;
+            font-family: Alexandria;
             font-size: 8px;
             font-weight: 600;
             line-height: 8px;
@@ -1558,7 +1558,7 @@
               gap: 10px;
               border: none;
               outline: none;
-              font-family: Cairo;
+              font-family: Alexandria;
               font-size: 20px;
               font-weight: 600;
               line-height: 20px;
@@ -1701,7 +1701,7 @@
             position: absolute;
             top: 0;
             right: 0;
-            font-family: cairo;
+            font-family: Alexandria;
             font-size: clamp(8px, 1.0416666666666665vw, 20px);
             font-weight: 600;
             line-height: clamp(8px, 1.0416666666666665vw, 20px);
@@ -1769,7 +1769,7 @@
             }
 
             h2 {
-              font-family: Inter;
+              font-family: Alexandria;
               font-size: clamp(14px, 1.875vw, 36px);
               font-weight: 600;
               line-height: clamp(14px, 2.5vw, 48px);
@@ -1792,7 +1792,7 @@
               margin-right: clamp(11px, 0.8854166666666666vw, 17px);
 
               .num-label {
-                font-family: Poppins;
+                font-family: Alexandria;
                 font-size: clamp(8px, 0.625vw, 12px);
                 font-weight: 500;
                 line-height: 18px;
@@ -1804,7 +1804,7 @@
                 align-items: start;
                 justify-content: start;
                 gap: clamp(11px, 0.8854166666666666vw, 17px);
-                font-family: Inter;
+                font-family: Alexandria;
                 font-size: clamp(14px, 1.6666666666666667vw, 32px);
                 font-weight: 700;
                 line-height: clamp(14px, 1.5625vw, 30px);
@@ -1846,7 +1846,7 @@
                   position: absolute;
                   top: 0;
                   right: 0;
-                  font-family: Cairo;
+                  font-family: Alexandria;
                   font-size: clamp(8px, 1.0416666666666665vw, 20px);
                   font-weight: 600;
                   line-height: clamp(8px, 1.0416666666666665vw, 20px);
@@ -2026,7 +2026,7 @@
           justify-content: center;
 
           span {
-            font-family: Cairo;
+            font-family: Alexandria;
             font-size: clamp(14px, 1.0416666666666665vw, 20px);
             font-weight: 600;
             line-height: 20px;
@@ -2207,7 +2207,7 @@
 
     a {
       color: #000;
-      font-family: Inter;
+      font-family: Alexandria;
       font-size: clamp(14px, 1.875vw, 36px);
       font-weight: 600;
       line-height: clamp(14px, 2.5vw, 48px);
@@ -2293,7 +2293,7 @@
             gap: 10px;
             border: none;
             outline: none;
-            font-family: Cairo;
+            font-family: Alexandria;
             font-size: 20px;
             font-weight: 600;
             line-height: 20px;
@@ -2437,7 +2437,7 @@
           position: absolute;
           top: 0;
           right: 0;
-          font-family: Cairo;
+          font-family: Alexandria;
           font-size: clamp(8px, 1.0416666666666665vw, 20px);
           font-weight: 600;
           line-height: clamp(8px, 1.0416666666666665vw, 20px);
@@ -3040,5 +3040,13 @@ body.dark {
 .rtl{
   .flash-sales-slider-3-next, .flash-sales-slider-3-prev{
     transform: rotate(180deg);
+  }
+
+  .catigory-slider-2-next {
+    inset-inline-end: -85px !important;
+  }
+
+  .catigory-slider-2-preve {
+    inset-inline-start: -80px !important;
   }
 }

@@ -358,7 +358,7 @@
                       position: relative;
 
                       span {
-                        font-family: Inter;
+                        font-family: Alexandria;
                         font-size: 10px;
                         font-weight: 600;
                         line-height: clamp(6px, 0.5208333333333333vw, 10px);
