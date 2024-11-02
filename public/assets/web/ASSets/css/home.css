@@ -1491,7 +1491,7 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        background-color: #8c9ec554;
+        background-color: rgba(140, 158, 197, 0.2);
         flex-direction: column;
         padding: clamp(6px, 0.6770833333333334vw, 13px) 0;
         border-radius: 12px;
@@ -1605,28 +1605,27 @@
             gap: clamp(5px, 0.5208333333333333vw, 10px);
             margin-top: clamp(3px, 0.8333333333333334vw, 16px);
 
-            span {
-              font-family: "Alexandria", system-ui;
-              font-size: clamp(14px, 1.3541666666666667vw, 26px);
-              font-weight: 700;
-              line-height: 24px;
-              color: #425a8b;
-              text-decoration: none;
+            div {
+              span {
+                font-family: "Alexandria", system-ui;
+                font-size: clamp(14px, 1.3541666666666667vw, 26px);
+                font-weight: 700;
+                line-height: 24px;
+                color: #425a8b;
+                text-decoration: none;
+              }
             }
 
-            span:nth-child(2) {
-              font-family: "Alexandria", system-ui;
-              font-size: clamp(8px, 0.5208333333333333vw, 10px);
-              font-weight: 700;
-              line-height: clamp(10px, 1.25vw, 24px);
-              color: #fff;
-              background-color: #8c9ec5;
-              border-radius: clamp(6px, 0.4166666666666667vw, 8px);
-              width: clamp(22px, 1.9791666666666665vw, 38px);
-              height: clamp(16px, 0.8854166666666666vw, 17px);
-              display: flex;
-              align-items: center;
-              justify-content: center;
+            div:nth-child(2) {
+              span {
+                font-family: Alexandria;
+                font-size: clamp(10px, 0.9375vw, 18px);
+                font-weight: 700;
+                line-height: cclamp(14px, 1.25vw, 24px);
+                color: #a6a6a6;
+                text-decoration: line-through;
+                margin-right: 5px;
+              }
             }
           }
 
@@ -1742,7 +1741,7 @@
       margin: 0 clamp(0px, 1.5625vw, 30px);
       justify-content: start;
       align-items: start;
-      background-color: #8c9ec554;
+      background-color: rgba(140, 158, 197, 0.2);
       border-radius: 12px;
       gap: 0;
 
@@ -1810,6 +1809,7 @@
 
               span:nth-child(2) {
                 color: #fd9636b2;
+                margin-top: clamp(-15px, -1.3020833333333335vw, -25px);
               }
             }
           }
@@ -1862,7 +1862,7 @@
 
           .home-banner-3-next {
             position: absolute;
-            top: 35%;
+            top: 42%;
             right: -21px;
             transform: translateY(-50%);
             z-index: 10;
@@ -1878,7 +1878,7 @@
 
           .home-banner-3-preve {
             position: absolute;
-            top: 35%;
+            top: 42%;
             left: -21px;
             transform: translateY(-50%);
             z-index: 10;
@@ -2890,12 +2890,16 @@ body.dark {
             }
 
             .price {
-              span {
-                color: #fff;
+              div {
+                span {
+                  color: #fff;
+                }
               }
 
-              span:nth-child(2) {
-                color: #a6a6a6;
+              div:nth-child(2) {
+                span {
+                  color: #a6a6a6;
+                }
               }
             }
 

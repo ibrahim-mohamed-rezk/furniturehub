@@ -1077,7 +1077,7 @@
         align-items: start;
         justify-content: center;
         padding: clamp(20px, 2.083333333333333vw, 40px);
-        gap: clamp(50px, 4.114583333333333vw, 79px);
+        gap: clamp( 15px, 1.5625vw, 30px);
         border-radius: 12px;
         border: 1px solid #f1f1f2;
 

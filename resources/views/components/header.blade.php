@@ -514,15 +514,6 @@
                                 <li><div></div>Classic</li>
                             </ul>
                         </div>
-                        <div class="menuList">
-                            <h3>Layouts</h3>
-                            <ul>
-                                <li><div></div>Extended</li>
-                                <li><div></div>Classic</li>
-                                <li><div></div>Dark Sidebar</li>
-                                <li><div></div>Classic</li>
-                            </ul>
-                        </div>
                     </div>
                 </li>
                 <div class="sepLine"></div>

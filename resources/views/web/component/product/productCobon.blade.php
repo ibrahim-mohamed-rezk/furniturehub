@@ -59,6 +59,9 @@
             <div>
                 <span>{{ $product->cost }} {{ __('web.L.E') }} </span>
             </div>
+            <div>
+                <span>{{ $product->cost }} {{ __('web.L.E') }} </span>
+            </div>
         </div>
         <div class="stars">
             @if ($product->rates['rate'] != 0)
