@@ -1473,7 +1473,7 @@
 
   .home-banner-3-content {
     display: flex;
-    align-items: start;
+    align-items: stretch;
     justify-content: center;
     width: 100%;
 
@@ -1747,7 +1747,7 @@
         align-items: start;
         background-color: rgba(140, 158, 197, 0.2);
         border-radius: 12px;
-        gap: 0;
+        height: 100%;
 
         .timer {
           display: flex;
@@ -1865,7 +1865,7 @@
 
             .home-banner-3-next {
               position: absolute;
-              top: 52%;
+              top: 50%;
               right: 4px;
               transform: translateY(-50%);
               z-index: 10;
@@ -1881,7 +1881,7 @@
 
             .home-banner-3-preve {
               position: absolute;
-              top: 52%;
+              top: 50%;
               left: 4px;
               transform: translateY(-50%);
               z-index: 10;
@@ -1903,7 +1903,7 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        margin-top: clamp(5px, 0.625vw, 13px);
+        margin-top: clamp( 5px, 0.9375vw, 18px);
 
         .cat-title {
           display: flex;
@@ -1914,6 +1914,7 @@
           .bann-title {
             display: flex;
             flex-direction: column;
+            gap: clamp( 5px, 0.5208333333333333vw, 10px);
 
             span {
               font-family: Alexandria;
@@ -1926,7 +1927,7 @@
 
             h2 {
               font-family: Alexandria;
-              font-size: clamp(12px, 0.7291666666666666vw, 14px);
+              font-size: clamp( 12px, 0.8333333333333334vw, 16px);
               font-weight: 700;
               line-height: 20px;
               color: #425a8b;
@@ -1935,7 +1936,7 @@
 
           .bann-price {
             display: flex;
-            margin-top: clamp(7px, 0.8854166666666666vw, 17px);
+            margin-top:clamp( 7px, 1.1458333333333333vw, 22px);
             gap: 5px;
             flex-wrap: wrap;
 
@@ -1985,17 +1986,21 @@
           justify-content: center;
 
           .bann-save {
-            width: 124px;
-            height: 44px;
+            width: clamp( 65px, 6.458333333333334vw, 124px);
+            height: clamp( 28px, 2.2916666666666665vw, 44px);
             padding: 10px 30px;
             gap: 10px;
             border-radius: 12px;
             font-family: Alexandria;
-            font-size: 15px;
+            font-size: clamp( 10px, 0.78125vw, 15px);
             font-weight: 700;
             line-height: 24px;
             background-color: #fff;
             color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-wrap: nowrap;
           }
         }
       }
@@ -2006,7 +2011,7 @@
         justify-content: start;
         gap: clamp(11px, 1.25vw, 24px);
         width: 100%;
-        margin-top: 20px;
+        margin-top: clamp( 10px, 1.5625vw, 30px);
 
         button {
           width: calc(100% / 1.11);
@@ -2057,7 +2062,7 @@
         width: 100%;
         text-align: center;
         font-family: Alexandria;
-        font-size: clamp(8px, 0.625vw, 12px);
+        font-size: clamp( 8px, 0.78125vw, 15px);
         font-weight: 400;
         line-height: 18px;
         margin-top: 14px;
@@ -2975,11 +2980,11 @@ body.dark {
 
               .bann-price {
                 span:nth-child(2) {
-                  color: #a6a6a6;
+                  color: #fff;
                 }
 
                 span:nth-child(3) {
-                  color: #fff;
+                  color: #a6a6a6;
                 }
               }
             }
@@ -3028,5 +3033,12 @@ body.dark {
         }
       }
     }
+  }
+}
+
+
+.rtl{
+  .flash-sales-slider-3-next, .flash-sales-slider-3-prev{
+    transform: rotate(180deg);
   }
 }
