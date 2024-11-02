@@ -1077,7 +1077,7 @@
         align-items: start;
         justify-content: center;
         padding: clamp(20px, 2.083333333333333vw, 40px);
-        gap: clamp( 15px, 1.5625vw, 30px);
+        gap: clamp( 5px, 1.0416666666666665vw, 20px);
         border-radius: 12px;
         border: 1px solid #f1f1f2;
 
@@ -1086,6 +1086,7 @@
 
           img {
             width: 100%;
+            border-radius: 12px;
           }
         }
 
@@ -1094,6 +1095,7 @@
           align-items: start;
           justify-content: start;
           flex-direction: column;
+          width: clamp( 120px, 9.53125vw, 183px);
 
           h3 {
             font-family: Alexandria;
