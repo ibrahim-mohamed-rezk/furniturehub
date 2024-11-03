@@ -369,8 +369,8 @@
             outline: none;
             background: transparent;
             padding: clamp(12px, 0.8333333333333334vw, 16px)
-              clamp(14px, 1.0416666666666665vw, 20px);
-            gap: clamp(12px, 0.8333333333333334vw, 16px);
+            clamp( 10px, 0.7291666666666666vw, 14px);
+            gap: clamp( 10px, 0.7291666666666666vw, 14px);
             border: 1px solid #f1f1f2;
             border-radius: 6px;
 
@@ -395,7 +395,7 @@
 
                 span {
                   font-family: Alexandria;
-                  font-size: clamp(10px, 0.7291666666666666vw, 14px);
+                  font-size: clamp( 10px, 0.625vw, 12px);
                   font-weight: 700;
                   line-height: 18px;
                   color: #000;
@@ -420,7 +420,7 @@
                 svg {
                   fill: #fff;
                   path {
-                    stroke: #fd9636;
+                    stroke: #fd9636 !important;
                   }
                 }
               }
@@ -450,7 +450,7 @@
                 svg {
                   fill: #fff;
                   path {
-                    stroke: #fd9636;
+                    stroke: #fd9636 !important;
                   }
                 }
               }
@@ -719,7 +719,7 @@
 
               .filled {
                 fill: red;
-                stroke: red;
+                stroke: red !important;
               }
             }
 
@@ -886,8 +886,8 @@
             width: 100%;
             text-align: center;
             font-family: "Alexandria", system-ui;
-            font-size: clamp(6px, 0.4166666666666667vw, 8px);
-            font-weight: 400;
+            font-size: clamp( 6px, 0.46875vw, 9px);
+            font-weight: 700;
             line-height: clamp(5px, 0.9375vw, 18px);
           }
         }
@@ -1184,11 +1184,11 @@ body.dark {
 
             .priceItem {
               .priceCircle {
-                border: 2px solid var(--dark-mode-white-second);
+                border: 2px solid #fff;
               }
 
               span {
-                color: var(--dark-mode-white-second);
+                color: #fff;
               }
             }
           }
@@ -1225,6 +1225,31 @@ body.dark {
                   span {
                     color: #fff;
                   }
+
+                  svg{
+                    fill: none;
+
+                    rect{
+                      fill: none;
+                    }
+
+                    path{
+                      fill: none;
+                      stroke: #fff;
+                    }
+                  }
+                }
+              }
+
+              .plusSvg{
+                path{
+                  fill: #fff;
+                }
+              }
+
+              .minuseSvg{
+                path{
+                  fill: var(--main);
                 }
               }
             }
@@ -1238,11 +1263,11 @@ body.dark {
 
               div {
                 input {
-                  background: var(--dark-mode-white);
+                  background: #fff;
                 }
 
                 span {
-                  color: var(--dark-mode-white-second);
+                  color: #fff;
                 }
               }
             }

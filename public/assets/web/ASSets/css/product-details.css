@@ -510,7 +510,7 @@
         width: 100%;
         font-family: Alexandria;
         font-size: clamp(8px, 0.7291666666666666vw, 14px);
-        font-weight: 400;
+        font-weight: 700;
         line-height: 18px;
         color: #425a8b;
         margin-top: clamp(1px, 0.8333333333333334vw, 16px);
@@ -1218,6 +1218,14 @@
         }
       }
     }
+  }
+}
+
+
+/* rtl changes */
+.rtl{
+  .tags, .code{
+    direction: rtl;
   }
 }
 
