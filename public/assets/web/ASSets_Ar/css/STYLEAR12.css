@@ -13717,6 +13717,44 @@ body.dark{
   text-transform: uppercase;
 }
 
+body.dark{
+  .dashboard-container {
+    width: calc(100% - 300px);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  /* Card Styles */
+  .dashboard-container a {
+    border: 1px var(--dark-mode-white) solid;
+  }
+  
+  .dashboard-container a:hover {
+    background-color: #fd9636;
+  }
+  
+  .dashboard-container a:hover .card .title {
+    color: #fff !important;
+  }
+  
+  .dashboard-container a:hover .card .icon svg {
+    fill: #fff !important;
+  }
+  
+  /* Icon Styles */
+  .card .icon svg {
+    fill: #fff;
+  }
+  
+  /* Title Styles */
+  .card .title {
+    color: #fff;
+  }
+}
+
 /* //////////////////////////////////////// */
 /* account details page */
 /* Container Styles */
@@ -13837,6 +13875,46 @@ body.dark{
     .account-button {
       align-items: center;
       justify-content: center;
+    }
+  }
+}
+
+body.dark{
+  .profile-container {
+    .inputs-container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      column-gap: 15px;
+      row-gap: 25px;
+      flex-wrap: wrap;
+      width: 100%;
+      height: fit-content;
+      padding: 50px 0;
+  
+      .input-content {
+        .input-field {
+          border: 1px solid var(--dark-mode-white);
+         
+          input,
+          select {
+            color: #fff;
+
+            option{
+              background-color: var(--dark-mode-second);
+              color: #fff;
+            }
+          }
+        }
+  
+        .label {
+          background: var(--main-dark);
+  
+          .text {
+            color: #fff;
+          }
+        }
+      }
     }
   }
 }
@@ -14331,6 +14409,146 @@ body.dark{
   }
 }
 
+body.dark{
+  .address-contaier {
+    .addresses-container {
+      .addres-item {
+        border: 1px var(--dark-mode-white) solid;
+
+        .right {
+          .change-location-btn {
+            padding: 10px;
+            background: #fd9636;
+            border-radius: 6px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+  
+            .change-location-text {
+              text-align: center;
+              width: 100%;
+              color: white;
+              font-size: 17px;
+              font-family: Alexandria;
+              font-weight: 500;
+              line-height: 20px;
+              text-wrap: nowrap;
+            }
+  
+            @media (max-width: 900px) {
+              .change-location-text {
+                font-size: 14px;
+              }
+            }
+  
+            @media (max-width: 450px) {
+              .change-location-text {
+                font-size: 12px;
+              }
+            }
+          }
+  
+          .default-badge {
+            padding: 3px 15px;
+            background: rgba(14, 34, 77, 0.5);
+            border-radius: 5px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+  
+            .badge-text {
+              text-align: center;
+              color: white;
+              font-size: 12px;
+              font-family: Alexandria;
+              font-weight: 600;
+              line-height: 18px;
+            }
+          }
+        }
+        .left {
+  
+          .delivery-details {
+  
+            .delivery-title {
+              color: #fff;
+            }
+  
+            .delivery-address {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  
+    .add-address-button {
+     
+  
+      .add-address-text {
+        background: var(--main);
+        color: #fff;
+     
+      }
+    }
+  
+    /* add location section */
+    .addLocation {
+      .section-header {
+        span {
+          color: #fff;
+        }
+  
+        .LocationLine {
+          border-top: 1px solid var(--dark-mode-white);
+        }
+      }
+  
+      .accountLocation-section-items {
+        .inputs-container {
+  
+          .input-content {
+      
+  
+            .input-field {
+              border: 1px solid var(--dark-mode-white);
+  
+              input,
+              select {
+                color: #fff;
+
+                option{
+                  color: #fff;
+                  background-color: var(--dark-mode-second);
+                }
+              }
+            }
+  
+            .label {
+        
+              background: var(--main-dark);
+  
+              .text {
+                color: #fff1f6;
+              }
+            }
+          }
+  
+        }
+      }
+  
+      .checks-container {
+        .save-checks {
+          .check-lable {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
 /* //////////////////////////////////////// */
 /* account download page */
 .account-dwonload-container {
@@ -14686,6 +14904,49 @@ body.dark{
 
       tr:last-child::after {
         display: none;
+      }
+    }
+  }
+}
+
+body.dark {
+  .account-orders-container {
+    .orders-table {
+      background-color: var(--dark-mode-second);
+      border: 1px solid var(--dark-mode-white);
+      border-radius: 12px;
+      thead {
+        tr {
+          th {
+            color: #fff;
+          }
+     
+        }
+      }
+
+      tbody {
+        border-top: 1px solid var(--dark-mode-white);
+
+        tr {
+          td {
+            .order-number,
+            .oreder-date,
+            .order-status,
+            .order-total {
+              color: #fff;
+            }
+
+            .order-total {
+              span:nth-child(2) {
+                color: #a6a6a6;
+              }
+            }
+          }
+        }
+
+        tr::after {
+          border: 2px solid var(--dark-mode-white);
+        }
       }
     }
   }
