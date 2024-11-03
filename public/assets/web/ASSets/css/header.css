@@ -1257,6 +1257,118 @@ body.dark {
               }
             }
           }
+
+          .header-shop {
+            .sep-line {
+              border-right: 1px solid #fd9636;
+              width: 1px;
+              height: clamp(18px, 1.6145833333333335vw, 31px);
+            }
+
+            .icons-container {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              .cart-icon-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: fit-content;
+                font-size: clamp(11px, 0.9375vw, 18px);
+
+                .number-item {
+                  background-color: #ff1212;
+                  border-radius: 4px;
+                  position: absolute;
+                  top: -4px;
+                  inset-inline-start: -4px;
+                  z-index: 2;
+                  width: 14px;
+                  height: 14px;
+                  color: #ffffff;
+                  text-align: center;
+                  font-family: Alexandria;
+                  font-size: 10px;
+                  font-weight: 600;
+                  line-height: 8px;
+                  letter-spacing: 0.20000000298023224px;
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                }
+
+                .title-item {
+                  color: #fd9636;
+                  font-family: Alexandria;
+                  font-size: clamp(11px, 0.9375vw, 18px);
+                  font-weight: 600;
+                  line-height: 16px;
+                  letter-spacing: 0.20000000298023224px;
+                  text-wrap: nowrap;
+                }
+              }
+            }
+
+            .dropdown {
+              .dropdown-menu.user-dropdown-menu {
+                background: var(--dark-mode-second);
+                border: var(--dark-mode-white);
+
+                button.userItem {
+                  .userInfo {
+                    .user-name {
+                      color: #fff;
+                    }
+
+                    .user-email {
+                      color: #ffffffb6;
+                    }
+                  }
+                }
+
+                a {
+                  border: 1px solid var(--dark-mode-white);
+              
+
+                  span {
+                    color: #fff;
+                  }
+
+                  svg{
+                    path{
+                      fill: #fff;
+                    }
+                  }
+                }
+
+                a:last-child {
+                  
+
+                  svg{
+                    path{
+                      fill: none;
+                    }
+                  }
+                }
+
+                a.active {
+                  background: #fd9636;
+
+                  svg {
+                    path {
+                      fill: #fff;
+                    }
+                  }
+
+                  span {
+                    font-size: 15px !important;
+                    color: #fff;
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

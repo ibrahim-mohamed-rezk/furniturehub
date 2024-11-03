@@ -13356,7 +13356,6 @@ a:hover span {
   background: white;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.03);
   border-radius: 12px;
-  overflow: hidden;
   border: 1px #f1f1f2 solid;
   display: inline-flex;
   flex-direction: column;
@@ -13383,6 +13382,19 @@ a:hover span {
     cursor: pointer;
     font-size: 20px;
     color: #fd9636;
+  }
+}
+
+body.dark{
+  .account-container {
+    background: var(--dark-mode-second);
+    border: 1px var(--dark-mode-white) solid;
+   
+    /* minimize menue button  */
+    .minimize-btn {
+      background: var(--dark-mode-second);
+      border: 1px var(--dark-mode-white) solid;
+    }
   }
 }
 
@@ -13443,6 +13455,19 @@ a:hover span {
   font-family: Alexandria;
   font-weight: 400;
   word-wrap: break-word;
+}
+body.dark{
+  .header-title {
+    color: #fff;
+  }
+  
+  .account-menue-icon{
+    svg{
+      path{
+        stroke: #fff;
+      }
+    }
+  }
 }
 
 /* Body Styles */
@@ -13516,6 +13541,45 @@ a:hover span {
   width: 100%;
   height: 0px;
   border-bottom: 1px #e9e9e9 solid;
+}
+
+body.dark{
+  /* Item Styles */
+.account-item {
+  border: 1px var(--dark-mode-white) solid;
+  background: transparent;
+}
+
+.account-item:hover {
+  background: #fd9636cc;
+}
+
+.account-item.active {
+  background: #fd9636;
+}
+
+.account-item.active .item-title,
+.account-item:hover .item-title {
+  color: #fff !important;
+}
+
+
+.dashboard-icons svg {
+  fill: #fff;
+}
+
+  .account-item.active .dashboard-icons svg,
+  .account-item:hover .dashboard-icons svg {
+    fill: #fff !important;
+  }
+
+  .item-title {
+    color: #fff;
+  }
+
+  .separator {
+    border-bottom: 1px var(--dark-mode-white) solid;
+  }
 }
 
 /* logout modal */
