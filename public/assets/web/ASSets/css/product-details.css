@@ -124,11 +124,7 @@
 
         .code {
           font-family: Alexandria;
-          font-size: clamp(
-            8px,
-            0.8333333333333334vw,
-            clamp(px, 0.8333333333333334vw, 16px)
-          );
+          font-size: clamp(8px, 0.8333333333333334vw, 16px);
           font-weight: 300;
           line-height: clamp(8px, 0.9895833333333333vw, 19px);
           color: #000;
@@ -1221,10 +1217,10 @@
   }
 }
 
-
 /* rtl changes */
-.rtl{
-  .tags, .code{
+.rtl {
+  .tags,
+  .code {
     direction: rtl;
   }
 }
@@ -1248,7 +1244,7 @@ body.dark {
           }
 
           .tags {
-            span{
+            span {
               color: #fff;
             }
             .tags-content {
@@ -1361,7 +1357,7 @@ body.dark {
       .information-table {
         background: var(--dark-mode-second);
         border-radius: 8px;
-        
+
         .table-responsive {
           .table.table-striped {
             tbody {
@@ -1380,7 +1376,7 @@ body.dark {
       .information-title {
         .title {
           color: #fff;
-        }       
+        }
 
         .stars {
           span {

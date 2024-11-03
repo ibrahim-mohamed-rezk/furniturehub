@@ -17,13 +17,21 @@
     $(".icon-account").on("click", function () {
       $(".dropdown-account").toggleClass("dropdown-open");
     });
-  
+    
     $(".cart-icon-container").on("click", function () {
       $(".dropdown-cart").toggleClass("dropdown-open");
+      $(".dropdown-cart-container-bg").css("display", "block");
     });
+  
   
     $(".dropdown-cart-close").on("click", function () {
       $(".dropdown-cart").removeClass("dropdown-open");
+      $(".dropdown-cart-container-bg").css("display", "none");
+    });
+
+    $(".dropdown-cart-container-bg").on("click", function () {
+      $(".dropdown-cart").removeClass("dropdown-open");
+      $(this).css("display", "none");
     });
     /*-----Modal----*/
     $(".btn-quickview").on("click", function () {
