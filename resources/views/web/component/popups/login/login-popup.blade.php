@@ -64,7 +64,6 @@
                         .closeModal {
                             position: absolute;
                             background: #6e6e6e70;
-                            ;
                             width: clamp(24px, 1.7187500000000002vw, 33px);
                             height: clamp(24px, 1.7187500000000002vw, 33px);
                             border-radius: 8px;
