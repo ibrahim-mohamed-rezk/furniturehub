@@ -27,7 +27,10 @@
 
         @include('web.component.popups.login.login-popup')
         @include('web.component.popups.signup.signup')
-        <div class="container" style=" position: relative;z-index: 11111111">
+
+        {{-- dropdown cart --}}
+        <div class="dropdown-cart-container-bg" style="display: none; position: fixed; padding:0; z-index: 11111110; left:0; right:0; top:0; bottom:0; width:100vw; hight:100vh; background: rgb(0 0 0 / 47%);"></div>
+        <div class="container" id="dropdownContainer" style=" position: fixed; padding:0; z-index: 11111111; left:0; right:0; top:62px;">
 
             <div class="dropdown-cart-container">
 

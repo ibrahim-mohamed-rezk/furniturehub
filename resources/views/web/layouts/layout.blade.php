@@ -544,7 +544,20 @@
         document.getElementById('darkModeInput').checked = true;
     }
     
-    </script>
+</script>
+<script>
+    const dropdownContainer = document.getElementById('dropdownContainer');
+
+    window.addEventListener("scroll", () => {
+        const scrollPosition = window.scrollY;
+
+        if (scrollPosition < 200) {
+            dropdownContainer.style.top = "100px"; // Set top when scroll is less than 200px
+        } else {
+            dropdownContainer.style.top = "62px"; // Set top to a different value when scroll is beyond 200px
+        }
+    });
+</script>
 
 @if (getCurrentLocale() == 'en')
     <script src="{{ url('') }}/assets/web/ASSETS_En/js/vendors/modernizr-3.6.0.min.js"></script>

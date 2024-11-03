@@ -13049,6 +13049,10 @@ a:hover span {
 }
 /* ///////////////////////////////////////////////////////// */
 /* dropdwon cart */
+.dropdown-cart-container{
+  position: relative;
+}
+
 .dropdown-cart {
   visibility: hidden;
   position: absolute;
