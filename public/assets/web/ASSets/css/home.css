@@ -1404,10 +1404,14 @@
       height: 289px;
       color: #000;
       overflow: hidden;
-
-      img {
-        width: 100%;
+      a {
         height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: clamp(6px, 1.25vw, 24px);
+        }
       }
     }
 
@@ -1434,10 +1438,13 @@
       height: 289px;
       color: #000;
       overflow: hidden;
-
-      img {
-        width: 100%;
+      a {
         height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
 
@@ -1460,7 +1467,7 @@
       gap: 6px;
 
       div {
-        height: 65px;
+        height: 91px;
         border-radius: 6px;
       }
     }
@@ -1904,7 +1911,7 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        margin-top: clamp( 5px, 0.9375vw, 18px);
+        margin-top: clamp(5px, 0.9375vw, 18px);
 
         .cat-title {
           display: flex;
@@ -1915,7 +1922,7 @@
           .bann-title {
             display: flex;
             flex-direction: column;
-            gap: clamp( 5px, 0.5208333333333333vw, 10px);
+            gap: clamp(5px, 0.5208333333333333vw, 10px);
 
             span {
               font-family: Alexandria;
@@ -1928,7 +1935,7 @@
 
             h2 {
               font-family: Alexandria;
-              font-size: clamp( 12px, 0.8333333333333334vw, 16px);
+              font-size: clamp(12px, 0.8333333333333334vw, 16px);
               font-weight: 700;
               line-height: 20px;
               color: #425a8b;
@@ -1937,7 +1944,7 @@
 
           .bann-price {
             display: flex;
-            margin-top:clamp( 7px, 1.1458333333333333vw, 22px);
+            margin-top: clamp(7px, 1.1458333333333333vw, 22px);
             gap: 5px;
             flex-wrap: wrap;
 
@@ -1987,13 +1994,13 @@
           justify-content: center;
 
           .bann-save {
-            width: clamp( 65px, 6.458333333333334vw, 124px);
-            height: clamp( 28px, 2.2916666666666665vw, 44px);
+            width: clamp(65px, 6.458333333333334vw, 124px);
+            height: clamp(28px, 2.2916666666666665vw, 44px);
             padding: 10px 30px;
             gap: 10px;
             border-radius: 12px;
             font-family: Alexandria;
-            font-size: clamp( 10px, 0.78125vw, 15px);
+            font-size: clamp(10px, 0.78125vw, 15px);
             font-weight: 700;
             line-height: 24px;
             background-color: #fff;
@@ -2012,7 +2019,7 @@
         justify-content: start;
         gap: clamp(11px, 1.25vw, 24px);
         width: 100%;
-        margin-top: clamp( 10px, 1.5625vw, 30px);
+        margin-top: clamp(10px, 1.5625vw, 30px);
 
         button {
           width: calc(100% / 1.11);
@@ -2063,7 +2070,7 @@
         width: 100%;
         text-align: center;
         font-family: Alexandria;
-        font-size: clamp( 8px, 0.78125vw, 15px);
+        font-size: clamp(8px, 0.78125vw, 15px);
         font-weight: 400;
         line-height: 18px;
         margin-top: 14px;
@@ -2990,11 +2997,6 @@ body.dark {
               }
             }
 
-            .save-stars {
-              .bann-save {
-                color: #ff1212;
-              }
-            }
           }
 
           .del {
@@ -3037,9 +3039,9 @@ body.dark {
   }
 }
 
-
-.rtl{
-  .flash-sales-slider-3-next, .flash-sales-slider-3-prev{
+.rtl {
+  .flash-sales-slider-3-next,
+  .flash-sales-slider-3-prev {
     transform: rotate(180deg);
   }
 

@@ -376,7 +376,7 @@
                     <div class="dropdown rtl">
                         <button class="user-dropdown dropdown-toggle" type="button" id="dropdownMenu1"
                             data-toggle="dropdown">
-                            <img src="{{asset(auth()->user()->photo )}}" alt="">
+                            <img src="{{url('')}}/storage/userAvatar.jpeg" alt="">
                             <div class="drop-arrow">
                                 <svg width="6" height="4" viewBox="0 0 6 4" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -388,7 +388,7 @@
                         <ul class="dropdown-menu user-dropdown-menu dropdown-menu-right" role="menu"
                             aria-labelledby="dLabel">
                             <button class="dropdown-item userItem">
-                                <img src="{{asset(auth()->user()->photo)}}" alt="">
+                                <img src="{{url('')}}/storage/userAvatar.jpeg" alt="">
                                 <div class="userInfo">
                                     <span class="user-name">{{auth()->user()->name}}</span>
                                     <span class="user-email">{{auth()->user()->email}}</span>
@@ -922,7 +922,7 @@
                         </svg>
                         <span>{{__('web.color_scheme')}}</span>
                     </span>
-                    <div class="theme-buttons">
+                    <div onclick="switchMode()" class="theme-buttons">
                         <button class="light">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
