@@ -12235,6 +12235,12 @@ a:hover span {
   direction: ltr;
 }
 
+@media (max-width: 400px) {
+  .chckBtns {
+    width: 100% !important;
+  }
+}
+
 @media (max-width: 997px) {
   .changeLocation {
     width: 90%;
@@ -14089,6 +14095,8 @@ body.dark {
         }
       }
     }
+
+    
   }
 
   .show {
