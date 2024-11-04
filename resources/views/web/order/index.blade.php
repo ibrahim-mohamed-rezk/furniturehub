@@ -1,5 +1,6 @@
 @extends('web.layouts.container')
 @section('styles')
+    <link href="{{ url('') }}/assets/web/ASSets/css/cart.css" rel="stylesheet">
     <style>
         .visa {
             border: 1px solid transparent;
@@ -8,6 +9,11 @@
 
         .visa:hover {
             border: 1px solid lightgray;
+        }
+
+        .method.active{
+            background: #FD96361A !important;
+            border: 1px solid var(--main) !important;
         }
     </style>
     <script>
@@ -77,7 +83,7 @@
                     <h4>{{ __('web.payment') }}</h4>
                     <span>{{ __('web.choose_payment_method_below') }}</span>
                     <div class="payment-methods">
-                        <div onclick="openPayMethods()" class="pay-now method">
+                        <div onclick="openPayMethods()" id="payNow" class="pay-now method">
                             <div class="icons ">
                                 <img src="{{ asset('storage/assets/cash.png') }}" />
                                 <img src="{{ asset('storage/assets/mastercard.png') }}" />
@@ -85,7 +91,7 @@
                             </div>
                             <div class="method-title">{{ __('web.pay_now') }}</div>
                         </div>
-                        <div onclick="openInstallment()" class="installment method">
+                        <div onclick="openInstallment()" id="installment" class="installment method">
                             <div class="icons">
                                 <img src="{{ asset('storage/assets/installment.png') }}" />
 
@@ -157,9 +163,9 @@
                 </div>
                 <button type="submit" class="btn btn-buy w-auto">{{ __('web.apply') }}</button>
 
-                <div class="choosed-method" id="payment">
+                {{-- <div class="choosed-method" id="payment">
                     {{ __('web.choose_a_payment_method_to_complete_your_purchase') }}
-                </div>
+                </div> --}}
             </form>
 
         </div>
@@ -225,11 +231,15 @@
         function openPayMethods() {
             document.getElementById("pay-methods").style.display = "flex"
             document.getElementById("installment-methods").style.display = "none"
+            document.getElementById("payNow").classList.add("active");
+            document.getElementById("installment").classList.remove("active");
         }
 
         function openInstallment() {
             document.getElementById("installment-methods").style.display = "flex"
             document.getElementById("pay-methods").style.display = "none"
+            document.getElementById("payNow").classList.remove("active");
+            document.getElementById("installment").classList.add("active");
         }
         document.addEventListener('DOMContentLoaded', function() {
             const visaDivs = document.querySelectorAll('.visa');

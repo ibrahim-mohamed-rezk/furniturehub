@@ -29,6 +29,7 @@ body.dark {
     }
   }
 
+  /* global order status */
   .order_status {
     .line {
       border-color: #fff;
@@ -231,6 +232,29 @@ body.dark {
   }
 
   .saveLocation {
+    color: #fff;
+  }
+
+  /* choose payment */
+  .payments span {
+    color: #fff;
+  }
+  
+  .payments .payment-methods .method {
+    border: 1px solid var(--dark-mode-white);
+    background: var(--dark-mode-second);
+  }
+  
+  .methods {
+    div {
+     background: var(--dark-mode-second);
+     border: 1px solid var(--dark-mode-white);
+     color: #fff;
+   }
+  }
+  
+  .choosed-method {
+    border: 1px solid var(--dark-mode-white);
     color: #fff;
   }
 }

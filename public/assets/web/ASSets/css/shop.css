@@ -1292,6 +1292,8 @@ body.dark {
                   }
                   h3 {
                     color: #c4c1c1;
+                    text-wrap: nowrap;
+                    margin-top: 20px;
                   }
                 }
               }

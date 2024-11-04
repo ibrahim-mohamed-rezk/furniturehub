@@ -11990,20 +11990,25 @@ a:hover span {
 .checkoutButtons .left {
   border: 1px solid #d9d9d9;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: clamp( 12px, 0.78125vw, 15px);
   font-weight: 700;
   line-height: 18px;
   text-align: center;
-  padding: 15px 20px;
+  padding: clamp( 8px, 0.78125vw, 15px) clamp( 12px, 1.0416666666666665vw, 20px);
   color: #949494;
+
+  span{
+    height: 25px;
+    display: inline-block;
+  }
 }
 
 .checkoutButtons button {
   background: #fd9636;
   border: none;
   border-radius: 10px;
-  padding: 15px 20px;
-  font-size: 15px;
+  padding: clamp( 8px, 0.78125vw, 15px) clamp( 12px, 1.0416666666666665vw, 20px);
+  font-size: clamp( 12px, 0.78125vw, 15px);
   font-weight: 700;
   line-height: 18px;
   text-align: center;
@@ -12015,6 +12020,10 @@ a:hover span {
   border: 1px solid #D9D9D9;
   color: #949494;
   gap: 10px;
+
+  svg{
+    height: 25px;
+  }
 }
 
 @media (max-width: 992px) {
@@ -12235,6 +12244,10 @@ a:hover span {
     flex-direction: column;
     align-items: flex-start;
     direction: ltr !important;
+
+    .location-form-group{
+      width: 100% !important;
+    }
   }
 
   .inputsRow .form-group {
@@ -15297,9 +15310,10 @@ body.dark {
         width: 100%;
         align-items: center;
         justify-content: space-between;
-        border-inline-start: 3px solid #fd9636;
 
         .modal-title {
+          border-inline-start: 3px solid #fd9636;
+          padding-inline-start: clamp( 8px, 1.09375vw, 21px);
           display: flex;
           flex-direction: column;
           align-items: start;
@@ -15444,4 +15458,51 @@ body.dark {
       }
     }
   }
+}
+
+body.dark{
+  .productAdditionsModal {
+    .modal-dialog {
+      .modal-content {
+        border: 1px solid var(--dark-mode-white);
+        background: var(--dark-mode-second);
+
+        .modal-header {
+          .modal-title {
+            h4 {
+              color: #fff1f6;
+            }
+  
+            h3 {
+              color: #fff;
+            }
+          }
+        }
+  
+        .modal-body {
+          .addition-item {
+            border: 1px solid var(--dark-mode-white);
+  
+            .addition-info {
+              .addition-title {
+                .addition-title-text {
+                  color: #fff;
+                }
+  
+                .addition-price {
+                  .newPrice {
+                    color: #fff;
+                  }
+  
+                  .old-price {
+                    color: #a6a6a6;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  } 
 }
