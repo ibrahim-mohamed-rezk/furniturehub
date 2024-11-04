@@ -4,7 +4,7 @@
             max-width: 100% !important;
 
             .modal-content {
-                width: calc(100% / 1.619) ;
+                width: calc(100% / 1.619);
                 max-width: 100%;
                 height: 100vh;
                 background: none;
@@ -181,7 +181,8 @@
                                     padding: 16px 21px;
                                     border-radius: 9px;
 
-                                    input, select {
+                                    input,
+                                    select {
                                         color: #808080;
                                         font-family: Poppins;
                                         font-size: clamp(10px, .729vw, 14px);
@@ -287,6 +288,85 @@
             }
         }
     }
+    body.dark {
+        .signupModal {
+            .modal-dialog {
+
+                .modal-content {
+                    .popup-contaier {
+                        width: 100%;
+                        max-width: 1186px;
+                        background-color: var(--dark-mode-second);
+
+                        .popup-form {
+                            background: var(--dark-mode-second);
+
+                            .formm-welcome {
+                                h2 {
+                                    color: #fff;
+                                }
+                            }
+
+                            .form-title {
+                                color: #fff;
+                            }
+
+                            .form-buttons {
+
+                                .btn-google,
+                                .btn-facebook {
+                                    background-color: transparent;
+                                }
+                            }
+
+                            form {
+                                .input-section {
+
+                                    label {
+                                        color: #fff;
+                                    }
+
+                                    .inputSec {
+                                        background: transparent;
+
+                                        input, select {
+                                            color: #fff;
+                                            background: transparent;
+
+                                            option{
+                                                background: var(--dark-mode-second);
+                                                color: #fff;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .no-account {
+                                    span {
+                                        color: #fff;
+                                    }
+
+                                }
+                            }
+                        }
+
+                        @media(max-width: 991px) {
+
+                            .popup-form {
+                                width: 100%;
+                                padding: 22px 26px;
+                                margin: 0 10px;
+                                background: var(--dark-mode-second);
+
+                                .inputSec {
+                                    background: var(--dark-mode-second) !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 </style>
 

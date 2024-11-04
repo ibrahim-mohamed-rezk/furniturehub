@@ -20,7 +20,6 @@ function calculateSpaceBetween(websspace, mobsspace) {
     } else {
         return websspace;
     }
-    return 30;
 }
 
 function calculateSlidesPerViewResponsive(webscreen, mobscreen, swiperContainer) {
@@ -67,7 +66,7 @@ document.querySelectorAll('.flash-sales-wrapper').forEach((swiperContainer, inde
         },
         on: {
             resize: function() {
-                this.params.slidesPerView = calculateSlidesPerViewResponsive(286, 161, swiperContainer);
+                this.params.slidesPerView = calculateSlidesPerViewResponsive(286, 171, swiperContainer);
                 this.params.spaceBetween = calculateSpaceBetween(30, 10);
                 this.update();
             }

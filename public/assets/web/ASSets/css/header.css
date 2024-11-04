@@ -221,6 +221,15 @@
         gap: 10px;
         flex-wrap: nowrap;
 
+        #logo{
+          width: 138px;
+          height: 36px;
+
+          .whitePath {
+            fill: #323a3e;
+          }
+        }
+
         .header-nav {
           width: fit-content;
           .nav-main-menu {
@@ -1200,6 +1209,11 @@ body.dark {
           }
         }
         .header-left {
+          #logo{
+            .whitePath {
+              fill: #fff;
+            }
+          }
           .header-nav {
             .nav-main-menu {
               .main-menu {

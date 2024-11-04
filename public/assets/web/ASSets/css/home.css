@@ -848,6 +848,11 @@
           }
         }
       }
+
+      .catigory-slider-2-preve,
+      .catigory-slider-2-preve{
+        display: none !important;
+      }
     }
   }
 }
@@ -1030,12 +1035,12 @@
 
               .heart {
                 fill: none;
-                stroke: white;
+                stroke: #fd9636;
               }
 
               .filled {
-                fill: red;
-                stroke: red;
+                fill: #fd9636;
+                stroke: #fd9636;
               }
             }
 
@@ -1406,6 +1411,7 @@
       overflow: hidden;
       a {
         height: 100%;
+        width: 100%;
 
         img {
           width: 100%;
@@ -1440,6 +1446,7 @@
       overflow: hidden;
       a {
         height: 100%;
+        width: 100%;
 
         img {
           width: 100%;

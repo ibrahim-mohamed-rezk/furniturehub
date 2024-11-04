@@ -15182,6 +15182,14 @@ body.dark {
   }
 }
 
+/* rtl changes */
+.rtl {
+  .tags,
+  .code {
+    direction: rtl;
+  }
+}
+
 /* ///////////////////////// */
 /* modal dark mode */
 body.dark {
@@ -15313,6 +15321,8 @@ body.dark {
 
     .modal-content {
       padding: clamp(14px, 1.3541666666666667vw, 26px);
+      margin: 100px auto;
+
       .modal-header {
         display: flex;
         width: 100%;
@@ -15445,10 +15455,11 @@ body.dark {
 
                 .newPrice {
                   font-family: Alexandria;
-                  font-size: clamp(12px, 1.25vw, 24px);
+                  font-size: clamp(10px, 1.25vw, 24px);
                   font-weight: 700;
                   line-height: 24px;
                   color: #425a8b;
+                  text-wrap: nowrap;
                 }
 
                 .old-price {
@@ -15458,6 +15469,7 @@ body.dark {
                   line-height: 24px;
                   color: #8c9ec5;
                   text-decoration: line-through;
+                  text-wrap: nowrap;
                 }
               }
             }
