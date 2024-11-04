@@ -1479,7 +1479,7 @@
       gap: 6px;
 
       div {
-        height: 91px;
+        height: 65px;
         border-radius: 6px;
       }
     }
@@ -2129,12 +2129,13 @@
           }
 
           .side-banner-info {
+            gap: 2px;
             .title {
               font-weight: 500;
             }
 
             .flsh-pro-buttons {
-              margin: 10px 0 5px 0;
+              margin: 5px 0 ;
               display: flex;
               button {
                 width: 106px;
