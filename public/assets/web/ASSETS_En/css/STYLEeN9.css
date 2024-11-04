@@ -13579,12 +13579,13 @@ body.dark {
 
 @media (max-width: 900px) {
   .profile-container {
+    width: 100%;
     .inputs-container {
       justify-content: center;
 
       .input-content {
         width: 100%;
-        max-width: 450px;
+        max-width: 100%;
       }
     }
 
