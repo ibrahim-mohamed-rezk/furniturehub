@@ -701,6 +701,7 @@
           justify-content: start;
 
           .flash-pro-img {
+
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
@@ -714,12 +715,12 @@
 
               .heart {
                 fill: none;
-                stroke: white;
+                stroke: #fd9636;
               }
 
               .filled {
-                fill: red;
-                stroke: red !important;
+                fill: #fd9636;
+                stroke: #fd9636 !important;
               }
             }
 
@@ -835,7 +836,7 @@
             button {
               width: clamp(125px, 7.395833333333333vw, 142px);
               height: clamp(28px, 2.1875vw, 42px);
-              border-radius: 12px;
+              border-radius: clamp( 8px, 0.625vw, 12px);
               border: none;
               outline: none;
               background-color: #fd9636;
@@ -955,6 +956,10 @@
 
           .slide-container {
             .flash-pro-img {
+              .heartIconLink {
+                left: 8px;
+                top: 8px;
+              }
               a {
                 top: 5px;
                 left: 10px;
@@ -1319,6 +1324,25 @@ body.dark {
 
       /* flash sales */
       .shop-products {
+        .proMobHead {
+         
+
+          h2 {
+            color: #fff;
+
+            svg{
+              path{
+                stroke: #fff;
+              }
+            }
+          }
+
+          .filters-title {
+            span {
+              color: #fff;
+            }
+          }
+        }
         .product-card {
           border: 1px solid var(--dark-mode-white);
           background-color: var(--main-dark);

@@ -91,3 +91,7 @@ function redHeart(element) {
     const heart = element.querySelector('.heart');
     heart.classList.toggle('filled');
 }
+
+function fillFavorite(element) {
+    element.classList.toggle('filled');
+}

@@ -12040,14 +12040,15 @@ a:hover span {
     .addition-items {
       width: 100%;
 
-      #newest{
+      #newest {
         width: 100%;
 
-        .newestCollapse{
+        .newestCollapse {
           background: #fd9636;
           border: none;
           border-radius: 10px;
-          padding: clamp(8px, 0.78125vw, 15px) clamp(12px, 1.0416666666666665vw, 20px);
+          padding: clamp(8px, 0.78125vw, 15px)
+            clamp(12px, 1.0416666666666665vw, 20px);
           font-size: clamp(12px, 0.78125vw, 15px);
           font-weight: 700;
           line-height: 18px;
@@ -12348,14 +12349,14 @@ a:hover span {
 .checkoutButtons .left {
   border: 1px solid #d9d9d9;
   border-radius: 10px;
-  font-size: clamp( 12px, 0.78125vw, 15px);
+  font-size: clamp(12px, 0.78125vw, 15px);
   font-weight: 700;
   line-height: 18px;
   text-align: center;
-  padding: clamp( 8px, 0.78125vw, 15px) clamp( 12px, 1.0416666666666665vw, 20px);
+  padding: clamp(8px, 0.78125vw, 15px) clamp(12px, 1.0416666666666665vw, 20px);
   color: #949494;
 
-  span{
+  span {
     height: 25px;
     display: inline-block;
   }
@@ -12365,8 +12366,8 @@ a:hover span {
   background: #fd9636;
   border: none;
   border-radius: 10px;
-  padding: clamp( 8px, 0.78125vw, 15px) clamp( 12px, 1.0416666666666665vw, 20px);
-  font-size: clamp( 12px, 0.78125vw, 15px);
+  padding: clamp(8px, 0.78125vw, 15px) clamp(12px, 1.0416666666666665vw, 20px);
+  font-size: clamp(12px, 0.78125vw, 15px);
   font-weight: 700;
   line-height: 18px;
   text-align: center;
@@ -12378,8 +12379,8 @@ a:hover span {
   border: 1px solid #d9d9d9;
   color: #949494;
   gap: 10px;
-  
-  svg{
+
+  svg {
     height: 25px;
   }
 }
@@ -12608,7 +12609,7 @@ a:hover span {
     align-items: flex-start;
     direction: ltr !important;
 
-    .location-form-group{
+    .location-form-group {
       width: 100% !important;
     }
   }
@@ -13370,7 +13371,7 @@ a:hover span {
   }
 }
 
-body.dark{
+body.dark {
   .dropdown-cart {
     background-color: var(--dark-mode-second);
     border: 1px solid var(--dark-mode-white);
@@ -13378,11 +13379,11 @@ body.dark{
     .dropdown-cart-header {
       .cart-title {
         svg {
-          path{
+          path {
             fill: #fff;
           }
         }
-    
+
         span {
           color: #fff;
         }
@@ -13402,7 +13403,6 @@ body.dark{
               height: 24px;
               color: var(--main) !important;
             }
-            
           }
         }
 
@@ -13417,7 +13417,7 @@ body.dark{
             }
           }
         }
-    }
+      }
     }
 
     .items::-webkit-scrollbar {
@@ -13426,7 +13426,7 @@ body.dark{
 
     .cart-total {
       border-top: 1px var(--dark-mode-white) solid;
-    
+
       .total-row {
         div {
           span {
@@ -13434,9 +13434,9 @@ body.dark{
           }
         }
       }
-    
+
       .continu-shopping {
-        a{
+        a {
           color: #fff !important;
         }
       }
@@ -14062,14 +14062,15 @@ body.dark {
       align-items: center;
       justify-content: space-between;
       border: 1px #d9d9d9 solid;
-      border-radius: 35px;
-      padding: 20px 15px;
+      border-radius: clamp(15px, 1.8229166666666667vw, 35px);
+      padding: clamp(10px, 1.0416666666666665vw, 20px)
+        clamp(8px, 0.78125vw, 15px);
 
       .right {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 20px;
+        gap: clamp(5px, 1.0416666666666665vw, 20px);
 
         .icon-container {
           height: 24px;
@@ -14170,7 +14171,7 @@ body.dark {
         }
 
         .change-location-btn {
-          padding: 10px;
+          padding: clamp(5px, 0.5208333333333333vw, 10px);
           background: #fd9636;
           border-radius: 6px;
           display: inline-flex;
@@ -14182,28 +14183,16 @@ body.dark {
             text-align: center;
             width: 100%;
             color: white;
-            font-size: 17px;
+            font-size: clamp(8px, 0.8854166666666666vw, 17px);
             font-family: Alexandria;
             font-weight: 500;
             line-height: 20px;
             text-wrap: nowrap;
           }
-
-          @media (max-width: 900px) {
-            .change-location-text {
-              font-size: 14px;
-            }
-          }
-
-          @media (max-width: 450px) {
-            .change-location-text {
-              font-size: 12px;
-            }
-          }
         }
 
         .default-badge {
-          padding: 3px 15px;
+          padding: 3px clamp(8px, 0.78125vw, 15px);
           background: rgba(14, 34, 77, 0.5);
           border-radius: 5px;
           display: inline-flex;
@@ -14213,7 +14202,7 @@ body.dark {
           .badge-text {
             text-align: center;
             color: white;
-            font-size: 12px;
+            font-size: clamp(8px, 0.625vw, 12px);
             font-family: Alexandria;
             font-weight: 600;
             line-height: 18px;
@@ -14221,28 +14210,22 @@ body.dark {
         }
       }
 
-      @media (max-width: 900px) {
-        .right {
-          gap: 10px;
-        }
-      }
-
       .left {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 20px;
+        gap: clamp( 5px, 1.0416666666666665vw, 20px);
 
         .delivery-details {
           display: flex;
           align-items: flex-start;
           justify-content: center;
           flex-direction: column;
-          gap: 10px;
+          gap: clamp( 5px, 0.5208333333333333vw, 10px);
 
           .delivery-title {
             color: black;
-            font-size: 20px;
+            font-size: clamp( 12px, 1.0416666666666665vw, 20px);
             font-family: Alexandria;
             font-weight: 700;
             line-height: 20px;
@@ -14251,11 +14234,10 @@ body.dark {
 
           .delivery-address {
             color: black;
-            font-size: 15px;
+            font-size: clamp( 10px, 0.78125vw, 15px);
             font-family: Alexandria;
             font-weight: 500;
             line-height: 20px;
-            white-space: break-spaces;
             overflow: hidden;
             text-overflow: ellipsis;
             text-align: right;
@@ -14265,26 +14247,6 @@ body.dark {
             line-clamp: 2;
             -webkit-box-orient: vertical;
             box-orient: vertical;
-          }
-
-          @media (max-width: 900px) {
-            .delivery-title {
-              font-size: 15px;
-            }
-
-            .delivery-address {
-              font-size: 13px;
-            }
-          }
-
-          @media (max-width: 450px) {
-            .delivery-title {
-              font-size: 13px;
-            }
-
-            .delivery-address {
-              font-size: 10px;
-            }
           }
         }
 
@@ -14330,12 +14292,12 @@ body.dark {
     .add-address-text {
       border: none;
       outline: none;
-      padding: 15px 20px;
+      padding: clamp( 8px, 0.78125vw, 15px) clamp( 10px, 1.0416666666666665vw, 20px);
       background: #dde4f0;
       border-radius: 12px;
       text-align: center;
       color: black;
-      font-size: 19px;
+      font-size: clamp( 12px, 0.9895833333333333vw, 19px);
       font-family: Alexandria, sans-serif;
       font-weight: 600;
       line-height: 18px;
@@ -14494,15 +14456,6 @@ body.dark {
         }
       }
     }
-    /* .checkbox-border {
-      width: 18px;
-      height: 18px;
-      position: absolute;
-      left: 0;
-      top: 0;
-      border-radius: 3px;
-      border: 1px #FD9636 solid;
-  } */
 
     .chckBtns {
       width: 80%;
@@ -14534,59 +14487,6 @@ body.dark {
     .addresses-container {
       .addres-item {
         border: 1px var(--dark-mode-white) solid;
-
-        .right {
-          .change-location-btn {
-            padding: 10px;
-            background: #fd9636;
-            border-radius: 6px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-
-            .change-location-text {
-              text-align: center;
-              width: 100%;
-              color: white;
-              font-size: 17px;
-              font-family: Alexandria;
-              font-weight: 500;
-              line-height: 20px;
-              text-wrap: nowrap;
-            }
-
-            @media (max-width: 900px) {
-              .change-location-text {
-                font-size: 14px;
-              }
-            }
-
-            @media (max-width: 450px) {
-              .change-location-text {
-                font-size: 12px;
-              }
-            }
-          }
-
-          .default-badge {
-            padding: 3px 15px;
-            background: rgba(14, 34, 77, 0.5);
-            border-radius: 5px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-
-            .badge-text {
-              text-align: center;
-              color: white;
-              font-size: 12px;
-              font-family: Alexandria;
-              font-weight: 600;
-              line-height: 18px;
-            }
-          }
-        }
         .left {
           .delivery-details {
             .delivery-title {
@@ -15744,10 +15644,10 @@ body.dark {
         width: 100%;
         align-items: center;
         justify-content: space-between;
-        
+
         .modal-title {
           border-inline-start: 3px solid #fd9636;
-          padding-inline-start: clamp( 8px, 1.09375vw, 21px);
+          padding-inline-start: clamp(8px, 1.09375vw, 21px);
           display: flex;
           flex-direction: column;
           align-items: start;
@@ -15896,8 +15796,7 @@ body.dark {
   }
 }
 
-
-body.dark{
+body.dark {
   .productAdditionsModal {
     .modal-dialog {
       .modal-content {
@@ -15909,28 +15808,28 @@ body.dark{
             h4 {
               color: #fff1f6;
             }
-  
+
             h3 {
               color: #fff;
             }
           }
         }
-  
+
         .modal-body {
           .addition-item {
             border: 1px solid var(--dark-mode-white);
-  
+
             .addition-info {
               .addition-title {
                 .addition-title-text {
                   color: #fff;
                 }
-  
+
                 .addition-price {
                   .newPrice {
                     color: #fff;
                   }
-  
+
                   .old-price {
                     color: #a6a6a6;
                   }
@@ -15941,6 +15840,5 @@ body.dark{
         }
       }
     }
-  } 
+  }
 }
-
