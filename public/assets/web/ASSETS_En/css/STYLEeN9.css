@@ -15027,6 +15027,25 @@ body.dark {
             width: 9.011627906%;
             border: 2px solid #fd9636;
             border-radius: 12px;
+
+            svg{
+              cursor: pointer;
+            }
+  
+            a.favorited {
+              svg {
+                path {
+                  fill: #fd9636 !important;
+                }
+              }
+            }
+            a.favorited:hover {
+              svg {
+                path {
+                  fill: #fff !important;
+                }
+              }
+            }
           }
         }
 
