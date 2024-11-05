@@ -11509,7 +11509,7 @@ a:hover span {
 }
 
 /* cart items */
-
+/*
 .cartItems {
   display: flex;
   align-items: flex-start;
@@ -11614,7 +11614,7 @@ a:hover span {
 }
 
 .cartItems .items .item-container .item .itemInfo {
-  display: flex;
+   display: flex;
   gap: 1em;
 }
 
@@ -11839,10 +11839,10 @@ a:hover span {
     font-size: 14px;
     margin-top: 14px;
   }
-}
+} */
 
 /* checkout */
-
+/* 
 .checkout {
   display: flex;
   flex-direction: column;
@@ -12070,7 +12070,7 @@ a:hover span {
     font-size: 12px !important;
     line-height: 22.49px;
   }
-}
+} */
 
 /*************** order page  ***********/
 .changeLocation {
