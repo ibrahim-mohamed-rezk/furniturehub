@@ -14291,28 +14291,14 @@ body.dark {
     thead {
       tr {
         th {
-          padding: 30px 0;
+          padding: clamp( 4px, 1.5625vw, 30px) 0;
           text-align: center;
           font-family: Alexandria;
-          font-size: 18px;
           font-weight: 500;
-          line-height: 30px;
+          font-size: clamp( 8px, 0.9375vw, 18px);
           letter-spacing: 0.5px;
           color: #0e224d;
-        }
-
-        @media (max-width: 1000px) {
-          th {
-            padding: 10px 0;
-            font-size: 14px;
-          }
-        }
-
-        @media (max-width: 500px) {
-          th {
-            padding: 5px 0;
-            font-size: 12px;
-          }
+          text-wrap: nowrap;
         }
       }
     }
@@ -14326,7 +14312,7 @@ body.dark {
         td {
           align-items: center;
           vertical-align: middle;
-          padding: 20px;
+          padding: clamp( 3px, 1.0416666666666665vw, 20px);
 
           .images-container {
             width: 135px;
@@ -14403,21 +14389,22 @@ body.dark {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: clamp( 12px, 1.0416666666666665vw, 20px);
             font-weight: bold;
           }
 
           .order-number,
-          .oreder-date,
+          .order-date,
           .order-status,
           .order-total {
             font-family: Alexandria;
-            font-size: 16px;
+            font-size: clamp( 8px, 0.8333333333333334vw, 16px);
             font-weight: 400;
-            line-height: 30px;
+            line-height: clamp( 15px, 1.5625vw, 30px);
             letter-spacing: 0.5px;
             text-align: center;
             color: #000000;
+            text-wrap: nowrap;
           }
 
           .order-total {
@@ -14428,80 +14415,39 @@ body.dark {
 
             span:nth-child(2) {
               color: #939393;
-              font-size: 15px;
+              font-size: clamp( 9px, 0.78125vw, 15px);
               line-height: 27px;
             }
           }
 
           .custom-button {
             width: 150px;
-            padding: 7px;
+            padding: clamp( 3px, 0.3645833333333333vw, 7px);
             background: #fd9636;
             border-radius: 8px;
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: clamp( 5px, 0.5208333333333333vw, 10px);
             cursor: pointer;
 
             .custom-button-text {
               color: white;
-              font-size: 18px;
+              font-size: clamp( 8px, 0.9375vw, 18px);
               font-family: Alexandria;
               font-weight: 500;
               text-transform: uppercase;
-              line-height: 30px;
+              line-height: clamp( 15px, 1.5625vw, 30px);
               letter-spacing: 0.5px;
               word-wrap: break-word;
+              text-wrap: nowrap;
             }
           }
 
           @media (max-width: 1000px) {
-            .order-number,
-            .oreder-date,
-            .order-status,
-            .order-total {
-              font-size: 13px;
-            }
-
             .custom-button {
-              width: 100px;
-              padding: 5px;
-
-              .custom-button-text {
-                font-size: 14px;
-              }
+              width: fit-content;
             }
-          }
-
-          @media (max-width: 500px) {
-            .order-number,
-            .oreder-date,
-            .order-status,
-            .order-total {
-              font-size: 10px;
-            }
-
-            .custom-button {
-              width: 50px;
-              padding: 3px;
-
-              .custom-button-text {
-                font-size: 10px;
-              }
-            }
-          }
-        }
-
-        @media (max-width: 1100px) {
-          td {
-            padding: 5px;
-          }
-        }
-
-        @media (max-width: 500px) {
-          td {
-            padding: 3px;
           }
         }
       }
@@ -14545,7 +14491,7 @@ body.dark {
         tr {
           td {
             .order-number,
-            .oreder-date,
+            .order-date,
             .order-status,
             .order-total {
               color: #fff;

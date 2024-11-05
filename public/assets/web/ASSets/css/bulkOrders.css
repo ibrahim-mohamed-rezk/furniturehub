@@ -358,8 +358,8 @@
                       position: relative;
 
                       span {
-                        font-family: Alexandria;
-                        font-size: 10px;
+                        font-family: inter;
+                        font-size: clamp( 8px, 0.5208333333333333vw, 10px);
                         font-weight: 600;
                         line-height: clamp(6px, 0.5208333333333333vw, 10px);
                         color: #7e8299;
@@ -496,7 +496,7 @@
                 .product-images {
                   .product-images-head {
                     .productInputs {
-                      display: none;
+                      display: none !important;
                     }
                   }
                 }
@@ -749,6 +749,69 @@ body.dark {
                         border: 1px dashed var(--dark-mode-white);
 
                         span {
+                          color: #fff;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 999px) {
+      .content-wrapper { 
+        form {  
+          .page-details {
+            .page-from {
+              .products {
+                .product { 
+                  .bottomBroductInputs {  
+                    .dimensions,
+                    .quantity {  
+                      .inputContainer { 
+                        border: 1px solid var(--dark-mode-white);
+                       
+                        .inputIconContainer {
+                          border-inline-end: 1px solid var(--dark-mode-white);
+                          background-color: transparent;
+
+                          svg{
+                            path{
+                              fill: #fffffff0;
+                            }
+                          }
+                        }
+  
+                        input,
+                        select {
+                          color: #fff;
+                          background-color: transparent;
+
+                          option{
+                            background-color: var(--dark-mode-second);
+                            color: #fff;
+                          }
+                        }
+                      }
+                    }
+  
+                    .dimensions {
+                      .inputContainer {
+                        input {
+                          background-color: transparent;
+                          color: #fff;
+                        }
+                      }
+                    }
+  
+                    .quantity {
+                      .inputContainer {
+                        input {
+                          background-color: transparent;
                           color: #fff;
                         }
                       }
