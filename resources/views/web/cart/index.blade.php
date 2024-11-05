@@ -71,7 +71,7 @@
                         <div class="checkoutContent" id="checkoutContent">
                             {{-- @include('web.cart.ajax.details') --}}
                         </div>
-                        <div class="checkoutButtons chckBtns">
+                        <div class="checkoutButtons">
                             <button class="goToShop" onclick="window.location='{{ route('web.shop') }}'">
                                
                                 <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
