@@ -361,7 +361,7 @@
                 }
 
                 .footer-logo-img{
-                    img{
+                    svg{
                         max-width: 71px;
                     }
                 }
