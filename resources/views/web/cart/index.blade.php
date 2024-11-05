@@ -54,7 +54,7 @@
                     @include('web.cart.ajax.cartsInside', ['carts' => $carts])
                 </div>
                 <div class="checkout">
-
+ 
                     <div class="save-on">
                         <h4>{{ __('web.save_on_your_order') }}</h4>
                         <div class="save-on-input">
@@ -71,13 +71,15 @@
                         <div class="checkoutContent" id="checkoutContent">
                             {{-- @include('web.cart.ajax.details') --}}
                         </div>
-                        <div class="checkoutButtons">
-                            <a href="{{ route('web.shop') }}">
-                                <div class="left">
-                                    <span class="custom-arrow-icon">&#60;</span>
+                        <div class="checkoutButtons chckBtns">
+                            <button class="goToShop" onclick="window.location='{{ route('web.shop') }}'">
+                               
+                                <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.5 1L1.90428 6.35164C1.64521 6.6577 1.5 7.07021 1.5 7.5C1.5 7.9298 1.64521 8.34231 1.90428 8.64837L6.5 14" stroke="#8B8B8B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
                                     <span>{{ __('web.show_more') }}</span>
-                                </div>
-                            </a>
+                               
+                            </button>
                             <button button onclick="window.location='{{ route('address.index') }}'"
                                 style="cursor: pointer; display: flex; align-items: center;">
                                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
