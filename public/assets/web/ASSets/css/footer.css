@@ -87,7 +87,7 @@
               font-family: "Nunito", sans-serif;
               font-size: clamp(10px, 1.0416666666666665vw, 20px);
               font-weight: 400;
-              line-height: clamp( 10px, 1.5625vw, 30px);
+              line-height: clamp(10px, 1.5625vw, 30px);
               text-align: center;
               min-width: 81px;
             }
@@ -140,9 +140,9 @@
 
           h4 {
             font-family: "Nunito", sans-serif;
-            font-size: clamp( 14px, 1.3541666666666667vw, 26px);
+            font-size: clamp(14px, 1.3541666666666667vw, 26px);
             font-weight: 700;
-            line-height:  clamp( 20px, 2.03125vw, 39px);
+            line-height: clamp(20px, 2.03125vw, 39px);
             text-align: right;
             display: flex;
             flex-direction: column;
@@ -151,15 +151,15 @@
             span {
               width: 20%;
               border-bottom: 3px solid #ad8c5c;
-              padding: clamp( 3px, 0.26041666666666663vw, 5px);
+              padding: clamp(3px, 0.26041666666666663vw, 5px);
             }
           }
 
           p {
             font-family: "Nunito", sans-serif;
-            font-size: clamp( 10px, 0.8333333333333334vw, 16px);
+            font-size: clamp(10px, 0.8333333333333334vw, 16px);
             font-weight: 400;
-            line-height: clamp( 18px, 1.4583333333333333vw, 28px);
+            line-height: clamp(18px, 1.4583333333333333vw, 28px);
             text-align: start;
             color: #b4a4a4;
             margin-top: 10px;
@@ -174,16 +174,18 @@
 
             i {
               color: #fd9636;
+              transform: rotateY(180deg);
             }
 
             span {
               a {
                 font-family: "Nunito", sans-serif;
-                font-size: clamp( 12px, 1.0416666666666665vw, 20px);
+                font-size: clamp(12px, 1.0416666666666665vw, 20px);
                 font-weight: 400;
-                line-height: clamp( 20px, 1.8229166666666667vw, 35px);
+                line-height: clamp(20px, 1.8229166666666667vw, 35px);
                 text-align: right;
                 color: #fff;
+                text-wrap: nowrap;
               }
             }
           }
@@ -198,26 +200,26 @@
 
           .footer-logo {
             border: 2px solid #b4a4a4;
-            border-radius: clamp( 12px, 1.1458333333333333vw, 22px);
+            border-radius: clamp(12px, 1.1458333333333333vw, 22px);
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
             flex-direction: column;
-            padding: clamp( 14px, 1.9791666666666665vw, 38px) 0;
+            padding: clamp(14px, 1.9791666666666665vw, 38px) 0;
             gap: 36px;
 
             .footer-follow {
               display: flex;
               align-items: center;
               justify-content: center;
-              gap: clamp( 10px, 1.5625vw, 30px);
+              gap: clamp(10px, 1.5625vw, 30px);
               border-bottom: 1px solid #b4a4a4;
               padding: 0 5px 12px 5px;
 
               span {
                 font-family: "Nunito", sans-serif;
-                font-size: clamp( 16px, 1.0416666666666665vw, 20px);
+                font-size: clamp(16px, 1.0416666666666665vw, 20px);
                 font-weight: 400;
                 line-height: 24px;
                 text-align: right;
@@ -228,12 +230,12 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                gap: clamp( 13px, 0.9375vw, 18px);
-                padding: clamp( 0px, 0.5208333333333333vw, 10px) 0;
+                gap: clamp(13px, 0.9375vw, 18px);
+                padding: clamp(0px, 0.5208333333333333vw, 10px) 0;
 
                 i {
                   color: #fd9636;
-                  font-size: clamp( 14px, 1.0416666666666665vw, 20px);
+                  font-size: clamp(14px, 1.0416666666666665vw, 20px);
                   cursor: pointer;
                 }
               }
@@ -256,9 +258,9 @@
 
           h4 {
             font-family: "Nunito", sans-serif;
-            font-size: clamp( 14px, 1.3541666666666667vw, 26px);
+            font-size: clamp(14px, 1.3541666666666667vw, 26px);
             font-weight: 700;
-            line-height: clamp( 20px, 2.03125vw, 39px);
+            line-height: clamp(20px, 2.03125vw, 39px);
             text-align: right;
             display: flex;
             flex-direction: column;
@@ -267,7 +269,7 @@
             span {
               width: 20%;
               border-bottom: 3px solid #ad8c5c;
-              padding: clamp( 3px, 0.26041666666666663vw, 5px);
+              padding: clamp(3px, 0.26041666666666663vw, 5px);
             }
           }
 
@@ -281,7 +283,7 @@
             li {
               a {
                 font-family: "Nunito", sans-serif;
-                font-size: clamp( 10px, 0.8333333333333334vw, 16px);
+                font-size: clamp(10px, 0.8333333333333334vw, 16px);
                 font-weight: 400;
                 line-height: 24px;
                 text-align: right;
@@ -309,11 +311,12 @@
 
           div {
             font-family: "Nunito", sans-serif;
-            font-size: 16px;
+            font-size: clamp( 12px, 0.8333333333333334vw, 16px);
             font-weight: 400;
             line-height: 28px;
             text-align: right;
             color: #fff;
+
           }
         }
       }
@@ -339,37 +342,36 @@
           .footer-account {
             width: 100% !important;
 
-            ul{
-                flex-direction: row;
+            ul {
+              flex-direction: row;
             }
           }
 
-          .footer-aboout-us{
+          .footer-aboout-us {
             order: 3;
           }
 
-          .logo-container{
+          .logo-container {
             order: 2;
 
-            .footer-logo{
-                flex-direction: row;
-                gap: 30px;
+            .footer-logo {
+              flex-direction: row;
+              gap: 30px;
 
-                .footer-follow{
-                    flex-direction: column;
-                    border: none;
-                }
+              .footer-follow {
+                flex-direction: column;
+                border: none;
+              }
 
-                .footer-logo-img{
-                    svg{
-                        max-width: 71px;
-                    }
+              .footer-logo-img {
+                svg {
+                  max-width: 71px;
                 }
+              }
             }
-            
           }
 
-          .footer-account{
+          .footer-account {
             order: 1;
           }
         }
@@ -377,15 +379,36 @@
         .footer-bottom {
           flex-direction: column;
 
-          .bottom-payment{
+          .bottom-payment {
             order: 1;
             width: 100%;
+            text-align: center;
           }
 
-          .bottom-text{
+          .bottom-text {
             order: 2;
             width: 100%;
             gap: 25px;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+.rtl {
+  footer {
+    & .container {
+      & .footer-content {
+        & .footer-body {
+          & .footer-aboout-us {
+            & .about-email,
+            & .about-phone {
+              i {
+                transform: rotateY(0deg);
+              }
+            }
           }
         }
       }

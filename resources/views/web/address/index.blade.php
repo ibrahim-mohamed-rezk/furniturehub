@@ -1,7 +1,7 @@
 @extends('web.layouts.container')
 
 @section('styles')
-    <link href="{{ url('') }}/assets/web/ASSets/css/cart.css" rel="stylesheet">
+    <link href="{{ url('') }}/assets/web/ASSets/css/address.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -83,53 +83,219 @@
             <div id="addLocationForm" class="section-items">
                 <form id="myForm" class="myForm" method="post">
                     @csrf
-                    <div class="inputsRow">
-                        <div class="location-form-group">
-                            <label>{{ __('web.first_name') }}<span>*</span></label>
-                            <input id="firstNameInput" name="first_name" type="text" class="form-control input-lg" />
-                        </div>
-                        <div class="location-form-group">
-                            <label>{{ __('web.last_name') }} <span>*</span></label>
-                            <input id="lastNameInput" type="text" name="last_name" class="form-control input-lg" />
-                        </div>
-                        <div class="location-form-group">
-                            <label>{{ __('web.city') }} <span>*</span></label>
-                            <select id="cityInput" name="governorate_id" class="form-control input-lg select-city">
-                                <option value="default">{{ __('web.Select_an_option') }}</option>
-                                @foreach ($governorates as $key => $row)
-                                <option value="{{ $row->id }}">{{ $row->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="inputsRow">
-                        <div class="location-form-group">
-                            <label>{{ __('web.home_address') }} <span>*</span></label>
-                            <input id="address1Input" type="text" name="address_1" class="form-control input-lg" />
-                        </div>
-                        <div class="location-form-group">
-                            <label>{{ __('web.delivery_address') }} </label>
-                            <input id="address2Input" type="text" name="address_2" class="form-control input-lg" />
-                        </div>
-                    </div>
-                    <div class="inputsRow" style="direction: rtl">
-
-                        <div class="location-form-group">
-                            <label><span>*</span> {{ __('web.phone') }} </label>
-                            <input name="phone" id="phoneInput" type="number" class="form-control input-lg" />
-                        </div>
-                        <div class="location-form-group">
-                            <label><span>*</span> {{ __('web.postCode_ZIP') }} </label>
-                            <input name="post_code" id="zipCodeInput" type="text" class="form-control input-lg" />
-                        </div>
-
-                    </div>
-                    <div class="inputRow">
+                    {{-- <div class="location-form-group">
+                        <label>{{ __('web.first_name') }}<span>*</span></label>
+                        <input id="firstNameInput" name="first_name" type="text" class="form-control input-lg" />
+                    </div> --}}
+                        {{-- <div class="location-form-group">
+                        <label>{{ __('web.last_name') }} <span>*</span></label>
+                        <input id="lastNameInput" type="text" name="last_name" class="form-control input-lg" />
+                    </div> --}}
+                    {{-- <div class="location-form-group">
+                        <label>{{ __('web.city') }} <span>*</span></label>
+                        <select id="cityInput" name="governorate_id" class="form-control input-lg select-city">
+                            <option value="default">{{ __('web.Select_an_option') }}</option>
+                            @foreach ($governorates as $key => $row)
+                            <option value="{{ $row->id }}">{{ $row->name }}</option>
+                            @endforeach
+                        </select>
+                    </div> --}}
+                    {{-- <div class="location-form-group">
+                        <label>{{ __('web.home_address') }} <span>*</span></label>
+                        <input id="address1Input" type="text" name="address_1" class="form-control input-lg" />
+                    </div> --}}
+                    {{-- <div class="location-form-group">
+                        <label>{{ __('web.delivery_address') }} </label>
+                        <input id="address2Input" type="text" name="address_2" class="form-control input-lg" />
+                    </div> --}}
+                    {{-- <div class="location-form-group">
+                        <label><span>*</span> {{ __('web.phone') }} </label>
+                        <input name="phone" id="phoneInput" type="number" class="form-control input-lg" />
+                    </div>  --}}
+                    {{-- <div class="location-form-group">
+                        <label><span>*</span> {{ __('web.postCode_ZIP') }} </label>
+                        <input name="post_code" id="zipCodeInput" type="text" class="form-control input-lg" />
+                    </div> --}}
+                    {{-- <div class="inputRow">
                         <div class="location-form-group">
                             <label><span>*</span> {{ __('web.additional_information') }} </label>
                             <input name="information" id="informationInput" type="text" class="form-control input-lg" />
                         </div>
+                    </div> --}}
+
+                    <div class="pageFormInput">
+                        <label>{{ __('web.first_name') }}</label>
+                        <div class="inputContainer">
+                            <div class="inputIconContainer">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.3"
+                                            d="M10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 11.9398C7.90137 11.9398 6.20005 10.2385 6.20005 8.13984C6.20005 6.04116 7.90137 4.33984 10 4.33984C12.0987 4.33984 13.8 6.04116 13.8 8.13984C13.8 10.2385 12.0987 11.9398 10 11.9398Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 20C7.61433 20.0027 5.30725 19.1473 3.5 17.59C3.96857 16.2392 4.84631 15.068 6.01121 14.2391C7.1761 13.4102 8.5703 12.9648 10 12.9648C11.4297 12.9648 12.8239 13.4102 13.9888 14.2391C15.1537 15.068 16.0314 16.2392 16.5 17.59C14.6927 19.1473 12.3857 20.0027 10 20Z"
+                                            fill="#A1A5B7" />
+                                </svg>
+                            </div>
+                            <input id="firstNameInput" name="first_name" type="text" placeholder="{{__('web.first_name')}}" />
+                        </div>
                     </div>
+
+                    <div class="pageFormInput">
+                        <label>{{ __('web.last_name') }}</label>
+                        <div class="inputContainer">
+                            <div class="inputIconContainer">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.3"
+                                            d="M10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 11.9398C7.90137 11.9398 6.20005 10.2385 6.20005 8.13984C6.20005 6.04116 7.90137 4.33984 10 4.33984C12.0987 4.33984 13.8 6.04116 13.8 8.13984C13.8 10.2385 12.0987 11.9398 10 11.9398Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 20C7.61433 20.0027 5.30725 19.1473 3.5 17.59C3.96857 16.2392 4.84631 15.068 6.01121 14.2391C7.1761 13.4102 8.5703 12.9648 10 12.9648C11.4297 12.9648 12.8239 13.4102 13.9888 14.2391C15.1537 15.068 16.0314 16.2392 16.5 17.59C14.6927 19.1473 12.3857 20.0027 10 20Z"
+                                            fill="#A1A5B7" />
+                                </svg>
+                            </div>
+                            <input id="lastNameInput" type="text" name="last_name" placeholder="{{__('web.first_name')}}" />
+                        </div>
+                    </div>
+
+                    <div class="pageFormInput">
+                        <label>{{ __('web.city') }} * </label>
+                        <div class="inputContainer">
+                            <div class="inputIconContainer">
+                                <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.3"
+                                            d="M14.55 0H6.45C3.16391 0 0.5 2.66391 0.5 5.95V14.05C0.5 17.3361 3.16391 20 6.45 20H14.55C17.8361 20 20.5 17.3361 20.5 14.05V5.95C20.5 2.66391 17.8361 0 14.55 0Z"
+                                            fill="#7E8299" />
+                                    <path
+                                            d="M19.8901 3.33984L4.41008 19.4798L4.33008 19.5998C4.86729 19.8153 5.43342 19.9501 6.01008 19.9998L12.7301 12.9998L17.9701 18.3298C18.1037 18.4626 18.2819 18.541 18.4701 18.5498C18.7495 18.2989 19.0071 18.0245 19.2401 17.7298C19.235 17.5594 19.1632 17.3978 19.0401 17.2798L13.7701 11.9198L20.4101 4.99984C20.3196 4.42389 20.1443 3.8645 19.8901 3.33984Z"
+                                            fill="#7E8299" />
+                                    <path
+                                            d="M7.19001 2.82017C6.39432 2.91821 5.65326 3.27619 5.08187 3.83854C4.51048 4.40089 4.14072 5.13615 4.03001 5.93017C3.96071 6.44604 4.00441 6.97081 4.15809 7.46811C4.31177 7.9654 4.57175 8.42334 4.92001 8.81017L6.75001 10.8702C6.85785 10.9901 6.9897 11.0859 7.137 11.1516C7.2843 11.2172 7.44375 11.2511 7.60501 11.2511C7.76627 11.2511 7.92572 11.2172 8.07302 11.1516C8.22032 11.0859 8.35217 10.9901 8.46001 10.8702L10.3 8.81017C10.8932 8.15163 11.221 7.29647 11.22 6.41017C11.2191 5.90075 11.1106 5.39727 10.9017 4.93264C10.6929 4.46801 10.3883 4.05269 10.0079 3.71385C9.62755 3.375 9.17993 3.12025 8.69435 2.96625C8.20877 2.81225 7.69615 2.76247 7.19001 2.82017ZM7.61001 7.76017C7.343 7.76017 7.082 7.68099 6.85999 7.53265C6.63798 7.38431 6.46495 7.17347 6.36277 6.92679C6.26059 6.68011 6.23386 6.40867 6.28595 6.1468C6.33804 5.88492 6.46661 5.64438 6.65542 5.45557C6.84422 5.26677 7.08476 5.1382 7.34664 5.08611C7.60851 5.03402 7.87995 5.06075 8.12663 5.16293C8.37331 5.26511 8.58415 5.43814 8.73249 5.66015C8.88083 5.88216 8.96001 6.14316 8.96001 6.41017C8.96001 6.76821 8.81778 7.11159 8.5646 7.36476C8.31143 7.61794 7.96805 7.76017 7.61001 7.76017Z"
+                                            fill="#7E8299" />
+                                </svg>
+                            </div>
+                            <select id="cityInput" name="governorate_id">
+                                <option value="default" selected>{{ __('web.Select_an_option') }}</option>
+                                @foreach($governorates as $key => $row)
+                                    <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="pageFormInput">
+                        <label>{{ __('web.home_address') }}</label>
+                        <div class="inputContainer">
+                            <div class="inputIconContainer">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.3"
+                                            d="M10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 11.9398C7.90137 11.9398 6.20005 10.2385 6.20005 8.13984C6.20005 6.04116 7.90137 4.33984 10 4.33984C12.0987 4.33984 13.8 6.04116 13.8 8.13984C13.8 10.2385 12.0987 11.9398 10 11.9398Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 20C7.61433 20.0027 5.30725 19.1473 3.5 17.59C3.96857 16.2392 4.84631 15.068 6.01121 14.2391C7.1761 13.4102 8.5703 12.9648 10 12.9648C11.4297 12.9648 12.8239 13.4102 13.9888 14.2391C15.1537 15.068 16.0314 16.2392 16.5 17.59C14.6927 19.1473 12.3857 20.0027 10 20Z"
+                                            fill="#A1A5B7" />
+                                </svg>
+                            </div>
+                            <input id="address1Input" type="text" name="address_1" placeholder="{{ __('web.home_address')}}" />
+                        </div>
+                    </div>
+
+                    <div class="pageFormInput">
+                        <label>{{ __('web.delivery_address') }}</label>
+                        <div class="inputContainer">
+                            <div class="inputIconContainer">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.3"
+                                            d="M10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 11.9398C7.90137 11.9398 6.20005 10.2385 6.20005 8.13984C6.20005 6.04116 7.90137 4.33984 10 4.33984C12.0987 4.33984 13.8 6.04116 13.8 8.13984C13.8 10.2385 12.0987 11.9398 10 11.9398Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 20C7.61433 20.0027 5.30725 19.1473 3.5 17.59C3.96857 16.2392 4.84631 15.068 6.01121 14.2391C7.1761 13.4102 8.5703 12.9648 10 12.9648C11.4297 12.9648 12.8239 13.4102 13.9888 14.2391C15.1537 15.068 16.0314 16.2392 16.5 17.59C14.6927 19.1473 12.3857 20.0027 10 20Z"
+                                            fill="#A1A5B7" />
+                                </svg>
+                            </div>
+                            <input id="address2Input" type="text" name="address_2" placeholder="{{ __('web.delivery_address') }}" />
+                        </div>
+                    </div>
+                    
+                    <div class="pageFormInput">
+                        <label>{{ __('web.phone') }}</label>
+                        <div class="inputContainer">
+                            <div class="inputIconContainer">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.3"
+                                            d="M10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 11.9398C7.90137 11.9398 6.20005 10.2385 6.20005 8.13984C6.20005 6.04116 7.90137 4.33984 10 4.33984C12.0987 4.33984 13.8 6.04116 13.8 8.13984C13.8 10.2385 12.0987 11.9398 10 11.9398Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 20C7.61433 20.0027 5.30725 19.1473 3.5 17.59C3.96857 16.2392 4.84631 15.068 6.01121 14.2391C7.1761 13.4102 8.5703 12.9648 10 12.9648C11.4297 12.9648 12.8239 13.4102 13.9888 14.2391C15.1537 15.068 16.0314 16.2392 16.5 17.59C14.6927 19.1473 12.3857 20.0027 10 20Z"
+                                            fill="#A1A5B7" />
+                                </svg>
+                            </div>
+                            <input name="phone" id="phoneInput" type="number" placeholder="{{ __('web.phone') }}" />
+                        </div>
+                    </div>
+
+                    <div class="pageFormInput">
+                        <label>{{ __('web.postCode_ZIP') }}</label>
+                        <div class="inputContainer">
+                            <div class="inputIconContainer">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.3"
+                                            d="M10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 11.9398C7.90137 11.9398 6.20005 10.2385 6.20005 8.13984C6.20005 6.04116 7.90137 4.33984 10 4.33984C12.0987 4.33984 13.8 6.04116 13.8 8.13984C13.8 10.2385 12.0987 11.9398 10 11.9398Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 20C7.61433 20.0027 5.30725 19.1473 3.5 17.59C3.96857 16.2392 4.84631 15.068 6.01121 14.2391C7.1761 13.4102 8.5703 12.9648 10 12.9648C11.4297 12.9648 12.8239 13.4102 13.9888 14.2391C15.1537 15.068 16.0314 16.2392 16.5 17.59C14.6927 19.1473 12.3857 20.0027 10 20Z"
+                                            fill="#A1A5B7" />
+                                </svg>
+                            </div>
+                            <input  name="post_code" id="zipCodeInput" type="text" placeholder="{{ __('web.postCode_ZIP') }}" />
+                        </div>
+                    </div>
+                    
+                    <div class="pageFormInput">
+                        <label>{{ __('web.additional_information') }}</label>
+                        <div class="inputContainer">
+                            <div class="inputIconContainer">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                    <path opacity="0.3"
+                                            d="M10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 11.9398C7.90137 11.9398 6.20005 10.2385 6.20005 8.13984C6.20005 6.04116 7.90137 4.33984 10 4.33984C12.0987 4.33984 13.8 6.04116 13.8 8.13984C13.8 10.2385 12.0987 11.9398 10 11.9398Z"
+                                            fill="#A1A5B7" />
+                                    <path
+                                            d="M10 20C7.61433 20.0027 5.30725 19.1473 3.5 17.59C3.96857 16.2392 4.84631 15.068 6.01121 14.2391C7.1761 13.4102 8.5703 12.9648 10 12.9648C11.4297 12.9648 12.8239 13.4102 13.9888 14.2391C15.1537 15.068 16.0314 16.2392 16.5 17.59C14.6927 19.1473 12.3857 20.0027 10 20Z"
+                                            fill="#A1A5B7" />
+                                </svg>
+                            </div>
+                            <input  name="information" id="informationInput" type="text" placeholder="{{ __('web.additional_information') }}" />
+                        </div>
+                    </div>
+
+                    
                     <div class="checkoutButtons chckBtns">
                         <button type="submit">
                             <span>{{ __('web.apply') }}</span>

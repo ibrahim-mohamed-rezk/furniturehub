@@ -12412,7 +12412,7 @@ a:hover span {
 } */
 
 /*************** order page  ***********/
-.changeLocation {
+/* .changeLocation {
   display: flex;
   width: 65%;
   align-items: center;
@@ -12474,10 +12474,10 @@ a:hover span {
   border: none;
   outline: none;
   border-radius: 5px;
-}
+} */
 
 /* add location section */
-.addLocation {
+/* .addLocation {
   padding: 10px;
   margin-bottom: 20px;
   overflow: hidden;
@@ -12533,9 +12533,9 @@ a:hover span {
   width: 90%;
   direction: ltr;
   margin: 0 auto;
-}
+} */
 
-.location-form-group {
+/* .location-form-group {
   padding: 10px;
   margin: 10px;
   position: relative;
@@ -12573,8 +12573,93 @@ a:hover span {
 
 .inputsRow:nth-child(2) .location-form-group {
   width: 45%;
-}
+} */
 
+/* .pageFormInput {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 24%;
+  gap: clamp(10px, 0.78125vw, 15px);
+
+  label {
+    font-family: Alexandria;
+    font-size: clamp(10px, 0.7291666666666666vw, 14px);
+    font-weight: 500;
+    line-height: 15px;
+    letter-spacing: -0.01em;
+    color: #000;
+  }
+
+  .inputContainer {
+    width: 100%;
+    border: 1px solid #e1e3ea;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border-radius: 6px;
+    overflow: hidden;
+    padding-inline-end: 5px;
+
+    .inputIconContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-inline-end: 1px solid #e1e3ea;
+      background-color: #f9f9f9;
+    }
+
+    input,
+    select {
+      border: none;
+      outline: none;
+      width: calc(100% - 48px);
+      padding: 17px 15px;
+      font-family: Alexandria;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 14px;
+      color: #7e8299;
+    }
+  }
+
+  .textContainer {
+    background-color: #f9f9f9;
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    overflow: hidden;
+    padding-inline-end: 5px;
+    flex-direction: column;
+    padding: 12px;
+    border-radius: 6px;
+
+    label {
+      font-family: Alexandria;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 12px;
+      color: #a1a5b7;
+    }
+
+    textarea {
+      width: 100%;
+      border: none;
+      outline: none;
+      padding: 17px 15px;
+      font-family: Alexandria;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 14px;
+      color: #7e8299;
+      background: transparent;
+    }
+  }
+}
 .saveLocation {
   justify-content: flex-start;
   gap: 5px;
@@ -12641,7 +12726,7 @@ a:hover span {
   .changeLocation button {
     font-size: 8px;
   }
-}
+} */
 
 /*************** payment page  ***********/
 .payments {
@@ -13170,7 +13255,7 @@ a:hover span {
 
 /* dropdown cart items */
 .dropdown-cart .items {
-  padding: 20px;
+  padding: clamp( 5px, 1.0416666666666665vw, 20px);
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -13202,12 +13287,11 @@ a:hover span {
 .dropdown-cart .items .item .leftButtons {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: space-between;
   padding: 5px 1em;
   width: 30%;
   height: 100%;
-  gap: 10px;
 }
 
 .dropdown-cart .items .item .leftButtons .upBTNs {
@@ -13215,6 +13299,14 @@ a:hover span {
   gap: 1em;
   padding: 5px;
   cursor: pointer;
+
+  .fa-trash-alt{
+    color: #FF1212;
+  }
+
+  .fa-heart{
+    color: #9098B1;
+  }
 }
 
 .dropdown-cart .items .item .leftButtons .input-quantity {
@@ -13238,7 +13330,7 @@ a:hover span {
   color: #fd9636;
   background-color: #ebf0ff;
   padding: 5px;
-  width: 40px;
+  width: 30px;
   text-align: center;
   border: none;
   outline: none;
@@ -13261,9 +13353,9 @@ a:hover span {
 }
 
 .dropdown-cart .items .item .itemInfo img {
-  width: 112px;
-  /* height: 75px; */
+  width: clamp( 100px, 5.833333333333333vw, 112px);
   border-radius: 5px;
+  min-width: 100px !important;
 }
 
 .dropdown-cart .items .item .itemInfo .info {
@@ -13275,36 +13367,34 @@ a:hover span {
 
 .dropdown-cart .items .item .itemInfo .info .title {
   color: #000;
-  font-size: 12px !important;
+  font-size: clamp( 8px, 0.625vw, 12px) !important;
   text-align: right;
   text-transform: capitalize;
-  font-weight: 500;
-  font-family: Alexandria;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-family: Cairo;
+  font-weight: 700;
+  line-height: clamp( 18px, 1.1458333333333333vw, 22px);
+
 }
 
 .dropdown-cart .items .item .itemInfo .info .cat {
   color: #7f7f7f;
-  font-size: 8px;
+  font-size: clamp( 5px, 0.4166666666666667vw, 8px);
   text-align: right;
   text-transform: capitalize;
-  font-weight: 500;
-  font-family: Alexandria;
+  font-family: Cairo;
+  font-weight: 700;
+  line-height: clamp( 10px, 0.7291666666666666vw, 14px);
 }
 
 .dropdown-cart .items .item .itemInfo .info .price {
   color: #fd9636;
-  font-size: 14px;
+  font-size: clamp( 10px, 0.7291666666666666vw, 14px);
   margin-top: 12px;
-  font-weight: bold;
   letter-spacing: 0.5px;
-  line-height: 150%;
-  font-family: Alexandria;
   text-align: right;
+  font-family: Poppins;
+  font-weight: 700;
+  line-height: clamp( 18px, 1.09375vw, 21px);
 }
 
 /* dropdown cart total */
@@ -13334,7 +13424,7 @@ a:hover span {
       a {
         width: 100%;
         font-family: Alexandria;
-        font-size: 16px;
+        font-size: clamp( 12px, 0.8333333333333334vw, 16px);
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -13346,7 +13436,7 @@ a:hover span {
       border: 1px solid #fd9636;
 
       a {
-        color: #6d6d6d;
+        color: #fd9636;
       }
     }
 

@@ -12,7 +12,7 @@
     </div>
     <div class="page-from">
         <div class="form">
-
+ 
             <div class="checkContainer">
                 <span>{{__('web.where_are_you_located_in_square')}}</span>
                 <div class="checkboxes">
