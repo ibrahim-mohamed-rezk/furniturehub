@@ -1,3 +1,27 @@
+
+var swiper = new Swiper(".catigory-slider-2", {
+    spaceBetween: 10,
+    slidesPerView: calculateSlidesPerViewResponsive(116, 70, document.querySelector('.catigory-slider-2')),
+    navigation: {
+        nextEl: ".catigory-slider-2-next",
+        prevEl: ".catigory-slider-2-preve",
+    },
+    scrollbar: {
+        el: '.catigory-slider-2-scrollbar',
+        draggable: true,
+    },
+    on: {
+        resize: function() {
+            this.params.slidesPerView = calculateSlidesPerViewResponsive(116, 70, document
+                .querySelector('.catigory-slider-2'));
+            this.update();
+        }
+    }
+});
+
+console.log("catigory-slider loaded successfully");
+
+
 var swiper = new Swiper(".header-slider-1", {
     loop: true,
     autoplay: {
@@ -13,6 +37,8 @@ var swiper = new Swiper(".header-slider-1", {
         prevEl: ".header-slider-1-preve",
     },
 });
+
+console.log("header-slider loaded successfully");
 
 function calculateSpaceBetween(websspace, mobsspace) {
     if (window.innerWidth <= 576) {
@@ -37,25 +63,7 @@ function calculateSlidesPerViewResponsive(webscreen, mobscreen, swiperContainer)
     return slidesPerView;
 }
 
-var swiper = new Swiper(".catigory-slider-2", {
-    spaceBetween: 10,
-    slidesPerView: calculateSlidesPerViewResponsive(116, 70, document.querySelector('.catigory-slider-2')),
-    navigation: {
-        nextEl: ".catigory-slider-2-next",
-        prevEl: ".catigory-slider-2-preve",
-    },
-    scrollbar: {
-        el: '.catigory-slider-2-scrollbar',
-        draggable: true,
-    },
-    on: {
-        resize: function() {
-            this.params.slidesPerView = calculateSlidesPerViewResponsive(116, 70, document
-                .querySelector('.catigory-slider-2'));
-            this.update();
-        }
-    }
-});
+
 document.querySelectorAll('.flash-sales-wrapper').forEach((swiperContainer, index) => {
     const swiper = new Swiper(swiperContainer.querySelector('.flash-sales-slider-3'), {
         spaceBetween: calculateSpaceBetween(30, 10),
@@ -74,6 +82,7 @@ document.querySelectorAll('.flash-sales-wrapper').forEach((swiperContainer, inde
     });
 });
 
+console.log("products-slider loaded successfully");
 
 var swiper = new Swiper(".home-banner-3-swiper", {
     loop: true,
@@ -86,6 +95,8 @@ var swiper = new Swiper(".home-banner-3-swiper", {
         prevEl: ".home-banner-3-preve",
     },
 });
+
+console.log("offer-slider loaded successfully");
 
 function redHeart(element) {
     const heart = element.querySelector('.heart');

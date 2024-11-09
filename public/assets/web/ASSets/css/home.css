@@ -754,6 +754,7 @@
 
     .swiper-wrapper {
       .swiper-slide {
+        width: clamp( 61px, 5.520833333333333vw, 106px);
         .slide-container {
           width: 100%;
           display: flex;
@@ -1479,7 +1480,7 @@
       gap: 6px;
 
       div {
-        height: 65px;
+        height: 75px;
         border-radius: 6px;
       }
     }

@@ -50,6 +50,7 @@
                             </svg>
                         </div>
                     </button>
+
                     {{--  <div class="collapse catigory-collapse" id="catigory-filter">
                         @foreach($categories_all as $i => $category)
                             <div class="catigoryCollapceItem @if($category->models->isEmpty()) empty-category @endif">
@@ -100,6 +101,7 @@
                         @endforeach
                     </div>  --}}
                 </form>
+
             </section>
 
             {{-- products container --}}
@@ -166,11 +168,15 @@
                             </span>
                         </h2>
                     </div>
+
                     <div  class="row" >
                         @foreach($blogs as $key => $row)
                             @include('web.component.blog.blogComponent',['article'=>$row])
+                            
                         @endforeach
                     </div>
+
+
                 </div>
             </section>
         </div>
@@ -179,234 +185,3 @@
 @endsection
 
 
-@section('container_js')
-    <script>
-        //price range
-        const rangeMin = document.getElementById('range-min');
-        const rangeMax = document.getElementById('range-max');
-        const minValueDisplay = document.getElementById('range-min-value');
-        const maxValueDisplay = document.getElementById('range-max-value');
-        const sliderTrack = document.querySelector('.slider-track');
-        const priceCircle = document.querySelector('.priceCircle');
-
-        function updateRange() {
-            const minValue = parseInt(rangeMin.value);
-            const maxValue = parseInt(rangeMax.value);
-
-
-
-            minValueDisplay.value = rangeMin.value;
-            maxValueDisplay.value = rangeMax.value;
-
-            const percentMin = (rangeMin.value / rangeMin.max) * 100;
-            const percentMax = (rangeMax.value / rangeMax.max) * 100;
-
-            sliderTrack.style.background =
-                `linear-gradient(to right, #E4E7E9 ${percentMin}%, #FA8232 ${percentMin}%, #FA8232 ${percentMax}%, #E4E7E9 ${percentMax}%)`;
-        }
-
-        rangeMin.addEventListener('input', updateRange);
-        rangeMax.addEventListener('input', updateRange);
-        updateRange();
-
-        function changeMax() {
-            const minValue = parseInt(minValueDisplay.value);
-            const maxValue = parseInt(maxValueDisplay.value);
-
-            rangeMin.value = minValue;
-            rangeMax.value = maxValue;
-
-            updateRange();
-            filtering();
-        }
-
-
-        function priceClick(min, max, element) {
-            rangeMin.value = min;
-            rangeMax.value = max;
-
-            const allCircles = document.querySelectorAll('.priceCircle');
-            allCircles.forEach(circle => circle.classList.remove('active'));
-
-            const priceCircle = element.querySelector('.priceCircle');
-            priceCircle.classList.add('active');
-
-            updateRange();
-            filtering();
-
-        }
-
-    </script>
-    <script src="{{ url('') }}/assets/web/ASSets/js/home.js"></script>
-    <script>
-        var url_filtering = "{{ route('web.shop') }}";
-
-        function pagination(elem) {
-            $('.paginateScroll').removeClass('active');
-            $(elem).addClass('active');
-            filtering(true);
-        }
-
-        function selectItem(elem) {
-            $('.items').removeClass('active')
-            $(elem).addClass('active')
-            filtering()
-        }
-
-        function selectPrice(elem) {
-            $('.priceBy').removeClass('active')
-            $(elem).addClass('active')
-            filtering()
-        }
-
-
-        function selectOrder(elem) {
-            $('.orderBy').removeClass('active')
-            $(elem).addClass('active')
-            filtering()
-        }
-
-
-
-
-        function filtering(resetNum) {
-            let productName = {!! json_encode($request->product) !!};
-            let model = {!! json_encode($request->model_id) !!};
-            let formData = $('#filterForm').serializeArray();
-            let orderBy = $('.orderBy.active').attr('data-id');
-            let min_price = $(".min_value").val();
-            let max_price = $(".max_value").val();
-            if (max_price !== null) {
-                formData.push({
-                    name: 'max_price',
-                    value: max_price
-                });
-            }
-            if (min_price !== null) {
-                formData.push({
-                    name: 'min_price',
-                    value: min_price
-                });
-            }
-
-            if (orderBy == undefined) {
-                orderBy = null;
-            }
-            formData.push({
-                name: 'orderBy',
-                value: orderBy
-            });
-
-            let itmeCount = $('.items.active').attr('data-id');
-            if (itmeCount == undefined) {
-                itmeCount = null;
-            }
-            formData.push({
-                name: 'take',
-                value: itmeCount
-            });
-
-            let priceBy = $('.priceBy.active').attr('data-id');
-            if (priceBy == undefined) {
-                priceBy = null;
-            }
-            formData.push({
-                name: 'priceBy',
-                value: priceBy
-            });
-
-            if (resetNum == true) {
-                let numCount = $('.paginateScroll.active').attr('data-id');
-                if (numCount == undefined) {
-                    numCount = null;
-                }
-                formData.push({
-                    name: 'num',
-                    value: numCount
-                });
-            }
-
-            if (productName) {
-                formData.push({
-                    name: 'product',
-                    value: productName
-                });
-            }
-
-            // Check if category_id[] is present in the form data
-            let hasCategoryId = formData.some(item => item.name === 'category_id[]');
-
-            let category = {!! json_encode($request->category_id) !!};
-            if (!hasCategoryId && category) {
-                formData.push({
-                    name: 'category',
-                    value: category
-                });
-            }
-
-            if (model) {
-                formData.push({
-                    name: 'model',
-                    value: model
-                });
-            }
-
-            $.ajax({
-                url: url_filtering,
-                type: 'GET',
-                dataType: 'JSON',
-                data: formData,
-                success: function(data) {
-                    $('#filtering').html(data.data.res);
-                    $('#num').html(data.data.filter.num);
-                    $('#paginates').html(data.data.filter.paginates);
-                    $('#count_products').html(data.data.filter.count_products);
-                    window.scrollTo(0, 150);
-                },
-                error: function(data) {
-                    toasterError(Object.values(data.responseJSON.errors)[0]);
-                }
-            });
-        }
-        setTimeout(function() {
-            filtering(null);
-        }, 10);
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const emptyCategoryButtons = document.querySelectorAll('button[data-has-subcategories="false"]');
-
-            emptyCategoryButtons.forEach(button => {
-                const checkbox = button.querySelector('.parent-checkbox');
-
-                button.addEventListener('click', function() {
-                    checkbox.checked = !checkbox.checked;
-                    if (checkbox.checked) {
-                        button.classList.add('selected');
-                        filtering();
-                    } else {
-                        button.classList.remove('selected');
-                        filtering();
-
-                    }
-                });
-            });
-        });
-        function openMobileFiltersBtn(){
-            const filtersContainer = document.getElementById('filtersContainer');
-            const mobileFilterBgdisabled = document.getElementById('mobileFilterBgdisabled');
-
-            filtersContainer.classList.add('showInMobile')
-            mobileFilterBgdisabled.classList.add('mobileFilterBg')
-        }
-
-        function closeMobileFilter(){
-            const filtersContainer = document.getElementById('filtersContainer');
-            const mobileFilterBgdisabled = document.getElementById('mobileFilterBgdisabled');
-
-            filtersContainer.classList.remove('showInMobile')
-            mobileFilterBgdisabled.classList.remove('mobileFilterBg')
-        }
-
-    </script>
-@endsection

@@ -532,6 +532,11 @@
 @yield('container_content')
 
 <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.body.classList.add("dark");
+        localStorage.setItem('switchMode', true);
+        document.getElementById('darkModeInput').checked = true;
+    });
     const switchMode = () => {
         const body = document.querySelector('body');
         body.classList.toggle("dark"); 
