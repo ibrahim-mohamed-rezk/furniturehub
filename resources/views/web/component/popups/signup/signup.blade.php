@@ -192,6 +192,10 @@
                                         border: none;
                                         outline: none;
                                     }
+
+                                    input::placeholder {
+                                        text-align: start;
+                                    }
                                 }
                             }
 
@@ -288,6 +292,31 @@
             }
         }
     }
+
+    .rtl {
+        .signupModal {
+            .modal-dialog {
+                .modal-content {
+                    .popup-contaier {
+                        .popup-form {
+                            form {
+                                .input-section {
+                                    .inputSec {
+
+                                        input,
+                                        select {
+                                            direction: rtl;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     body.dark {
         .signupModal {
             .modal-dialog {
@@ -329,11 +358,12 @@
                                     .inputSec {
                                         background: transparent;
 
-                                        input, select {
+                                        input,
+                                        select {
                                             color: #fff;
                                             background: transparent;
 
-                                            option{
+                                            option {
                                                 background: var(--dark-mode-second);
                                                 color: #fff;
                                             }

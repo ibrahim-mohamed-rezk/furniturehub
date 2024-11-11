@@ -31,18 +31,10 @@
         </div>
         <div class="flash-pro-price">
             @if($product->cost_discount)
-                <div>
-                    <span>{{ $product->cost_discount }} {{ __('web.L.E') }} /</span>
-                    <span>{{__('web.'.$product->type)}}</span>
-                </div>
-                <span>{{ $product->cost }} {{ __('web.L.E') }}  </span>
+                <p>{{ $product->cost_discount }}<sup>{{ __('web.L.E') }}</sup></p>
+                <span>{{__('web.Instead')}} <span>{{ $product->cost }}</span> /{{__('web.'.$product->type)}}</span>
             @else
-                <div>
-                    <span>{{ $product->cost }} {{ __('web.L.E') }} /</span>
-                    <span>{{__('web.'.$product->type)}}</span>
-                </div>
-                <span>&nbsp;</span>
-
+                <p>{{ $product->cost }}<sup>{{ __('web.L.E') }}</sup> <span>/{{__('web.'.$product->type)}}</span></p>
             @endif
         </div>
         <div class="flsh-pro-buttons">

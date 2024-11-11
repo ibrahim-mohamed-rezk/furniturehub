@@ -271,7 +271,7 @@ return [
     "cancel"=>"تم الالغاء",
 
     "username"=>"اسم المستخدم",
-    "home_address"=>":عنوان المنزل",
+    "home_address"=>"عنوان المنزل",
     "delivery_address"=>" :عنوان التسليم",
     "set_as_default"=>"تعيين كافتراضي",
 
@@ -396,7 +396,8 @@ return [
     'furniture'=>'فرنتشر',
     'rights'=>'حقوق النشر',
     'saving'=>'وفرت',
-    'L.E'=>'ج.م',
+    'L.E'=>'جنيه',
+    'Instead'=> 'بدل',
     '$'=>'دولار',
     'created'=>'تم انشاء',
     'updated'=>'تم تعديل',

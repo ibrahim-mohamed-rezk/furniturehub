@@ -298,6 +298,29 @@
         }
     }
 
+    .rtl {
+        .loginModal {
+            .modal-dialog {
+                .modal-content {
+                    .popup-contaier {
+                        .popup-form {
+                            form {
+                                .input-section {
+                                    .inputSec {
+                                        input {
+                                            direction: rtl;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
     body.dark {
         .loginModal {
             .modal-dialog {

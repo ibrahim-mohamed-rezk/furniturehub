@@ -533,7 +533,7 @@
 
         .home-artical-card {
           width: clamp( 155px, 13.697916666666668vw, 263px);
-          height: clamp( 168px, 14.322916666666666vw, 275px);
+          height: clamp( 178px, 14.322916666666666vw, 275px);
           display: flex;
           flex-direction: column;
           background-color: #8c9ec51a;
@@ -572,7 +572,7 @@
                 font-family: Alexandria;
                 font-size: clamp(8px, 0.7291666666666666vw, 14px);
                 font-weight: 500;
-                line-height: 20px;
+                line-height: clamp( 10px, 1.0416666666666665vw, 20px);
                 color: #000;
               }
             }
@@ -622,10 +622,6 @@
       .shop-products {
         .row {
           gap: 4px;
-
-          /* .home-artical-card {
-            width: 190px;
-          } */
         }
       }
     }
@@ -635,10 +631,6 @@
         .row {
           gap: 15px;
           padding: 0 15px;
-
-          /* .home-artical-card {
-            width: 220px;
-          } */
         }
       }
     }

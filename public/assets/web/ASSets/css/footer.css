@@ -36,7 +36,7 @@
             justify-content: start;
 
             h4 {
-              font-family: "Nunito", sans-serif;
+              font-family: Alexandria;
               font-size: clamp(14px, 1.3541666666666667vw, 26px);
               font-weight: 700;
               line-height: clamp(18px, 2.03125vw, 39px);
@@ -44,7 +44,7 @@
             }
 
             span {
-              font-family: "Nunito", sans-serif;
+              font-family: Alexandria;
               font-size: clamp(8px, 0.8333333333333334vw, 16px);
               font-weight: 400;
               line-height: clamp(10px, 1.4583333333333333vw, 28px);
@@ -65,7 +65,7 @@
 
             input {
               width: 100%;
-              font-family: "Nunito", sans-serif;
+              font-family: Alexandria;
               font-size: 16px;
               font-weight: 400;
               line-height: 21.82px;
@@ -84,7 +84,7 @@
               color: #fff;
               padding: clamp(11px, 0.8333333333333334vw, 16px)
                 clamp(17px, 2.65625vw, 51px);
-              font-family: "Nunito", sans-serif;
+              font-family: Alexandria;
               font-size: clamp(10px, 1.0416666666666665vw, 20px);
               font-weight: 400;
               line-height: clamp(10px, 1.5625vw, 30px);
@@ -107,7 +107,7 @@
             justify-content: start;
 
             h4 {
-              font-family: "Nunito", sans-serif;
+              font-family: Alexandria;
               font-size: 26px;
               font-weight: 700;
               line-height: 39px;
@@ -115,7 +115,7 @@
             }
 
             span {
-              font-family: "Nunito", sans-serif;
+              font-family: Alexandria;
               font-size: 16px;
               font-weight: 400;
               line-height: 28px;
@@ -139,7 +139,7 @@
           width: 20%;
 
           h4 {
-            font-family: "Nunito", sans-serif;
+            font-family: Alexandria;
             font-size: clamp(14px, 1.3541666666666667vw, 26px);
             font-weight: 700;
             line-height: clamp(20px, 2.03125vw, 39px);
@@ -156,7 +156,7 @@
           }
 
           p {
-            font-family: "Nunito", sans-serif;
+            font-family: Alexandria;
             font-size: clamp(10px, 0.8333333333333334vw, 16px);
             font-weight: 400;
             line-height: clamp(18px, 1.4583333333333333vw, 28px);
@@ -179,7 +179,7 @@
 
             span {
               a {
-                font-family: "Nunito", sans-serif;
+                font-family: Alexandria;
                 font-size: clamp(12px, 1.0416666666666665vw, 20px);
                 font-weight: 400;
                 line-height: clamp(20px, 1.8229166666666667vw, 35px);
@@ -218,7 +218,7 @@
               padding: 0 5px 12px 5px;
 
               span {
-                font-family: "Nunito", sans-serif;
+                font-family: Alexandria;
                 font-size: clamp(16px, 1.0416666666666665vw, 20px);
                 font-weight: 400;
                 line-height: 24px;
@@ -257,7 +257,7 @@
           flex-direction: column;
 
           h4 {
-            font-family: "Nunito", sans-serif;
+            font-family: Alexandria;
             font-size: clamp(14px, 1.3541666666666667vw, 26px);
             font-weight: 700;
             line-height: clamp(20px, 2.03125vw, 39px);
@@ -282,7 +282,7 @@
 
             li {
               a {
-                font-family: "Nunito", sans-serif;
+                font-family: Alexandria;
                 font-size: clamp(10px, 0.8333333333333334vw, 16px);
                 font-weight: 400;
                 line-height: 24px;
@@ -310,7 +310,7 @@
           gap: 10px;
 
           div {
-            font-family: "Nunito", sans-serif;
+            font-family: Alexandria;
             font-size: clamp( 12px, 0.8333333333333334vw, 16px);
             font-weight: 400;
             line-height: 28px;
