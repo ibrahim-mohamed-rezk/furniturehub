@@ -1,0 +1,120 @@
+.mobile-app-ad {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 7px 18px;
+  box-shadow: 0px 3px 4px 0px #0000004d;
+  border: 1px solid #f1f1f2;
+  border-radius: 8px;
+
+  .close-ad-btn {
+    position: absolute;
+    top: 5px;
+    inset-inline-end: 7px;
+  }
+
+  .logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 5px;
+
+    .ad-description {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      justify-content: start;
+
+      p {
+        font-family: Alexandria;
+        font-size: 6px;
+        font-weight: 700;
+        line-height: 10px;
+        color: #909090;
+      }
+    }
+  }
+
+  .ad-download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      font-family: Alexandria;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 12.19px;
+      color: #ffffff;
+      background-color: #fd9636;
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      width: 109px;
+      height: 32px;
+    }
+
+    svg {
+      margin-inline-end: -25px;
+      transform: rotate(180deg);
+    }
+  }
+}
+
+/* dark mode */
+body.dark {
+  .mobile-app-ad {
+    background-color: var(--dark-mode-second);
+    border-color: var(--dark-mode-white);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+
+    .close-ad-btn {
+        svg{
+            path{
+                fill: #fff;
+            }
+        }
+    }
+
+    .logo-section {
+      svg {
+        path[fill="#323A3E"] {
+          fill: white;
+        }
+      }
+      .ad-description {
+        p {
+          color: #a9a9a9;
+        }
+      }
+    }
+
+    .ad-download-btn {
+      svg {
+        margin-inline-end: -25px;
+      }
+    }
+  }
+}
+
+/* to display add in mobile screen only */
+@media (min-width: 800px) {
+  .mobile-app-ad {
+    display: none !important;
+  }
+}
+
+.rtl {
+  .mobile-app-ad {
+    .ad-download-btn {
+      svg {
+        transform: rotate(0deg);
+      }
+    }
+  }
+}

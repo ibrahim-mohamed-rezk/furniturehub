@@ -1,5 +1,9 @@
 @extends('web.layouts.container')
 
+@section('styles')
+<link rel="stylesheet" href="{{ url('') }}/assets/web/ASSets/css/profile.css">
+@endsection
+
 
 @section('content')
     <div class="account-content">
@@ -119,7 +123,7 @@
                         </div>
                     </a>
                     <div class="separator"></div>
-                    <a href="{{ route('web.logout') }}">
+                    <a href="{{route('web.logout')}}">
                         <div class="account-item logout">
                             <div class="icon dashboard-icons">
                                 <svg width="18" height="19" viewBox="0 0 18 19" fill="none"

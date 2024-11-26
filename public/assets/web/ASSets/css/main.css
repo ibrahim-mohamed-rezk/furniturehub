@@ -13,87 +13,7 @@
 @import url(../css/plugins/animate.min.css);
 /*RESET*/
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+* {
   margin: 0;
   padding: 0;
   border: 0;
@@ -106,11 +26,11 @@ ul {
   list-style: none;
 }
 
-a {
-  text-decoration: none;
+a{
+    text-decoration: none;
 }
 
-/* breadcrumb */
+/* cart breadcrumb */
 .breadcrumbs-div {
   padding: 16px 0px;
   margin-bottom: 30px;
@@ -119,21 +39,9 @@ a {
 
 .breadcrumb {
   margin: 0px;
-  gap: 10px;
 }
-
 .breadcrumb li:last-child a {
   background-image: none;
-}
-
-.breadcrumb li:last-child a {
-  background-image: none;
-}
-
-@media (max-width: 575.98px) {
-  .breadcrumb {
-    padding-right: 45px;
-  }
 }
 
 body {
@@ -148,6 +56,7 @@ table {
 img {
   max-width: 100%;
 }
+
 
 /*COMPONENTS -> FORM*/
 .form-control {
@@ -225,6 +134,7 @@ img {
   max-width: unset;
   min-width: 130px;
 }
+
 
 .select2-dropdown {
   border: 1px solid #ececec;
@@ -1262,6 +1172,238 @@ img {
   color: #fd9636 !important;
 }
 
+/*************** order page  ***********/
+.changeLocation {
+  display: flex;
+  width: 65%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px;
+  margin: 40px auto;
+  direction: ltr;
+  border: 1px solid #d9d9d9;
+  border-radius: 20px;
+}
+
+.changeLocation div {
+  display: flex;
+  gap: 10px;
+}
+
+.changeLocation div .locationIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fd9636;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.changeLocation div .locationIcon i {
+  font-size: 16px;
+  color: #fff;
+}
+
+.changeLocation div .locationDec {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.changeLocation div .locationDec span {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  color: #000;
+}
+
+.changeLocation div .locationDec p {
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  color: #000;
+}
+
+.changeLocation button {
+  padding: 7px 5px;
+  background: #fd9636;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+/* add location section */
+.addLocation {
+  padding: 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 1s ease-out;
+  width: 99%;
+  gap: 3px;
+}
+
+.section-header .arrow {
+  transition: all 1s ease-out;
+  color: #8b8b8b;
+  font-size: 16px;
+}
+
+.section-header span {
+  font-size: 16px;
+  font-weight: 500;
+  text-wrap: nowrap;
+  color: #000;
+}
+
+.LocationLine {
+  width: 100%;
+  border-top: 1px solid #d9d9d9;
+}
+
+.section-items {
+  margin-top: 10px;
+  transition: all 1s ease-out;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.section-items .show {
+  display: block;
+  opacity: 1;
+}
+
+.inputsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  direction: ltr;
+  margin: 0 auto;
+}
+
+.location-form-group {
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+  width: 100%;
+}
+.location-form-group > label {
+  position: absolute;
+  top: -1px;
+  right: 20px;
+  background-color: #fff;
+  color: #a6a6a6;
+}
+
+.location-form-group > label span {
+  color: #ff1212;
+}
+
+.location-form-group > input {
+  border: 1px solid #d9d9d9 !important;
+  width: 100%;
+}
+
+.inputsRow .location-form-group:nth-child(1),
+.inputsRow .location-form-group:nth-child(2) {
+  width: 35%;
+}
+
+.inputsRow .location-form-group:nth-child(3) {
+  width: 25%;
+}
+
+.inputsRow:nth-child(2) {
+  justify-content: flex-start;
+}
+
+.inputsRow:nth-child(2) .location-form-group {
+  width: 45%;
+}
+
+.saveLocation {
+  justify-content: flex-start;
+  gap: 5px;
+  width: 85%;
+  color: #5c5c5c;
+}
+
+.checkBox {
+  accent-color: #fd9636;
+}
+
+.chckBtns {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30px;
+  direction: ltr;
+}
+
+@media (max-width: 400px) {
+  .chckBtns {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 997px) {
+  .changeLocation {
+    width: 90%;
+  }
+
+  .inputsRow {
+    flex-direction: column;
+    align-items: flex-start;
+    direction: ltr !important;
+
+    .location-form-group {
+      width: 100% !important;
+    }
+  }
+
+  .inputsRow .form-group {
+    width: 100% !important;
+  }
+
+  .saveLocation {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 770px) {
+  .changeLocation div .locationIcon {
+    width: 30px;
+    height: 30px;
+  }
+  .changeLocation {
+    width: 100%;
+  }
+  .changeLocation div .locationDec p {
+    font-size: 6px;
+  }
+
+  .changeLocation div .locationDec span {
+    font-size: 14px;
+  }
+  .changeLocation button {
+    font-size: 8px;
+  }
+}
+
 /*************** payment page  ***********/
 .payments {
   display: flex;
@@ -1387,65 +1529,5 @@ img {
   .methods {
     justify-content: center;
     flex-wrap: wrap;
-  }
-}
-
-/* pagination */
-
-.pagination {
-  li {
-    padding: 2px;
-
-    a {
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 24px;
-      color: #425a8b;
-      border-radius: 4px;
-      border: 1px solid #d5dfe4;
-      min-width: 36px;
-      text-align: center;
-    }
-
-    a:hover,
-    a.active {
-      background-color: #fd9636;
-      border-color: #fd9636;
-      color: #ffffff;
-    }
-
-    .page-prev {
-      min-height: 32px;
-      padding: 5px 20px;
-      border: 0px;
-    }
-
-    .page-prev:hover {
-      background-color: transparent;
-    }
-
-    .page-next {
-      min-height: 32px;
-      padding: 5px 20px;
-      border: 0px;
-    }
-
-    .page-next:hover {
-      background-color: transparent;
-    }
-  }
-}
-
-@media (max-width: 349.98px) {
-  .pagination {
-    li {
-      a {
-        min-width: 30px;
-      }
-
-      .page-prev {
-        padding: 5px 15px;
-      }
-    }
   }
 }

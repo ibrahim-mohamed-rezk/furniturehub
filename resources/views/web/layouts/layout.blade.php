@@ -37,6 +37,8 @@
     <link href="{{ url('') }}/assets/web/ASSets/css/footer.css" rel="stylesheet">
     <link href="{{ url('') }}/assets/web/ASSets/css/header.css" rel="stylesheet">
     <link href="{{ url('') }}/assets/web/ASSets/css/darkMode.css" rel="stylesheet">
+    <link href="{{ url('') }}/assets/web/ASSets/css/seeProductModal.css" rel="stylesheet">
+    <link href="{{ url('') }}/assets/web/ASSets/css/productAdditionsModal.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -266,7 +268,74 @@
                 color: #fd9636;
             }
 
-            
+            /* categories shop */
+            .sec-header {
+                padding: 25px;
+                background: #fbfbfb;
+                position: relative;
+                display: block;
+            }
+
+            @media (max-width: 1199.98px) {
+                .sec-header {
+                    display: none !important;
+                }
+            }
+
+            .sec-header .categories-shop {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 16px;
+                font-size: 18px;
+            }
+
+            .sec-header .categories-shop .categories-item {
+                cursor: pointer;
+                transition: .3s
+            }
+
+            .sec-header .categories-shop .categories-item:hover {
+                color: #fd9636;
+            }
+
+            .box-categories-shop {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 10000;
+            }
+
+            .sec-header .main-items-tags {
+                flex-direction: column;
+            }
+
+            .sec-header .tags {
+                display: flex;
+                gap: 90px;
+                max-height: 200px;
+            }
+
+            .sec-header .main-items-tags .main-cat {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+
+            .sec-header .main-items-tags .main-cat .cat-item {
+                margin-right: 90px;
+            }
+
+            .sec-header .view {
+                text-align: center;
+                margin-right: 100px;
+                cursor: pointer;
+                transition: .3s
+            }
+
+            .sec-header .view:hover {
+                color: #fd9636;
+            }
 
             @media (max-width: 1199.98px) {
                 .burger-icon {
@@ -507,6 +576,84 @@
                 color: #fd9636;
             }
 
+            /* categories shop */
+            .sec-header {
+                padding: 25px;
+                background: #fbfbfb;
+                position: relative;
+                display: block;
+            }
+
+            @media (max-width: 1199.98px) {
+                .sec-header {
+                    display: none !important;
+                }
+            }
+
+            .sec-header .categories-shop {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 25px;
+                font-size: 18px;
+            }
+
+            .sec-header .categories-shop .categories-item {
+                cursor: pointer;
+                transition: .3s
+            }
+
+            .sec-header .categories-shop .categories-item:hover {
+                color: #fd9636;
+            }
+
+            .box-categories-shop {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 10000;
+            }
+
+            .sec-header .main-items-tags {
+                flex-direction: column;
+            }
+
+            .sec-header .main-items-tags {
+                flex-direction: column;
+            }
+
+            .sec-header .tags {
+                display: flex;
+                gap: 90px;
+                max-height: 200px;
+            }
+
+            .sec-header .main-items-tags .main-cat {
+                flex-wrap: wrap;
+                gap: 30px;
+            }
+
+            .sec-header .main-items-tags .main-cat .cat-item {
+                margin-left: 90px;
+            }
+
+            .sec-header .tags {
+                display: flex;
+                gap: 90px;
+            }
+
+            .sec-header .view {
+                text-align: center;
+                margin-left: 100px;
+                cursor: pointer;
+                transition: .3s
+            }
+
+            .sec-header .view:hover {
+                color: #fd9636;
+            }
+
             @media (max-width: 1199.98px) {
                 .burger-icon {
                     display: inline-block !important;
@@ -520,53 +667,52 @@
 </head>
 
 
-<body>
+<body class="dark">
 
 <div class="floating-button">
     <a href="https://wa.me/201010408471" target="_blank"><img
-                src="{{ asset('public/storage/icons/whatsApp.webp') }}" loading="lazy" alt="Contact" width="100px"
+                src="https://furniturehubapp.com/public/storage/icons/whatsApp.webp" loading="lazy" alt="Contact" width="100px"
                 style="width: 100px;">
     </a>
 </div>
+<div class="modal seeProductModal fade" id="ModalQuickview" tabindex="-1" role="dialog" aria-labelledby="ModalQuickviewTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <section id="quickViewContent" class="product-details">
+                <!-- Product details will be loaded here via AJAX -->
+            </section>
+        </div>
+    </div>
+</div>
+<div class="modal productAdditionsModal fade" id="productAdditionsModal" tabindex="-1" role="dialog" aria-labelledby="productadditionsModalTitle" aria-hidden="true" style="z-index: 100000">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <div class="modal-info">
+                        <h4>{{ __('web.get_exclusive_offers_on_lazy_boy_add_ons') }}</h4>
+                        <h3>{{ __('web.lazy_boy_add_ons') }}</h3>
+                    </div>
+                </h5>
+                <div class="modal-buttons">
+                    <button class="productAdditionsModalSubmit">{{ __('web.submit') }}</button>
+                    <button type="button" class="productAdditionsModalClose" data-dismiss="modal" aria-label="Close">
+                        {{ __('web.close') }}
+                    </button>
 
+                </div>
+            </div>
+            <div class="modal-body">
+                <!-- Dynamic content will be injected here via JavaScript -->
+            </div>
+        </div>
+    </div>
+</div>
 @yield('container_content')
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        document.body.classList.add("dark");
-        localStorage.setItem('switchMode', true);
-        document.getElementById('darkModeInput').checked = true;
-    });
-    const switchMode = () => {
-        const body = document.querySelector('body');
-        body.classList.toggle("dark"); 
-    
-        localStorage.setItem('switchMode', body.classList.contains("dark"));
-    };
-    
-    if (localStorage.getItem('switchMode') === 'true') {
-        document.querySelector('body').classList.add("dark");
-        document.getElementById('darkModeInput').checked = true;
-    }
-    
-</script>
-<script>
-    const dropdownContainer = document.getElementById('dropdownContainer');
-
-    window.addEventListener("scroll", () => {
-        const scrollPosition = window.scrollY;
-
-        if (scrollPosition < 200) {
-            dropdownContainer.style.top = "100px"; // Set top when scroll is less than 200px
-        } else {
-            dropdownContainer.style.top = "62px"; // Set top to a different value when scroll is beyond 200px
-        }
-    });
-</script>
 
 @if (getCurrentLocale() == 'en')
     <script src="{{ url('') }}/assets/web/ASSETS_En/js/vendors/modernizr-3.6.0.min.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSETS_En/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="{{ url('') }}/assets/web/ASSETS_En/js/vendors/jquery-3.6.0.min.js" ></script>
     <script src="{{ url('') }}/assets/web/ASSETS_En/js/vendors/jquery-migrate-3.3.0.min.js"></script>
     <script src="{{ url('') }}/assets/web/ASSETS_En/js/vendors/bootstrap.bundle.min.js"></script>
     <script src="{{ url('') }}/assets/web/ASSETS_En/js/vendors/waypoints.js"></script>
@@ -586,41 +732,45 @@
     <script src="{{ url('') }}/assets/web/ASSETS_En/js/vendors/jquery.elevatezoom.js"></script>
     <script src="{{ url('') }}/assets/web/ASSETS_En/js/vendors/slick.js"></script>
     <script src="{{ url('') }}/assets/web/ASSETS_En/js/main.js?v=3.0.0"></script>
-    <script src="{{ url('') }}/assets/web/ASSETS_En/js/Shop.js?v=1.2.1"></script>
+    <script src="{{ url('') }}/assets/web/ASSETS_En/js/shop.js?v=1.2.1"></script>
 @else
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/modernizr-3.6.0.min.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/jquery-3.6.0.min.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/jquery-migrate-3.3.0.min.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/bootstrap.bundle.min.js"></script>
+    <!--<script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/modernizr-3.6.0.min.js"></script>-->
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/jquery-3.6.0.min.js" ></script>
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/jquery-migrate-3.3.0.min.js" ></script>
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/bootstrap.bundle.min.js" ></script>
     <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/waypoints.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/wow.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/magnific-popup.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/perfect-scrollbar.min.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/select2.min.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/isotope.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/scrollup.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/swiper-bundle.min.js"></script>
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/wow.js" ></script>
+    <!--<script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/magnific-popup.js"></script>-->
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/perfect-scrollbar.min.js" ></script>
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/select2.min.js" ></script>
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/isotope.js"></script>-->
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/scrollup.js" ></script>
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/swiper-bundle.min.js" ></script>
     <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/noUISlider.js"></script>
     <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/slider.js"></script>
     <!-- Count down-->
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/counterup.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/jquery.countdown.min.js"></script>
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/counterup.js" ></script>
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/jquery.countdown.min.js" ></script>
     <!-- Count down-->
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/jquery.elevatezoom.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/slick.js"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/main.js?v=3.0.0"></script>
-    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/SHop.js?v=1.2.1"></script>
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/jquery.elevatezoom.js" ></script>
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/vendors/slick.js" ></script>
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/main.js?v=3.0.0" ></script>
+    <script src="{{ url('') }}/assets/web/ASSets_Ar/js/shop.js?v=1.2.1" ></script>
 @endif
 <script src="{{ url('') }}/assets/web/updated.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-</script>
+<!--        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">-->
+<!--</script>-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
 </script>
-<script src="https://assets.sympl.ai/widgets/ecom-prod-dtls/widget.min.js" defer></script>
+<script>
+    const translations = @json(__('web'));
+</script>
+
+<!--<script src="https://assets.sympl.ai/widgets/ecom-prod-dtls/widget.min.js" ></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="{{ url('') }}/assets/web/ASSETS_En/js/custom/FORMACTION10.js"></script>
+<script src="{{ url('') }}/assets/web/ASSETS_En/js/custom/FORMACTION15.js"></script>
 <script src="{{ url('') }}/assets/web/ASSETS_En/js/custom/toastrResponse.js"></script>
 
 <script>
@@ -628,6 +778,9 @@
         url_add_compare = "{{ route('compare.store') }}",
         url_add_cart = "{{ route('cart.store') }}",
         url_delete_cart = "{{ route('cart.destroy', ':cart_id') }}",
+        url_delete_cart_extension = "{{route('cart.delete_extension',':cart_extension_id')}}",
+        url_update_cart_extension = "{{route('cart.update_extension',':cart_extension_id')}}",
+        url_add_cart_extension = "{{route('cart.add_extension',['extension_id'=>':extension_id','cart_id'=>':cart_id'])}}",
         edit_cart_action = "{{ route('cart.update', ':cart_id') }}",
         url_cart = "{{ route('cart.index') }}",
         url_view_cart = "{{ route('cart.view') }}",
@@ -646,14 +799,18 @@
             window.location.href = "{{ route('web.shop') }}?category_id=" + categoryId;
         }
     }
-    function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+    // function scrollToTop() {
+    //     window.scrollTo({
+    //         top: 0,
+    //         behavior: 'smooth'
+    //     });
 
-        document.querySelector('.dropdown-cart-container').style.display = 'block'; // Show the cart dropdown
-    }
+    //     document.querySelector('.dropdown-cart-container').style.display = 'block'; // Show the cart dropdown
+    // }
+    document.querySelector('.productAdditionsModalClose').addEventListener('click', function () {
+        $('#productAdditionsModal').modal('hide');
+    });
+
 
 </script>
 
@@ -848,31 +1005,55 @@
         }
     });
 </script>
-
 <script>
-    // to show dropdown menue when hovering over sec-header
-   document.querySelectorAll('.categories-item').forEach(function(item) {
+    document.querySelectorAll('.categories-item').forEach(function(item) {
         item.addEventListener('mouseover', function() {
             const dropdownMenu = item.querySelector('.dropdown-menu');
             if (dropdownMenu) {
-                dropdownMenu.classList.add('show');  
-                item.setAttribute('aria-expanded', 'true');  
+                dropdownMenu.classList.add('show');  // Show the dropdown
+                item.setAttribute('aria-expanded', 'true');  // Set aria-expanded to true
             }
         });
 
         item.addEventListener('mouseleave', function() {
             const dropdownMenu = item.querySelector('.dropdown-menu');
-            const categoriesShop = item.querySelector('.categories-shop');
             if (dropdownMenu) {
-                dropdownMenu.classList.remove('show');  
-                item.setAttribute('aria-expanded', 'false');  
+                dropdownMenu.classList.remove('show');  // Hide the dropdown
+                item.setAttribute('aria-expanded', 'false');  // Set aria-expanded to false
             }
         });
     });
+    document.addEventListener("DOMContentLoaded", () => {
+        document.body.classList.add("dark");
+        localStorage.setItem('switchMode', true);
+        document.getElementById('darkModeInput').checked = true;
+    });
+    const switchMode = () => {
+        const body = document.querySelector('body');
+        body.classList.toggle("dark");
+
+        localStorage.setItem('switchMode', body.classList.contains("dark"));
+    };
+
+    if (localStorage.getItem('switchMode') === 'true') {
+        document.querySelector('body').classList.add("dark");
+        document.getElementById('darkModeInput').checked = true;
+    }
+
 </script>
+<script>
+    const dropdownContainer = document.getElementById('dropdownContainer');
 
+    window.addEventListener("scroll", () => {
+        const scrollPosition = window.scrollY;
 
-
+        if (scrollPosition < 200) {
+            dropdownContainer.style.top = "100px"; // Set top when scroll is less than 200px
+        } else {
+            dropdownContainer.style.top = "62px"; // Set top to a different value when scroll is beyond 200px
+        }
+    });
+</script>
 </body>
 
 </html>

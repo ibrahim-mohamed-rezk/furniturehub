@@ -49,7 +49,7 @@ body.dark .page-link {
 }
 body.dark .breadcrumbs-div {
   background-color: var(--main-dark);
-  border: 1px solid white;
+  border: 1px solid var(--dark-mode-white);
 }
 body.dark .btn {
   color: white;

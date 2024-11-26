@@ -23,18 +23,17 @@
         <div data-toggle="modal" data-target="#exampleModa{{ $order->id }}" class="custom-button">
             <div class="custom-button-text">{{ __('web.view_all') }}</div>
         </div>
-    </td>
+    </td> 
 </tr>
 
 <!-- order Modal -->
 <div class="modal fade" id="exampleModa{{ $order->id }}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="width: 90vw; max-width: 100vw !important; top: 0;" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content ">
-            <h5 class="modal-title" style="text-align: start; width: 90%; margin: 0 auto;" id="exampleModalLabel">
+            <h5 class="modal-title" id="exampleModalLabel">
                 {{ __('web.order_summary') }} </h5>
             <div style="width: 100%">
-
                 <div class="shipping-details">
                     <div>
                         @if ($order->user->defaultAddress)

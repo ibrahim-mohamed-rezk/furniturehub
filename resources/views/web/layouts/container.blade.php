@@ -2,11 +2,12 @@
 
 
 @section('container_content')
-@auth
-@if (auth()->user()->phone == null)
+{{-- @auth --}}
+{{-- @if (auth()->user()->phone == null) --}}
 @include('web.component.popups.phone.add-number', ['status' => 'show'])
-@endif
-@endauth
+<button data-toggle="modal" data-target="#phoneModal">open modal</button>
+{{-- @endif --}}
+{{-- @endauth --}}
 
 {{-- @include('web.component.popups.phone.add-otp') --}}
 @include('web.layouts.header')

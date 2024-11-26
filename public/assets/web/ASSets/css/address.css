@@ -64,325 +64,505 @@
 
   .changeLocation {
     display: flex;
-    width: 65%;
+    width: clamp(306px, 59.32291666666667vw, 1139px);
     align-items: center;
     justify-content: space-between;
-    padding: 20px 10px;
+    padding: clamp(10px, 1.5625vw, 30px);
     margin: 40px auto;
     border: 1px solid #d9d9d9;
-    border-radius: 20px;
+    border-radius: clamp(12px, 1.8229166666666667vw, 35px);
 
-    div {
+    .changeLocation_info {
       display: flex;
-      gap: 10px;
+      gap: clamp(15px, 2.083333333333333vw, 40px);
+      align-items: center;
+      justify-content: start;
 
       .locationIcon {
-        width: 40px;
-        height: 40px;
+        width: clamp(15px, 1.5625vw, 30px);
+        height: clamp(15px, 1.5625vw, 30px);
         border-radius: 50%;
-        background-color: #fd9636;
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: #f1f1f2;
 
-        i {
-          font-size: 16px;
-          color: #fff;
+        .choosedCircle {
+          background-color: #f1f1f2;
+          width: 55%;
+          height: 55%;
+          border-radius: 50%;
+        }
+      }
+
+      .locationIcon.choosed {
+        background-color: #fd9636;
+
+        .choosedCircle {
+          background-color: #fff;
         }
       }
 
       .locationDec {
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        gap: clamp(5px, 0.7291666666666666vw, 14px);
 
         span {
-          font-size: 18px;
-          font-weight: 600;
           text-align: start;
+          font-family: Cairo;
+          font-size: clamp(14px, 1.0416666666666665vw, 20px);
+          font-weight: 700;
+          line-height: 20px;
           color: #000;
         }
 
         p {
-          font-size: 12px;
-          font-weight: 500;
           text-align: start;
+          font-family: Cairo;
+          font-size: clamp(10px, 0.78125vw, 15px);
+          font-weight: 500;
+          line-height: 20px;
           color: #000;
         }
       }
     }
 
-    button {
-      padding: 7px 5px;
-      background: #fd9636;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 20px;
-      color: #fff;
-      border: none;
-      outline: none;
-      border-radius: 5px;
-    }
-  }
-
-  .addLocation {
-    padding: 10px;
-    margin-bottom: 20px;
-    overflow: hidden;
-    width: 100%;
-
-    .section-header {
+    .buttons {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      cursor: pointer;
-      transition: all 1s ease-out;
-      width: 99%;
-      gap: 3px;
+      justify-content: center;
+      gap: clamp(10px, 1.875vw, 36px);
 
-      .arrow {
-        transition: all 1s ease-out;
-        color: #8b8b8b;
-        font-size: 16px;
-      }
-
-      span {
-        font-size: 16px;
+      button {
+        padding: clamp(12px, 0.78125vw, 15px) 10px;
+        background: #fd9636;
+        font-family: Cairo;
+        font-size: clamp(12px, 1.0416666666666665vw, 20px);
         font-weight: 500;
+        line-height: clamp(10px, 1.0416666666666665vw, 20px);
         text-wrap: nowrap;
-        color: #000;
-      }
-    }
-
-    .section-items {
-      margin-top: 10px;
-      transition: all 1s ease-out;
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      width: 100%;
-
-      .myForm {
+        color: #fff;
+        border: none;
+        outline: none;
+        border-radius: 5px;
         display: flex;
         align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: clamp(15px, 1.7187500000000002vw, 33px);
+      }
 
-        .show {
-          display: block;
-          opacity: 1;
-        }
+      .icon-container {
+        height: 24px;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
 
-        .pageFormInput {
+        .dots-icon {
+          width: 5px;
+          height: 24px;
           display: flex;
           flex-direction: column;
-          align-items: start;
-          justify-content: start;
-          width: 23%;
-          min-width: 300px;
-          gap: clamp(10px, 0.78125vw, 15px);
+          gap: 3px;
 
-          label {
+          .dot {
+            width: 5px;
+            height: 5px;
+            background: #374957;
+            border-radius: 50%;
+          }
+        }
+
+        .card {
+          position: absolute;
+          top: 0;
+          left: 100%;
+          width: 200px;
+          background: white;
+          box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.03);
+          border-radius: 12px;
+          overflow: hidden;
+          border: 1px #f1f1f2 solid;
+          z-index: 50;
+          display: flex;
+          align-items: flex-start;
+          justify-content: flex-start;
+
+          .remove-container {
+            display: inline-flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 3px;
+            width: 100%;
+            padding: 15px 10px;
+
+            .remove-box {
+              padding: 5px;
+              display: flex;
+              justify-content: flex-start;
+              align-items: flex-start;
+              gap: 10px;
+
+              .remove-icon {
+                width: 20px;
+                height: 20px;
+              }
+            }
+
+            .remove-text {
+              color: #ff1212;
+              font-size: 22px;
+              font-family: Alexandria;
+              font-weight: 500;
+              line-height: 20px;
+              word-wrap: break-word;
+            }
+          }
+
+          .divider {
+            width: 100%;
+            height: 0;
+            box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.03);
+            border-bottom: 1px #f1f1f2 solid;
+          }
+
+          .title {
+            display: inline-flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 8px;
+            text-align: right;
+            width: 100%;
+            padding: 16px 10px;
+            color: black;
+            font-size: 22px;
             font-family: Alexandria;
-            font-size: clamp(10px, 0.7291666666666666vw, 14px);
             font-weight: 500;
-            line-height: 15px;
-            letter-spacing: -0.01em;
+            line-height: 20px;
+            word-wrap: break-word;
+          }
+        }
+
+        .card.none {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .changeLocation.defaultAddress {
+    border-color: #fd9636 !important;
+  }
+
+  .addLocationBtnSection {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .addLocationBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Cairo;
+      font-size: clamp(12px, 1.0416666666666665vw, 20px);
+      font-weight: 500;
+      line-height: clamp(10px, 1.0416666666666665vw, 20px);
+      color: #fff;
+      background-color: #fd9636;
+      border-radius: 6px;
+      width: clamp(86px, 8.072916666666668vw, 155px);
+      height: clamp(34px, 2.604166666666667vw, 50px);
+      border: none;
+      outline: none;
+    }
+  }
+}
+
+.modal.fade {
+  .modal-dialog {
+    max-width: 100%;
+    width: clamp(300px, 73.07291666666667vw, 1403px);
+    margin: clamp(150px, 15.625vw, 300px) auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-content {
+      width: 100%;
+      border-radius: clamp(12px, 1.5625vw, 30px);
+      padding: clamp(15px, 1.5625vw, 30px);
+
+      .modal-header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .title {
+          h5 {
+            font-family: Cairo;
+            font-size: clamp(12px, 1.0416666666666665vw, 20px);
+            font-weight: 700;
+            line-height: 20px;
             color: #000;
           }
+        }
 
-          .inputContainer {
-            width: 100%;
-            border: 1px solid #e1e3ea;
+        .buttons {
+          display: flex;
+          align-items: center;
+          justify-content: end;
+          gap: clamp(5px, 0.625vw, 12px);
+
+          .modalHeadButton {
             display: flex;
             align-items: center;
-            justify-content: start;
-            border-radius: 6px;
-            overflow: hidden;
-            padding-inline-end: 5px;
-
-            .inputIconContainer {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 48px;
-              height: 48px;
-              border-inline-end: 1px solid #e1e3ea;
-              background-color: #f9f9f9;
-            }
-
-            input,
-            select {
-              border: none;
-              outline: none;
-              width: calc(100% - 48px);
-              padding: 17px 15px;
-              font-family: Alexandria;
-              font-size: 12px;
-              font-weight: 500;
-              line-height: 14px;
-              color: #7e8299;
-            }
+            justify-content: center;
+            border-radius: clamp(8px, 0.625vw, 12px);
+            outline: none;
+            width: clamp(100px, 9.635416666666668vw, 185px);
+            height: clamp(33px, 2.4479166666666665vw, 47px);
+            border: none;
+            outline: none;
           }
 
-          .textContainer {
-            background-color: #f9f9f9;
-            width: 100%;
+          .saveBtn {
+            background-color: #fd9636;
+            color: #fff;
+            gap: clamp(5px, 0.5208333333333333vw, 10px);
+            border: none;
+            font-family: Cairo;
+            font-size: clamp(10px, 0.7291666666666666vw, 14px);
+            font-weight: 700;
+            line-height: 18px;
+          }
+
+          .CloseBtn {
+            font-family: Cairo;
+            font-size: clamp(10px, 0.625vw, 12px);
+            font-weight: 700;
+            line-height: 18px;
+            color: #949494;
+            border: 1px solid #949494;
+            width: clamp(69px, 4.583333333333333vw, 88px);
+            background-color: transparent;
+          }
+        }
+      }
+
+      .modal-body {
+        width: 100%;
+
+        .myForm {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: clamp(15px, 1.7187500000000002vw, 33px);
+
+          .show {
+            display: block;
+            opacity: 1;
+          }
+
+          .pageFormInput {
             display: flex;
+            flex-direction: column;
             align-items: start;
             justify-content: start;
-            overflow: hidden;
-            padding-inline-end: 5px;
-            flex-direction: column;
-            padding: 12px;
-            border-radius: 6px;
+            width: 23%;
+            min-width: 300px;
+            gap: clamp(10px, 0.78125vw, 15px);
 
             label {
               font-family: Alexandria;
-              font-size: 11px;
-              font-weight: 600;
-              line-height: 12px;
-              color: #a1a5b7;
+              font-size: clamp(10px, 0.7291666666666666vw, 14px);
+              font-weight: 500;
+              line-height: 15px;
+              letter-spacing: -0.01em;
+              color: #000;
             }
 
-            textarea {
+            .inputContainer {
               width: 100%;
-              border: none;
-              outline: none;
-              padding: 17px 15px;
-              font-family: Alexandria;
-              font-size: 12px;
-              font-weight: 500;
-              line-height: 14px;
-              color: #7e8299;
-              background: transparent;
+              border: 1px solid #e1e3ea;
+              display: flex;
+              align-items: center;
+              justify-content: start;
+              border-radius: 6px;
+              overflow: hidden;
+              padding-inline-end: 5px;
+
+              .inputIconContainer {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 48px;
+                height: 48px;
+                border-inline-end: 1px solid #e1e3ea;
+                background-color: #f9f9f9;
+              }
+
+              input,
+              select {
+                border: none;
+                outline: none;
+                width: calc(100% - 48px);
+                padding: 17px 15px;
+                font-family: Alexandria;
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 14px;
+                color: #7e8299;
+              }
+            }
+
+            .textContainer {
+              background-color: #f9f9f9;
+              width: 100%;
+              display: flex;
+              align-items: start;
+              justify-content: start;
+              overflow: hidden;
+              padding-inline-end: 5px;
+              flex-direction: column;
+              padding: 12px;
+              border-radius: 6px;
+
+              label {
+                font-family: Alexandria;
+                font-size: 11px;
+                font-weight: 600;
+                line-height: 12px;
+                color: #a1a5b7;
+              }
+
+              textarea {
+                width: 100%;
+                border: none;
+                outline: none;
+                padding: 17px 15px;
+                font-family: Alexandria;
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 14px;
+                color: #7e8299;
+                background: transparent;
+              }
             }
           }
-        }
 
-        @media (max-width: 770px) {
-          .pageFormInput {
+          .pageFormInput.fullpage {
             width: 100%;
           }
-        }
-      }
-    }
-  }
 
-  .LocationLine {
-    width: 100%;
-    border-top: 1px solid #d9d9d9;
-  }
+          .checkboxInputContainer.fullpage {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 15px;
 
-  .saveLocation {
-    justify-content: flex-start;
-    gap: 5px;
-    width: 85%;
-    color: #5c5c5c;
-  }
+            label {
+              font-family: Cairo;
+              font-size: clamp(px, 0.9375vw, 18px);
+              font-weight: 600;
+              line-height: 18px;
+              color: #5c5c5c;
+            }
 
-  .checkBox {
-    accent-color: #fd9636;
-  }
+            input {
+              width: 18px;
+              height: 18px;
+            }
+          }
 
-  .chckBtns {
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 30px;
-    direction: ltr;
-  }
-
-  .checkoutButtons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px 0;
-    margin-top: clamp(15px, 1.5625vw, 30px);
-
-    .left {
-      border: 1px solid #d9d9d9;
-      border-radius: 10px;
-      font-size: clamp(12px, 0.78125vw, 15px);
-      font-weight: 700;
-      line-height: 18px;
-      text-align: center;
-      padding: clamp(8px, 0.78125vw, 15px)
-        clamp(12px, 1.0416666666666665vw, 20px);
-      color: #949494;
-
-      span {
-        height: 25px;
-        display: inline-block;
-      }
-    }
-
-    button {
-      background: #fd9636;
-      border: none;
-      border-radius: 10px;
-      padding: clamp(8px, 0.78125vw, 15px)
-        clamp(12px, 1.0416666666666665vw, 20px);
-      font-size: clamp(12px, 0.78125vw, 15px);
-      font-weight: 700;
-      line-height: 18px;
-      text-align: center;
-      color: #ffffff;
-    }
-
-    .goToShop {
-      background: none;
-      border: 1px solid #d9d9d9;
-      color: #949494;
-      gap: 10px;
-
-      svg {
-        height: 25px;
-      }
-    }
-  }
-
-  @media (max-width: 400px) {
-    .chckBtns {
-      width: 100% !important;
-    }
-  }
-
-  @media (max-width: 997px) {
-    .changeLocation {
-      width: 90%;
-    }
-
-    .saveLocation {
-      flex-direction: row;
-    }
-  }
-
-  @media (max-width: 770px) {
-    .changeLocation {
-      width: 100%;
-
-      div {
-        
-        .locationIcon {
-          width: 30px;
-          height: 30px;
-        }
-
-        .locationDec {
-          p {
-            font-size: 6px;
-
-            span {
-              font-size: 14px;
+          @media (max-width: 770px) {
+            .pageFormInput {
+              width: 100%;
             }
           }
         }
       }
+    }
+  }
+}
 
-      button {
-        font-size: 8px;
-      }
+@media (max-width: 550px) {
+  .modal.fade {
+    .modal-dialog {
+      width: 100%;
+    }
+  }
+}
+
+.chckBtns {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30px;
+  direction: ltr;
+}
+
+.checkoutButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  margin-top: clamp(15px, 1.5625vw, 30px);
+
+  .left {
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    font-size: clamp(12px, 0.78125vw, 15px);
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+    padding: clamp(8px, 0.78125vw, 15px) clamp(12px, 1.0416666666666665vw, 20px);
+    color: #949494;
+
+    span {
+      height: 25px;
+      display: inline-block;
+    }
+  }
+
+  button {
+    background: #fd9636;
+    border: none;
+    border-radius: 10px;
+    padding: clamp(8px, 0.78125vw, 15px) clamp(12px, 1.0416666666666665vw, 20px);
+    font-size: clamp(12px, 0.78125vw, 15px);
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .goToShop {
+    background: none;
+    border: 1px solid #d9d9d9;
+    color: #949494;
+    gap: 10px;
+
+    svg {
+      height: 25px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .chckBtns {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 770px) {
+  .container {
+    .changeLocation {
+      width: 100%;
     }
   }
 }
@@ -433,7 +613,7 @@ body.dark {
     .changeLocation {
       border: 1px solid var(--dark-mode-white);
 
-      div {
+      .changeLocation_info {
         .locationDec {
           span {
             color: #fff;
@@ -446,58 +626,24 @@ body.dark {
       }
     }
 
-    .section-header {
-      .arrow {
-        color: #fff;
-      }
+    .buttons {
+      .icon-container {
+        .dots-icon {
+          .dot {
+            background: #fff;
+          }
+        }
 
-      span {
-        color: #fff;
-      }
+        .card {
+          background: var(--dark-mode-second);
+          border: 1px var(--dark-mode-white) solid;
 
-      .LocationLine {
-        border-top: 1px solid var(--dark-mode-white);
-      }
-    }
+          .divider {
+            border-bottom: 1px var(--dark-mode-white) solid;
+          }
 
-    .section-items {
-      .myForm {
-        .pageFormInput {
-          label {
+          .title {
             color: #fff;
-          }
-
-          .inputContainer {
-            border: 1px solid var(--dark-mode-white);
-
-            .inputIconContainer {
-              border-inline-end: 1px solid var(--dark-mode-white);
-              background-color: var(--dark-mode-second);
-            }
-
-            input,
-            select {
-              background: transparent;
-              color: #fff;
-
-              option {
-                background: var(--dark-mode-second);
-              }
-            }
-          }
-
-          .textContainer {
-            background-color: transparent;
-            border: 1px solid var(--dark-mode-white);
-
-            label {
-              color: #fff;
-            }
-
-            textarea {
-              color: #fff;
-              background: transparent;
-            }
           }
         }
       }
@@ -516,6 +662,82 @@ body.dark {
 
     .saveLocation {
       color: #fff;
+    }
+  }
+
+  .modal.fade {
+    .modal-dialog {
+      .modal-content {
+        border: 1px solid var(--dark-mode-white);
+        background: var(--dark-mode-second);
+
+        .modal-header {
+          .title {
+            h5 {
+              color: #fff;
+            }
+          }
+
+          .buttons {
+            .CloseBtn {
+              color: #949494;
+              border: 1px solid #949494;
+            }
+          }
+        }
+
+        .modal-body {
+          .myForm {
+            .pageFormInput {
+              label {
+                color: #fff;
+              }
+
+              .inputContainer {
+                border: 1px solid var(--dark-mode-white);
+
+                .inputIconContainer {
+                  border-inline-end: 1px solid var(--dark-mode-white);
+                  background-color: var(--dark-mode-second);
+                }
+
+                input,
+                select {
+                  background: transparent;
+                  color: #fff;
+
+                  option {
+                    background: var(--dark-mode-second);
+                  }
+                }
+              }
+
+              .textContainer {
+                background-color: transparent;
+                border: 1px solid var(--dark-mode-white);
+
+                label {
+                  color: #fff;
+                }
+
+                textarea {
+                  color: #fff;
+                  background: transparent;
+                }
+              }
+            }
+            .checkboxInputContainer.fullpage {
+              label {
+                color: #fff;
+              }
+
+              input {
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
